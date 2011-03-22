@@ -1,0 +1,5 @@
+//laff
+
+public class main {
+
+}
