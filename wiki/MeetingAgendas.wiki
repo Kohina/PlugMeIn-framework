@@ -9,4 +9,4 @@ This is where we will upload all of our meeting agendas.
 
 First meeting (2011-03-22):
 
-<iframe src="https://docs.google.com/document/pub?id=1YR57Xy_iYWuXTnzPGGknMmBXsLGusbIwiY2KlUjTTbg&amp;embedded=true"></iframe>
+https://docs.google.com/document/pub?id=1YR57Xy_iYWuXTnzPGGknMmBXsLGusbIwiY2KlUjTTbg
