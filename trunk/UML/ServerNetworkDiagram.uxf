@@ -6,38 +6,8 @@
     <coordinates>
       <x>10</x>
       <y>10</y>
-      <w>870</w>
-      <h>250</h>
-    </coordinates>
-    <panel_attributes>Abstract
-bg=orange</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Class</type>
-    <coordinates>
-      <x>20</x>
-      <y>40</y>
-      <w>150</w>
-      <h>100</h>
-    </coordinates>
-    <panel_attributes>/AbstractPluginData/
---
--methodID:String
--versionID:String
---
-+getMethodID()
-+getVersionID()
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Package</type>
-    <coordinates>
-      <x>10</x>
-      <y>270</y>
-      <w>870</w>
-      <h>230</h>
+      <w>420</w>
+      <h>340</h>
     </coordinates>
     <panel_attributes>Network
 bg=orange</panel_attributes>
@@ -47,23 +17,23 @@ bg=orange</panel_attributes>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>20</x>
-      <y>300</y>
-      <w>180</w>
+      <y>190</y>
+      <w>190</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>DataInterpreter
 --
 -pluginModel:PluginModel
 --
-+interpret()
++interpret(data : PluginCall)
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>210</x>
-      <y>300</y>
+      <x>20</x>
+      <y>40</y>
       <w>180</w>
       <h>80</h>
     </coordinates>
@@ -78,8 +48,8 @@ client()</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>400</x>
-      <y>300</y>
+      <x>220</x>
+      <y>190</y>
       <w>160</w>
       <h>150</h>
     </coordinates>
@@ -92,6 +62,26 @@ client()</panel_attributes>
 +getPluginID()
 +getPluginData()
 +getDestination()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>210</x>
+      <y>40</y>
+      <w>210</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>ConnectionThread
+--
+-ServerSocket : socket
+-ConnectionModel : connections
+-DataInterpreter : interpreter
+--
+-interpretData(PluginCall : data)
+#updateList()
+-send(data : PluginCall)
+</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

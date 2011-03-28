@@ -6,8 +6,8 @@
     <coordinates>
       <x>10</x>
       <y>10</y>
-      <w>870</w>
-      <h>490</h>
+      <w>400</w>
+      <h>280</h>
     </coordinates>
     <panel_attributes>Network
 bg=orange</panel_attributes>
@@ -18,14 +18,14 @@ bg=orange</panel_attributes>
     <coordinates>
       <x>210</x>
       <y>40</y>
-      <w>180</w>
+      <w>190</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>DataInterpreter
 --
 -pluginModel:PluginModel
 --
-+interpret()
++interpret(data : PluginCall)
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -48,8 +48,8 @@ client()</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>400</x>
-      <y>40</y>
+      <x>20</x>
+      <y>130</y>
       <w>160</w>
       <h>150</h>
     </coordinates>
