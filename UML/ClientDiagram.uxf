@@ -4,29 +4,95 @@
   <element>
     <type>com.umlet.element.Package</type>
     <coordinates>
+      <x>740</x>
+      <y>10</y>
+      <w>350</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>Model
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Package</type>
+    <coordinates>
+      <x>370</x>
+      <y>10</y>
+      <w>350</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>Controller
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Package</type>
+    <coordinates>
       <x>10</x>
       <y>10</y>
-      <w>870</w>
-      <h>490</h>
+      <w>350</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>Abstract
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Package</type>
+    <coordinates>
+      <x>10</x>
+      <y>340</y>
+      <w>350</w>
+      <h>320</h>
     </coordinates>
     <panel_attributes>Network
 bg=orange</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
+    <type>com.umlet.element.Package</type>
+    <coordinates>
+      <x>370</x>
+      <y>340</y>
+      <w>350</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>View
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>210</x>
-      <y>40</y>
-      <w>180</w>
-      <h>70</h>
+      <x>20</x>
+      <y>370</y>
+      <w>160</w>
+      <h>30</h>
     </coordinates>
-    <panel_attributes>DataInterpreter
---
--pluginModel:PluginModel
---
-+interpret()
+    <panel_attributes>CommunicationCenter
 </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>190</x>
+      <y>370</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>DataInterpreter</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>20</x>
+      <y>410</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>PluginCall</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -34,34 +100,55 @@ bg=orange</panel_attributes>
     <coordinates>
       <x>20</x>
       <y>40</y>
-      <w>180</w>
-      <h>80</h>
+      <w>140</w>
+      <h>30</h>
     </coordinates>
-    <panel_attributes>CommunicationCenter
---
--socket:Socket
--interpreter:DataInterpreter
---
-client()</panel_attributes>
+    <panel_attributes>/AbstractPluginData/
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>400</x>
+      <x>170</x>
       <y>40</y>
-      <w>160</w>
-      <h>150</h>
+      <w>110</w>
+      <h>30</h>
     </coordinates>
-    <panel_attributes>PluginCall
---
--pluginID:String
--pluginData:PluginData
--destination:int
-----
-+getPluginID()
-+getPluginData()
-+getDestination()</panel_attributes>
+    <panel_attributes>AbstractPlugin</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>750</x>
+      <y>40</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>PluginModel</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>380</x>
+      <y>40</y>
+      <w>120</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>PluginController</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>510</x>
+      <y>40</y>
+      <w>130</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>NetworkController</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
