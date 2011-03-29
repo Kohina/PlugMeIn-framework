@@ -1,5 +1,0 @@
-//ronken
-
-public class main {
-
-}
