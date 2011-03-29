@@ -21,5 +21,6 @@ public class DataInterpreter {
 	 */
 	public void interpret(PluginCall call){
 		String plugin = call.getPluginID();
+		model.getPluginMap().get(plugin).receiveCall(call);
 	}
 }

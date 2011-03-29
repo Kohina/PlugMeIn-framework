@@ -13,7 +13,7 @@ public class PluginModel {
 	 * The Constructor for the PluginModel. Should read the plugin folder and load all plugins into the pluginMap.
 	 */
 	public PluginModel() {
-		pluginMap.put("SendMessage", new AbstractPlugin());
+		pluginMap.put("SendMessage", new SendMessagePlugin());
 	}
 	
 	/**
