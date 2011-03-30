@@ -8,11 +8,12 @@ import java.net.UnknownHostException;
 
 public class CommunicationCenter {
 
-	private Socket socket = null;
+	private ServerSocket socket = null;
 	private DataInterpreter interpreter;
 	private ObjectInputStream in = null;
 	// TODO create an output.
 	private ObjectOutputStream out = null;
+	private ConnectionThread thread = null;
 
 	/**
 	 * Contructor for the CommunicationCenter.
@@ -36,6 +37,8 @@ public class CommunicationCenter {
 			// Create a new socket
 			this.socket = new Socket(ip, port);
 			// Catch UnknownHostException and tell the user about it.
+			thread = new ConnectionThread(socket);
+			thread.start();
 		} catch (UnknownHostException e) {
 			System.err.println("Don't know about host: " + ip);
 			// Catch IOException and tell the user about it.
