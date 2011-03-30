@@ -1,4 +1,4 @@
-package falcons.server.network;
+package falcons.server.*;
 
 import java.net.*;
 import java.io.*;
@@ -8,6 +8,7 @@ import falcons.plugin.manager.PluginCall;
 
 public class ConnectionThread extends Thread{
 
+	private int id = -1;
 	private Socket socket = null;
 	private DataInterpreter interpreter;
 	ObjectInputStream in;
@@ -59,6 +60,14 @@ public class ConnectionThread extends Thread{
 			out.writeObject(call);
 		} catch(IOException e) {
 			System.err.print("Could not write to the output stream.");
+		}
+	}
+	
+	public void giveID(int id) {
+		if(id != -1) {
+			this.id = id; 
+		} else {
+			System.err.print("Thread already has an ID.");
 		}
 	}
 }
