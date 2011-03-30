@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 import falcons.plugin.manager.DataInterpreter;
 import falcons.plugin.manager.PluginCall;
 
-public class CommunicationCenter {
+public class CommunicationCenter implements Runnable {
 
 	private Socket socket = null;
 	private DataInterpreter interpreter;
@@ -47,8 +47,8 @@ public class CommunicationCenter {
 		}
 
 		// Associate the input and output stream to ObjectStreams.
-		in = (ObjectInputStream) socket.getInputStream();
-		out = (ObjectOutputStream) socket.getOutputStream();
+		in = new ObjectInputStream(socket.getInputStream());
+		out = new ObjectOutputStream(socket.getOutputStream());
 	}
 
 	/**
@@ -69,5 +69,19 @@ public class CommunicationCenter {
 		while ((call = (PluginCall) in.readObject()) != null) {
 			interpreter.interpret(call);
 		}
+	}
+
+	@Override
+	public void run() {
+		try {
+			System.out.println("CLIENT STARTED");
+			client();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

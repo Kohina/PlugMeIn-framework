@@ -10,7 +10,7 @@ import java.net.UnknownHostException;
 import falcons.plugin.manager.DataInterpreter;
 import falcons.server.model.ConnectionModel;
 
-public class CommunicationCenter {
+public class CommunicationCenter implements Runnable {
 
 	private ServerSocket socket = null;
 	private DataInterpreter interpreter;
@@ -42,21 +42,25 @@ public class CommunicationCenter {
 		} catch (IOException e) {
 			System.err.println("Couldn't get I/O for the connection to the client");
 		}
-		
-		server();
 	}
 	
-	public void server(){
+	public void server() throws IOException{
+		System.out.println("SERVER STARTED");
 		while(listening){
-			try {
 				ConnectionThread thread = new ConnectionThread(socket.accept());
 				model.addThread(thread);
 				thread.giveID(model.getID(thread));
 				thread.start();
-			} catch (IOException e) {
-				System.err.println("Couldn't get I/O for the connection to the client");
-				e.printStackTrace();
-			}
 		}
+	}
+
+	@Override
+	public void run() {
+		try {
+			server();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 }

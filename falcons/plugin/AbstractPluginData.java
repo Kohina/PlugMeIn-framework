@@ -1,6 +1,8 @@
 package falcons.plugin;
 
-public abstract class AbstractPluginData {
+import java.io.Serializable;
+
+public abstract class AbstractPluginData implements Serializable {
 
 	private String methodID;
 	private String versionID;

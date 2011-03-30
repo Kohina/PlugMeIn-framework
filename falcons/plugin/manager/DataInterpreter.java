@@ -33,7 +33,10 @@ public class DataInterpreter {
 			String plugin = call.getPluginID();
 			model.getPluginMap().get(plugin).receiveCall(call);
 		} else {
-			ConnectionModel.getInstance().getThread(destination).send(call);
+			System.out.println("ARRIVED!!");
+			String plugin = call.getPluginID();
+			model.getPluginMap().get(plugin).receiveCall(call);
+			// GOTTA FIX THIS TODO ConnectionModel.getInstance().getThread(destination).send(call);
 		}
 	}
 }
