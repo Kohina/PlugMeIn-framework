@@ -1,4 +1,4 @@
-package falcons.pluginmanager;
+package falcons.plugin;
 
 public abstract class AbstractPluginData {
 

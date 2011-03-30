@@ -1,8 +1,9 @@
-package falcons.pluginmanager;
+package falcons.plugin;
 
 import javax.swing.JOptionPane;
 
-import falcons.client.network.PluginCall;
+import falcons.plugin.manager.PluginCall;
+
 
 public abstract class AbstractPlugin {
 

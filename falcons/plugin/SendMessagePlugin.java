@@ -1,10 +1,9 @@
-package falcons.pluginmanager;
+package falcons.plugin;
 
 import javax.swing.JOptionPane;
 
-import falcons.client.abstractions.AbstractPlugin;
-import falcons.client.abstractions.AbstractPluginData;
-import falcons.client.network.PluginCall;
+import falcons.plugin.manager.PluginCall;
+
 
 //This is not supposed to exist here. TODO
 public class SendMessagePlugin extends AbstractPlugin {

@@ -1,9 +1,11 @@
-package falcons.pluginmanager;
+package falcons.plugin.manager;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import falcons.client.abstractions.AbstractPlugin;
+import falcons.plugin.AbstractPlugin;
+import falcons.plugin.SendMessagePlugin;
+
 
 public class PluginModel {
 
