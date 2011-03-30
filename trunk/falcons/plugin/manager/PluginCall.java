@@ -1,8 +1,11 @@
 package falcons.plugin.manager;
 
+import java.io.Serializable;
+
+import falcons.plugin.AbstractPlugin;
 import falcons.plugin.AbstractPluginData;
 
-public class PluginCall {
+public class PluginCall implements Serializable {
 
 	private String PluginID;
 	private AbstractPluginData pluginData;
@@ -18,9 +21,9 @@ public class PluginCall {
 	 * @param destination
 	 *            The int that is an ID from the servers list of clients.
 	 */
-	public PluginCall(String PluginID, AbstractPluginData pluginData,
+	public PluginCall(AbstractPlugin plugin, AbstractPluginData pluginData,
 			int destination) {
-		this.PluginID = PluginID;
+		this.PluginID = plugin.getPluginID();
 		this.pluginData = pluginData;
 		this.destination = destination;
 	}

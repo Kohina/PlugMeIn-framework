@@ -3,6 +3,8 @@ package falcons.server.network;
 import java.net.*;
 import java.io.*;
 
+import falcons.plugin.AbstractPlugin;
+import falcons.plugin.SendMessagePlugin;
 import falcons.plugin.manager.DataInterpreter;
 import falcons.plugin.manager.PluginCall;
 
@@ -14,6 +16,8 @@ public class ConnectionThread extends Thread{
 	ObjectInputStream in;
 	ObjectOutputStream out;
 	
+	private SendMessagePlugin p = new SendMessagePlugin();
+	
 	/*
 	 *Contructor that sets the instace variable
 	 * 
@@ -24,19 +28,23 @@ public class ConnectionThread extends Thread{
 	
 	@Override
 	public void run() {
-		try {
-			in = (ObjectInputStream) socket.getInputStream();
+		System.out.println("CONNECTIONTHREAD STARTED");
+/*		try {
+			in = new ObjectInputStream(socket.getInputStream());
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 		try {
-			out = (ObjectOutputStream) socket.getOutputStream();
+			out = new ObjectOutputStream(socket.getOutputStream());
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		PluginCall call;
+		}		
 		
-		try {
+		//Hardcoded stuff delete later
+		send(new PluginCall(p, p.getSendMessagePluginData(), 0));
+		System.out.println("SENT");
+		
+/*		try {
 			while ((call = (PluginCall) in.readObject()) != null) {	
 				    interpreter.interpret(call);
 			}
@@ -45,8 +53,8 @@ public class ConnectionThread extends Thread{
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		*/
 	}
-	
 	/**
 	 * Sends a PluginCall to the connected client. Takes the PluginCall as a parameter.
 	 * 

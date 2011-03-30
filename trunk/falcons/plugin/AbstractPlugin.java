@@ -1,11 +1,13 @@
 package falcons.plugin;
 
+import java.io.Serializable;
+
 import javax.swing.JOptionPane;
 
 import falcons.plugin.manager.PluginCall;
 
 
-public abstract class AbstractPlugin {
+public abstract class AbstractPlugin implements Serializable {
 
 	private String pluginID;
 	private String versionID;
