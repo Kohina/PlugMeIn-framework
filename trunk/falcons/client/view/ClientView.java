@@ -1,4 +1,4 @@
-package falcons.client.view;
+package client.view;
 import java.awt.BorderLayout;
 import javax.swing.JTabbedPane;
 
@@ -18,8 +18,8 @@ import javax.swing.SwingUtilities;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class ClientFrame extends javax.swing.JFrame {
-	private JTabbedPane jTabbedPaneOut;
+public class ClientView extends javax.swing.JFrame {
+	private JTabbedPane jTabbedPaneOut, jTabbedPaneIn;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -27,14 +27,14 @@ public class ClientFrame extends javax.swing.JFrame {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				ClientFrame inst = new ClientFrame();
+				ClientView inst = new ClientView();
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 			}
 		});
 	}
 	
-	public ClientFrame() {
+	public ClientView() {
 		super();
 		initGUI();
 	}
@@ -43,10 +43,15 @@ public class ClientFrame extends javax.swing.JFrame {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			{
-				jTabbedPane1 = new JTabbedPane();
-				getContentPane().add(jTabbedPane1, BorderLayout.CENTER);
-				jTabbedPane1.addTab("Main", arg1);
-				jTabbedPane1.addTab("Connection", component);
+				jTabbedPaneOut = new JTabbedPane();
+				jTabbedPaneIn = new JTabbedPane();
+				jTabbedPaneIn.setTabPlacement(JTabbedPane.LEFT);
+				getContentPane().add(jTabbedPaneOut, BorderLayout.CENTER);
+				getContentPane().add(jTabbedPaneIn, BorderLayout.CENTER);
+				jTabbedPaneIn.addTab("Send Message", component);
+				jTabbedPaneIn.addTab("Wake on lan", component);
+				jTabbedPaneOut.addTab("Main", jTabbedPaneIn);
+				jTabbedPaneOut.addTab("Connection", component);
 			}
 			pack();
 			setSize(400, 300);
