@@ -5,7 +5,7 @@ import java.io.*;
 
 public class ConnectionThread extends Thread{
 
-	private ServerSocket socket = null;
+	private Socket socket = null;
 	ObjectInputStream in;
 	ObjectOutputStream out;
 	
@@ -13,7 +13,7 @@ public class ConnectionThread extends Thread{
 	 *Contructor that sets the instace variable
 	 * 
 	 */
-	public ConnectionThread(ServerSocket socket){
+	public ConnectionThread(Socket socket){
 		this.socket = socket;
 	}
 	
