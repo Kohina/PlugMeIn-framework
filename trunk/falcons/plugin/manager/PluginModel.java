@@ -6,7 +6,6 @@ import java.util.Map;
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.SendMessagePlugin;
 
-
 public class PluginModel {
 
 	private HashMap<String, AbstractPlugin> pluginMap = new HashMap<String, AbstractPlugin>();
@@ -17,6 +16,7 @@ public class PluginModel {
 	 */
 	public PluginModel() {
 		pluginMap.put("SendMessage", new SendMessagePlugin());
+		// pluginMap = pluginLoader.getPlugins();
 	}
 
 	/**
@@ -25,6 +25,7 @@ public class PluginModel {
 	 *         their pluginID as key.
 	 */
 	public HashMap<String, AbstractPlugin> getPluginMap() {
+		// Should be getPlugin(), we don't want something to change the map.
 		return pluginMap;
 	}
 
