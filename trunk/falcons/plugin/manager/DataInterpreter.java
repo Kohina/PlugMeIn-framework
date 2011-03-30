@@ -1,7 +1,5 @@
-package falcons.pluginmanager;
+package falcons.plugin.manager;
 
-import falcons.client.abstractions.AbstractPluginData;
-import falcons.client.model.PluginModel;
 
 public class DataInterpreter {
 

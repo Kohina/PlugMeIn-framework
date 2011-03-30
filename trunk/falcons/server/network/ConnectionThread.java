@@ -3,6 +3,9 @@ package falcons.server.network;
 import java.net.*;
 import java.io.*;
 
+import falcons.plugin.manager.DataInterpreter;
+import falcons.plugin.manager.PluginCall;
+
 public class ConnectionThread extends Thread{
 
 	private Socket socket = null;

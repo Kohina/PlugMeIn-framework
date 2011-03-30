@@ -6,6 +6,9 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import falcons.plugin.manager.DataInterpreter;
+import falcons.plugin.manager.PluginCall;
+
 public class CommunicationCenter {
 
 	private Socket socket = null;

@@ -1,6 +1,6 @@
-package falcons.pluginmanager;
+package falcons.plugin.manager;
 
-import falcons.client.abstractions.AbstractPluginData;
+import falcons.plugin.AbstractPluginData;
 
 public class PluginCall {
 
