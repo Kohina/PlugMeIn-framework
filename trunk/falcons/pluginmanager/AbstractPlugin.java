@@ -1,4 +1,4 @@
-package falcons.client.abstractions;
+package falcons.pluginmanager;
 
 import javax.swing.JOptionPane;
 

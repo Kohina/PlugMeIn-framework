@@ -1,4 +1,4 @@
-package falcons.client.model;
+package falcons.pluginmanager;
 
 import java.util.HashMap;
 import java.util.Map;
