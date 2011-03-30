@@ -1,4 +1,4 @@
-package client.view;
+package falcons.client.view;
 import java.awt.BorderLayout;
 import javax.swing.JTabbedPane;
 

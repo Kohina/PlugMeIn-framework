@@ -8,7 +8,7 @@ import java.net.UnknownHostException;
 
 public class CommunicationCenter {
 
-	private ServerSocket socket = null;
+	private Socket socket = null;
 	private DataInterpreter interpreter;
 	private ObjectInputStream in = null;
 	// TODO create an output.
@@ -35,7 +35,7 @@ public class CommunicationCenter {
 			// Create an interpreter associated with the client
 			this.interpreter = interpreter;
 			// Create a new socket
-			this.socket = new ServerSocket(ip, port);
+			this.socket = new Socket(ip, port);
 			// Catch UnknownHostException and tell the user about it.
 			thread = new ConnectionThread(socket);
 			thread.start();
