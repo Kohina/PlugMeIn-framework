@@ -6,6 +6,7 @@ import java.io.*;
 public class ConnectionThread extends Thread{
 
 	private Socket socket = null;
+	private DataInterpreter interpreter;
 	ObjectInputStream in;
 	ObjectOutputStream out;
 	
@@ -20,12 +21,26 @@ public class ConnectionThread extends Thread{
 	@Override
 	public void run() {
 		Socket clientSocket = null;
-		in = (ObjectInputStream) clientSocket.getInputStream();
-		out = (ObjectOutputStream) clientSocket.getOutputStream();
+		try {
+			in = (ObjectInputStream) clientSocket.getInputStream();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			out = (ObjectOutputStream) clientSocket.getOutputStream();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		PluginCall call;
 		
-		while ((call = (PluginCall) in.readObject()) != null) {	
-			    interpreter.interpret(call);
+		try {
+			while ((call = (PluginCall) in.readObject()) != null) {	
+				    interpreter.interpret(call);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 	}
 	
