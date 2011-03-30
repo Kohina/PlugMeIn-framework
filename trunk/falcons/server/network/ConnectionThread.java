@@ -54,7 +54,11 @@ public class ConnectionThread extends Thread{
 	 * 				The PluginCall which should be sent to the client.
 	 * @throws IOException
 	 */
-	public void send(PluginCall call) throws IOException {
-		out.writeObject(call);
+	public void send(PluginCall call) {
+		try {
+			out.writeObject(call);
+		} catch(IOException e) {
+			System.err.print("Could not write to the output stream.");
+		}
 	}
 }

@@ -5,13 +5,13 @@ import java.util.*;
 public class ConnectionModel {
 	
 	private static ConnectionModel connectionModel = new ConnectionModel();
-	private List<ConnectionThread> connections;
+	private List<ConnectionThread> connections = new ArrayList<ConnectionThread>();
 	
 	private ConnectionModel() {
-		connections = new ArrayList<ConnectionThread>();
+		//Do Nothing.
 	}
 	
-	public ConnectionModel getInstance() {
+	public static ConnectionModel getInstance() {
 		return connectionModel;
 	}
 	
