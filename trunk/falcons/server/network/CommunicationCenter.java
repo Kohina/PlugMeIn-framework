@@ -14,6 +14,7 @@ public class CommunicationCenter {
 	private ServerSocket socket = null;
 	private DataInterpreter interpreter;
 	private boolean listening = true;
+	private ConnectionModel model;
 
 	/**
 	 * Contructor for the CommunicationCenter.
@@ -28,10 +29,11 @@ public class CommunicationCenter {
 	 *             If an unhandled IOException is thrown then it could not find
 	 *             the I/O Connection for the socket.
 	 */
-	public CommunicationCenter(DataInterpreter interpreter, int port)
+	public CommunicationCenter(DataInterpreter interpreter, int port, ConnectionModel model)
 			throws IOException {
 
 		try {
+			this.model = model;
 			// Create an interpreter associated with the client
 			this.interpreter = interpreter;
 			// Create a new socket
@@ -46,7 +48,10 @@ public class CommunicationCenter {
 	public void server(){
 		while(listening){
 			try {
-				new ConnectionThread(socket.accept()).start();
+				ConnectionThread thread = new ConnectionThread(socket.accept());
+				model.addThread(thread);
+				thread.giveID(model.getID(thread));
+				thread.start();
 			} catch (IOException e) {
 				System.err.println("Couldn't get I/O for the connection to the client");
 				e.printStackTrace();
