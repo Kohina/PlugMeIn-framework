@@ -1,7 +1,11 @@
 package falcons.server.network;
 
-import java.lang.Thread;
 
-public class ConnectionThread {
+public class ConnectionThread implements Runnable{
 
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
 }
