@@ -1,11 +1,23 @@
 package falcons.server.network;
 
 
-public class ConnectionThread implements Runnable{
+public class ConnectionThread extends Thread{
 
+	private ServerSocket socket = null;
+	
+	/*
+	 *Contructor that sets the instace variable
+	 * 
+	 */
+	public ConnectionThread(ServerSocket socket){
+		this.socket = socket;
+	}
+	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		
+		Socket clientSocket = null;
+		while(){
+			clientSocket = socket.accept();
+		}
 	}
 }
