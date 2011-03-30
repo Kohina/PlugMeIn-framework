@@ -4,7 +4,6 @@ import javax.swing.JOptionPane;
 
 import falcons.plugin.manager.PluginCall;
 
-
 //This is not supposed to exist here. TODO
 public class SendMessagePlugin extends AbstractPlugin {
 
@@ -43,14 +42,17 @@ public class SendMessagePlugin extends AbstractPlugin {
 
 	}
 
+	public void receiveMessage(String message) {
+		JOptionPane.showMessageDialog(null, message);
+	}
+
 	@Override
 	public void receiveCall(PluginCall call) {
 		AbstractPluginData data = call.getPluginData();
 
 		if (data.getMethodID().equals("SendMessage")
 				&& data.getVersionID().equals(versionID)) {
-			JOptionPane.showMessageDialog(null,
-					((SendMessagePluginData) data).getMessage());
+			receiveMessage(((SendMessagePluginData) data).getMessage());
 		} else if (!data.getMethodID().equals("SendMessage")
 				&& !data.getVersionID().equals(versionID)) {
 			System.out
