@@ -13,6 +13,7 @@ public class CommunicationCenter {
 
 	private ServerSocket socket = null;
 	private DataInterpreter interpreter;
+	private boolean listening = true;
 
 	/**
 	 * Contructor for the CommunicationCenter.
@@ -27,7 +28,7 @@ public class CommunicationCenter {
 	 *             If an unhandled IOException is thrown then it could not find
 	 *             the I/O Connection for the socket.
 	 */
-	public CommunicationCenter(DataInterpreter interpreter, String ip, int port)
+	public CommunicationCenter(DataInterpreter interpreter, int port)
 			throws IOException {
 
 		try {
@@ -35,13 +36,21 @@ public class CommunicationCenter {
 			this.interpreter = interpreter;
 			// Create a new socket
 			this.socket = new ServerSocket(port);
-			// Catch UnknownHostException and tell the user about it.
-			new ConnectionThread(socket.accept()).start();
-		} catch (UnknownHostException e) {
-			System.err.println("Don't know about host: " + ip);
-			// Catch IOException and tell the user about it.
 		} catch (IOException e) {
-			System.err.println("Couldn't get I/O for the connection to: " + ip);
+			System.err.println("Couldn't get I/O for the connection to the client");
+		}
+		
+		server();
+	}
+	
+	public void server(){
+		while(listening){
+			try {
+				new ConnectionThread(socket.accept()).start();
+			} catch (IOException e) {
+				System.err.println("Couldn't get I/O for the connection to the client");
+				e.printStackTrace();
+			}
 		}
 	}
 }
