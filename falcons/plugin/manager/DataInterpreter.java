@@ -2,7 +2,7 @@ package falcons.plugin.manager;
 
 import java.io.IOException;
 
-import falcons.server.network.ConnectionModel;
+import falcons.server.model.ConnectionModel;
 
 public class DataInterpreter {
 

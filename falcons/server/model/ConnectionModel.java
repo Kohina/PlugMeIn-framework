@@ -1,6 +1,8 @@
-package falcons.server.network;
+package falcons.server.model;
 
 import java.util.*;
+
+import falcons.server.network.ConnectionThread;
 
 public class ConnectionModel {
 	
