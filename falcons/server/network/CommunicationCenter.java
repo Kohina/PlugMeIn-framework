@@ -35,7 +35,7 @@ public class CommunicationCenter {
 			// Create an interpreter associated with the client
 			this.interpreter = interpreter;
 			// Create a new socket
-			this.socket = new Socket(ip, port);
+			this.socket = new ServerSocket(ip, port);
 			// Catch UnknownHostException and tell the user about it.
 			thread = new ConnectionThread(socket);
 			thread.start();
