@@ -1,4 +1,4 @@
-package falcons.server.*;
+package falcons.server.network;
 
 import java.net.*;
 import java.io.*;
@@ -24,14 +24,13 @@ public class ConnectionThread extends Thread{
 	
 	@Override
 	public void run() {
-		Socket clientSocket = null;
 		try {
-			in = (ObjectInputStream) clientSocket.getInputStream();
+			in = (ObjectInputStream) socket.getInputStream();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		try {
-			out = (ObjectOutputStream) clientSocket.getOutputStream();
+			out = (ObjectOutputStream) socket.getOutputStream();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -69,5 +68,9 @@ public class ConnectionThread extends Thread{
 		} else {
 			System.err.print("Thread already has an ID.");
 		}
+	}
+	
+	public int getID() {
+		return id;
 	}
 }
