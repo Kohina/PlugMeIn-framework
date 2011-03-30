@@ -19,6 +19,10 @@ public class ConnectionModel {
 		return connections.get(id);
 	}
 	
+	public int getID(ConnectionThread thread) {
+		return connections.lastIndexOf(thread);
+	}
+	
 	public void addThread(ConnectionThread thread) {
 		connections.add(thread);
 	}
