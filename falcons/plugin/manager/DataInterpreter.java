@@ -1,5 +1,8 @@
 package falcons.plugin.manager;
 
+import java.io.IOException;
+
+import falcons.server.network.ConnectionModel;
 
 public class DataInterpreter {
 
@@ -18,13 +21,19 @@ public class DataInterpreter {
 
 	/**
 	 * Interpret where the PluginCall is supposed to be sent and then send it to
-	 * the corresponding Plugin.
+	 * the corresponding Plugin or client.
 	 * 
 	 * @param call
 	 *            The PluginCall that's been received from the server.
 	 */
 	public void interpret(PluginCall call) {
-		String plugin = call.getPluginID();
-		model.getPluginMap().get(plugin).receiveCall(call);
+		int destination = call.getDestination();
+		
+		if(destination < 0) {
+			String plugin = call.getPluginID();
+			model.getPluginMap().get(plugin).receiveCall(call);
+		} else {
+			ConnectionModel.getInstance().getThread(destination).send(call);
+		}
 	}
 }
