@@ -24,8 +24,6 @@ public class ConnectionThread extends Thread{
 		out = (ObjectOutputStream) clientSocket.getOutputStream();
 		PluginCall call;
 		
-		clientSocket = socket.accept();
-		
 		while ((call = (PluginCall) in.readObject()) != null) {	
 			    interpreter.interpret(call);
 		}
