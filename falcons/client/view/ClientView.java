@@ -19,7 +19,7 @@ import javax.swing.SwingUtilities;
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
 public class ClientView extends javax.swing.JFrame {
-	private JTabbedPane jTabbedPaneOut, jTabbedPaneIn;
+	private JTabbedPane jTabbedPaneOut, jTabbedPaneMain;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -44,13 +44,13 @@ public class ClientView extends javax.swing.JFrame {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			{
 				jTabbedPaneOut = new JTabbedPane();
-				jTabbedPaneIn = new JTabbedPane();
-				jTabbedPaneIn.setTabPlacement(JTabbedPane.LEFT);
+				jTabbedPaneMain = new JTabbedPane();
+				jTabbedPaneMain.setTabPlacement(JTabbedPane.LEFT);
 				getContentPane().add(jTabbedPaneOut, BorderLayout.CENTER);
-				getContentPane().add(jTabbedPaneIn, BorderLayout.CENTER);
-				jTabbedPaneIn.addTab("Send Message", component);
-				jTabbedPaneIn.addTab("Wake on lan", component);
-				jTabbedPaneOut.addTab("Main", jTabbedPaneIn);
+				getContentPane().add(jTabbedPaneMain, BorderLayout.CENTER);
+				jTabbedPaneMain.addTab("Send Message", component);
+				jTabbedPaneMain.addTab("Wake on lan", component);
+				jTabbedPaneOut.addTab("Main", jTabbedPaneMain);
 				jTabbedPaneOut.addTab("Connection", component);
 			}
 			pack();
