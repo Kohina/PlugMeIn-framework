@@ -1,4 +1,4 @@
-package falcons.client.network;
+package falcons.pluginmanager;
 
 import falcons.client.abstractions.AbstractPluginData;
 
