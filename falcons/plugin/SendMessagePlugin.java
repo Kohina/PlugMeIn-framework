@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.swing.JOptionPane;
 
 import falcons.plugin.manager.PluginCall;
+import falcons.server.model.ConnectionModel;
 
 //This is not supposed to exist here. TODO
 public class SendMessagePlugin extends AbstractPlugin {
@@ -18,7 +19,7 @@ public class SendMessagePlugin extends AbstractPlugin {
 	 * @author Printz
 	 * 
 	 */
-	class SendMessagePluginData extends AbstractPluginData{
+	class SendMessagePluginData extends AbstractPluginData {
 
 		private String message;
 
@@ -47,9 +48,16 @@ public class SendMessagePlugin extends AbstractPlugin {
 	public void receiveMessage(String message) {
 		JOptionPane.showMessageDialog(null, message);
 	}
-	
-	public AbstractPluginData getSendMessagePluginData(){
-		return new SendMessagePluginData("SendMessage", versionID, JOptionPane.showInputDialog("What do you want to send?"));
+
+	public void sendMessage(long id) {
+		ConnectionModel.getInstance().getThread(id)
+				.send(new PluginCall(this, getSendMessagePluginData(), id));
+	}
+
+	// Should take a string as a parameter and use this as the message.
+	public AbstractPluginData getSendMessagePluginData() {
+		return new SendMessagePluginData("SendMessage", versionID,
+				JOptionPane.showInputDialog("What do you want to send?"));
 	}
 
 	@Override
