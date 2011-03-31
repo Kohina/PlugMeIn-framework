@@ -2,12 +2,15 @@ package falcons.plugin.manager;
 
 import java.io.IOException;
 
+import javax.management.modelmbean.ModelMBean;
+
 import falcons.server.model.ConnectionModel;
 
 public class DataInterpreter {
 
 	private PluginModel model;
 	private boolean clientInterpreter;
+	private static DataInterpreter interpreter;
 
 	/**
 	 * The Constructor for the DataInterpreter. Takes a pluginModel as a
@@ -16,9 +19,16 @@ public class DataInterpreter {
 	 * @param model
 	 *            The list of all currently loaded plugins.
 	 */
-	public DataInterpreter(PluginModel model, boolean clientInterpreter) {
-		this.model = model;
+	private DataInterpreter(boolean clientInterpreter) {
+		model = model.getInstance();
 		this.clientInterpreter = clientInterpreter;
+	}
+	
+	public DataInterpreter getInstance(boolean clientInterpreter){
+		if(interpreter == null){
+			interpreter = new DataInterpreter(clientInterpreter);
+		}
+		return interpreter;
 	}
 
 	/**
@@ -29,7 +39,7 @@ public class DataInterpreter {
 	 *            The PluginCall that's been received from the server.
 	 */
 	public void interpret(PluginCall call) {
-		int destination = call.getDestination();
+		long destination = call.getDestination();
 		
 		if(destination < 0) {
 			System.out.println("COMMAND ARRIVED, SENDING TO PLUGIN");

@@ -1,61 +1,44 @@
 package falcons.server.network;
 
-import java.net.*;
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 
-import falcons.plugin.AbstractPlugin;
 import falcons.plugin.SendMessagePlugin;
-import falcons.plugin.manager.DataInterpreter;
 import falcons.plugin.manager.PluginCall;
 
-public class ConnectionThread extends Thread {
+public class ConnectionThread extends Thread{
 
 	private Socket socket = null;
-	private DataInterpreter interpreter;
-	ObjectInputStream in;
-	ObjectOutputStream out;
-
+	private ListeningThread listeningThread;
+	private ObjectOutputStream out;
+	
+	// TODO Hard-coded stuff, delete.
 	private SendMessagePlugin p = new SendMessagePlugin();
-
-	/*
-	 * Contructor that sets the instace variable
-	 */
-	public ConnectionThread(Socket socket) {
+	
+	public ConnectionThread(Socket socket){
 		this.socket = socket;
+		
 	}
-
-	@Override
-	public void run() {
-		System.out.println("CONNECTIONTHREAD STARTED");
-
+	
+	public void run(){
 		try {
 			out = new ObjectOutputStream(socket.getOutputStream());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		try {
-			in = new ObjectInputStream(socket.getInputStream());
+			listeningThread = new ListeningThread(socket.getInputStream());
 		} catch (IOException e) {
+			System.err.println("Couldn't initiate ListeningThread");
 			e.printStackTrace();
 		}
-
-		/*Can't do it this way, we need to create a ConnectionWrapper.
-		 * try {
-			PluginCall call;
-			while ((call = (PluginCall) in.readObject()) != null) {
-				interpreter.interpret(call);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}*/
-
-		// Hardcoded stuff delete later
+		
+		// TODO Hard-coded stuff delete later
 		send(new PluginCall(p, p.getSendMessagePluginData(), 0));
 		System.out.println("SENT");
 	}
-
+	
 	/**
 	 * Sends a PluginCall to the connected client. Takes the PluginCall as a
 	 * parameter.

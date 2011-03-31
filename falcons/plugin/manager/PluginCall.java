@@ -9,7 +9,7 @@ public class PluginCall implements Serializable {
 
 	private String PluginID;
 	private AbstractPluginData pluginData;
-	private int destination;
+	private long destination;
 
 	/**
 	 * 
@@ -22,7 +22,7 @@ public class PluginCall implements Serializable {
 	 *            The int that is an ID from the servers list of clients.
 	 */
 	public PluginCall(AbstractPlugin plugin, AbstractPluginData pluginData,
-			int destination) {
+			long destination) {
 		this.PluginID = plugin.getPluginID();
 		this.pluginData = pluginData;
 		this.destination = destination;
@@ -48,7 +48,7 @@ public class PluginCall implements Serializable {
 	 * 
 	 * @return Returns the destination of the PluginCall as an int.
 	 */
-	public int getDestination() {
+	public long getDestination() {
 		return destination;
 	}
 }
