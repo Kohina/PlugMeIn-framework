@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 import falcons.plugin.manager.DataInterpreter;
 import falcons.plugin.manager.PluginCall;
 
-public class CommunicationCenter implements Runnable {
+public class ClientCommunicationCenter implements Runnable {
 
 	private Socket socket = null;
 	private DataInterpreter interpreter;
@@ -30,7 +30,7 @@ public class CommunicationCenter implements Runnable {
 	 *             If an unhandled IOException is thrown then it could not find
 	 *             the I/O Connection for the socket.
 	 */
-	public CommunicationCenter(DataInterpreter interpreter, String ip, int port)
+	public ClientCommunicationCenter(DataInterpreter interpreter, String ip, int port)
 			throws IOException {
 		interpreter.getInstance(true);
 		try {
