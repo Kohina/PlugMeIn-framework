@@ -1,0 +1,20 @@
+#Use cases for our project.
+
+= Introduction =
+
+Add your content here.
+
+
+= Details =
+
+Use case: Installing and activating a plugin
+https://docs.google.com/document/d/1zACkMm433QKDpZYxxItB3oVbc7B5PeU4MOgNH6GAKU0/edit?hl=en&authkey=CK2C6tgD
+
+Use case: Switch plugin 
+https://docs.google.com/document/d/1DBgSbDaD7FmaHPw4Ho4332JZ3GOtAX5tlYGQPzqYazE/edit?hl=en&authkey=CIT77qQO
+
+Use case: Download and install plugin from server 
+https://docs.google.com/document/d/14zuVMce9SIfNfHbKF2k18c3PXcZRqL44xbRmvSQvvik/edit?hl=en&authkey=CKfCnPwK
+
+Use case: New connection 
+https://docs.google.com/document/d/1aVjILewbsbrn_7mWBmpOq0oWZjSE9jx8QEz4vCj_2T0/edit?hl=en&authkey=COOPgLUB
