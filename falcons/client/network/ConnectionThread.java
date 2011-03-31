@@ -1,4 +1,4 @@
-package falcons.server.network;
+package falcons.client.network;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -12,9 +12,6 @@ public class ConnectionThread extends Thread{
 	private Socket socket = null;
 	private ListeningThread listeningThread;
 	private ObjectOutputStream out;
-	
-	// TODO Hard-coded stuff, delete.
-	private SendMessagePlugin p = new SendMessagePlugin();
 	
 	public ConnectionThread(Socket socket){
 		this.socket = socket;
@@ -33,10 +30,6 @@ public class ConnectionThread extends Thread{
 			System.err.println("Couldn't initiate ListeningThread");
 			e.printStackTrace();
 		}
-		
-		// TODO Hard-coded stuff delete later
-		send(new PluginCall(p, p.getSendMessagePluginData(), this.getId()));
-		System.out.println("SENT");
 	}
 	
 	/**
