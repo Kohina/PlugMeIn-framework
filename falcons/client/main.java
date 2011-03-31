@@ -10,7 +10,7 @@ import falcons.plugin.manager.PluginModel;
 public class main {
 
 	private static PluginModel pluginModel = new PluginModel();
-	private static DataInterpreter interpreter = new DataInterpreter(pluginModel);
+	private static DataInterpreter interpreter = new DataInterpreter(pluginModel, true);
 	private static int port = 45678;
 	private static SendMessagePlugin p = new SendMessagePlugin(); 
 	

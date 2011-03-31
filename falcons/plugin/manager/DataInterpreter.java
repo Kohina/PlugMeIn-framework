@@ -7,6 +7,7 @@ import falcons.server.model.ConnectionModel;
 public class DataInterpreter {
 
 	private PluginModel model;
+	private boolean clientInterpreter;
 
 	/**
 	 * The Constructor for the DataInterpreter. Takes a pluginModel as a
@@ -15,8 +16,9 @@ public class DataInterpreter {
 	 * @param model
 	 *            The list of all currently loaded plugins.
 	 */
-	public DataInterpreter(PluginModel model) {
+	public DataInterpreter(PluginModel model, boolean clientInterpreter) {
 		this.model = model;
+		this.clientInterpreter = clientInterpreter;
 	}
 
 	/**
@@ -30,13 +32,16 @@ public class DataInterpreter {
 		int destination = call.getDestination();
 		
 		if(destination < 0) {
+			System.out.println("COMMAND ARRIVED, SENDING TO PLUGIN");
+			String plugin = call.getPluginID();
+			model.getPluginMap().get(plugin).receiveCall(call);
+		} else if(clientInterpreter){
+			System.out.println("COMMAND ARRIVED, SENDING TO PLUGIN");
 			String plugin = call.getPluginID();
 			model.getPluginMap().get(plugin).receiveCall(call);
 		} else {
-			System.out.println("ARRIVED!!");
-			String plugin = call.getPluginID();
-			model.getPluginMap().get(plugin).receiveCall(call);
-			// GOTTA FIX THIS TODO ConnectionModel.getInstance().getThread(destination).send(call);
+			System.out.println("SENDING COMMAND TO CLIENT");
+			ConnectionModel.getInstance().getThread(destination).send(call);
 		}
 	}
 }
