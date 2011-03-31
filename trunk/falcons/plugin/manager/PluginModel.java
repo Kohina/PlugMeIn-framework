@@ -8,15 +8,20 @@ import falcons.plugin.SendMessagePlugin;
 
 public class PluginModel {
 
+	private static PluginModel pluginModel = new PluginModel();
 	private HashMap<String, AbstractPlugin> pluginMap = new HashMap<String, AbstractPlugin>();
 
 	/**
 	 * The Constructor for the PluginModel. Should read the plugin folder and
 	 * load all plugins into the pluginMap.
 	 */
-	public PluginModel() {
+	private PluginModel() {
 		pluginMap.put("SendMessage", new SendMessagePlugin());
 		// pluginMap = pluginLoader.getPlugins();
+	}
+	
+	public PluginModel getInstance(){
+		return pluginModel;
 	}
 
 	/**

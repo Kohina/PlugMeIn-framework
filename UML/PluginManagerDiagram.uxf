@@ -19,11 +19,12 @@ bg=orange</panel_attributes>
       <x>470</x>
       <y>40</y>
       <w>190</w>
-      <h>110</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>DataInterpreter
 --
--pluginModel:PluginModel
+-pluginModel : PluginModel
+-clientInterpreter : boolean
 --
 &lt;&lt;Constructors&gt;&gt;
 +DataInterpreter(model : PluginModel)
