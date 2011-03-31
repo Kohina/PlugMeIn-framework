@@ -11,8 +11,8 @@ import falcons.server.network.CommunicationCenter;
 
 public class main {
 
-	private static DataInterpreter interpreter;
 	private static PluginModel pluginModel = new PluginModel();
+	private static DataInterpreter interpreter = new DataInterpreter(pluginModel, false);
 	private static int port = 45678;
 
 	/**
