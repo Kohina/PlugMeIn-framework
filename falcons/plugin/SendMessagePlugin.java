@@ -50,7 +50,7 @@ public class SendMessagePlugin extends AbstractPlugin {
 	}
 
 	public void sendMessage(long id) {
-		ConnectionModel.getInstance().getThread(id)
+		ConnectionModel.getInstance().getConnection(id)
 				.send(new PluginCall(this, getSendMessagePluginData(), id));
 	}
 

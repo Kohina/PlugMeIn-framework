@@ -25,7 +25,7 @@ public class ConnectionModel {
 	 * @param id The ID of the thread wanted.
 	 * @return Always check if the returned value is null, if it's null the thread was not found.
 	 */
-	public ConnectionThread getThread(Long id) {
+	public ConnectionThread getConnection(Long id) {
 		boolean found = false;
 		for(int i = 0;i<connections.size()-1; i++){
 			if(connections.get(i).getId() == id){
@@ -35,15 +35,15 @@ public class ConnectionModel {
 		return null;
 	}
 	
-	public Long getID(ConnectionThread thread) {
+	public Long getConnectionID(ConnectionThread thread) {
 		return connections.get(connections.lastIndexOf(thread)).getId();
 	}
 	
-	public void addThread(ConnectionThread thread) {
+	public void addConnection(ConnectionThread thread) {
 		connections.add(thread);
 	}
 	
-	public void removeThread(Long id) {
+	public void removeConnection(Long id) {
 		for(int i = 0; i<connections.size()-1; i++){
 			if(connections.get(i).getId() == id){
 				connections.remove(i);
@@ -51,7 +51,7 @@ public class ConnectionModel {
 		}
 	}
 	
-	public void removeThread(ConnectionThread thread) {
+	public void removeConnection(ConnectionThread thread) {
 		connections.remove(thread);
 	}
 }
