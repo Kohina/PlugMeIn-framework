@@ -11,12 +11,12 @@ import falcons.plugin.manager.PluginModel;
 
 public class ListeningThread extends Thread {
 
-	private ObjectInputStream input;
+	private ObjectInputStream in;
 	private DataInterpreter interpreter;
 	
 	public ListeningThread(InputStream in){
 		try {
-			input = new ObjectInputStream(in);
+			this.in = new ObjectInputStream(in);
 		} catch (IOException e) {
 			System.err.println("Could not get connect to InputStream.");
 			e.printStackTrace();
@@ -27,7 +27,7 @@ public class ListeningThread extends Thread {
 	public void run(){
 		try {
 			PluginCall call;
-			while ((call = (PluginCall) input.readObject()) != null) {
+			while ((call = (PluginCall) in.readObject()) != null) {
 				interpreter.interpret(call);
 			}
 		} catch (IOException e) {
