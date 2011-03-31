@@ -43,10 +43,6 @@ public class CommunicationCenter implements Runnable {
 		} catch (IOException e) {
 			System.err.println("Couldn't get I/O for the connection to: " + ip);
 		}
-
-		// Associate the input and output stream to ObjectStreams.
-		in = new ObjectInputStream(socket.getInputStream());
-		out = new ObjectOutputStream(socket.getOutputStream());
 	}
 
 	/**

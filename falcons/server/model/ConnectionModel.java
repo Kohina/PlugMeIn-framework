@@ -6,7 +6,7 @@ import falcons.server.network.ConnectionThread;
 
 public class ConnectionModel {
 	
-	private static ConnectionModel connectionModel = new ConnectionModel();
+	private static ConnectionModel instance = new ConnectionModel();
 	private List<ConnectionThread> connections = new ArrayList<ConnectionThread>();
 	
 	private ConnectionModel() {
@@ -14,7 +14,10 @@ public class ConnectionModel {
 	}
 	
 	public static ConnectionModel getInstance() {
-		return connectionModel;
+			if(instance == null){
+				instance = new ConnectionModel();
+			}
+		return instance;
 	}
 	
 	/**

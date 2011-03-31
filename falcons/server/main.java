@@ -11,8 +11,8 @@ import falcons.server.network.CommunicationCenter;
 
 public class main {
 
-	private static PluginModel pluginModel = new PluginModel();
-	private static DataInterpreter interpreter = new DataInterpreter(pluginModel, false);
+	private static PluginModel pluginModel;
+	private static DataInterpreter interpreter;
 	private static int port = 45678;
 
 	/**
@@ -20,6 +20,8 @@ public class main {
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws IOException {
+		pluginModel = pluginModel.getInstance();
+		interpreter = interpreter.getInstance(false);
 		Thread comThread = new Thread(new CommunicationCenter(interpreter,
 				port, ConnectionModel.getInstance()));
 		comThread.start();

@@ -10,7 +10,7 @@ public class DataInterpreter {
 
 	private PluginModel model;
 	private boolean clientInterpreter;
-	private static DataInterpreter interpreter;
+	private static DataInterpreter instance;
 
 	/**
 	 * The Constructor for the DataInterpreter. Takes a pluginModel as a
@@ -23,12 +23,12 @@ public class DataInterpreter {
 		model = model.getInstance();
 		this.clientInterpreter = clientInterpreter;
 	}
-	
-	public DataInterpreter getInstance(boolean clientInterpreter){
-		if(interpreter == null){
-			interpreter = new DataInterpreter(clientInterpreter);
+
+	public static DataInterpreter getInstance(boolean clientInterpreter) {
+			if (instance == null) {
+				instance = new DataInterpreter(clientInterpreter);
 		}
-		return interpreter;
+		return instance;
 	}
 
 	/**
@@ -40,12 +40,12 @@ public class DataInterpreter {
 	 */
 	public void interpret(PluginCall call) {
 		long destination = call.getDestination();
-		
-		if(destination < 0) {
+
+		if (destination < 0) {
 			System.out.println("COMMAND ARRIVED, SENDING TO PLUGIN");
 			String plugin = call.getPluginID();
 			model.getPluginMap().get(plugin).receiveCall(call);
-		} else if(clientInterpreter){
+		} else if (clientInterpreter) {
 			System.out.println("COMMAND ARRIVED, SENDING TO PLUGIN");
 			String plugin = call.getPluginID();
 			model.getPluginMap().get(plugin).receiveCall(call);
