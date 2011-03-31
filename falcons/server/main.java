@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import falcons.plugin.manager.DataInterpreter;
 import falcons.plugin.manager.PluginModel;
 import falcons.server.model.ConnectionModel;
-import falcons.server.network.CommunicationCenter;
+import falcons.server.network.ServerCommunicationCenter;
 
 public class main {
 
@@ -22,7 +22,7 @@ public class main {
 	public static void main(String[] args) throws IOException {
 		pluginModel = pluginModel.getInstance();
 		interpreter = interpreter.getInstance(false);
-		Thread comThread = new Thread(new CommunicationCenter(interpreter,
+		Thread comThread = new Thread(new ServerCommunicationCenter(interpreter,
 				port, ConnectionModel.getInstance()));
 		comThread.start();
 	}

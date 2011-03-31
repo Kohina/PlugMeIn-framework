@@ -2,7 +2,7 @@ package falcons.client;
 
 import java.io.IOException;
 
-import falcons.client.network.CommunicationCenter;
+import falcons.client.network.ClientCommunicationCenter;
 import falcons.plugin.SendMessagePlugin;
 import falcons.plugin.manager.DataInterpreter;
 import falcons.plugin.manager.PluginModel;
@@ -23,7 +23,7 @@ public class main {
 		pluginModel.getPluginMap().put(p.getPluginID(), p);
 		Thread comThread;
 		try {
-			comThread = new Thread(new CommunicationCenter(interpreter, "127.0.0.1", port));
+			comThread = new Thread(new ClientCommunicationCenter(interpreter, "127.0.0.1", port));
 			comThread.start();
 		} catch (IOException e) {
 			e.printStackTrace();
