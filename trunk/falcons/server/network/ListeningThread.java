@@ -20,7 +20,7 @@ public class ListeningThread extends Thread {
 			System.err.println("Could not get connect to InputStream.");
 			e.printStackTrace();
 		}
-		interpreter.getInstance(false);
+		interpreter = interpreter.getInstance(false);
 	}
 	
 	public void run(){
