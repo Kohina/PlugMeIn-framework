@@ -1,6 +1,7 @@
 package falcons.client.network;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
@@ -19,6 +20,7 @@ public class ConnectionThread extends Thread{
 	}
 	
 	public void run(){
+
 		try {
 			out = new ObjectOutputStream(socket.getOutputStream());
 		} catch (IOException e) {
@@ -27,9 +29,10 @@ public class ConnectionThread extends Thread{
 		try {
 			listeningThread = new ListeningThread(socket.getInputStream());
 		} catch (IOException e) {
-			System.err.println("Couldn't initiate ListeningThread");
+			System.err.println("Could not initiat InputStream.");
 			e.printStackTrace();
 		}
+		listeningThread.start();
 	}
 	
 	/**

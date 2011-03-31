@@ -8,7 +8,7 @@ import falcons.plugin.SendMessagePlugin;
 
 public class PluginModel {
 
-	private static PluginModel pluginModel = new PluginModel();
+	private static PluginModel instance;
 	private HashMap<String, AbstractPlugin> pluginMap = new HashMap<String, AbstractPlugin>();
 
 	/**
@@ -20,8 +20,11 @@ public class PluginModel {
 		// pluginMap = pluginLoader.getPlugins();
 	}
 	
-	public PluginModel getInstance(){
-		return pluginModel;
+	public static PluginModel getInstance(){
+			if(instance == null){
+				instance = new PluginModel();
+		}
+		return instance;
 	}
 
 	/**

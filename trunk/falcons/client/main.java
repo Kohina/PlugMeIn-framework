@@ -9,8 +9,8 @@ import falcons.plugin.manager.PluginModel;
 
 public class main {
 
-	private static PluginModel pluginModel = new PluginModel();
-	private static DataInterpreter interpreter = new DataInterpreter(pluginModel, true);
+	private static PluginModel pluginModel;
+	private static DataInterpreter interpreter;
 	private static int port = 45678;
 	private static SendMessagePlugin p = new SendMessagePlugin(); 
 	
@@ -18,6 +18,8 @@ public class main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		pluginModel = pluginModel.getInstance();
+		interpreter = interpreter.getInstance(true);
 		pluginModel.getPluginMap().put(p.getPluginID(), p);
 		Thread comThread;
 		try {
