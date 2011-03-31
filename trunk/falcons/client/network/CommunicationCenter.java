@@ -32,10 +32,8 @@ public class CommunicationCenter implements Runnable {
 	 */
 	public CommunicationCenter(DataInterpreter interpreter, String ip, int port)
 			throws IOException {
-
+		interpreter.getInstance(true);
 		try {
-			// Create an interpreter associated with the client
-			this.interpreter = interpreter;
 			// Create a new socket
 			this.socket = new Socket(ip, port);
 			// Catch UnknownHostException and tell the user about it.
@@ -62,14 +60,9 @@ public class CommunicationCenter implements Runnable {
 	 *             object was sent to the client.
 	 */
 	private void client() throws IOException, ClassNotFoundException {
-		// The holder of the PluginCall received through the InputStream.
-		PluginCall call;
-
-		// Always listen.
-		while ((call = (PluginCall) in.readObject()) != null) {
-			interpreter.interpret(call);
+		ConnectionThread thread = new ConnectionThread(socket);
+		thread.start();
 		}
-	}
 
 	@Override
 	public void run() {
@@ -82,6 +75,6 @@ public class CommunicationCenter implements Runnable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 }
