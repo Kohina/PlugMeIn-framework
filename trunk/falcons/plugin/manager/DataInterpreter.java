@@ -51,7 +51,7 @@ public class DataInterpreter {
 			model.getPluginMap().get(plugin).receiveCall(call);
 		} else {
 			System.out.println("SENDING COMMAND TO CLIENT");
-			ConnectionModel.getInstance().getThread(destination).send(call);
+			ConnectionModel.getInstance().getConnection(destination).send(call);
 		}
 	}
 }
