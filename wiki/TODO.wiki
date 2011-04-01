@@ -6,6 +6,6 @@
 
 - *RAD* Finish sections 2
 
-- *view* Start on server view
+- *view* Start on server view, Printz also has a proposition for a slightly change clientUI
 
 - *Use cases* define use cases for new possible plugins
