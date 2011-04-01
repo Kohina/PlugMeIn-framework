@@ -3,6 +3,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -20,6 +21,8 @@ public class ClientView extends javax.swing.JFrame {
 	private JTabbedPane jTabbedPaneOut, jTabbedPaneMain;
 	private JTextField sendMessageTextField;
 	private JPanel panel;
+	private JPanel connectionPanel;
+	private JTextField temp;
 	private JButton sendMessageButton;
 
 	/**
@@ -43,27 +46,23 @@ public class ClientView extends javax.swing.JFrame {
 	private void initGUI() {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-			{
-				
-				sendMessageTextField = new JTextField();
-				sendMessageTextField.setText("test");
-				sendMessageTextField.setPreferredSize(new java.awt.Dimension(285, 190));
+			{	
 				
 				panel = new JPanel();
-				panel.setAlignmentX(LEFT_ALIGNMENT);
-				panel.add(sendMessageTextField);
+				panel.add(getSendMessageTextField());
 				panel.add(getSendMessageButton());
 
 				jTabbedPaneOut = new JTabbedPane();
 				jTabbedPaneMain = new JTabbedPane();
 				jTabbedPaneMain.setTabPlacement(JTabbedPane.LEFT);
 				getContentPane().add(jTabbedPaneOut, BorderLayout.CENTER);
+				getContentPane().add(getConnectionPanel(), BorderLayout.NORTH);
 				getContentPane().add(jTabbedPaneMain, BorderLayout.CENTER);
 				jTabbedPaneMain.addTab("Send Message", panel);
-				jTabbedPaneMain.addTab("Wake on lan", comp);
-				
+				jTabbedPaneMain.addTab("Wake on lan", getTemp());
+
 				jTabbedPaneOut.addTab("Main", jTabbedPaneMain);
-				jTabbedPaneOut.addTab("Connection", comp);
+				jTabbedPaneOut.addTab("Connection", getConnectionPanel());
 			}
 			pack();
 			setSize(400, 300);
@@ -81,5 +80,29 @@ public class ClientView extends javax.swing.JFrame {
 		}
 		return sendMessageButton;
 	}
-
+	
+	private JTextField getTemp() {
+		if(temp == null) {
+			temp = new JTextField();
+			temp.setText("temp");
+		}
+		return temp;
+	}
+	private JTextField getSendMessageTextField() {
+		if(sendMessageTextField == null) {
+			sendMessageTextField = new JTextField();
+			sendMessageTextField.setPreferredSize(new java.awt.Dimension(285, 190));
+			sendMessageTextField.setText("test");
+		}
+		return sendMessageTextField;
+	}
+	
+	private JPanel getConnectionPanel() {
+		if(connectionPanel == null) {
+			connectionPanel = new JPanel();
+			TitledBorder title = BorderFactory.createTitledBorder("Server connection");
+			connectionPanel.setBorder(title);
+		}
+		return connectionPanel;
+	}
 }
