@@ -65,7 +65,7 @@ public class ClientView extends javax.swing.JFrame {
 				jTabbedPaneMain.setTabPlacement(JTabbedPane.LEFT);
 				
 				getContentPane().add(jTabbedPaneOut, BorderLayout.CENTER);
-				getContentPane().add(jTabbedPaneMain, BorderLayout.CENTER);
+				jTabbedPaneOut.add(jTabbedPaneMain, BorderLayout.CENTER);
 				
 				jTabbedPaneMain.addTab("Send Message", panel);
 				jTabbedPaneMain.addTab("Wake on lan", getTemp());
@@ -110,7 +110,7 @@ public class ClientView extends javax.swing.JFrame {
 	private JTextField getSendMessageTextField() {
 		if(sendMessageTextField == null) {
 			sendMessageTextField = new JTextField();
-			sendMessageTextField.setPreferredSize(new java.awt.Dimension(285, 190));
+			sendMessageTextField.setPreferredSize(new java.awt.Dimension(250, 20));
 			sendMessageTextField.setText("test");
 		}
 		return sendMessageTextField;
@@ -129,11 +129,11 @@ public class ClientView extends javax.swing.JFrame {
 			connectionHolder2.add(getPortLabel());
 			connectionHolder2.add(getPortTextField());
 			connectionHolder2.add(autoConnect);
-			connectionHolder2.add(autoCon);
+			connectionHolder2.add(getAutoCon());
 			
 			connectionPanel.add(connectionHolder1);
 			connectionPanel.add(connectionHolder2);
-			connectionPanel.add(connectButton);
+			connectionPanel.add(getConnectButton());
 		}
 		return connectionPanel;
 	}
