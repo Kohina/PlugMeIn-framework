@@ -49,7 +49,7 @@ public class ServerCommunicationCenter implements Runnable {
 		while(listening){
 				ConnectionThread thread = new ConnectionThread(socket.accept());
 				System.out.println("NEW CONNECTION RECEIVED, CREATING NEW CONNECTIONTHREAD");
-				model.addThread(thread);
+				model.addConnection(thread);
 				thread.start();
 		}
 	}
