@@ -1,0 +1,7 @@
+#Things to fix and work with.
+
+= Details =
+
+- *RAD* Finish sections 2
+- *view* Start on ServerView
+- *Use cases* define use cases for new possible plugins
