@@ -1,10 +1,8 @@
 package falcons.client.view;
 import java.awt.BorderLayout;
-import javax.swing.JTabbedPane;
+import java.awt.GridLayout;
 
-import javax.swing.WindowConstants;
-import javax.swing.SwingUtilities;
-
+import javax.swing.*;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -20,6 +18,9 @@ import javax.swing.SwingUtilities;
 */
 public class ClientView extends javax.swing.JFrame {
 	private JTabbedPane jTabbedPaneOut, jTabbedPaneMain;
+	private JTextField sendMessageTextField;
+	private JPanel panel;
+	private JButton sendMessageButton;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -43,15 +44,26 @@ public class ClientView extends javax.swing.JFrame {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			{
+				
+				sendMessageTextField = new JTextField();
+				sendMessageTextField.setText("test");
+				sendMessageTextField.setPreferredSize(new java.awt.Dimension(285, 190));
+				
+				panel = new JPanel();
+				panel.setAlignmentX(LEFT_ALIGNMENT);
+				panel.add(sendMessageTextField);
+				panel.add(getSendMessageButton());
+
 				jTabbedPaneOut = new JTabbedPane();
 				jTabbedPaneMain = new JTabbedPane();
 				jTabbedPaneMain.setTabPlacement(JTabbedPane.LEFT);
 				getContentPane().add(jTabbedPaneOut, BorderLayout.CENTER);
 				getContentPane().add(jTabbedPaneMain, BorderLayout.CENTER);
-				jTabbedPaneMain.addTab("Send Message", component);
-				jTabbedPaneMain.addTab("Wake on lan", component);
+				jTabbedPaneMain.addTab("Send Message", panel);
+				jTabbedPaneMain.addTab("Wake on lan", comp);
+				
 				jTabbedPaneOut.addTab("Main", jTabbedPaneMain);
-				jTabbedPaneOut.addTab("Connection", component);
+				jTabbedPaneOut.addTab("Connection", comp);
 			}
 			pack();
 			setSize(400, 300);
@@ -59,6 +71,15 @@ public class ClientView extends javax.swing.JFrame {
 		    //add your error handling code here
 			e.printStackTrace();
 		}
+	}
+	
+	private JButton getSendMessageButton() {
+		if(sendMessageButton == null) {
+			sendMessageButton = new JButton();
+			sendMessageButton.setSize(200, 100);
+			sendMessageButton.setText("Send");
+		}
+		return sendMessageButton;
 	}
 
 }
