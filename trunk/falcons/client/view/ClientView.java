@@ -19,10 +19,11 @@ import javax.swing.border.TitledBorder;
 */
 public class ClientView extends javax.swing.JFrame {
 	private JTabbedPane jTabbedPaneOut, jTabbedPaneMain;
-	private JTextField sendMessageTextField;
-	private JPanel panel, holder, connectionPanel, pluginPanel;
-	private JTextField temp;
-	private JButton sendMessageButton;
+	private JPanel panel, holder, connectionPanel, pluginPanel, connectionHolder1, connectionHolder2;
+	private JTextField sendMessageTextField, IPTextField, temp, portTextField;
+	private JLabel portLabel, IPLabel, autoCon;
+	private JButton sendMessageButton, connectButton;
+	private JCheckBox autoConnect = new JCheckBox();
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -47,6 +48,10 @@ public class ClientView extends javax.swing.JFrame {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			{	
 				
+				connectionHolder1 = new JPanel();
+				connectionHolder1.setPreferredSize(new java.awt.Dimension(268, 31));
+				connectionHolder2 = new JPanel();
+				connectionHolder2.setPreferredSize(new java.awt.Dimension(302, 29));
 				panel = new JPanel();
 				panel.add(getSendMessageTextField());
 				panel.add(getSendMessageButton());
@@ -85,6 +90,16 @@ public class ClientView extends javax.swing.JFrame {
 		return sendMessageButton;
 	}
 	
+	private JButton getConnectButton() {
+		if(connectButton == null) {
+			connectButton = new JButton();
+			connectButton.setSize(200, 100);
+			connectButton.setText("Connect");
+			connectButton.setPreferredSize(new java.awt.Dimension(59, 19));
+		}
+		return connectButton;
+	}
+	
 	private JTextField getTemp() {
 		if(temp == null) {
 			temp = new JTextField();
@@ -106,6 +121,19 @@ public class ClientView extends javax.swing.JFrame {
 			connectionPanel = new JPanel();
 			TitledBorder title = BorderFactory.createTitledBorder("Server connection");
 			connectionPanel.setBorder(title);
+			connectionPanel.setPreferredSize(new java.awt.Dimension(379, 121));
+
+			connectionHolder1.add(getIPLabel());
+			connectionHolder1.add(getIPTextField());
+			
+			connectionHolder2.add(getPortLabel());
+			connectionHolder2.add(getPortTextField());
+			connectionHolder2.add(autoConnect);
+			connectionHolder2.add(autoCon);
+			
+			connectionPanel.add(connectionHolder1);
+			connectionPanel.add(connectionHolder2);
+			connectionPanel.add(connectButton);
 		}
 		return connectionPanel;
 	}
@@ -117,5 +145,46 @@ public class ClientView extends javax.swing.JFrame {
 			pluginPanel.setBorder(title);
 		}
 		return pluginPanel;
+	}
+	
+	private JTextField getIPTextField() {
+		if(IPTextField == null) {
+			IPTextField = new JTextField();
+			IPTextField.setPreferredSize(new java.awt.Dimension(193, 23));
+		}
+		return IPTextField;
+	}
+	
+	private JLabel getIPLabel() {
+		if(IPLabel == null) {
+			IPLabel = new JLabel();
+			IPLabel.setText("IP-adress: ");
+			IPLabel.setPreferredSize(new java.awt.Dimension(60, 16));
+		}
+		return IPLabel;
+	}
+	
+	private JLabel getPortLabel() {
+		if(portLabel == null) {
+			portLabel = new JLabel();
+			portLabel.setText("Port: ");
+		}
+		return portLabel;
+	}
+	
+	private JLabel getAutoCon() {
+		if(autoCon == null) {
+			autoCon = new JLabel();
+			autoCon.setText(" Auto connect");
+		}
+		return autoCon;
+	}
+	
+	private JTextField getPortTextField() {
+		if(portTextField == null) {
+			portTextField = new JTextField();
+			portTextField.setPreferredSize(new java.awt.Dimension(74, 23));
+		}
+		return portTextField;
 	}
 }
