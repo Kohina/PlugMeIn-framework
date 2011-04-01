@@ -1,6 +1,8 @@
-#Things to fix and work with.
+= Things to fix and work with =
 
-= Details =
+<in progress> = someone is working on this task/class
+
+<done> = the task is done
 
 - *RAD* Finish sections 2
 
