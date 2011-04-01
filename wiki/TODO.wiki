@@ -4,6 +4,6 @@
 
 - *RAD* Finish sections 2
 
-- *view* Start on ServerView
+- *view* Start on server view
 
 - *Use cases* define use cases for new possible plugins
