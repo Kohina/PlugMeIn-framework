@@ -9,3 +9,5 @@
 - *view* Start on server view, Printz also has a proposition for a slightly change clientUI
 
 - *Use cases* define use cases for new possible plugins
+
+- *Connections* Create some way for a client to assign a name to itself and send this to the server so that it always knows where to send a particular PluginCall and so that we can notify clients of other clients.
