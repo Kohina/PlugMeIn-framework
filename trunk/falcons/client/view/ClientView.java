@@ -20,8 +20,7 @@ import javax.swing.border.TitledBorder;
 public class ClientView extends javax.swing.JFrame {
 	private JTabbedPane jTabbedPaneOut, jTabbedPaneMain;
 	private JTextField sendMessageTextField;
-	private JPanel panel;
-	private JPanel connectionPanel;
+	private JPanel panel, holder, connectionPanel, pluginPanel;
 	private JTextField temp;
 	private JButton sendMessageButton;
 
@@ -51,18 +50,23 @@ public class ClientView extends javax.swing.JFrame {
 				panel = new JPanel();
 				panel.add(getSendMessageTextField());
 				panel.add(getSendMessageButton());
+				
+				holder = new JPanel(new GridLayout(2,1));
+				holder.add(getConnectionPanel());
+				holder.add(getPluginPanel());
 
 				jTabbedPaneOut = new JTabbedPane();
 				jTabbedPaneMain = new JTabbedPane();
 				jTabbedPaneMain.setTabPlacement(JTabbedPane.LEFT);
+				
 				getContentPane().add(jTabbedPaneOut, BorderLayout.CENTER);
-				getContentPane().add(getConnectionPanel(), BorderLayout.NORTH);
 				getContentPane().add(jTabbedPaneMain, BorderLayout.CENTER);
+				
 				jTabbedPaneMain.addTab("Send Message", panel);
 				jTabbedPaneMain.addTab("Wake on lan", getTemp());
 
 				jTabbedPaneOut.addTab("Main", jTabbedPaneMain);
-				jTabbedPaneOut.addTab("Connection", getConnectionPanel());
+				jTabbedPaneOut.addTab("Connection", holder);
 			}
 			pack();
 			setSize(400, 300);
@@ -104,5 +108,14 @@ public class ClientView extends javax.swing.JFrame {
 			connectionPanel.setBorder(title);
 		}
 		return connectionPanel;
+	}
+	
+	private JPanel getPluginPanel() {
+		if(pluginPanel == null) {
+			pluginPanel = new JPanel();
+			TitledBorder title = BorderFactory.createTitledBorder("Plugins");
+			pluginPanel.setBorder(title);
+		}
+		return pluginPanel;
 	}
 }
