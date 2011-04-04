@@ -21,7 +21,7 @@ import javax.swing.border.TitledBorder;
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
 public class ClientView extends javax.swing.JFrame {
-	private JTabbedPane jTabbedPaneOut, jTabbedPaneMain;
+	private JTabbedPane jTabbedPaneMain;
 	private JPanel panel, holder, connectionPanel, pluginPanel;
 	private JTextField sendMessageTextField, IPTextField, temp, portTextField;
 	private JLabel portLabel, IPLabel, autoCon;
@@ -59,18 +59,14 @@ public class ClientView extends javax.swing.JFrame {
 				holder.add(getConnectionPanel());
 				holder.add(getPluginPanel());
 
-				jTabbedPaneOut = new JTabbedPane();
 				jTabbedPaneMain = new JTabbedPane();
 				jTabbedPaneMain.setTabPlacement(JTabbedPane.LEFT);
 				
-				getContentPane().add(jTabbedPaneOut, BorderLayout.CENTER);
-				jTabbedPaneOut.add(jTabbedPaneMain, BorderLayout.CENTER);
+				getContentPane().add(jTabbedPaneMain, BorderLayout.CENTER);
 				
-				jTabbedPaneMain.addTab("Send Message", panel);
-				jTabbedPaneMain.addTab("Wake on lan", getTemp());
-
-				jTabbedPaneOut.addTab("Main", jTabbedPaneMain);
-				jTabbedPaneOut.addTab("Connection", holder);
+				jTabbedPaneMain.addTab("<html><body marginwidth=5 marginheight=5>Send Message</body></html>", panel);
+				jTabbedPaneMain.addTab("<html><body marginwidth=5 marginheight=5>Wake on lan</body></html>", getTemp());
+				
 			}
 			pack();
 			setSize(400, 300);
@@ -145,7 +141,7 @@ public class ClientView extends javax.swing.JFrame {
 			connectionPanel.add(autoConnect, c);
 			c.gridx = 3;
 			c.gridy = 2;
-			connectionPanel.add(connectButton, c);
+			connectionPanel.add(getConnectButton(), c);
 			
 			connectionPanel.setPreferredSize(new java.awt.Dimension(379, 121));
 		}
