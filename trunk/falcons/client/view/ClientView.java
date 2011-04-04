@@ -1,4 +1,5 @@
 package falcons.client.view;
+
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -121,14 +122,32 @@ public class ClientView extends javax.swing.JFrame {
 			
 			TitledBorder title = BorderFactory.createTitledBorder("Server connection");
 			connectionPanel.setBorder(title);
-			c.fill = GridBagConstraints.NONE;
+			
 			c.gridx = 0;
 			c.gridy = 0;
-			connectionPanel.add(portTextField, c);
+			connectionPanel.add(getIPLabel(), c);
+			c.gridx = 1;
+			c.gridy = 0;
+			c.gridwidth = 3;
+			connectionPanel.add(getIPTextField(), c);
+			c.gridx = 0;
+			c.gridy = 1;
+			c.gridwidth = 1;
+			connectionPanel.add(getPortLabel(), c);
+			c.gridx = 1;
+			c.gridy = 1;
+			connectionPanel.add(getPortTextField(), c);
+			c.gridx = 2;
+			c.gridy = 1;
+			connectionPanel.add(getAutoCon(), c);
+			c.gridx = 3;
+			c.gridy = 1;
+			connectionPanel.add(autoConnect, c);
+			c.gridx = 3;
+			c.gridy = 2;
+			connectionPanel.add(connectButton, c);
 			
 			connectionPanel.setPreferredSize(new java.awt.Dimension(379, 121));
-
-			connectionPanel.add(getConnectButton());
 		}
 		return connectionPanel;
 	}
@@ -145,7 +164,7 @@ public class ClientView extends javax.swing.JFrame {
 	private JTextField getIPTextField() {
 		if(IPTextField == null) {
 			IPTextField = new JTextField();
-			IPTextField.setPreferredSize(new java.awt.Dimension(193, 23));
+			IPTextField.setPreferredSize(new java.awt.Dimension(230, 23));
 		}
 		return IPTextField;
 	}
@@ -178,7 +197,7 @@ public class ClientView extends javax.swing.JFrame {
 	private JTextField getPortTextField() {
 		if(portTextField == null) {
 			portTextField = new JTextField();
-			portTextField.setPreferredSize(new java.awt.Dimension(74, 23));
+			portTextField.setPreferredSize(new java.awt.Dimension(50, 23));
 		}
 		return portTextField;
 	}
