@@ -1,9 +1,6 @@
 package falcons.client.view;
 
-import java.awt.BorderLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
+import java.awt.*;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -51,10 +48,6 @@ public class ClientView extends javax.swing.JFrame {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			{	
 				
-				panel = new JPanel();
-				panel.add(getSendMessageTextField());
-				panel.add(getSendMessageButton());
-				
 				holder = new JPanel(new GridLayout(2,1));
 				holder.add(getConnectionPanel());
 				holder.add(getPluginPanel());
@@ -64,7 +57,7 @@ public class ClientView extends javax.swing.JFrame {
 				
 				getContentPane().add(jTabbedPaneMain, BorderLayout.CENTER);
 				
-				jTabbedPaneMain.addTab("<html><body marginwidth=5 marginheight=5>Send Message</body></html>", panel);
+				jTabbedPaneMain.addTab("<html><body marginwidth=5 marginheight=5>Send Message</body></html>", getPanel());
 				jTabbedPaneMain.addTab("<html><body marginwidth=5 marginheight=5>Wake on lan</body></html>", getTemp());
 				
 			}
@@ -102,10 +95,11 @@ public class ClientView extends javax.swing.JFrame {
 		}
 		return temp;
 	}
+	
 	private JTextField getSendMessageTextField() {
 		if(sendMessageTextField == null) {
 			sendMessageTextField = new JTextField();
-			sendMessageTextField.setPreferredSize(new java.awt.Dimension(250, 20));
+			sendMessageTextField.setPreferredSize(new Dimension(250,210));
 			sendMessageTextField.setText("test");
 		}
 		return sendMessageTextField;
@@ -155,6 +149,15 @@ public class ClientView extends javax.swing.JFrame {
 			pluginPanel.setBorder(title);
 		}
 		return pluginPanel;
+	}
+	
+	private JPanel getPanel(){
+		if(panel == null){
+			panel = new JPanel();
+			panel.add(getSendMessageTextField());
+			panel.add(getSendMessageButton());
+		}
+		return panel;
 	}
 	
 	private JTextField getIPTextField() {
