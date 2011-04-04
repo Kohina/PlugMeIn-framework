@@ -1,5 +1,7 @@
 package falcons.client.view;
 import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 
 import javax.swing.*;
@@ -19,7 +21,7 @@ import javax.swing.border.TitledBorder;
 */
 public class ClientView extends javax.swing.JFrame {
 	private JTabbedPane jTabbedPaneOut, jTabbedPaneMain;
-	private JPanel panel, holder, connectionPanel, pluginPanel, connectionHolder1, connectionHolder2;
+	private JPanel panel, holder, connectionPanel, pluginPanel;
 	private JTextField sendMessageTextField, IPTextField, temp, portTextField;
 	private JLabel portLabel, IPLabel, autoCon;
 	private JButton sendMessageButton, connectButton;
@@ -48,10 +50,6 @@ public class ClientView extends javax.swing.JFrame {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			{	
 				
-				connectionHolder1 = new JPanel();
-				connectionHolder1.setPreferredSize(new java.awt.Dimension(268, 31));
-				connectionHolder2 = new JPanel();
-				connectionHolder2.setPreferredSize(new java.awt.Dimension(302, 29));
 				panel = new JPanel();
 				panel.add(getSendMessageTextField());
 				panel.add(getSendMessageButton());
@@ -118,21 +116,18 @@ public class ClientView extends javax.swing.JFrame {
 	
 	private JPanel getConnectionPanel() {
 		if(connectionPanel == null) {
-			connectionPanel = new JPanel();
+			connectionPanel = new JPanel(new GridBagLayout());
+			GridBagConstraints c = new GridBagConstraints();
+			
 			TitledBorder title = BorderFactory.createTitledBorder("Server connection");
 			connectionPanel.setBorder(title);
+			c.fill = GridBagConstraints.NONE;
+			c.gridx = 0;
+			c.gridy = 0;
+			connectionPanel.add(portTextField, c);
+			
 			connectionPanel.setPreferredSize(new java.awt.Dimension(379, 121));
 
-			connectionHolder1.add(getIPLabel());
-			connectionHolder1.add(getIPTextField());
-			
-			connectionHolder2.add(getPortLabel());
-			connectionHolder2.add(getPortTextField());
-			connectionHolder2.add(autoConnect);
-			connectionHolder2.add(getAutoCon());
-			
-			connectionPanel.add(connectionHolder1);
-			connectionPanel.add(connectionHolder2);
 			connectionPanel.add(getConnectButton());
 		}
 		return connectionPanel;
