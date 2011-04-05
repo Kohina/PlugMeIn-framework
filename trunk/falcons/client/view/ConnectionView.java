@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -90,18 +91,24 @@ public class ConnectionView extends javax.swing.JFrame {
 			c.gridx = 0;
 			c.gridy = 1;
 			c.gridwidth = 1;
+			c.insets = new Insets(0,20,0,0);
 			connectionPanel.add(getPortLabel(), c);
 			c.gridx = 1;
 			c.gridy = 1;
+			c.insets = new Insets(0,0,0,0);
 			connectionPanel.add(getPortTextField(), c);
 			c.gridx = 2;
 			c.gridy = 1;
+			c.insets = new Insets(0,25,0,0);
 			connectionPanel.add(getAutoConLabel(), c);
 			c.gridx = 3;
 			c.gridy = 1;
+			c.insets = new Insets(0,5,0,0);
 			connectionPanel.add(autoConnect, c);
-			c.gridx = 3;
+			c.gridx = 2;
 			c.gridy = 2;
+			c.gridwidth = 2;
+			c.insets = new Insets(0,65,0,0);
 			connectionPanel.add(getConnectButton(), c);
 			
 			connectionPanel.setPreferredSize(new java.awt.Dimension(379, 121));
@@ -113,9 +120,8 @@ public class ConnectionView extends javax.swing.JFrame {
 	private JButton getConnectButton() {
 		if(connectButton == null) {
 			connectButton = new JButton();
-			connectButton.setSize(200, 100);
 			connectButton.setText("Connect");
-			connectButton.setPreferredSize(new java.awt.Dimension(59, 19));
+			connectButton.setPreferredSize(new java.awt.Dimension(85, 19));
 		}
 		return connectButton;
 	}
@@ -124,7 +130,7 @@ public class ConnectionView extends javax.swing.JFrame {
 	private JLabel getAutoConLabel() {
 		if(autoConLabel == null) {
 			autoConLabel = new JLabel();
-			autoConLabel.setText(" Auto connect");
+			autoConLabel.setText("       Auto connect:");
 		}
 		return autoConLabel;
 	}
@@ -132,7 +138,7 @@ public class ConnectionView extends javax.swing.JFrame {
 		if(IPLabel == null) {
 			IPLabel = new JLabel();
 			IPLabel.setText("IP-adress: ");
-			IPLabel.setPreferredSize(new java.awt.Dimension(60, 16));
+			IPLabel.setPreferredSize(new java.awt.Dimension(70, 16));
 		}
 		return IPLabel;
 	}
@@ -141,6 +147,7 @@ public class ConnectionView extends javax.swing.JFrame {
 		if(portLabel == null) {
 			portLabel = new JLabel();
 			portLabel.setText("Port: ");
+			portLabel.setPreferredSize(new java.awt.Dimension(30, 16));
 		}
 		return portLabel;
 	}
@@ -149,7 +156,7 @@ public class ConnectionView extends javax.swing.JFrame {
 	private JTextField getIPTextField() {
 		if(IPTextField == null) {
 			IPTextField = new JTextField();
-			IPTextField.setPreferredSize(new java.awt.Dimension(230, 23));
+			IPTextField.setPreferredSize(new java.awt.Dimension(200, 23));
 		}
 		return IPTextField;
 	}
