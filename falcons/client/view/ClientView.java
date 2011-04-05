@@ -19,7 +19,7 @@ import javax.swing.border.TitledBorder;
 */
 public class ClientView extends javax.swing.JFrame {
 	private JTabbedPane jTabbedPaneMain;
-	private JPanel panel, holder, connectionPanel, pluginPanel;
+	private JPanel panel, holder, connectionPanel, pluginPanel, wakeOnLanPanel;
 	private JTextField sendMessageTextField, IPTextField, temp, portTextField;
 	private JLabel portLabel, IPLabel, autoCon;
 	private JButton sendMessageButton, connectButton;
@@ -48,10 +48,6 @@ public class ClientView extends javax.swing.JFrame {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			{	
 				UIManager.put("TabbedPane.selected", new Color(218,218,218));
-				
-				holder = new JPanel(new GridLayout(2,1));
-				holder.add(getConnectionPanel());
-				holder.add(getPluginPanel());
 
 				jTabbedPaneMain = new JTabbedPane();
 				jTabbedPaneMain.setTabPlacement(JTabbedPane.LEFT);
@@ -59,8 +55,8 @@ public class ClientView extends javax.swing.JFrame {
 				
 				getContentPane().add(jTabbedPaneMain, BorderLayout.CENTER);
 				
-				jTabbedPaneMain.addTab("<html><body marginwidth=5 marginheight=5>Send Message</body></html>", getPanel());
-				jTabbedPaneMain.addTab("<html><body marginwidth=5 marginheight=5>Wake on lan</body></html>", getTemp());
+				addTab("Send Message", getPanel());
+				addTab("Wake on lan", getWakeOnLanPanel());
 				
 			}
 			pack();
@@ -71,6 +67,11 @@ public class ClientView extends javax.swing.JFrame {
 		}
 	}
 	
+	public void addTab(String s, JPanel p){
+		jTabbedPaneMain.addTab("<html><body marginwidth=5 marginheight=5>" + s + "</body></html>", p);
+	}
+	
+	/*Buttons*/
 	private JButton getSendMessageButton() {
 		if(sendMessageButton == null) {
 			sendMessageButton = new JButton();
@@ -90,10 +91,12 @@ public class ClientView extends javax.swing.JFrame {
 		return connectButton;
 	}
 	
+	/*TextFields*/
 	private JTextField getTemp() {
 		if(temp == null) {
 			temp = new JTextField();
 			temp.setText("temp");
+			temp.setPreferredSize(new Dimension(250,210));
 		}
 		return temp;
 	}
@@ -105,6 +108,32 @@ public class ClientView extends javax.swing.JFrame {
 			sendMessageTextField.setText("test");
 		}
 		return sendMessageTextField;
+	}
+	
+	private JTextField getPortTextField() {
+		if(portTextField == null) {
+			portTextField = new JTextField();
+			portTextField.setPreferredSize(new java.awt.Dimension(50, 23));
+		}
+		return portTextField;
+	}
+
+	private JTextField getIPTextField() {
+		if(IPTextField == null) {
+			IPTextField = new JTextField();
+			IPTextField.setPreferredSize(new java.awt.Dimension(230, 23));
+		}
+		return IPTextField;
+	}
+	
+	/*Panels*/
+	private JPanel getWakeOnLanPanel(){
+		if(wakeOnLanPanel == null){
+			wakeOnLanPanel = new JPanel();
+			wakeOnLanPanel.add(getTemp());
+			//wakeOnLanPanel.setPreferredSize(new java.awt.Dimension(379, 121));
+		}
+		return wakeOnLanPanel;
 	}
 	
 	private JPanel getConnectionPanel() {
@@ -153,6 +182,15 @@ public class ClientView extends javax.swing.JFrame {
 		return pluginPanel;
 	}
 	
+	private JPanel getHolder(){
+		if(holder == null){
+			holder = new JPanel(new GridLayout(2,1));
+			holder.add(getConnectionPanel());
+			holder.add(getPluginPanel());
+		}
+		return holder;
+	}
+	
 	private JPanel getPanel(){
 		if(panel == null){
 			panel = new JPanel();
@@ -162,14 +200,7 @@ public class ClientView extends javax.swing.JFrame {
 		return panel;
 	}
 	
-	private JTextField getIPTextField() {
-		if(IPTextField == null) {
-			IPTextField = new JTextField();
-			IPTextField.setPreferredSize(new java.awt.Dimension(230, 23));
-		}
-		return IPTextField;
-	}
-	
+	/*Labels*/
 	private JLabel getIPLabel() {
 		if(IPLabel == null) {
 			IPLabel = new JLabel();
@@ -193,13 +224,5 @@ public class ClientView extends javax.swing.JFrame {
 			autoCon.setText(" Auto connect");
 		}
 		return autoCon;
-	}
-	
-	private JTextField getPortTextField() {
-		if(portTextField == null) {
-			portTextField = new JTextField();
-			portTextField.setPreferredSize(new java.awt.Dimension(50, 23));
-		}
-		return portTextField;
 	}
 }
