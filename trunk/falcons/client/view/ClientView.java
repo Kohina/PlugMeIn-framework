@@ -67,6 +67,12 @@ public class ClientView extends javax.swing.JFrame {
 		}
 	}
 	
+	/**
+	 * Adds a new tab
+	 * 
+	 * @param s - A String containing pluginName
+	 * @param p - A JPanel with pluginContent
+	 */
 	public void addTab(String s, JPanel p){
 		jTabbedPaneMain.addTab("<html><body marginwidth=5 marginheight=5>" + s + "</body></html>", p);
 	}
