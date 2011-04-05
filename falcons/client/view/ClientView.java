@@ -47,6 +47,7 @@ public class ClientView extends javax.swing.JFrame {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			{	
+				UIManager.put("TabbedPane.selected", new Color(218,218,218));
 				
 				holder = new JPanel(new GridLayout(2,1));
 				holder.add(getConnectionPanel());
@@ -54,6 +55,7 @@ public class ClientView extends javax.swing.JFrame {
 
 				jTabbedPaneMain = new JTabbedPane();
 				jTabbedPaneMain.setTabPlacement(JTabbedPane.LEFT);
+				jTabbedPaneMain.setBackground(new Color(190,190,190));
 				
 				getContentPane().add(jTabbedPaneMain, BorderLayout.CENTER);
 				
