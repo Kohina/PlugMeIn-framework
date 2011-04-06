@@ -1,6 +1,7 @@
 package falcons.plugin.manager;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import falcons.plugin.AbstractPlugin;
@@ -10,6 +11,7 @@ public class PluginModel {
 
 	private static PluginModel instance;
 	private HashMap<String, AbstractPlugin> pluginMap = new HashMap<String, AbstractPlugin>();
+	private PluginLoader pluginLoader = new PluginLoader();
 
 	/**
 	 * The Constructor for the PluginModel. Should read the plugin folder and
@@ -17,7 +19,10 @@ public class PluginModel {
 	 */
 	private PluginModel() {
 		pluginMap.put("SendMessage", new SendMessagePlugin());
-		// pluginMap = pluginLoader.getPlugins();
+		List<AbstractPlugin<?>> pluginList = pluginLoader.loadPlugins();
+		for(AbstractPlugin<?> p : pluginList){
+			pluginMap.put(p.getPluginID(), p);
+		}
 	}
 	
 	public static PluginModel getInstance(){
