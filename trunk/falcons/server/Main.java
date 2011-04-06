@@ -19,7 +19,7 @@ public class Main {
 	 * @param args
 	 * @throws IOException
 	 */
-	public static void Main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 		pluginModel = pluginModel.getInstance();
 		interpreter = interpreter.getInstance(false);
 		Thread comThread = new Thread(new ServerCommunicationCenter(interpreter,
