@@ -9,7 +9,7 @@ import falcons.plugin.manager.PluginModel;
 import falcons.server.model.ConnectionModel;
 import falcons.server.network.ServerCommunicationCenter;
 
-public class main {
+public class Main {
 
 	private static PluginModel pluginModel;
 	private static DataInterpreter interpreter;
@@ -19,7 +19,7 @@ public class main {
 	 * @param args
 	 * @throws IOException
 	 */
-	public static void main(String[] args) throws IOException {
+	public static void Main(String[] args) throws IOException {
 		pluginModel = pluginModel.getInstance();
 		interpreter = interpreter.getInstance(false);
 		Thread comThread = new Thread(new ServerCommunicationCenter(interpreter,
