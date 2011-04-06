@@ -24,19 +24,6 @@ public class ClientView extends javax.swing.JFrame {
 	private JLabel portLabel, IPLabel, autoCon;
 	private JButton sendMessageButton, connectButton;
 
-	/**
-	* Auto-generated main method to display this JFrame
-	*/
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				ClientView inst = new ClientView();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-	
 	public ClientView() {
 		super();
 		initGUI();
