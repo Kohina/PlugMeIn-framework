@@ -23,19 +23,6 @@ public class ConnectionView extends javax.swing.JFrame {
 	private JButton connectButton;
 	private JCheckBox autoConnect = new JCheckBox();
 	
-	/**
-	* Auto-generated main method to display this JFrame
-	*/
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				ConnectionView inst = new ConnectionView();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-	
 	public ConnectionView() {
 		super();
 		initGUI();
