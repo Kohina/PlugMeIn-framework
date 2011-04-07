@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import falcons.client.network.SystemCall;
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.Plugin;
 
@@ -20,20 +21,15 @@ public class PluginLoader {
 	 */
 	@SuppressWarnings("unchecked")
 	private static List<Class<?>> getPluginClasses(Class annotationType) {
-		System.out.println("The plugin path: " + pluginPath);
 		List<File> files = FileScanner.getFiles(new File(pluginPath));
 		PluginClassLoader pluginLoader = new PluginClassLoader();
 		List<Class<?>>  classList = new ArrayList<Class<?>>();
 
 		for(File f : files){
-			try {
-				Object c = pluginLoader.loadClass(f.getName().split(".class")[0]);
-				if(((Class<?>) c).getAnnotation(Plugin.class) !=null){
-					classList.add((Class<?>) c);
-				}
-			} catch (ClassNotFoundException e) {
-				System.out.println("PluginLoader can't find the class");
-				e.printStackTrace();
+			Object c = pluginLoader.findClass(f.getName().split(".class")[0]);
+			classList.add((Class<?>) c);
+			if(((Class<?>) c).getAnnotation(annotationType) !=null){
+				classList.add((Class<?>) c);
 			}
 		}
 
@@ -49,7 +45,7 @@ public class PluginLoader {
 	private static List<AbstractPlugin<?>> getPluginsFromPluginClasses(List<Class<?>> classList) {
 		List<AbstractPlugin<?>> pluginList = new ArrayList<AbstractPlugin<?>>();
 		
-		for(AbstractPlugin<?> p : pluginList){
+		for(Class<?> p : classList){
 			Object o;
 			try {
 				o = p.getClass().newInstance();
@@ -69,7 +65,7 @@ public class PluginLoader {
 	}
 
 	public List<AbstractPlugin<?>> loadPlugins() {
-		List<Class<?>> pluginClasses = getPluginClasses(AbstractPlugin.class);
+		List<Class<?>> pluginClasses = getPluginClasses(Plugin.class);
 		List<AbstractPlugin<?>> plugins = getPluginsFromPluginClasses(pluginClasses);
 
 		return plugins;

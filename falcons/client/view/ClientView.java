@@ -41,7 +41,6 @@ public class ClientView extends javax.swing.JFrame {
 				
 				getContentPane().add(jTabbedPaneMain, BorderLayout.CENTER);
 				
-				addTab("Send Message", getPanel());
 				addTab("Wake on lan", getWakeOnLanPanel());
 				
 			}
@@ -63,16 +62,6 @@ public class ClientView extends javax.swing.JFrame {
 		jTabbedPaneMain.addTab("<html><body marginwidth=5 marginheight=5>" + s + "</body></html>", p);
 	}
 	
-	/*Buttons*/
-	private JButton getSendMessageButton() {
-		if(sendMessageButton == null) {
-			sendMessageButton = new JButton();
-			sendMessageButton.setSize(200, 100);
-			sendMessageButton.setText("Send");
-		}
-		return sendMessageButton;
-	}
-	
 	/*TextFields*/
 	private JTextField getTemp() {
 		if(temp == null) {
@@ -83,15 +72,6 @@ public class ClientView extends javax.swing.JFrame {
 		return temp;
 	}
 	
-	private JTextField getSendMessageTextField() {
-		if(sendMessageTextField == null) {
-			sendMessageTextField = new JTextField();
-			sendMessageTextField.setPreferredSize(new Dimension(250,210));
-			sendMessageTextField.setText("test");
-		}
-		return sendMessageTextField;
-	}
-	
 	/*Panels*/
 	private JPanel getWakeOnLanPanel(){
 		if(wakeOnLanPanel == null){
@@ -100,14 +80,5 @@ public class ClientView extends javax.swing.JFrame {
 			//wakeOnLanPanel.setPreferredSize(new java.awt.Dimension(379, 121));
 		}
 		return wakeOnLanPanel;
-	}
-	
-	private JPanel getPanel(){
-		if(panel == null){
-			panel = new JPanel();
-			panel.add(getSendMessageTextField());
-			panel.add(getSendMessageButton());
-		}
-		return panel;
 	}
 }

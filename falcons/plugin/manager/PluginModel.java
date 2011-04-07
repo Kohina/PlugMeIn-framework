@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import falcons.plugin.AbstractPlugin;
-import falcons.plugin.SendMessagePlugin;
 
 public class PluginModel {
 
@@ -18,7 +17,6 @@ public class PluginModel {
 	 * load all plugins into the pluginMap.
 	 */
 	private PluginModel() {
-		pluginMap.put("SendMessage", new SendMessagePlugin());
 		List<AbstractPlugin<?>> pluginList = pluginLoader.loadPlugins();
 		for(AbstractPlugin<?> p : pluginList){
 			pluginMap.put(p.getPluginID(), p);

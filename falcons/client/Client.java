@@ -36,6 +36,8 @@ public class Client{
 		connectionView = new ConnectionView();
 		systemTray = new ClientSystemTray(clientView, connectionView);
 		
+		clientView.addTab("Send Message", pluginModel.getPluginMap().get("SendMessagePlugin").getMainPanel());
+		
 	}
 
 	

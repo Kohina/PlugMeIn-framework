@@ -1,8 +1,12 @@
 package falcons.plugin;
 
+import java.awt.Dimension;
 import java.io.Serializable;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import falcons.plugin.manager.PluginCall;
 import falcons.server.model.ConnectionModel;
@@ -19,7 +23,7 @@ public class SendMessagePlugin extends AbstractPlugin {
 	 * @author Printz
 	 * 
 	 */
-	class SendMessagePluginData extends AbstractPluginData {
+	private class SendMessagePluginData extends AbstractPluginData {
 
 		private String message;
 
@@ -45,6 +49,44 @@ public class SendMessagePlugin extends AbstractPlugin {
 
 	}
 
+	private class SendMessagePanel extends JPanel{
+		
+		private JTextField sendMessageTextField;
+		private JButton sendMessageButton;
+		private JPanel panel;
+		
+		private SendMessagePanel(){
+			getPanel();
+		}
+		
+		private JTextField getSendMessageTextField() {
+			if(sendMessageTextField == null) {
+				sendMessageTextField = new JTextField();
+				sendMessageTextField.setPreferredSize(new Dimension(250,210));
+				sendMessageTextField.setText("test");
+			}
+			return sendMessageTextField;
+		}
+		
+		private JPanel getPanel(){
+			if(panel == null){
+				panel = new JPanel();
+				panel.add(getSendMessageTextField());
+				panel.add(getSendMessageButton());
+			}
+			return panel;
+		}
+		
+		private JButton getSendMessageButton() {
+			if(sendMessageButton == null) {
+				sendMessageButton = new JButton();
+				sendMessageButton.setSize(200, 100);
+				sendMessageButton.setText("Send");
+			}
+			return sendMessageButton;
+		}
+	}
+	
 	public void receiveMessage(String message) {
 		JOptionPane.showMessageDialog(null, message);
 	}
@@ -54,12 +96,16 @@ public class SendMessagePlugin extends AbstractPlugin {
 				.send(new PluginCall(this, getSendMessagePluginData(), id));
 	}
 
-	// Should take a string as a parameter and use this as the message.
+	// TODO Should take a string as a parameter and use this as the message.
 	public AbstractPluginData getSendMessagePluginData() {
 		return new SendMessagePluginData("SendMessage", versionID,
 				JOptionPane.showInputDialog("What do you want to send?"));
 	}
 
+	public JPanel getSendMessagePanel(){
+		return new SendMessagePanel();
+	}
+	
 	@Override
 	public void receiveCall(PluginCall call) {
 		AbstractPluginData data = call.getPluginData();
@@ -89,6 +135,11 @@ public class SendMessagePlugin extends AbstractPlugin {
 	@Override
 	public String getVersionID() {
 		return versionID;
+	}
+
+	@Override
+	public JPanel getMainPanel() {
+		return getSendMessagePanel();
 	}
 
 }
