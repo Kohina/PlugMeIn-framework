@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class PluginClassLoader extends ClassLoader {
-	private static final String exportedPackage = "falcons.plugin.impl";
+	private static final String exportedPackage = "falcons.plugin";
 
 	@Override
 	public Class<?> findClass(String name) {

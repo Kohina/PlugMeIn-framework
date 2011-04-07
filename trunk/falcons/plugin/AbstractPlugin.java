@@ -3,10 +3,11 @@ package falcons.plugin;
 import java.io.Serializable;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import falcons.plugin.manager.PluginCall;
 
-
+@Plugin
 public abstract class AbstractPlugin<T> implements Serializable {
 
 	private String pluginID;
@@ -34,4 +35,6 @@ public abstract class AbstractPlugin<T> implements Serializable {
 	 *            The PluginCall from the server.
 	 */
 	public abstract void receiveCall(PluginCall call);
+	
+	public abstract JPanel getMainPanel();
 }
