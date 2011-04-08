@@ -12,6 +12,7 @@ import falcons.plugin.manager.PluginCall;
 import falcons.server.model.ConnectionModel;
 
 //This is not supposed to exist here. TODO
+@Plugin(description = "Send Message")
 public class SendMessagePlugin extends AbstractPlugin {
 
 	private String pluginID = "SendMessagePlugin";

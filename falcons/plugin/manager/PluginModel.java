@@ -4,21 +4,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import falcons.client.Client;
 import falcons.plugin.AbstractPlugin;
 
 public class PluginModel {
 
 	private static PluginModel instance;
 	private HashMap<String, AbstractPlugin> pluginMap = new HashMap<String, AbstractPlugin>();
-	private PluginLoader pluginLoader = new PluginLoader();
+	private PluginManager pluginLoader = new PluginManager();
 
 	/**
 	 * The Constructor for the PluginModel. Should read the plugin folder and
 	 * load all plugins into the pluginMap.
 	 */
 	private PluginModel() {
-		List<AbstractPlugin<?>> pluginList = pluginLoader.loadPlugins();
-		for(AbstractPlugin<?> p : pluginList){
+		List<AbstractPlugin> pluginList = pluginLoader.loadPlugins(System.getProperty("user.dir") + "\\plugins\\");
+		for(AbstractPlugin p : pluginList){
 			pluginMap.put(p.getPluginID(), p);
 		}
 	}

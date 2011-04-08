@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import falcons.plugin.manager.PluginCall;
 
 @Plugin
-public abstract class AbstractPlugin<T> implements Serializable {
+public abstract class AbstractPlugin implements Serializable {
 
 	private String pluginID;
 	private String versionID;
