@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import falcons.client.network.SystemCall;
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.Plugin;
 

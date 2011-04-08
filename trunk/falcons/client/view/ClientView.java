@@ -33,6 +33,7 @@ public class ClientView extends javax.swing.JFrame {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			{	
+				this.setIconImage(new ImageIcon("http://i.imgur.com/Q19tq.png").getImage());
 				UIManager.put("TabbedPane.selected", new Color(218,218,218));
 
 				jTabbedPaneMain = new JTabbedPane();
