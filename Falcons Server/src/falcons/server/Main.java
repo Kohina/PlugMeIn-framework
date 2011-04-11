@@ -4,8 +4,8 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import falcons.plugin.manager.DataInterpreter;
-import falcons.plugin.manager.PluginModel;
+import falcons.pluginmanager.DataInterpreter;
+import falcons.pluginmanager.PluginModel;
 import falcons.server.model.ConnectionModel;
 import falcons.server.network.ServerCommunicationCenter;
 
