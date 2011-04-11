@@ -19,6 +19,8 @@ import falcons.client.view.ConnectionView;
 import falcons.pluginmanager.DataInterpreter;
 import falcons.pluginmanager.PluginModel;
 
+import simple-xml-2.5.1.jar;
+
 public class Client{
 	
 	private static ClientView clientView;
