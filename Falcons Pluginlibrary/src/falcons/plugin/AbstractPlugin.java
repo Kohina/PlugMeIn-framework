@@ -5,8 +5,6 @@ import java.io.Serializable;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import falcons.plugin.manager.PluginCall;
-
 @Plugin
 public abstract class AbstractPlugin implements Serializable {
 
