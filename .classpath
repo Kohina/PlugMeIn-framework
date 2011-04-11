@@ -3,7 +3,8 @@
 	<classpathentry excluding="UML/" kind="src" path="trunk"/>
 	<classpathentry kind="src" path="Server"/>
 	<classpathentry kind="src" path="Client"/>
-	<classpathentry kind="src" path="Library"/>
+	<classpathentry kind="src" path="Client Server Library"/>
+	<classpathentry kind="src" path="Plugin Library"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
