@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import falcons.plugin.PluginCall;
-import falcons.server.model.ConnectionModel;
+
 
 //This is not supposed to exist here. TODO
 @Plugin(description = "Send Message")
