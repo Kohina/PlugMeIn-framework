@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import falcons.plugin.manager.DataInterpreter;
+import falcons.pluginmanager.DataInterpreter;
 import falcons.server.model.ConnectionModel;
 
 public class ServerCommunicationCenter implements Runnable {

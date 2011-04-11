@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 
-import falcons.plugin.manager.DataInterpreter;
-import falcons.plugin.manager.PluginCall;
-import falcons.plugin.manager.PluginModel;
+import falcons.pluginmanager.DataInterpreter;
+import falcons.plugin.PluginCall;
+import falcons.pluginmanager.PluginModel;
 
 public class ListeningThread extends Thread {
 

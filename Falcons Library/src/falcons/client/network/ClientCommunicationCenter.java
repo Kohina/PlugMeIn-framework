@@ -6,8 +6,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import falcons.plugin.manager.DataInterpreter;
-import falcons.plugin.manager.PluginCall;
+import falcons.pluginmanager.DataInterpreter;
 
 public class ClientCommunicationCenter implements Runnable {
 

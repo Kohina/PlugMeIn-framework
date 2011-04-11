@@ -1,4 +1,4 @@
-package falcons.plugin.manager;
+package falcons.pluginmanager;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

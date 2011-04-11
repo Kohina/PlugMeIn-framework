@@ -1,10 +1,9 @@
-package falcons.plugin.manager;
+package falcons.pluginmanager;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import falcons.client.Client;
 import falcons.plugin.AbstractPlugin;
 
 public class PluginModel {

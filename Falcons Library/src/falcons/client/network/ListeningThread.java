@@ -3,11 +3,9 @@ package falcons.client.network;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
-import java.net.Socket;
 
-import falcons.plugin.manager.DataInterpreter;
-import falcons.plugin.manager.PluginCall;
-import falcons.plugin.manager.PluginModel;
+import falcons.plugin.PluginCall;
+import falcons.pluginmanager.DataInterpreter;
 
 public class ListeningThread extends Thread {
 

@@ -5,7 +5,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import falcons.plugin.SendMessagePlugin;
-import falcons.plugin.manager.PluginCall;
+import falcons.plugin.PluginCall;
 
 public class ConnectionThread extends Thread{
 

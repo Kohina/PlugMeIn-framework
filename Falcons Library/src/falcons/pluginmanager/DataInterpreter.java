@@ -1,10 +1,10 @@
-package falcons.plugin.manager;
+package falcons.pluginmanager;
 
 import java.io.IOException;
 
 import javax.management.modelmbean.ModelMBean;
 
-import falcons.server.model.ConnectionModel;
+import falcons.plugin.PluginCall;
 
 public class DataInterpreter {
 
@@ -41,17 +41,10 @@ public class DataInterpreter {
 	public void interpret(PluginCall call) {
 		long destination = call.getDestination();
 
-		if (destination < 0) {
+		if (clientInterpreter) {
 			System.out.println("COMMAND ARRIVED, SENDING TO PLUGIN");
 			String plugin = call.getPluginID();
 			model.getPluginMap().get(plugin).receiveCall(call);
-		} else if (clientInterpreter) {
-			System.out.println("COMMAND ARRIVED, SENDING TO PLUGIN");
-			String plugin = call.getPluginID();
-			model.getPluginMap().get(plugin).receiveCall(call);
-		} else {
-			System.out.println("SENDING COMMAND TO CLIENT");
-			ConnectionModel.getInstance().getConnection(destination).send(call);
 		}
 	}
 }
