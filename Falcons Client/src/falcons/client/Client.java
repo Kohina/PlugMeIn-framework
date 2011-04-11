@@ -16,8 +16,8 @@ import javax.swing.JSeparator;
 import falcons.client.view.ClientSystemTray;
 import falcons.client.view.ClientView;
 import falcons.client.view.ConnectionView;
-import falcons.plugin.manager.DataInterpreter;
-import falcons.plugin.manager.PluginModel;
+import falcons.pluginmanager.DataInterpreter;
+import falcons.pluginmanager.PluginModel;
 
 public class Client{
 	
