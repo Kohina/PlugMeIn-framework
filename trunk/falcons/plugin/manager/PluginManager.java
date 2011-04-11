@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.Plugin;
+import falcons.plugin.SendMessagePlugin;
 
 public class PluginManager {
 	
@@ -32,6 +33,7 @@ public class PluginManager {
 					
 					URLClassLoader loader = new URLClassLoader(urls);
 					Class<?> cls = loader.loadClass("falcons.plugin." + pluginName);
+
 					
 					if(cls.getAnnotation(Plugin.class) !=null){
 						try {
