@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.Plugin;
-import falcons.plugin.SendMessagePlugin;
 
 public class PluginManager {
 	

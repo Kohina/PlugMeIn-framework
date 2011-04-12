@@ -41,15 +41,15 @@ public class PluginLoader {
 	 *
 	 * @return List of classes being a valid instance of AbstractPlugin<?>.
 	 */
-	private static List<AbstractPlugin<?>> getPluginsFromPluginClasses(List<Class<?>> classList) {
-		List<AbstractPlugin<?>> pluginList = new ArrayList<AbstractPlugin<?>>();
+	private static List<AbstractPlugin> getPluginsFromPluginClasses(List<Class<?>> classList) {
+		List<AbstractPlugin> pluginList = new ArrayList<AbstractPlugin>();
 		
 		for(Class<?> p : classList){
 			Object o;
 			try {
 				o = p.getClass().newInstance();
-				if(o instanceof AbstractPlugin<?>){
-					pluginList.add((AbstractPlugin<?>) o);
+				if(o instanceof AbstractPlugin){
+					pluginList.add((AbstractPlugin) o);
 				}
 			} catch (InstantiationException e) {
 				System.out.println("PluginLoader could not instantiate plugin.");
@@ -63,9 +63,9 @@ public class PluginLoader {
 		return pluginList;
 	}
 
-	public List<AbstractPlugin<?>> loadPlugins() {
+	public List<AbstractPlugin> loadPlugins() {
 		List<Class<?>> pluginClasses = getPluginClasses(Plugin.class);
-		List<AbstractPlugin<?>> plugins = getPluginsFromPluginClasses(pluginClasses);
+		List<AbstractPlugin> plugins = getPluginsFromPluginClasses(pluginClasses);
 
 		return plugins;
 	}

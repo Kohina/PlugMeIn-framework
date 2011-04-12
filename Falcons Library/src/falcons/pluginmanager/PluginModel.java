@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import falcons.plugin.AbstractPlugin;
+import falcons.plugin.Plugin;
 
 public class PluginModel {
 
@@ -19,7 +20,7 @@ public class PluginModel {
 	private PluginModel() {
 		List<AbstractPlugin> pluginList = pluginLoader.loadPlugins(System.getProperty("user.dir") + "\\plugins\\");
 		for(AbstractPlugin p : pluginList){
-			pluginMap.put(p.getPluginID(), p);
+			pluginMap.put(p.getClass().getAnnotation(Plugin.class).pluginID(), p);
 		}
 	}
 	
