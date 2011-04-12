@@ -1,4 +1,4 @@
-package falcons.server.network;
+package falcons.communication;
 
 public class SystemCall {
 
