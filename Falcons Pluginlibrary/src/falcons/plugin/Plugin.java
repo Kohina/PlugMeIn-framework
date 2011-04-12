@@ -5,5 +5,6 @@ import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Plugin {
-String description() default "No description";
+String pluginID() default "No pluginID";
+String versionID() default "No versionID";
 }

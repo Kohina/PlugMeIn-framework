@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public abstract class AbstractPluginData implements Serializable {
 
-	private String methodID;
-	private String versionID;
+	private final String methodID;
+	private final String versionID;
 
 	/**
 	 * The constructor for an AbstructPluginData
