@@ -11,8 +11,8 @@ public class PluginCall implements Serializable {
 
 	/**
 	 * 
-	 * @param PluginID
-	 *            The ID of the plugin sending the call.
+	 * @param plugin
+	 *            The plugin sending the call.
 	 * @param pluginData
 	 *            The AbstractPluginData-object that contains all the relevant
 	 *            information for the call.
@@ -25,6 +25,25 @@ public class PluginCall implements Serializable {
 		this.pluginData = pluginData;
 		this.destination = destination;
 	}
+	
+	/**
+	 * 
+	 * @param PluginID
+	 *            The ID of the plugin sending the call.
+	 * @param pluginData
+	 *            The AbstractPluginData-object that contains all the relevant
+	 *            information for the call.
+	 * @param destination
+	 *            The int that is an ID from the servers list of clients.
+	 */
+	public PluginCall(String pluginID, AbstractPluginData pluginData,
+			long destination) {
+		this.PluginID = pluginID;
+		this.pluginData = pluginData;
+		this.destination = destination;
+	}
+	
+	
 
 	/**
 	 * 
