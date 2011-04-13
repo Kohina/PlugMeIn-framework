@@ -1,8 +1,7 @@
 package falcons.communication;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.AbstractPluginData;
@@ -42,12 +41,14 @@ public class SystemPlugin implements Serializable {
 	}
 	
 	private static SystemPlugin instance = new SystemPlugin();
-	private List<Long> clients;
+	private Set<Long> clients;
 	private HashMap<String, String> plugins;
-	private PluginModel pluginModel = PluginModel.getInstance();
+	private PluginModel pluginModel;
 	
 	private SystemPlugin() {
-		// Do Nasing
+		clients = new HashSet<Long>();
+		plugins = new HashMap<String, String>();
+		pluginModel = PluginModel.getInstance();
 	}
 	
 	/**
@@ -58,7 +59,16 @@ public class SystemPlugin implements Serializable {
 	}
 	
 	public void updateClients() {
-		// TODO Somehow sync the local list of clients with the ConnectionModel's list of open connections.
+		Object[] connectionSet = ConnectionModel.getInstance().getConnectionList().toArray();
+		List<Long> currentIDs = new LinkedList<Long>();
+		
+		for(Object o : connectionSet) {
+			ConnectionThread connection = (ConnectionThread) o;
+			clients.add(connection.getId());
+			currentIDs.add(connection.getId());
+		}
+		
+		clients.retainAll(currentIDs);
 	}
 	
 	public void updatePlugins() {
@@ -83,12 +93,14 @@ public class SystemPlugin implements Serializable {
 	
 	public void sendClients(long id) {
 		updateClients();
+		// TODO Move the updateClients() call to where we actually update the List of connections to increase efficiency.
 		ConnectionModel.getInstance().getConnection(id)
-				.send(new PluginCall("SystemPlugin", new SystemPluginData<List<Long>>("getClients", "SystemPlugin", clients), id));
+				.send(new PluginCall("SystemPlugin", new SystemPluginData<Set<Long>>("getClients", "SystemPlugin", clients), id));
 	}
 	
 	public void sendPlugins(long id) {
 		updatePlugins();
+		// TODO Move the updatePlugins() call to where we actually update the HashMap of loaded Plugins to increase efficiency.
 		ConnectionModel.getInstance().getConnection(id)
 				.send(new PluginCall("SystemPlugin", new SystemPluginData<HashMap<String, String>>("getPlugins", "SystemPlugin", plugins), id));
 	}
