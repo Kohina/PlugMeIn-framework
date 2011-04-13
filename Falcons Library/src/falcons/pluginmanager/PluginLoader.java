@@ -15,10 +15,7 @@ public class PluginLoader {
 
 	@SuppressWarnings("unchecked")
 	private static List<Class<?>> getPluginClasses() {
-		// TODO Ta bort utskrift
-		System.out.println(pluginPath);
 		List<File> files = FileScanner.getFiles(new File(pluginPath));
-		System.out.println(files.toString());
 		PluginClassLoader pluginLoader = new PluginClassLoader();
 		List<Class<?>>  classList = new ArrayList<Class<?>>();
 
@@ -41,7 +38,6 @@ public class PluginLoader {
 				classList.add(c);
 			}
 		}
-		System.out.println(classList);
 		return classList;
 	}
 
