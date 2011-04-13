@@ -25,14 +25,14 @@ public class SendMessagePlugin extends AbstractPlugin {
 	}
 
 	// Comment the main-method when done with testing.
-	public static void main(String args[]) {
+	/*public static void main(String args[]) {
 		SendMessagePlugin p = new SendMessagePlugin();
 		JFrame frame = new JFrame();
 		frame.getContentPane().add(mainPanel);
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
-	}
+	}*/
 
 	@Override
 	public void receiveCall(PluginCall call) {
