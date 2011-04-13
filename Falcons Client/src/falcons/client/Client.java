@@ -10,6 +10,7 @@ import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.Set;
 
 import javax.swing.JSeparator;
 
@@ -18,8 +19,6 @@ import falcons.client.view.ClientView;
 import falcons.client.view.ConnectionView;
 import falcons.pluginmanager.DataInterpreter;
 import falcons.pluginmanager.PluginModel;
-
-import simple-xml-2.5.1.jar;
 
 public class Client{
 	
@@ -32,14 +31,18 @@ public class Client{
 	public static final File DIR = new File(System.getProperty("user.dir"));
 
 	public void run(){
-		pluginModel = pluginModel.getInstance();
-		interpreter = interpreter.getInstance(true);
+		pluginModel = PluginModel.getInstance();
+		interpreter = DataInterpreter.getInstance(true);
 		clientView = new ClientView();
 		connectionView = new ConnectionView();
 		systemTray = new ClientSystemTray(clientView, connectionView);
 		
-		clientView.addTab("Send Message", pluginModel.getPluginMap().get("SendMessagePlugin").getMainPanel());
+		Object[] nameSet = pluginModel.getPluginMap().keySet().toArray();
 		
+		for(Object o : nameSet){
+			String pluginName = o.toString();
+			clientView.addTab(pluginName, pluginModel.getPluginMap().get(pluginName).getMainPanel());
+		}
 	}
 
 	
