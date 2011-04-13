@@ -19,4 +19,7 @@ public abstract class AbstractPlugin implements Serializable {
 	public abstract void receiveCall(PluginCall call);
 	
 	public abstract JPanel getMainPanel();
+	
+	public AbstractPlugin() {
+	}
 }
