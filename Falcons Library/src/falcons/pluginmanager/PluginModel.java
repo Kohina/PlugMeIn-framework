@@ -11,14 +11,14 @@ public class PluginModel {
 
 	private static PluginModel instance;
 	private HashMap<String, AbstractPlugin> pluginMap = new HashMap<String, AbstractPlugin>();
-	private PluginManager pluginLoader = new PluginManager();
+	private PluginLoader pluginLoader = new PluginLoader();
 
 	/**
 	 * The Constructor for the PluginModel. Should read the plugin folder and
 	 * load all plugins into the pluginMap.
 	 */
 	private PluginModel() {
-		List<AbstractPlugin> pluginList = pluginLoader.loadPlugins(System.getProperty("user.dir") + "\\plugins\\");
+		List<AbstractPlugin> pluginList = pluginLoader.loadPlugins();
 		for(AbstractPlugin p : pluginList){
 			pluginMap.put(p.getClass().getAnnotation(Plugin.class).pluginID(), p);
 		}

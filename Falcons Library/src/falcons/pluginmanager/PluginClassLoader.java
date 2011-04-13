@@ -8,10 +8,14 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class PluginClassLoader extends ClassLoader {
-	private static final String exportedPackage = "falcons.plugin";
+	private static final String exportedPackage = "falcons.plugin.exported";
 
 	@Override
 	public Class<?> findClass(String name) {
+		String packageInitial = name.substring(0, 1).toLowerCase();
+		String packageName = packageInitial + name.substring(1, name.length());
+		// TODO Ta bort utskrift
+		System.out.println(packageName);
 		byte[] data = loadClassData(name);
 		return defineClass(exportedPackage + "." + name, data, 0, data.length);
 	}
