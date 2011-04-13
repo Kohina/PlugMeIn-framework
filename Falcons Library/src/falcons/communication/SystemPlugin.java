@@ -19,17 +19,20 @@ public class SystemPlugin implements Serializable {
 		 * Constructor for the PluginData
 		 * 
 		 * @param methodID
-		 *            "SendMessage" - the ID of the method to be used
+		 *            The ID of the method to be used
 		 * @param versionID
 		 *            The ID of the plugin version
-		 * @param message
-		 *            The message to be sent.
+		 * @param data
+		 *            The data to be sent.
 		 */
 		public SystemPluginData(String methodID, String versionID, E data) {
 			super(methodID, versionID);
 			this.data = data;
 		}
 
+		/**
+		 * @return The data sent in the call.
+		 */
 		public E getData() {
 			return data;
 		}
@@ -37,24 +40,37 @@ public class SystemPlugin implements Serializable {
 	}
 	
 	private static SystemPlugin instance = new SystemPlugin();
-	List<Long> clients;
-	HashMap<String, String> plugins;
+	private List<Long> clients;
+	private HashMap<String, String> plugins;
 	
 	private SystemPlugin() {
-		
+		// Do Nasing
 	}
 	
+	/**
+	 * @return The only instance of this class.
+	 */
 	public SystemPlugin getInstance() {
 		return instance;
 	}
 	
 	public void updateClients() {
-		// TODO Somehow sync the list of clients with the list of connections.
+		// TODO Somehow sync the local List of clients with the ConnectionModel's list of connections.
+	}
+	
+	public void updatePlugins() {
+		// TODO Somehow sync the local HashMap of plugins with the ServerModel's list.
 	}
 	
 	public void sendClients(long id) {
 		updateClients();
 		ConnectionModel.getInstance().getConnection(id)
 				.send(new PluginCall("SystemPlugin", new SystemPluginData<List<Long>>("getClients", "SystemPlugin", clients), id));
+	}
+	
+	public void sendPlugins(long id) {
+		updatePlugins();
+		ConnectionModel.getInstance().getConnection(id)
+				.send(new PluginCall("SystemPlugin", new SystemPluginData<HashMap<String, String>>("getPlugins", "SystemPlugin", plugins), id));
 	}
 }
