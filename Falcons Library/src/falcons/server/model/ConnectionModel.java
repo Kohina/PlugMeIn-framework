@@ -54,4 +54,12 @@ public class ConnectionModel {
 	public void removeConnection(ConnectionThread thread) {
 		connections.remove(thread);
 	}
+	
+	/**
+	 * @return Returns a list with all the currently active ConnectionThreads.
+	 */
+	public List<ConnectionThread> getConnectionList() {
+		// TODO Should be getConnection(), we don't want something to change the list. (Or perhaps return a deep copy of the list?)
+		return connections;
+	}
 }

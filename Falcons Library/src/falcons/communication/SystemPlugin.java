@@ -6,7 +6,9 @@ import java.util.List;
 
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.AbstractPluginData;
+import falcons.plugin.Plugin;
 import falcons.plugin.PluginCall;
+import falcons.pluginmanager.PluginModel;
 import falcons.server.model.ConnectionModel;
 import falcons.server.network.ConnectionThread;
 
@@ -42,6 +44,7 @@ public class SystemPlugin implements Serializable {
 	private static SystemPlugin instance = new SystemPlugin();
 	private List<Long> clients;
 	private HashMap<String, String> plugins;
+	private PluginModel pluginModel = PluginModel.getInstance();
 	
 	private SystemPlugin() {
 		// Do Nasing
@@ -55,11 +58,27 @@ public class SystemPlugin implements Serializable {
 	}
 	
 	public void updateClients() {
-		// TODO Somehow sync the local List of clients with the ConnectionModel's list of connections.
+		// TODO Somehow sync the local list of clients with the ConnectionModel's list of open connections.
 	}
 	
 	public void updatePlugins() {
-		// TODO Somehow sync the local HashMap of plugins with the ServerModel's list.
+		Object[] nameSet = pluginModel.getPluginMap().keySet().toArray();
+		
+		for(Object o : nameSet){
+			String pluginName = o.toString();
+			String pluginVersion = pluginModel.getPluginMap().get(pluginName).getClass().getAnnotation(Plugin.class).versionID();
+			plugins.put(pluginName, pluginVersion);
+		}
+		
+		nameSet = plugins.keySet().toArray();
+		
+		for(Object o : nameSet) {
+			String pluginName = o.toString();
+			
+			if(!pluginModel.getPluginMap().containsKey(pluginName)) {
+				plugins.remove(pluginName);
+			}
+		}
 	}
 	
 	public void sendClients(long id) {

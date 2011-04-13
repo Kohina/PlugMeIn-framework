@@ -37,7 +37,7 @@ public class PluginModel {
 	 *         their pluginID as key.
 	 */
 	public HashMap<String, AbstractPlugin> getPluginMap() {
-		// Should be getPlugin(), we don't want something to change the map.
+		// TODO Should be getPlugin(), we don't want something to change the map. (Or perhaps return a deep copy of the map?)
 		return pluginMap;
 	}
 
