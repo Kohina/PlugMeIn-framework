@@ -21,7 +21,7 @@ public class PluginCall implements Serializable {
 	 */
 	public PluginCall(AbstractPlugin plugin, AbstractPluginData pluginData,
 			long destination) {
-		this.PluginID = plugin.getPluginID();
+		this.PluginID = plugin.getClass().getAnnotation(Plugin.class).pluginID();
 		this.pluginData = pluginData;
 		this.destination = destination;
 	}
