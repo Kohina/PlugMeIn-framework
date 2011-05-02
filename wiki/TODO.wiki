@@ -4,7 +4,7 @@
 
 < done > = the task is done
 
-- *RAD* Finish sections 2
+- *RAD* Finish sections 2 (muck-ups) 
 
 - *view* Start on server view, Printz also has a proposition for a slightly change clientUI
 
