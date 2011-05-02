@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import falcons.client.model.ClientPreferencesLogic;
 import falcons.pluginmanager.DataInterpreter;
 
 public class ClientCommunicationCenter implements Runnable {
@@ -29,18 +30,18 @@ public class ClientCommunicationCenter implements Runnable {
 	 *             If an unhandled IOException is thrown then it could not find
 	 *             the I/O Connection for the socket.
 	 */
-	public ClientCommunicationCenter(DataInterpreter interpreter, String ip, int port)
+	public ClientCommunicationCenter(DataInterpreter interpreter)
 			throws IOException {
 		interpreter.getInstance(true);
 		try {
 			// Create a new socket
-			this.socket = new Socket(ip, port);
+			this.socket = new Socket(ClientPreferencesLogic.getIp(), ClientPreferencesLogic.getPort());
 			// Catch UnknownHostException and tell the user about it.
 		} catch (UnknownHostException e) {
-			System.err.println("Don't know about host: " + ip);
+			System.err.println("Don't know about host: " + ClientPreferencesLogic.getIp());
 			// Catch IOException and tell the user about it.
 		} catch (IOException e) {
-			System.err.println("Couldn't get I/O for the connection to: " + ip);
+			System.err.println("Couldn't get I/O for the connection to: " + ClientPreferencesLogic.getPort());
 		}
 	}
 
