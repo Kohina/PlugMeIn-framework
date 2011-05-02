@@ -1,4 +1,4 @@
-package falcons.communication;
+package falcons.server.network;
 
 import java.io.Serializable;
 import java.util.*;
@@ -9,43 +9,16 @@ import falcons.plugin.Plugin;
 import falcons.plugin.PluginCall;
 import falcons.pluginmanager.PluginModel;
 import falcons.server.model.ConnectionModel;
-import falcons.server.network.ConnectionThread;
 
-public class SystemPlugin implements Serializable {
-	private class SystemPluginData<E> extends AbstractPluginData {
-
-		private E data;
-
-		/**
-		 * Constructor for the PluginData
-		 * 
-		 * @param methodID
-		 *            The ID of the method to be used
-		 * @param versionID
-		 *            The ID of the plugin version
-		 * @param data
-		 *            The data to be sent.
-		 */
-		public SystemPluginData(String methodID, String versionID, E data) {
-			super(methodID, versionID);
-			this.data = data;
-		}
-
-		/**
-		 * @return The data sent in the call.
-		 */
-		public E getData() {
-			return data;
-		}
-
-	}
+@Plugin(pluginID = "SystemPlugin", versionID = "1.0")
+public class SystemServerPlugin implements Serializable {
 	
-	private static SystemPlugin instance = new SystemPlugin();
+	private static SystemServerPlugin instance = new SystemServerPlugin();
 	private Set<Long> clients;
 	private HashMap<String, String> plugins;
 	private PluginModel pluginModel;
 	
-	private SystemPlugin() {
+	private SystemServerPlugin() {
 		clients = new HashSet<Long>();
 		plugins = new HashMap<String, String>();
 		pluginModel = PluginModel.getInstance();
@@ -54,11 +27,30 @@ public class SystemPlugin implements Serializable {
 	/**
 	 * @return The only instance of this class.
 	 */
-	public SystemPlugin getInstance() {
+	public SystemServerPlugin getInstance() {
 		return instance;
 	}
 	
-	public void updateClients() {
+/*	public void receiveCall(PluginCall call) {
+		AbstractPluginData data = call.getPluginData();
+		
+		if (data.getVersionID().equals(this.getClass().getAnnotation(Plugin.class).versionID())) {
+			if(data.getMethodID().equals("receivePlugins")) {
+				// TODO Do something with the list of plugins.
+			} else if(data.getMethodID().equals("receiveClients")) {
+				receiveClients((AbstractPluginData<Set<Long>>) call.getPluginData().getData());
+			} else {
+				System.out.println("The methodID does not exist.");
+			}
+		} else if (!data.getVersionID().equals(this.getClass().getAnnotation(Plugin.class).versionID())) {
+			System.out.println("The version of the plugin sending the PluginCall is not the same as the one receiving it.");
+		} else {
+			System.out.println("The method ID doesn't exist.");
+		}
+	}
+*/
+	
+	private void updateClients() {
 		Object[] connectionSet = ConnectionModel.getInstance().getConnectionList().toArray();
 		List<Long> currentIDs = new LinkedList<Long>();
 		
@@ -71,7 +63,7 @@ public class SystemPlugin implements Serializable {
 		clients.retainAll(currentIDs);
 	}
 	
-	public void updatePlugins() {
+	private void updatePlugins() {
 		Object[] nameSet = pluginModel.getPluginMap().keySet().toArray();
 		
 		for(Object o : nameSet){
@@ -95,13 +87,13 @@ public class SystemPlugin implements Serializable {
 		updateClients();
 		// TODO Move the updateClients() call to where we actually update the List of connections to increase efficiency.
 		ConnectionModel.getInstance().getConnection(id)
-				.send(new PluginCall("SystemPlugin", new SystemPluginData<Set<Long>>("getClients", "SystemPlugin", clients), id));
+				.send(new PluginCall("SystemPlugin", new AbstractPluginData<Set<Long>>("receiveClients", "SystemPlugin", clients), id));
 	}
 	
 	public void sendPlugins(long id) {
 		updatePlugins();
 		// TODO Move the updatePlugins() call to where we actually update the HashMap of loaded Plugins to increase efficiency.
 		ConnectionModel.getInstance().getConnection(id)
-				.send(new PluginCall("SystemPlugin", new SystemPluginData<HashMap<String, String>>("getPlugins", "SystemPlugin", plugins), id));
+				.send(new PluginCall("SystemPlugin", new AbstractPluginData<HashMap<String, String>>("receivePlugins", "SystemPlugin", plugins), id));
 	}
 }
