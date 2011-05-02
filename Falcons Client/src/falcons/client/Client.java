@@ -14,6 +14,7 @@ import java.util.Set;
 
 import javax.swing.JSeparator;
 
+import falcons.client.model.ClientPreferencesLogic;
 import falcons.client.view.ClientSystemTray;
 import falcons.client.view.ClientView;
 import falcons.client.view.ConnectionView;
@@ -26,16 +27,18 @@ public class Client{
 	private static ConnectionView connectionView;
 	private static PluginModel pluginModel;
 	private static DataInterpreter interpreter;
-	private static ClientSystemTray systemTray;
+	private static ClientSystemTray systemTray;	
 	
 	public static final File DIR = new File(System.getProperty("user.dir"));
 
 	public void run(){
+		ClientPreferencesLogic.readPreferences();
 		pluginModel = PluginModel.getInstance();
 		interpreter = DataInterpreter.getInstance(true);
 		clientView = new ClientView();
 		connectionView = new ConnectionView();
 		systemTray = new ClientSystemTray(clientView, connectionView);
+		
 		
 		Object[] nameSet = pluginModel.getPluginMap().keySet().toArray();
 		

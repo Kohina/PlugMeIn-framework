@@ -5,5 +5,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Falcons Library"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Falcons Pluginlibrary"/>
 	<classpathentry kind="lib" path="simple-xml-2.5.1.jar"/>
+	<classpathentry kind="lib" path="/Users/Gustav/Downloads/simple-xml-2.5.1/jar/simple-xml-2.5.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
