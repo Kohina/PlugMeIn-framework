@@ -8,6 +8,7 @@ import falcons.client.model.ClientPreferencesLogic;
 import falcons.pluginmanager.DataInterpreter;
 import falcons.pluginmanager.PluginModel;
 import falcons.server.model.ConnectionModel;
+import falcons.server.model.ServerPreferencesLogic;
 import falcons.server.network.ServerCommunicationCenter;
 
 public class Main {
