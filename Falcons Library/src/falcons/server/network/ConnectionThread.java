@@ -29,10 +29,6 @@ public class ConnectionThread extends Thread{
 			System.err.println("Couldn't initiate ListeningThread");
 			e.printStackTrace();
 		}
-		
-		// TODO Hard-coded stuff delete later
-		send(new PluginCall(p, p.getSendMessagePluginData(), this.getId()));
-		System.out.println("SENT");
 	}
 	
 	/**
