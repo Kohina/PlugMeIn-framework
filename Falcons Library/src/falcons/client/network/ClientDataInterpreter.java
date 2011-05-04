@@ -42,7 +42,7 @@ public class ClientDataInterpreter {
 
 		if (clientInterpreter) {
 			String pluginName = call.getPluginID();
-			PluginLogic.getInstance().getPluginMap().get(pluginName).receiveCall(call);
+			PluginLogic.getPluginMap().get(pluginName).receiveCall(call);
 		}
 	}
 }
