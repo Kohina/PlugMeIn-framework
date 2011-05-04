@@ -38,8 +38,7 @@ public class Client{
 		clientView = new ClientView();
 		connectionView = new ConnectionView();
 		systemTray = new ClientSystemTray(clientView, connectionView);
-		
-		
+
 		Object[] nameSet = pluginModel.getPluginMap().keySet().toArray();
 		
 		for(Object o : nameSet){
