@@ -13,7 +13,6 @@ import falcons.server.model.ConnectionModel;
 public class ServerCommunicationCenter implements Runnable {
 
 	private ServerSocket socket = null;
-	private ClientDataInterpreter interpreter;
 	private boolean listening = true;
 	private ConnectionModel model;
 
@@ -30,13 +29,11 @@ public class ServerCommunicationCenter implements Runnable {
 	 *             If an unhandled IOException is thrown then it could not find
 	 *             the I/O Connection for the socket.
 	 */
-	public ServerCommunicationCenter(ClientDataInterpreter interpreter, int port, ConnectionModel model)
+	public ServerCommunicationCenter(int port, ConnectionModel model)
 			throws IOException {
 
 		try {
 			this.model = model;
-			// Create an interpreter associated with the client
-			this.interpreter = interpreter;
 			// Create a new socket
 			this.socket = new ServerSocket(port);
 		} catch (IOException e) {
