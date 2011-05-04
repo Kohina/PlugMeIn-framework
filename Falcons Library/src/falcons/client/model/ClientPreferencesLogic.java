@@ -11,11 +11,11 @@ public class ClientPreferencesLogic {
 	static File ClientPreferencesXML = new File("ClientPreferences.xml");
 
 	/**
-	 * Method that serializes the {@link ServerPreferencesModel} instance.
+	 * Method that serializes the {@link ClientPreferencesModel} instance.
 	 */
-	public void savePreferences(){
+	public static void savePreferences(){
 		try {
-			serializer.write(ServerPreferencesModel.getInstance(), ClientPreferencesXML);
+			serializer.write(ClientPreferencesModel.getInstance(), ClientPreferencesXML);
 		} catch (Exception e) {
 			System.out.println("Failed to serialize the object.");
 			e.printStackTrace();
@@ -23,16 +23,16 @@ public class ClientPreferencesLogic {
 	}
 	
 	/**
-	 * Method that deserializes the XML file representing the {@link ServerPreferencesModel} instance.
+	 * Method that deserializes the XML file representing the {@link ClientPreferencesModel} instance.
 	 */
 	@SuppressWarnings("static-access")
 	public static void readPreferences(){
-		ServerPreferencesModel temp;
+		ClientPreferencesModel temp;
 		try {
-			temp = serializer.read(ServerPreferencesModel.getInstance(), ClientPreferencesXML);
+			temp = serializer.read(ClientPreferencesModel.getInstance(), ClientPreferencesXML);
 
-			ServerPreferencesModel.getInstance().setIp(temp.getIp());
-			ServerPreferencesModel.getInstance().setPort(temp.getPort());
+			ClientPreferencesModel.getInstance().setIp(temp.getIp());
+			ClientPreferencesModel.getInstance().setPort(temp.getPort());
 		} catch (Exception e) {
 			System.out.println("Failed to deserialize the XML file.");
 			e.printStackTrace();
@@ -43,16 +43,32 @@ public class ClientPreferencesLogic {
 	 * 
 	 */
 	public static String getIp(){
-		ServerPreferencesModel.getInstance();
-		return new String(ServerPreferencesModel.getIp());
+		ClientPreferencesModel.getInstance();
+		return new String(ClientPreferencesModel.getIp());
 	}
 	
 	/**
 	 * 
 	 */
 	public static int getPort() {
-		ServerPreferencesModel.getInstance();
-		int tempPort = ServerPreferencesModel.getPort();
+		ClientPreferencesModel.getInstance();
+		int tempPort = ClientPreferencesModel.getPort();
 		return tempPort;
+	}
+	
+	/**
+	 * 
+	 */
+	public static void setIp(String ip){
+		ClientPreferencesModel.getInstance();
+		ClientPreferencesModel.setIp(ip);
+	}
+	
+	/**
+	 * 
+	 */
+	public static void setPort(int port) {
+		ClientPreferencesModel.getInstance();
+		ClientPreferencesModel.setPort(port);
 	}
 }

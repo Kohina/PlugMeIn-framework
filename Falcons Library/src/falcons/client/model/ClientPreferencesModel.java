@@ -3,9 +3,9 @@ package falcons.client.model;
 import org.simpleframework.xml.*;
 
 @Root
-class ServerPreferencesModel {
+class ClientPreferencesModel {
 
-	private static ServerPreferencesModel instance = new ServerPreferencesModel();
+	private static ClientPreferencesModel instance = new ClientPreferencesModel();
 	
 	// Preference variables representing XML elements
 	@Element
@@ -14,13 +14,13 @@ class ServerPreferencesModel {
 	@Element
 	private static String ip;
 
-	public ServerPreferencesModel() {
+	public ClientPreferencesModel() {
 		// Do nasing.
 	}
 	
-	public static ServerPreferencesModel getInstance() {
+	public static ClientPreferencesModel getInstance() {
 		if(instance == null){
-			instance = new ServerPreferencesModel();
+			instance = new ClientPreferencesModel();
 		}
 		return instance;
 	}
@@ -36,7 +36,7 @@ class ServerPreferencesModel {
 	 * @param port the port to set
 	 */
 	public static void setPort(int port) {
-		ServerPreferencesModel.port = port;
+		ClientPreferencesModel.port = port;
 	}
 
 	/**
@@ -50,6 +50,6 @@ class ServerPreferencesModel {
 	 * @param ip the ip to set
 	 */
 	public static void setIp(String ip) {
-		ServerPreferencesModel.ip = ip;
+		ClientPreferencesModel.ip = ip;
 	}
 }

@@ -11,11 +11,11 @@ public class ServerPreferencesLogic {
 	static File ServerPreferencesXML = new File("ServerPreferences.xml");
 
 	/**
-	 * Method that serializes the {@link ServerPreferencesModel} instance.
+	 * Method that serializes the {@link ClientPreferencesModel} instance.
 	 */
 	public void savePreferences(){
 		try {
-			serializer.write(ServerPreferencesModel.getInstance(), ServerPreferencesXML);
+			serializer.write(ClientPreferencesModel.getInstance(), ServerPreferencesXML);
 		} catch (Exception e) {
 			System.out.println("Failed to serialize the object.");
 			e.printStackTrace();
@@ -23,15 +23,15 @@ public class ServerPreferencesLogic {
 	}
 	
 	/**
-	 * Method that deserializes the XML file representing the {@link ServerPreferencesModel} instance.
+	 * Method that deserializes the XML file representing the {@link ClientPreferencesModel} instance.
 	 */
 	@SuppressWarnings("static-access")
 	public static void readPreferences(){
-		ServerPreferencesModel temp;
+		ClientPreferencesModel temp;
 		try {
-			temp = serializer.read(ServerPreferencesModel.getInstance(), ServerPreferencesXML);
+			temp = serializer.read(ClientPreferencesModel.getInstance(), ServerPreferencesXML);
 
-			ServerPreferencesModel.getInstance().setPort(temp.getPort());
+			ClientPreferencesModel.getInstance().setPort(temp.getPort());
 		} catch (Exception e) {
 			System.out.println("Failed to deserialize the XML file.");
 			e.printStackTrace();
@@ -42,8 +42,8 @@ public class ServerPreferencesLogic {
 	 * 
 	 */
 	public static int getPort() {
-		ServerPreferencesModel.getInstance();
-		int tempPort = ServerPreferencesModel.getPort();
+		ClientPreferencesModel.getInstance();
+		int tempPort = ClientPreferencesModel.getPort();
 		return tempPort;
 	}
 }
