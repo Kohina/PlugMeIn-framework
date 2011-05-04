@@ -9,7 +9,20 @@ import falcons.pluginmanager.PluginLoader;
 
 public class PluginLogic {
 	
+	private static PluginLogic instance;
 	private PluginLoader pluginLoader = new PluginLoader();
+	
+	private PluginLogic(){
+		
+	}
+	
+	public static PluginLogic getInstance(){
+		if(instance == null){
+			return new PluginLogic();
+		}else{
+			return instance;
+		}
+	}
 	
 	public void loadPlugins(){
 		List<AbstractPlugin> pluginList = pluginLoader.loadPlugins();

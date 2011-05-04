@@ -4,14 +4,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 
-import falcons.pluginmanager.DataInterpreter;
+import falcons.client.network.ClientDataInterpreter;
 import falcons.plugin.PluginCall;
-import falcons.pluginmanager.PluginModel;
 
 public class ListeningThread extends Thread {
 
 	private ObjectInputStream in;
-	private DataInterpreter interpreter;
+	private ClientDataInterpreter interpreter;
 	
 	public ListeningThread(InputStream in){
 		try {

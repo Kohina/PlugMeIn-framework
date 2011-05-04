@@ -7,12 +7,11 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import falcons.client.model.ClientPreferencesLogic;
-import falcons.pluginmanager.DataInterpreter;
 
 public class ClientCommunicationCenter implements Runnable {
 
 	private Socket socket = null;
-	private DataInterpreter interpreter;
+	private ClientDataInterpreter interpreter;
 	private ObjectInputStream in = null;
 	// TODO create an output.
 	private ObjectOutputStream out = null;
@@ -30,7 +29,7 @@ public class ClientCommunicationCenter implements Runnable {
 	 *             If an unhandled IOException is thrown then it could not find
 	 *             the I/O Connection for the socket.
 	 */
-	public ClientCommunicationCenter(DataInterpreter interpreter)
+	public ClientCommunicationCenter(ClientDataInterpreter interpreter)
 			throws IOException {
 		interpreter.getInstance(true);
 		try {

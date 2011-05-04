@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import falcons.plugin.SendMessagePlugin;
 import falcons.plugin.PluginCall;
 
 public class ConnectionThread extends Thread{
@@ -12,9 +11,6 @@ public class ConnectionThread extends Thread{
 	private Socket socket = null;
 	private ListeningThread listeningThread;
 	private ObjectOutputStream out;
-	
-	// TODO Hard-coded stuff, delete.
-	private SendMessagePlugin p = new SendMessagePlugin();
 	
 	public ConnectionThread(Socket socket){
 		this.socket = socket;
