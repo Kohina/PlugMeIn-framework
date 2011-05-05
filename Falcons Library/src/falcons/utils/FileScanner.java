@@ -9,6 +9,15 @@ public class FileScanner {
 		List<File> files = new ArrayList<File>();
 		JarExtractor extractor = new JarExtractor();
 		File[] entries = path.listFiles();
+		
+		if(entries != null){
+			for(File f : entries){
+				if(!f.getAbsolutePath().endsWith(".jar") && !f.getAbsolutePath().endsWith(".class")){
+					deleteFile(f.getAbsolutePath());
+					System.out.println("Deleted Stuff");
+				}
+			}
+		}
 
 		if (entries != null) {
 			for (File f : entries) {
@@ -32,5 +41,19 @@ public class FileScanner {
 			}
 		}
 		return files;
+	}
+	
+	public static boolean deleteFile(String sFilePath)
+	{
+	  File oFile = new File(sFilePath);
+	  if(oFile.isDirectory())
+	  {
+	    File[] aFiles = oFile.listFiles();
+	    for(File oFileCur: aFiles)
+	    {
+	       deleteFile(oFileCur.getAbsolutePath());
+	    }
+	  }
+	  return oFile.delete();
 	}
 }
