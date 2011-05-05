@@ -9,6 +9,10 @@ import falcons.plugin.exported.sendMessagePlugin.view.SendMessageMainPanel;
 public class SendMessageController extends AbstractAction {
 	
 	private SendMessageMainPanel view;
+	
+	public SendMessageController(){
+		
+	}
 
 	public SendMessageController(SendMessageMainPanel view) {
 		this.view = view;

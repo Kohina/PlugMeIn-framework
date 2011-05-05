@@ -34,6 +34,10 @@ public class SendMessageMainPanel extends JPanel implements Observer{
 	private JTextField messageTextField;
 	private MessageModel model;
 	private JLabel receivedMessageLabel;
+	
+	public SendMessageMainPanel(){
+		
+	}
 
 	private SendMessageMainPanel(MessageModel model){
 		this.model = model;
