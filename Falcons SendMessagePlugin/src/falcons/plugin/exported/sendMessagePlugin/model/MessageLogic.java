@@ -1,6 +1,8 @@
 package falcons.plugin.exported.sendMessagePlugin.model;
 
-public class MessageLogic {
+import falcons.plugin.Pluggable;
+
+public class MessageLogic implements Pluggable {
 
 	MessageModel model;
 	

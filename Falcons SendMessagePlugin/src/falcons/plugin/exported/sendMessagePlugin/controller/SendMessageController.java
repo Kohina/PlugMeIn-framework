@@ -4,9 +4,10 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
+import falcons.plugin.Pluggable;
 import falcons.plugin.exported.sendMessagePlugin.view.SendMessageMainPanel;
 
-public class SendMessageController extends AbstractAction {
+public class SendMessageController extends AbstractAction implements Pluggable {
 	
 	private SendMessageMainPanel view;
 	

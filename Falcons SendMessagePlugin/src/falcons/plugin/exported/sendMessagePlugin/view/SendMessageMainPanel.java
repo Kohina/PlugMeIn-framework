@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import falcons.plugin.Pluggable;
 import falcons.plugin.exported.sendMessagePlugin.controller.SendMessageController;
 import falcons.plugin.exported.sendMessagePlugin.model.MessageModel;
 
@@ -27,7 +28,7 @@ import falcons.plugin.exported.sendMessagePlugin.model.MessageModel;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class SendMessageMainPanel extends JPanel implements Observer{
+public class SendMessageMainPanel extends JPanel implements Observer, Pluggable{
 	
 	private static SendMessageMainPanel instance = null;
 	private JButton sendMessageButton;

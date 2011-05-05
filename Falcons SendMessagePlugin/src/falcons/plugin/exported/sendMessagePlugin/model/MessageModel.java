@@ -3,7 +3,9 @@ package falcons.plugin.exported.sendMessagePlugin.model;
 import java.util.Observable;
 import java.util.Observer;
 
-public class MessageModel extends Observable {
+import falcons.plugin.Pluggable;
+
+public class MessageModel extends Observable implements Pluggable {
 
 	private String receivedMessage;
 

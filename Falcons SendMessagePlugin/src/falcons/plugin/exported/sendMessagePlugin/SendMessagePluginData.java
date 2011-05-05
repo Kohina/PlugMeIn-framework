@@ -2,15 +2,20 @@ package falcons.plugin.exported.sendMessagePlugin;
 
 import falcons.plugin.AbstractPluginData;
 
+
 /**
  * The PluginData associated with the plugin
  * 
  * @author Printz
  * 
  */
-public class SendMessagePluginData extends AbstractPluginData {
+public class SendMessagePluginData extends AbstractPluginData{
 
 	private String message;
+	
+	public SendMessagePluginData(){
+		
+	}
 
 	/**
 	 * Constructor for the PluginData
