@@ -8,7 +8,6 @@ import falcons.plugin.AbstractPlugin;
 import falcons.plugin.Pluggable;
 import falcons.plugin.Plugin;
 import falcons.pluginmanager.PluginManager;
-import falcons.pluginmanager.URLPluginManager;
 import falcons.client.model.PluginModel;
 
 public class PluginLogic {
@@ -19,7 +18,7 @@ public class PluginLogic {
 		HashMap<String, Pluggable> pluginMap = new HashMap<String, Pluggable>();
 		for (Pluggable p : pluginList) {
 			if (p instanceof AbstractPlugin) {
-				pluginMap.put("pluginID", p);
+				pluginMap.put(p.getClass().getAnnotation(Plugin.class).pluginID(), p);
 			}
 		}
 		PluginModel.setPluginMap(pluginMap);

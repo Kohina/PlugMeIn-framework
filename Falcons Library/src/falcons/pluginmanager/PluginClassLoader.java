@@ -13,27 +13,33 @@ public class PluginClassLoader extends ClassLoader {
 	@Override
 	public Class<?> findClass(String name) {
 		String fileName = name.replace("\\", ".");
-		byte[] data = loadClassData(name);	
-		
+		byte[] data = loadClassData(name);
+
 		System.out.println(fileName);
-		
-		return defineClass(/**exportedPackage + "." + **/ fileName, data, 0, data.length);
+
+		if (fileName.contains(exportedPackage)) {
+			return defineClass(fileName, data, 0, data.length);
+		} else {
+			return defineClass(exportedPackage + "." + fileName, data, 0,
+					data.length);
+		}
 	}
 
-	private byte[] loadClassData (String name) {
+	private byte[] loadClassData(String name) {
 		File f = new File(PluginManager.pluginPath + name + ".class");
 		ByteArrayOutputStream classBuffer = new ByteArrayOutputStream();
-		
+
 		try {
 			FileInputStream a = new FileInputStream(f);
-			while(a.available()>0){
+			while (a.available() > 0) {
 				classBuffer.write(a.read());
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("PluginClassLoader could not find the file.");
 			e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("PluginClassLoader could not find the inputstream for the filestream.");
+			System.out
+					.println("PluginClassLoader could not find the inputstream for the filestream.");
 			e.printStackTrace();
 		}
 
