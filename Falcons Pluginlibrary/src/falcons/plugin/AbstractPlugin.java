@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 @Plugin
-public abstract class AbstractPlugin implements Serializable {
+public abstract class AbstractPlugin implements Serializable, Pluggable {
 
 	/**
 	 * Receives a call from the server and checks what it is that it is supposed

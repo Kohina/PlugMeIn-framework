@@ -2,10 +2,15 @@ package falcons.plugin;
 
 import java.io.Serializable;
 
-public abstract class AbstractPluginData implements Serializable {
+public abstract class AbstractPluginData implements Serializable, Pluggable {
 
 	private final String methodID;
 	private final String versionID;
+	
+	protected AbstractPluginData() {
+		methodID = null;
+		versionID = null;
+	}
 
 	/**
 	 * The constructor for an AbstructPluginData
