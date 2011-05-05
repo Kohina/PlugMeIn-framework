@@ -7,6 +7,7 @@ import falcons.client.network.ClientDataInterpreter;
 import falcons.client.view.ClientSystemTray;
 import falcons.client.view.ClientView;
 import falcons.client.view.ConnectionView;
+import falcons.plugin.AbstractPlugin;
 
 public class Client{
 	
@@ -28,7 +29,8 @@ public class Client{
 		
 		for(Object o : nameSet){
 			String pluginName = o.toString();
-			clientView.addTab(pluginName, PluginLogic.getPluginMap().get(pluginName).getMainPanel());
+			AbstractPlugin plugin = (AbstractPlugin) PluginLogic.getPluginMap().get(pluginName);
+			clientView.addTab(pluginName, plugin.getMainPanel());
 		}
 	}
 
