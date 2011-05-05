@@ -1,21 +1,27 @@
 package falcons.client.model;
 
+import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.List;
 
 import falcons.plugin.AbstractPlugin;
+import falcons.plugin.Pluggable;
 import falcons.plugin.Plugin;
-import falcons.pluginmanager.PluginLoader;
+import falcons.pluginmanager.PluginManager;
+import falcons.pluginmanager.URLPluginManager;
+import falcons.client.model.PluginModel;
 
 public class PluginLogic {
 	
 	public static void loadPlugins(){
-		List<AbstractPlugin> pluginList = PluginLoader.loadPlugins();
-		HashMap<String, AbstractPlugin> pluginMap = new HashMap<String, AbstractPlugin>();
-		for(AbstractPlugin p : pluginList){
+		List<Pluggable> pluginList;
+		pluginList = PluginManager.loadPlugins();
+		HashMap<String, Pluggable> pluginMap = new HashMap<String, Pluggable>();
+		for(Pluggable p : pluginList){
 			pluginMap.put(p.getClass().getAnnotation(Plugin.class).pluginID(), p);
 		}
 		PluginModel.setPluginMap(pluginMap);
+		
 	}
 
 	/**
@@ -23,7 +29,7 @@ public class PluginLogic {
 	 * @return Returns a map containing all the currently loaded plugins with
 	 *         their pluginID as key.
 	 */
-	public static HashMap<String, AbstractPlugin> getPluginMap() {
+	public static HashMap<String, Pluggable> getPluginMap() {
 		return PluginModel.getPlugins();
 	}
 }

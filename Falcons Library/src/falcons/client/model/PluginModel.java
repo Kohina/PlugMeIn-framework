@@ -2,11 +2,12 @@ package falcons.client.model;
 
 import java.util.HashMap;
 import falcons.plugin.AbstractPlugin;
+import falcons.plugin.Pluggable;
 
 public class PluginModel {
 
 	private static PluginModel instance;
-	private static HashMap<String, AbstractPlugin> pluginMap;
+	private static HashMap<String, Pluggable> pluginMap;
 
 	/**
 	 * The Constructor for the PluginModel. Should read the plugin folder and
@@ -22,11 +23,11 @@ public class PluginModel {
 		return instance;
 	}
 	
-	static HashMap<String, AbstractPlugin> getPlugins(){
-		return new HashMap<String, AbstractPlugin>(pluginMap);
+	static HashMap<String, Pluggable> getPlugins(){
+		return new HashMap<String, Pluggable>(pluginMap);
 	}
 	
-	static void setPluginMap(HashMap<String, AbstractPlugin> pluginMap){
+	static void setPluginMap(HashMap<String, Pluggable> pluginMap){
 		PluginModel.pluginMap = pluginMap;
 	}
 }

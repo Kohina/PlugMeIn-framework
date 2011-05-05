@@ -12,14 +12,16 @@ public class PluginClassLoader extends ClassLoader {
 
 	@Override
 	public Class<?> findClass(String name) {
-		String packageInitial = name.substring(0, 1).toLowerCase();
-		String packageName = packageInitial + name.substring(1, name.length());
-		byte[] data = loadClassData(name);
-		return defineClass(exportedPackage + "." + name, data, 0, data.length);
+		String fileName = name.replace("\\", ".");
+		byte[] data = loadClassData(name);	
+		
+		System.out.println(fileName);
+		
+		return defineClass(/**exportedPackage + "." + **/ fileName, data, 0, data.length);
 	}
 
 	private byte[] loadClassData (String name) {
-		File f = new File(PluginLoader.pluginPath + name + ".class");
+		File f = new File(PluginManager.pluginPath + name + ".class");
 		ByteArrayOutputStream classBuffer = new ByteArrayOutputStream();
 		
 		try {

@@ -1,59 +1,63 @@
 package falcons.pluginmanager;
 
 import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.List;
 
-import falcons.plugin.AbstractPlugin;
+import falcons.plugin.Pluggable;
 import falcons.plugin.Plugin;
+import falcons.utils.FileScanner;
 
 public class PluginManager {
-	
-	private File[] files;
-	private ArrayList<AbstractPlugin> pluginList = new ArrayList<AbstractPlugin>();
+	public static final String pluginPath = System.getProperty("user.dir")
+			+ "\\plugins\\";
 
-	public ArrayList<AbstractPlugin> loadPlugins(String filePath){
-		File PATH = new File(filePath);
-		files = PATH.listFiles();
-		
-		
-		for(File f : files){
-			if(f.isFile() && f.getPath().endsWith(".class")){
-				
-				String pluginName = f.getPath().split(".class")[0];
-				pluginName = pluginName.replace(filePath, "");
-				
-				try {
-					URL url = new URL("file:/" + filePath.replace("\\", "/"));
-					URL urls[] = new URL[]{url};
-					
-					URLClassLoader loader = new URLClassLoader(urls);
-					Class<?> cls = loader.loadClass("falcons.plugin." + pluginName);
+	@SuppressWarnings("unchecked")
+	private static List<Class<?>> getPluginClasses() {
+		List<File> files = FileScanner.getFiles(new File(pluginPath));
+		PluginClassLoader pluginLoader = new PluginClassLoader();
+		List<Class<?>> classList = new ArrayList<Class<?>>();
 
-					
-					if(cls.getAnnotation(Plugin.class) !=null){
-						try {
-							pluginList.add((AbstractPlugin) cls.newInstance());
-						} catch (InstantiationException e) {
-							System.out.println("Could not Instantiate plugin: " + pluginName);
-							e.printStackTrace();
-						} catch (IllegalAccessException e) {
-							System.out.println("Could not access plugin: " + pluginName);
-							e.printStackTrace();
-						}
-					}
-				} catch (MalformedURLException e) {
-					System.out.println("THERE IS A WRONG IN A URL");
-					e.printStackTrace();
-				} catch (ClassNotFoundException e) {
-					System.out.println("Could not find class in PluginManager");
-					e.printStackTrace();
-				}				
+		for (File f : files) {
+			String pluginName = f.getPath().replace(".class", "");
+			pluginName = pluginName.replace(pluginPath, "");
+			Class<Pluggable> c = (Class<Pluggable>) pluginLoader
+					.findClass(pluginName);
+			// TODO Fix so that we check if the class has got the plugin
+			// annotation.
+			classList.add(c);
+			if (c.getClass().getAnnotation(Plugin.class) != null) {
+				classList.add(c);
 			}
 		}
-		return pluginList;	
+		return classList;
+	}
+
+	private static List<Pluggable> getPluginsFromPluginClasses(
+			List<Class<?>> classList) {
+		List<Pluggable> pluginList = new ArrayList<Pluggable>();
+
+		for (Class<?> c : classList) {
+			try {
+				Pluggable cls = (Pluggable) c.newInstance();
+				pluginList.add(cls);
+			} catch (InstantiationException e) {
+				System.out
+						.println("PluginLoader could not instantiate the plugin");
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				System.out.println("PluginLoader could not access the plugin");
+				e.printStackTrace();
+			}
+		}
+
+		return pluginList;
+	}
+
+	public static List<Pluggable> loadPlugins() {
+		List<Class<?>> pluginClasses = getPluginClasses();
+		List<Pluggable> plugins = getPluginsFromPluginClasses(pluginClasses);
+
+		return plugins;
 	}
 }
