@@ -12,16 +12,18 @@ import falcons.pluginmanager.URLPluginManager;
 import falcons.client.model.PluginModel;
 
 public class PluginLogic {
-	
-	public static void loadPlugins(){
+
+	public static void loadPlugins() {
 		List<Pluggable> pluginList;
 		pluginList = PluginManager.loadPlugins();
 		HashMap<String, Pluggable> pluginMap = new HashMap<String, Pluggable>();
-		for(Pluggable p : pluginList){
-			pluginMap.put(p.getClass().getAnnotation(Plugin.class).pluginID(), p);
+		for (Pluggable p : pluginList) {
+			if (p instanceof AbstractPlugin) {
+				pluginMap.put("pluginID", p);
+			}
 		}
 		PluginModel.setPluginMap(pluginMap);
-		
+
 	}
 
 	/**
