@@ -10,7 +10,7 @@ import falcons.utils.FileScanner;
 
 public class PluginManager {
 	public static final String pluginPath = System.getProperty("user.dir")
-			+ "\\plugins\\";
+			+ File.separator + "plugins" + File.separator;
 
 	@SuppressWarnings("unchecked")
 	private static List<Class<?>> getPluginClasses() {

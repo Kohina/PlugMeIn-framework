@@ -12,7 +12,7 @@ public class PluginClassLoader extends ClassLoader {
 
 	@Override
 	public Class<?> findClass(String name) {
-		String fileName = name.replace("\\", ".");
+		String fileName = name.replace(File.separator, ".");
 		byte[] data = loadClassData(name);
 
 		System.out.println(fileName);
