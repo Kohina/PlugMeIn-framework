@@ -3,12 +3,8 @@ package falcons.server.network;
 import java.io.Serializable;
 import java.util.*;
 
-import falcons.plugin.AbstractPlugin;
-import falcons.plugin.AbstractPluginData;
-import falcons.plugin.Plugin;
-import falcons.plugin.PluginCall;
-import falcons.pluginmanager.PluginModel;
-import falcons.server.model.ConnectionModel;
+import falcons.plugin.*;
+import falcons.server.model.*;
 
 @Plugin(pluginID = "SystemPlugin", versionID = "1.0")
 public class SystemServerPlugin implements Serializable {
@@ -16,12 +12,12 @@ public class SystemServerPlugin implements Serializable {
 	private static SystemServerPlugin instance = new SystemServerPlugin();
 	private Set<Long> clients;
 	private HashMap<String, String> plugins;
-	private PluginModel pluginModel;
+	private PluginLogic pluginLogic;
 	
 	private SystemServerPlugin() {
 		clients = new HashSet<Long>();
 		plugins = new HashMap<String, String>();
-		pluginModel = PluginModel.getInstance();
+		pluginLogic = PluginLogic.getInstance();
 	}
 	
 	/**
@@ -64,11 +60,11 @@ public class SystemServerPlugin implements Serializable {
 	}
 	
 	private void updatePlugins() {
-		Object[] nameSet = pluginModel.getPluginMap().keySet().toArray();
+		Object[] nameSet = pluginLogic.getPluginMap().keySet().toArray();
 		
 		for(Object o : nameSet){
 			String pluginName = o.toString();
-			String pluginVersion = pluginModel.getPluginMap().get(pluginName).getClass().getAnnotation(Plugin.class).versionID();
+			String pluginVersion = pluginLogic.getPluginMap().get(pluginName).getClass().getAnnotation(Plugin.class).versionID();
 			plugins.put(pluginName, pluginVersion);
 		}
 		
@@ -77,7 +73,7 @@ public class SystemServerPlugin implements Serializable {
 		for(Object o : nameSet) {
 			String pluginName = o.toString();
 			
-			if(!pluginModel.getPluginMap().containsKey(pluginName)) {
+			if(!pluginLogic.getPluginMap().containsKey(pluginName)) {
 				plugins.remove(pluginName);
 			}
 		}
