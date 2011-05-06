@@ -2,14 +2,17 @@ package falcons.plugin;
 
 import java.io.Serializable;
 
-public abstract class AbstractPluginData implements Serializable, Pluggable {
+public class AbstractPluginData<E> implements Serializable, Pluggable {
 
 	private final String methodID;
 	private final String versionID;
+	private final E data;
+	
 	
 	protected AbstractPluginData() {
 		methodID = null;
 		versionID = null;
+		data = null;
 	}
 
 	/**
@@ -21,9 +24,10 @@ public abstract class AbstractPluginData implements Serializable, Pluggable {
 	 * @param versionID
 	 *            The ID of the version of the Plugin.
 	 */
-	public AbstractPluginData(String methodID, String versionID) {
+	public AbstractPluginData(String methodID, String versionID, E data) {
 		this.methodID = methodID;
 		this.versionID = versionID;
+		this.data = data;
 	}
 
 	/**
@@ -41,5 +45,9 @@ public abstract class AbstractPluginData implements Serializable, Pluggable {
 	 */
 	public String getVersionID() {
 		return versionID;
+	}
+	
+	public E getData() {
+		return data;
 	}
 }
