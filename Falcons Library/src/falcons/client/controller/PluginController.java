@@ -1,5 +1,17 @@
 package falcons.client.controller;
 
-public class PluginController {
+import java.util.HashMap;
 
+import falcons.client.model.PluginLogic;
+import falcons.plugin.Pluggable;
+
+class PluginController {
+	
+	void loadPlugins(){
+		PluginLogic.loadPlugins();
+	}
+	
+	HashMap<String, Pluggable> getPluginMap(){
+		return PluginLogic.getPluginMap();
+	}
 }
