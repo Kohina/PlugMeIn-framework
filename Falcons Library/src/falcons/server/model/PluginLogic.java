@@ -4,13 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 
 import falcons.plugin.AbstractPlugin;
+import falcons.plugin.Pluggable;
 import falcons.plugin.Plugin;
-import falcons.pluginmanager.PluginLoader;
+import falcons.pluginmanager.PluginManager;
 
 public class PluginLogic {
 	
 	private static PluginLogic instance;
-	private PluginLoader pluginLoader = new PluginLoader();
+	private PluginManager pluginLoader = new PluginManager();
 	
 	private PluginLogic(){
 		
@@ -25,9 +26,9 @@ public class PluginLogic {
 	}
 	
 	public void loadPlugins(){
-		List<AbstractPlugin> pluginList = pluginLoader.loadPlugins();
-		HashMap<String, AbstractPlugin> pluginMap = new HashMap<String, AbstractPlugin>();
-		for(AbstractPlugin p : pluginList){
+		List<Pluggable> pluginList = pluginLoader.loadPlugins();
+		HashMap<String, Pluggable> pluginMap = new HashMap<String, Pluggable>();
+		for(Pluggable p : pluginList){
 			pluginMap.put(p.getClass().getAnnotation(Plugin.class).pluginID(), p);
 		}
 		

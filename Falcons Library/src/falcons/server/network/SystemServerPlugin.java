@@ -1,10 +1,17 @@
 package falcons.server.network;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
-import falcons.plugin.*;
-import falcons.server.model.*;
+import falcons.plugin.AbstractPluginData;
+import falcons.plugin.Plugin;
+import falcons.plugin.PluginCall;
+import falcons.server.model.ConnectionModel;
+import falcons.server.model.PluginLogic;
 
 @Plugin(pluginID = "SystemPlugin", versionID = "1.0")
 public class SystemServerPlugin implements Serializable {
