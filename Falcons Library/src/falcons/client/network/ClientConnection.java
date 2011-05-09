@@ -16,9 +16,7 @@ public class ClientConnection extends Thread{
 	
 	/**
 	 * Contructor
-	 * 
-	 * @param interpreter
-	 *            The DataInterpreter that's being used by the client.
+	 *
 	 * @param ip
 	 *            The IP-address of the server
 	 * @param port
@@ -27,8 +25,7 @@ public class ClientConnection extends Thread{
 	 *             If an unhandled IOException is thrown then it could not find
 	 *             the I/O Connection for the socket.
 	 */
-	public ClientConnection(ClientDataInterpreter interpreter) throws IOException {
-		interpreter.getInstance();
+	public ClientConnection() throws IOException {
 		try {
 			// Create a new socket
 			this.socket = new Socket(ClientPreferencesLogic.getIp(), ClientPreferencesLogic.getPort());
