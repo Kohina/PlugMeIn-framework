@@ -1,22 +1,21 @@
 package falcons.client.network;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 import falcons.client.model.ClientPreferencesLogic;
+import falcons.plugin.PluginCall;
 
-public class ClientCommunicationCenter implements Runnable {
+public class ClientConnection extends Thread{
 
-	private ClientDataInterpreter interpreter;
-	private ObjectInputStream in = null;
-	// TODO create an output.
-	private ObjectOutputStream out = null;
-
+	private Socket socket = null;
+	private ListeningThread listeningThread;
+	private ObjectOutputStream out;
+	
 	/**
-	 * Contructor for the CommunicationCenter.
+	 * Contructor
 	 * 
 	 * @param interpreter
 	 *            The DataInterpreter that's being used by the client.
@@ -28,9 +27,8 @@ public class ClientCommunicationCenter implements Runnable {
 	 *             If an unhandled IOException is thrown then it could not find
 	 *             the I/O Connection for the socket.
 	 */
-	public ClientCommunicationCenter(ClientDataInterpreter interpreter)
-			throws IOException {
-		interpreter.getInstance(true);
+	public ClientConnection(ClientDataInterpreter interpreter) throws IOException {
+		interpreter.getInstance();
 		try {
 			// Create a new socket
 			this.socket = new Socket(ClientPreferencesLogic.getIp(), ClientPreferencesLogic.getPort());
@@ -41,34 +39,38 @@ public class ClientCommunicationCenter implements Runnable {
 		} catch (IOException e) {
 			System.err.println("Couldn't get I/O for the connection to: " + ClientPreferencesLogic.getPort());
 		}
+		start();
 	}
+	
+	public void run(){
 
-	/**
-	 * Start listening to the socket.
-	 * 
-	 * @throws IOException
-	 *             If an unhandled IOException is thrown then we lost connection
-	 *             to the inputstream.
-	 * @throws ClassNotFoundException
-	 *             If an unhandled ClassNotFoundException is thrown a disallowed
-	 *             object was sent to the client.
-	 */
-	private void client() throws IOException, ClassNotFoundException {
-		ClientConnection thread = new ClientConnection(socket);
-		thread.start();
-		}
-
-	@Override
-	public void run() {
 		try {
-			System.out.println("CLIENT STARTED");
-			client();
+			out = new ObjectOutputStream(socket.getOutputStream());
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+		}
+		try {
+			listeningThread = new ListeningThread(socket.getInputStream());
+		} catch (IOException e) {
+			System.err.println("Could not initiat InputStream.");
 			e.printStackTrace();
 		}
-
+		listeningThread.start();
+	}
+	
+	/**
+	 * Sends a PluginCall to the connected client. Takes the PluginCall as a
+	 * parameter.
+	 * 
+	 * @param call
+	 *            The PluginCall which should be sent to the client.
+	 * @throws IOException
+	 */
+	public void send(PluginCall call) {
+		try {
+			out.writeObject(call);
+		} catch (IOException e) {
+			System.err.print("Could not write to the output stream.");
+		}
 	}
 }
