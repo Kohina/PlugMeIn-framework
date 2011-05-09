@@ -25,6 +25,7 @@ public abstract class AbstractPlugin implements Serializable, Pluggable {
 	
 	public abstract JPanel getMainPanel();
 	
+	// TODO: edit
 	public void addEventListener(PluginEventListener p){
 		listener = p;
 	}
