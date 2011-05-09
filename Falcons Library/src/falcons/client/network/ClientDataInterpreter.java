@@ -20,13 +20,13 @@ public class ClientDataInterpreter {
 	 * @param model
 	 *            The list of all currently loaded plugins.
 	 */
-	private ClientDataInterpreter(boolean clientInterpreter) {
+	private ClientDataInterpreter() {
 		this.clientInterpreter = clientInterpreter;
 	}
 
-	public static ClientDataInterpreter getInstance(boolean clientInterpreter) {
+	public static ClientDataInterpreter getInstance() {
 			if (instance == null) {
-				instance = new ClientDataInterpreter(clientInterpreter);
+				instance = new ClientDataInterpreter();
 		}
 		return instance;
 	}
