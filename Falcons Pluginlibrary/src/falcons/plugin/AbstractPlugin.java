@@ -8,6 +8,11 @@ import javax.swing.JPanel;
 @Plugin
 public abstract class AbstractPlugin implements Serializable, Pluggable {
 
+	private PluginEventListener listener = null;
+	
+	public AbstractPlugin() {
+	}
+	
 	/**
 	 * Receives a call from the server and checks what it is that it is supposed
 	 * to do. Checks that the version of the plugin sending the call is the same
@@ -20,6 +25,7 @@ public abstract class AbstractPlugin implements Serializable, Pluggable {
 	
 	public abstract JPanel getMainPanel();
 	
-	public AbstractPlugin() {
+	public void addEventListener(PluginEventListener p){
+		listener = p;
 	}
 }
