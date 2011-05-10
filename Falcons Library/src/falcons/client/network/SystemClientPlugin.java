@@ -3,12 +3,8 @@ package falcons.client.network;
 import java.io.Serializable;
 import java.util.*;
 
-import falcons.plugin.AbstractPlugin;
-import falcons.plugin.AbstractPluginData;
-import falcons.plugin.Plugin;
-import falcons.plugin.PluginCall;
-import falcons.pluginmanager.PluginModel;
-import falcons.server.network.ConnectionThread;
+import falcons.client.model.PluginLogic;
+import falcons.plugin.*;
 
 @Plugin(pluginID = "SystemPlugin", versionID = "1.0")
 public class SystemClientPlugin implements Serializable {
@@ -16,12 +12,10 @@ public class SystemClientPlugin implements Serializable {
 	private static SystemClientPlugin instance = new SystemClientPlugin();
 	private Set<Long> clients;
 	private HashMap<String, String> plugins;
-	private PluginModel pluginModel;
 	
 	private SystemClientPlugin() {
 		clients = new HashSet<Long>();
 		plugins = new HashMap<String, String>();
-		pluginModel = PluginModel.getInstance();
 	}
 	
 	/**
@@ -38,9 +32,9 @@ public class SystemClientPlugin implements Serializable {
 			if(data.getMethodID().equals("receivePlugins")) {
 				// TODO Do something with the list of plugins.
 			} else if(data.getMethodID().equals("receiveClients")) {
-				receiveClients((AbstractPluginData<Set<Long>>) call.getPluginData().getData());
+				receiveClients((Set<Long>) call.getPluginData().getData());
 			} else if(data.getMethodID().equals("receivePlugins")) {
-				receivePlugins((AbstractPluginData<HashMap<String, String>>) call.getPluginData().getData());
+				receivePlugins((HashMap<String, String>) call.getPluginData().getData());
 			} else {
 				System.out.println("The methodID does not exist.");
 			}
@@ -51,21 +45,20 @@ public class SystemClientPlugin implements Serializable {
 		}
 	}
 	
-	private void receivePlugins(AbstractPluginData<HashMap<String, String>> data) {
+	private void receivePlugins(HashMap<String, String> plugins) {
 		// TODO Auto-generated method stub
-		
 	}
 
-	private void receiveClients(AbstractPluginData<Set<Long>> data) {
+	private void receiveClients(Set<Long> clients) {
 		// TODO Auto-generated method stub
 	}
 
 	private void updatePlugins() {
-		Object[] nameSet = pluginModel.getPluginMap().keySet().toArray();
+		Object[] nameSet = PluginLogic.getPluginMap().keySet().toArray();
 		
 		for(Object o : nameSet){
 			String pluginName = o.toString();
-			String pluginVersion = pluginModel.getPluginMap().get(pluginName).getClass().getAnnotation(Plugin.class).versionID();
+			String pluginVersion = PluginLogic.getPluginMap().get(pluginName).getClass().getAnnotation(Plugin.class).versionID();
 			plugins.put(pluginName, pluginVersion);
 		}
 		
@@ -74,7 +67,7 @@ public class SystemClientPlugin implements Serializable {
 		for(Object o : nameSet) {
 			String pluginName = o.toString();
 			
-			if(!pluginModel.getPluginMap().containsKey(pluginName)) {
+			if(!PluginLogic.getPluginMap().containsKey(pluginName)) {
 				plugins.remove(pluginName);
 			}
 		}
