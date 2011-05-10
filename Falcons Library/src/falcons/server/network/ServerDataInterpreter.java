@@ -19,13 +19,13 @@ public class ServerDataInterpreter {
 	 * @param model
 	 *            The list of all currently loaded plugins.
 	 */
-	private ServerDataInterpreter(boolean clientInterpreter) {
+	private ServerDataInterpreter() {
 		this.clientInterpreter = clientInterpreter;
 	}
 
-	public static ServerDataInterpreter getInstance(boolean clientInterpreter) {
+	public static ServerDataInterpreter getInstance() {
 			if (instance == null) {
-				instance = new ServerDataInterpreter(clientInterpreter);
+				instance = new ServerDataInterpreter();
 		}
 		return instance;
 	}

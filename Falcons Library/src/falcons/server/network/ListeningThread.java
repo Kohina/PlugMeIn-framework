@@ -4,13 +4,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 
-import falcons.client.network.ClientDataInterpreter;
+import falcons.server.network.ServerDataInterpreter;
 import falcons.plugin.utils.PluginCall;
 
 public class ListeningThread extends Thread {
 
 	private ObjectInputStream in;
-	private ClientDataInterpreter interpreter;
+	private ServerDataInterpreter interpreter;
 	
 	public ListeningThread(InputStream in){
 		try {
@@ -19,7 +19,7 @@ public class ListeningThread extends Thread {
 			System.err.println("Could not get connect to InputStream.");
 			e.printStackTrace();
 		}
-		interpreter = interpreter.getInstance(false);
+		interpreter = interpreter.getInstance();
 	}
 	
 	public void run(){
