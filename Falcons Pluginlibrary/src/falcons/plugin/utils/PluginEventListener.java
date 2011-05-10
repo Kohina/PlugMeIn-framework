@@ -1,4 +1,4 @@
-package falcons.plugin;
+package falcons.plugin.utils;
 
 import java.util.EventListener;
 

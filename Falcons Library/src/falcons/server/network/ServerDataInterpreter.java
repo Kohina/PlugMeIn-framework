@@ -5,7 +5,7 @@ import java.io.IOException;
 import javax.management.modelmbean.ModelMBean;
 
 import falcons.client.model.PluginLogic;
-import falcons.plugin.PluginCall;
+import falcons.plugin.utils.PluginCall;
 
 public class ServerDataInterpreter {
 

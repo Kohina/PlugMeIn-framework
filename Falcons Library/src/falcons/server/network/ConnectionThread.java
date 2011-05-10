@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import falcons.plugin.PluginCall;
+import falcons.plugin.utils.PluginCall;
 
 public class ConnectionThread extends Thread{
 

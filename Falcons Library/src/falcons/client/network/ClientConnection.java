@@ -6,7 +6,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import falcons.client.model.ClientPreferencesLogic;
-import falcons.plugin.PluginCall;
+import falcons.plugin.utils.PluginCall;
 
 public class ClientConnection extends Thread{
 

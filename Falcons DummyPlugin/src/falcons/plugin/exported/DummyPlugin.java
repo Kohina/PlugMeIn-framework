@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.Plugin;
-import falcons.plugin.PluginCall;
+import falcons.plugin.utils.PluginCall;
 
 @Plugin(pluginID = "Dummy Plugin", versionID = "0.1")
 public class DummyPlugin extends AbstractPlugin {

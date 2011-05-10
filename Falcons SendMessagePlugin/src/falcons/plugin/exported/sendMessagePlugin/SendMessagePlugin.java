@@ -10,6 +10,7 @@ import javax.swing.WindowConstants;
 import falcons.plugin.*;
 import falcons.plugin.exported.sendMessagePlugin.model.*;
 import falcons.plugin.exported.sendMessagePlugin.view.SendMessageMainPanel;
+import falcons.plugin.utils.PluginCall;
 
 @Plugin(pluginID = "Send Message", versionID = "0.1")
 public class SendMessagePlugin extends AbstractPlugin {

@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 
 import falcons.client.network.ClientDataInterpreter;
-import falcons.plugin.PluginCall;
+import falcons.plugin.utils.PluginCall;
 
 public class ListeningThread extends Thread {
 

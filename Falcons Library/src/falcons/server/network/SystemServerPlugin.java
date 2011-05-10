@@ -9,7 +9,7 @@ import java.util.Set;
 
 import falcons.plugin.AbstractPluginData;
 import falcons.plugin.Plugin;
-import falcons.plugin.PluginCall;
+import falcons.plugin.utils.PluginCall;
 import falcons.server.model.ConnectionModel;
 import falcons.server.model.PluginLogic;
 

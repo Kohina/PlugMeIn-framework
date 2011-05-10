@@ -5,6 +5,7 @@ import java.util.*;
 
 import falcons.client.model.PluginLogic;
 import falcons.plugin.*;
+import falcons.plugin.utils.PluginCall;
 
 @Plugin(pluginID = "SystemPlugin", versionID = "1.0")
 public class SystemClientPlugin implements Serializable {
