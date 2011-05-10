@@ -1,8 +1,8 @@
 package falcons.utils;
 
-public class ClientEvent {
+public class LibraryEvent {
 
-	public static enum ClientEventType {
+	public static enum LibraryEventType {
 		/*
 		 * 
 		 * ClientPreferencesEvents
@@ -41,7 +41,7 @@ public class ClientEvent {
 		GET_PLUGINS
 	}
 
-	private ClientEventType typeOfEvent;
+	private LibraryEventType typeOfEvent;
 
 	/**
 	 * Creates a new ClientEvent that to be sent to the Client's controller.
@@ -50,7 +50,7 @@ public class ClientEvent {
 	 *            This parameter is a ClientEventType. Each Type has a specified
 	 *            meaning and this will tell the controller what to do.
 	 */
-	public ClientEvent(ClientEventType e) {
+	public LibraryEvent(LibraryEventType e) {
 		typeOfEvent = e;
 	}
 
@@ -59,7 +59,7 @@ public class ClientEvent {
 	 * 
 	 * @return The type of event, specified by a ClientEventType.
 	 */
-	public ClientEventType getEventType() {
+	public LibraryEventType getEventType() {
 		return typeOfEvent;
 	}
 

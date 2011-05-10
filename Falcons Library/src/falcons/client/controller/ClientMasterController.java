@@ -1,7 +1,7 @@
 package falcons.client.controller;
 
-import falcons.utils.ClientEvent;
-import falcons.utils.ClientEvent.ClientEventType;
+import falcons.utils.LibraryEvent;
+import falcons.utils.LibraryEvent.LibraryEventType;
 
 public class ClientMasterController {
 
@@ -27,8 +27,8 @@ public class ClientMasterController {
 	 *            The ClientEvent associated with the action that the View was
 	 *            asking for.
 	 */
-	public void actionPerformed(ClientEvent e) {
-		ClientEventType type = e.getEventType();
+	public void actionPerformed(LibraryEvent e) {
+		LibraryEventType type = e.getEventType();
 
 		switch (type) {
 		case GET_IP:

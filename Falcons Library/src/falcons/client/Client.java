@@ -4,8 +4,9 @@ package falcons.client;
 import java.io.File;
 
 import falcons.client.controller.ClientMasterController;
-import falcons.utils.ClientEvent;
+import falcons.utils.LibraryEvent;
 
+// TODO Finish Implementing this class.
 public class Client {
 	
 	private ClientMasterController controller;
@@ -14,7 +15,7 @@ public class Client {
 		controller = new ClientMasterController();
 	}
 	
-	public void actionPerformed(ClientEvent e){
+	public void actionPerformed(LibraryEvent e){
 		controller.actionPerformed(e);
 	}
 }
