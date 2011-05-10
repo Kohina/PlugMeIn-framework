@@ -7,4 +7,7 @@ import java.util.EventListener;
 public interface PluginEventListener extends EventListener{
 
 	public void actionPerformed(PluginEvent p);
+	
+	// TODO: this needs what as argument??? and should return what??
+	public void getData();
 }
