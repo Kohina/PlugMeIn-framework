@@ -50,4 +50,8 @@ public class Client {
 		connected = false;
 		return !connected;
 	}
+	
+	public boolean connected(){
+		return connected;
+	}
 }
