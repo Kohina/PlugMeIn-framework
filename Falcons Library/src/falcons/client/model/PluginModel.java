@@ -16,7 +16,7 @@ public class PluginModel {
 	private PluginModel() {
 	}
 	
-	static PluginModel getInstance(){
+	static PluginModel getInstance() {
 			if(instance == null){
 				instance = new PluginModel();
 		}

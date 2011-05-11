@@ -140,7 +140,7 @@ public class ClientTree {
 	 * 
 	 * @param id	The client's id.
 	 */
-	public HashMap<String, String> getPluginMap(long id) {
+	public HashMap<String, String> getPlugins(long id) {
 		return (HashMap<String, String>) clientMap.get(id).clone();
 	}
 }
