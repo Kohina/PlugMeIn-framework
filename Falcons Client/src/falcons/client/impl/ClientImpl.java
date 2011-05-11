@@ -1,12 +1,12 @@
-package falcons.clientimpl;
+package falcons.client.impl;
 
 import java.io.File;
 import java.util.HashMap;
 
 import falcons.client.Client;
-import falcons.clientimpl.view.ClientSystemTray;
-import falcons.clientimpl.view.ClientView;
-import falcons.clientimpl.view.ConnectionView;
+import falcons.client.impl.view.ClientSystemTray;
+import falcons.client.impl.view.ClientView;
+import falcons.client.impl.view.ConnectionView;
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.Pluggable;
 import falcons.utils.LibraryEvent;

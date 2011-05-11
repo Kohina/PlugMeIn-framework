@@ -1,4 +1,4 @@
-package falcons.clientimpl.view;
+package falcons.client.impl.view;
 
 import java.awt.*;
 
