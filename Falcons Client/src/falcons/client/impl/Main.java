@@ -8,7 +8,7 @@ import falcons.client.impl.view.ConnectionView;
 public class Main {
 
 	private static ClientSystemTray tray;
-	private static Client client;
+	public static Client client;
 
 	public static void main(String args[]) {
 		client  = new Client();
