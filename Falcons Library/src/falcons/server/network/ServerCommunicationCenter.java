@@ -9,12 +9,12 @@ import java.net.UnknownHostException;
 
 import falcons.client.network.ClientDataInterpreter;
 import falcons.server.model.ConnectionModel;
+import falcons.server.model.ServerPreferencesLogic;
 
 public class ServerCommunicationCenter implements Runnable {
 
 	private ServerSocket socket = null;
 	private boolean listening = true;
-	private ConnectionModel model;
 
 	/**
 	 * Contructor for the CommunicationCenter.
@@ -29,25 +29,25 @@ public class ServerCommunicationCenter implements Runnable {
 	 *             If an unhandled IOException is thrown then it could not find
 	 *             the I/O Connection for the socket.
 	 */
-	public ServerCommunicationCenter(int port, ConnectionModel model)
-			throws IOException {
-
+	public ServerCommunicationCenter() throws IOException {
 		try {
-			this.model = model;
 			// Create a new socket
-			this.socket = new ServerSocket(port);
+			this.socket = new ServerSocket(ServerPreferencesLogic.getPort());
 		} catch (IOException e) {
-			System.err.println("Couldn't get I/O for the connection to the client");
+			System.err
+					.println("Couldn't get I/O for the connection to the client");
 		}
+		run();
 	}
-	
-	public void server() throws IOException{
+
+	public void server() throws IOException {
 		System.out.println("SERVER STARTED");
-		while(listening){
-				ConnectionThread thread = new ConnectionThread(socket.accept());
-				System.out.println("NEW CONNECTION RECEIVED, CREATING NEW CONNECTIONTHREAD");
-				model.addConnection(thread);
-				thread.start();
+		while (listening) {
+			ConnectionThread thread = new ConnectionThread(socket.accept());
+			System.out
+					.println("NEW CONNECTION RECEIVED, CREATING NEW CONNECTIONTHREAD");
+			ConnectionModel.getInstance().addConnection(thread);
+			thread.start();
 		}
 	}
 
@@ -58,6 +58,5 @@ public class ServerCommunicationCenter implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 }
