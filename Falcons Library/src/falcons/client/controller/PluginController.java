@@ -29,10 +29,10 @@ class PluginController implements PluginEventListener {
 		Object returnObject = null;
 		switch (e) {
 		case GET_CLIENTS:
-			returnObject = DataMasterController.getClients();
+			returnObject = ServerLogic.getClients();
 			break;
 		case GET_PLUGINMAP:
-			returnObject =  DataMasterController.getPlugins();
+			returnObject =  PluginLogic.getPluginMap();
 			break;
 		default:
 			break;

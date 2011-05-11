@@ -29,9 +29,7 @@ public class ClientMasterController {
 	 */
 	public void actionPerformed(LibraryEvent e) {
 		LibraryEventType type = e.getEventType();
-
 		switch (type) {
-		
 		case LOAD_PLUGINS:
 			pluginCont.loadPlugins();
 			break;

@@ -16,7 +16,15 @@ public class LibraryEvent {
 		/**
 		 * Tells the controller that is should read the preferences from the ClientPreferences.xml
 		 */
-		READ_PREFERENCES,		
+		READ_PREFERENCES,
+		/**
+		 * Tells the controller that it should return the IP.
+		 */
+		GET_IP,
+		/**
+		 * Tells the controller that it should return the Port.
+		 */
+		GET_PORT,
 		/*
 		 * 
 		 * PluginEvents
@@ -25,8 +33,31 @@ public class LibraryEvent {
 		/**
 		 * Tells the controller that it should load all plugins inside the "/plugins/" folder.
 		 */
-		LOAD_PLUGINS
+		LOAD_PLUGINS,
+		/**
+		 * Tells the controller that it should return all loaded plugins.
+		 */
+		GET_PLUGINS,
+		/*
+		 * 
+		 * ClientEvents
+		 * 
+		 */
+		/**
+		 * Tells the controller that it should return all clients connected to the server.
+		 */
+		GET_CLIENTS,
+		/**
+		 * Tells the controller that it should return all plugins connected to a specified client.
+		 */
+		GET_CLIENTPLUGINS,
+		/**
+		 * Tells the controller that it shoudl return the plugin with the supplied ID.
+		 */
+		GET_PLUGIN
 	}
+	
+	private String ID;
 
 	private LibraryEventType typeOfEvent;
 
@@ -40,6 +71,11 @@ public class LibraryEvent {
 	public LibraryEvent(LibraryEventType e) {
 		typeOfEvent = e;
 	}
+	
+	public LibraryEvent(LibraryEventType e, String ID){
+		typeOfEvent = e;
+		this.ID = ID;
+	}
 
 	/**
 	 * Returns what type of event this is.
@@ -48,6 +84,10 @@ public class LibraryEvent {
 	 */
 	public LibraryEventType getEventType() {
 		return typeOfEvent;
+	}
+	
+	public String getId(){
+		return ID;
 	}
 
 }

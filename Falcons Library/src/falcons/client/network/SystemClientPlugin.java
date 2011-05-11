@@ -76,8 +76,7 @@ public class SystemClientPlugin implements Serializable {
 	
 	public void sendPlugins(long id) {
 		updatePlugins();
-		// TODO Move the updatePlugins() call to where we actually update the HashMap of loaded Plugins to increase efficiency. Also, fix stuff.
-		ConnectionModel.getInstance().getConnection(id)
-				.send(new PluginCall("SystemPlugin", new AbstractPluginData<HashMap<String, String>>("receivePlugins", "SystemPlugin", plugins), id));
+		// TODO Move the updatePlugins() call to where we actually update the HashMap of loaded Plugins to increase efficiency.
+		ClientConnection.send(new PluginCall("SystemPlugin", new AbstractPluginData<HashMap<String, String>>("receivePlugins", "SystemPlugin", plugins), id));
 	}
 }
