@@ -12,7 +12,7 @@ public class ClientConnection extends Thread{
 
 	private Socket socket = null;
 	private ListeningThread listeningThread;
-	private ObjectOutputStream out;
+	private static ObjectOutputStream out;
 	
 	/**
 	 * Contructor
