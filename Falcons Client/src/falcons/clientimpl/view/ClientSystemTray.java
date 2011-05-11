@@ -1,4 +1,4 @@
-package falcons.client.view;
+package falcons.clientimpl.view;
 
 import java.awt.AWTException;
 import java.awt.Image;

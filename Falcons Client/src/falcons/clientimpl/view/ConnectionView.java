@@ -1,4 +1,4 @@
-package falcons.client.view;
+package falcons.clientimpl.view;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;

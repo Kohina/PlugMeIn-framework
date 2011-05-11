@@ -1,14 +1,12 @@
-package falcons.client;
+package falcons.clientimpl;
 
 import java.io.File;
 import java.util.HashMap;
 
-import falcons.client.model.ClientPreferencesLogic;
-import falcons.client.model.PluginLogic;
-import falcons.client.network.ClientDataInterpreter;
-import falcons.client.view.ClientSystemTray;
-import falcons.client.view.ClientView;
-import falcons.client.view.ConnectionView;
+import falcons.client.Client;
+import falcons.clientimpl.view.ClientSystemTray;
+import falcons.clientimpl.view.ClientView;
+import falcons.clientimpl.view.ConnectionView;
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.Pluggable;
 import falcons.utils.LibraryEvent;
@@ -29,11 +27,8 @@ public class ClientImpl{
 		systemTray = new ClientSystemTray(clientView, connectionView);
 		client = new Client();
 		
-		LibraryEvent event = new LibraryEvent(LibraryEventType.LOAD_PLUGINS);
-		client.actionPerformed(event);
-		
-		LibraryEvent event2 = new LibraryEvent(LibraryEventType.GET_PLUGINS);		
-		HashMap<String, Pluggable> pluginMap = ((HashMap<String, Pluggable>) client.getData(event2)); 
+		client.actionPerformed(new LibraryEvent(LibraryEventType.LOAD_PLUGINS));		
+		HashMap<String, Pluggable> pluginMap = ((HashMap<String, Pluggable>) client.getData(new LibraryEvent(LibraryEventType.GET_PLUGINS))); 
 
 		Object[] nameSet = pluginMap.keySet().toArray();
 		
