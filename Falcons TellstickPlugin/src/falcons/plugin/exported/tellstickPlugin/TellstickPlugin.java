@@ -1,5 +1,11 @@
 package falcons.plugin.exported.tellstickPlugin;
 
-public class TellstickPlugin {
+import falcons.plugin.*;
 
+@Plugin(pluginID = "Tellstick", versionID = "0.1")
+public class TellstickPlugin extends AbstractPlugin {
+	
+	public TellstickPlugin() {
+		
+	}
 }
