@@ -3,7 +3,6 @@ package falcons.plugin.utils;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-// TODO: Check
 public class PluginEvent {
 	
 	private PluginCall call;
