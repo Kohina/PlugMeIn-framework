@@ -1,30 +1,26 @@
 package falcons.server.network;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import falcons.plugin.AbstractPluginData;
 import falcons.plugin.Plugin;
 import falcons.plugin.utils.PluginCall;
 import falcons.server.model.ConnectionModel;
 import falcons.server.model.PluginLogic;
+import falcons.utils.ClientInfo;
 
 @Plugin(pluginID = "SystemPlugin", versionID = "1.0")
 public class SystemServerPlugin implements Serializable {
 	
 	private static SystemServerPlugin instance = new SystemServerPlugin();
-	private Set<Long> clients;
-	private HashMap<String, String> plugins;
-	private PluginLogic pluginLogic;
+	private PluginLogic pluginLogic = PluginLogic.getInstance();
+	private ConnectionModel connectionModel = ConnectionModel.getInstance();
+	private List<ClientInfo> clients;
+	private HashMap<String, String> serverPlugins;
 	
 	private SystemServerPlugin() {
-		clients = new HashSet<Long>();
-		plugins = new HashMap<String, String>();
-		pluginLogic = PluginLogic.getInstance();
+		readPlugins();
 	}
 	
 	/**
@@ -34,14 +30,15 @@ public class SystemServerPlugin implements Serializable {
 		return instance;
 	}
 	
-/*	public void receiveCall(PluginCall call) {
-		AbstractPluginData data = call.getPluginData();
+	public void receiveCall(PluginCall call) {
+		AbstractPluginData<?> data = call.getPluginData();
 		
 		if (data.getVersionID().equals(this.getClass().getAnnotation(Plugin.class).versionID())) {
-			if(data.getMethodID().equals("receivePlugins")) {
-				// TODO Do something with the list of plugins.
-			} else if(data.getMethodID().equals("receiveClients")) {
-				receiveClients((AbstractPluginData<Set<Long>>) call.getPluginData().getData());
+			if(data.getMethodID().equals("receiveClientInfo")) {
+				recieveClientInfo((ClientInfo) data.getData());
+				broadcastClients();
+			} else if(data.getMethodID().equals("deleteClient")) {
+				deleteClient((ClientInfo) data.getData());
 			} else {
 				System.out.println("The methodID does not exist.");
 			}
@@ -51,52 +48,52 @@ public class SystemServerPlugin implements Serializable {
 			System.out.println("The method ID doesn't exist.");
 		}
 	}
-*/
+	
+	public void sendClientID(long id) {
+		AbstractPluginData<Long> data = new AbstractPluginData<Long>("recieveID", "SystemPlugin", id);
+		PluginCall call = new PluginCall("SystemPlugin", data, id);
+		connectionModel.getConnection(id).send(call);
+	}
 	
 	private void updateClients() {
-		Object[] connectionSet = ConnectionModel.getInstance().getConnectionList().toArray();
-		List<Long> currentIDs = new LinkedList<Long>();
+		Collection<ClientInfo> clients = connectionModel.getConnectionList().values();
 		
-		for(Object o : connectionSet) {
-			ConnectionThread connection = (ConnectionThread) o;
-			clients.add(connection.getId());
-			currentIDs.add(connection.getId());
+		for(ClientInfo client : clients) {
+			this.clients.add(client);
 		}
 		
-		clients.retainAll(currentIDs);
+		this.clients.retainAll(clients);
+		this.clients.add(new ClientInfo(-1, "Server", serverPlugins));
 	}
 	
-	private void updatePlugins() {
-		Object[] nameSet = pluginLogic.getPluginMap().keySet().toArray();
+	private void readPlugins() {
+		serverPlugins = new HashMap<String, String>(PluginLogic.getPluginMap().size(), 1);
+		Collection<String> pluginNames = PluginLogic.getPluginMap().keySet();
 		
-		for(Object o : nameSet){
-			String pluginName = o.toString();
-			String pluginVersion = pluginLogic.getPluginMap().get(pluginName).getClass().getAnnotation(Plugin.class).versionID();
-			plugins.put(pluginName, pluginVersion);
-		}
-		
-		nameSet = plugins.keySet().toArray();
-		
-		for(Object o : nameSet) {
-			String pluginName = o.toString();
-			
-			if(!pluginLogic.getPluginMap().containsKey(pluginName)) {
-				plugins.remove(pluginName);
-			}
+		for(String pluginName : pluginNames){
+			String pluginVersion = PluginLogic.getPluginMap().get(pluginName).getClass().getAnnotation(Plugin.class).versionID();
+			serverPlugins.put(pluginName, pluginVersion);
 		}
 	}
 	
-	public void sendClients(long id) {
+	private void sendClients(long id) {
 		updateClients();
 		// TODO Move the updateClients() call to where we actually update the List of connections to increase efficiency.
-		ConnectionModel.getInstance().getConnection(id)
-				.send(new PluginCall("SystemPlugin", new AbstractPluginData<Set<Long>>("receiveClients", "SystemPlugin", clients), id));
+		AbstractPluginData<List<ClientInfo>> data = new AbstractPluginData<List<ClientInfo>>("recieveClients", "SystemPlugin", clients);
+		PluginCall call = new PluginCall("SystemPlugin", data, id);
+		connectionModel.getConnection(id).send(call);
 	}
 	
-	public void sendPlugins(long id) {
-		updatePlugins();
-		// TODO Move the updatePlugins() call to where we actually update the HashMap of loaded Plugins to increase efficiency.
-		ConnectionModel.getInstance().getConnection(id)
-				.send(new PluginCall("SystemPlugin", new AbstractPluginData<HashMap<String, String>>("receivePlugins", "SystemPlugin", plugins), id));
+	private void recieveClientInfo(ClientInfo client) {
+		connectionModel.addClientInfo(client.getID(), client);
+	}
+	
+	private void deleteClient(ClientInfo client) {
+		connectionModel.removeConnection(connectionModel.getConnection(client.getID()));
+	}
+	
+	private void broadcastClients() {
+		for(ClientInfo client : clients) 
+			sendClients(client.getID());
 	}
 }

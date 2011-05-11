@@ -34,4 +34,8 @@ public class ServerLogic {
 	public static void setInfo(ClientInfo client) {
 		serverModel.setInfo(new ClientInfo(client));
 	}
+	
+	public static ClientInfo getClientInfo() {
+		return serverModel.getClientInfo();
+	}
 }

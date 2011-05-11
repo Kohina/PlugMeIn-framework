@@ -7,7 +7,7 @@ import falcons.utils.*;
 // TODO Finish implementing this class
 class ServerModel {
 	private static ServerModel instance;
-	private ClientInfo info;
+	private ClientInfo clientInfo;
 	private List<ClientInfo> clients = new ArrayList<ClientInfo>();
 	
 	static ServerModel getInstance(){
@@ -55,5 +55,9 @@ class ServerModel {
 		}
 		
 		return clients;
+	}
+	
+	public ClientInfo getClientInfo() {
+		return clientInfo;
 	}
 }

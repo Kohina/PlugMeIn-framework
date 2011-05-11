@@ -3,22 +3,18 @@ package falcons.client.network;
 import java.io.Serializable;
 import java.util.*;
 
+import falcons.client.model.ClientPreferencesLogic;
 import falcons.client.model.PluginLogic;
 import falcons.client.model.ServerLogic;
 import falcons.plugin.*;
 import falcons.plugin.utils.PluginCall;
+import falcons.utils.ClientInfo;
 
 @Plugin(pluginID = "SystemPlugin", versionID = "1.0")
 public class SystemClientPlugin implements Serializable {
 	
 	private static SystemClientPlugin instance = new SystemClientPlugin();
-	private Set<Long> clients;
-	private HashMap<String, String> plugins;
-	
-	private SystemClientPlugin() {
-		clients = new HashSet<Long>();
-		plugins = new HashMap<String, String>();
-	}
+	private List<ClientInfo> clients;
 	
 	/**
 	 * @return The only instance of this class.
@@ -31,12 +27,11 @@ public class SystemClientPlugin implements Serializable {
 		AbstractPluginData data = call.getPluginData();
 		
 		if (data.getVersionID().equals(this.getClass().getAnnotation(Plugin.class).versionID())) {
-			if(data.getMethodID().equals("receivePlugins")) {
-				// TODO Do something with the list of plugins.
+			if(data.getMethodID().equals("receiveID")) {
+				receiveID((Long) data.getData());
+				sendClientInfo();
 			} else if(data.getMethodID().equals("receiveClients")) {
-				receiveClients((Set<Long>) call.getPluginData().getData());
-			} else if(data.getMethodID().equals("receivePlugins")) {
-				receivePlugins((HashMap<String, String>) call.getPluginData().getData());
+				receiveClients((List<ClientInfo>) call.getPluginData().getData());
 			} else {
 				System.out.println("The methodID does not exist.");
 			}
@@ -47,39 +42,32 @@ public class SystemClientPlugin implements Serializable {
 		}
 	}
 	
-	private void receivePlugins(HashMap<String, String> plugins) {
-		// TODO Auto-generated method stub
-	}
-
-	private void receiveClients(Set<Long> clients) {
-		for(long client : clients) {
-			ServerLogic.addClient(client);
-		}
-	}
-
-	private void updatePlugins() {
-		Object[] nameSet = PluginLogic.getPluginMap().keySet().toArray();
+	private void receiveID(Long id) {
+		HashMap<String, String> plugins = new HashMap<String, String>(PluginLogic.getPluginMap().size(), 1);
+		Collection<String> pluginNames = PluginLogic.getPluginMap().keySet();
 		
-		for(Object o : nameSet){
-			String pluginName = o.toString();
+		for(String pluginName : pluginNames){
 			String pluginVersion = PluginLogic.getPluginMap().get(pluginName).getClass().getAnnotation(Plugin.class).versionID();
 			plugins.put(pluginName, pluginVersion);
 		}
-		
-		nameSet = plugins.keySet().toArray();
-		
-		for(Object o : nameSet) {
-			String pluginName = o.toString();
-			
-			if(!PluginLogic.getPluginMap().containsKey(pluginName)) {
-				plugins.remove(pluginName);
-			}
+		ServerLogic.setInfo(id, ClientPreferencesLogic.getName(), plugins);
+	}
+	
+	private void sendClientInfo() {
+		AbstractPluginData<ClientInfo> data = new AbstractPluginData<ClientInfo>("recieveClientInfo", "SystemPlugin", ServerLogic.getClientInfo());
+		PluginCall call = new PluginCall("SystemPlugin", data, -1);
+		ClientConnection.send(call);
+	}
+
+	private void receiveClients(List<ClientInfo> clients) {
+		for(ClientInfo client : clients) {
+			ServerLogic.addClient(client);
 		}
 	}
 	
-	public void sendPlugins(long id) {
-		updatePlugins();
-		// TODO Move the updatePlugins() call to where we actually update the HashMap of loaded Plugins to increase efficiency.
-		ClientConnection.send(new PluginCall("SystemPlugin", new AbstractPluginData<HashMap<String, String>>("receivePlugins", "SystemPlugin", plugins), id));
+	public void disconnect() {
+		AbstractPluginData<ClientInfo> data = new AbstractPluginData<ClientInfo>("deleteClient", "SystemPlugin", ServerLogic.getClientInfo());
+		PluginCall call = new PluginCall("SystemPlugin", data, -1);
+		ClientConnection.send(call);
 	}
 }

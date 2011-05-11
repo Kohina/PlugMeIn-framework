@@ -47,6 +47,10 @@ public class ConnectionModel {
 	public void addConnection(ConnectionThread thread) {
 		connections.put(thread, null);
 	}
+	
+	public void addClientInfo(long id, ClientInfo client) {
+		connections.put(getConnection(id), client);
+	}
 
 	public void removeConnection(ConnectionThread thread) {
 		connections.remove(thread);
