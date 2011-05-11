@@ -39,6 +39,7 @@ public class SystemServerPlugin implements Serializable {
 				broadcastClients();
 			} else if(data.getMethodID().equals("deleteClient")) {
 				deleteClient((ClientInfo) data.getData());
+				broadcastClients();
 			} else {
 				System.out.println("The methodID does not exist.");
 			}
