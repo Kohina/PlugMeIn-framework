@@ -24,7 +24,6 @@ public class AbstractPluginData<E> implements Serializable, Pluggable {
 	 * @param versionID
 	 *            The ID of the version of the Plugin.
 	 */
-	// TODO: Kan vara helt fel xD olol
 	public AbstractPluginData(String methodID, String versionID) {
 		this.methodID = methodID;
 		this.versionID = versionID;
