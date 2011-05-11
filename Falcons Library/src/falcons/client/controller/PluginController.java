@@ -32,10 +32,10 @@ class PluginController implements PluginEventListener {
 		Object returnObject = null;
 		switch (e) {
 		case GET_CLIENTS:
-			returnObject = DataController.getClients();
+			returnObject = MasterDataController.getClients();
 			break;
 		case GET_PLUGINMAP:
-			returnObject =  DataController.getPlugins();
+			returnObject =  MasterDataController.getPlugins();
 			break;
 		default:
 			break;

@@ -2,20 +2,27 @@ package falcons.client.controller;
 
 import java.util.HashMap;
 
+import falcons.client.model.ClientPreferencesLogic;
 import falcons.client.model.PluginLogic;
 import falcons.plugin.Pluggable;
 import falcons.utils.ClientTree;
 
-//TODO Should act a bit like the MasterController, only 
-//it is supposed to return Data from the models.
-public class DataController {
+public class MasterDataController {
 
 	static HashMap<String, Pluggable> getPlugins(){
 		return PluginLogic.getPluginMap();
 	}
 
 	static ClientTree getClients() {
-		// TODO FIX MODEL FOR CLIENTS ON THE SERVER.
-		return null;
+		// TODO KOLLA HÄR WEEEEEEW
+		return ServerLogic.getClient();
+	}
+	
+	static String getIp() {
+		return ClientPreferencesLogic.getIp();
+	}
+	
+	static int getPort() {
+		return ClientPreferencesLogic.getPort();
 	}
 }
