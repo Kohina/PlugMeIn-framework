@@ -13,7 +13,7 @@ public class ServerPreferencesLogic {
 	/**
 	 * Method that serializes the {@link ServerPreferencesModel} instance.
 	 */
-	public void savePreferences(){
+	public static void savePreferences(){
 		try {
 			serializer.write(ServerPreferencesModel.getInstance(), ServerPreferencesXML);
 		} catch (Exception e) {

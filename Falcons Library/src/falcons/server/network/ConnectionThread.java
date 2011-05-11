@@ -6,7 +6,7 @@ import java.net.Socket;
 
 import falcons.plugin.utils.PluginCall;
 
-//TODO Do the same thing to this as the ConnectionThread in the Client.
+// TODO Do the same thing to this as the ConnectionThread in the Client.
 public class ConnectionThread extends Thread{
 
 	private Socket socket = null;
