@@ -71,4 +71,12 @@ public class ClientPreferencesLogic {
 		ClientPreferencesModel.getInstance();
 		ClientPreferencesModel.setPort(port);
 	}
+	
+	public String getName(){
+		return ClientPreferencesModel.getName();
+	}
+	
+	public void setName(String name){
+		ClientPreferencesModel.setName(name);
+	}
 }

@@ -13,12 +13,15 @@ class ClientPreferencesModel {
 
 	@Element
 	private static String ip;
+	
+	@Element
+	private static String name;
 
 	public ClientPreferencesModel() {
 		// Do nasing.
 	}
 	
-	public static ClientPreferencesModel getInstance() {
+	static ClientPreferencesModel getInstance() {
 		if(instance == null){
 			instance = new ClientPreferencesModel();
 		}
@@ -28,28 +31,37 @@ class ClientPreferencesModel {
 	/**
 	 * @return the port
 	 */
-	public static int getPort() {
+	static int getPort() {
 		return port;
 	}
 
 	/**
 	 * @param port the port to set
 	 */
-	public static void setPort(int port) {
+	static void setPort(int port) {
 		ClientPreferencesModel.port = port;
 	}
 
 	/**
 	 * @return the ip
 	 */
-	public static String getIp() {
+	static String getIp() {
 		return ip;
 	}
 
 	/**
 	 * @param ip the ip to set
 	 */
-	public static void setIp(String ip) {
+	static void setIp(String ip) {
 		ClientPreferencesModel.ip = ip;
+	}
+
+	static String getName() {
+		String rname = name;
+		return rname;
+	}
+	
+	static void setName(String name) {
+		this.name = name;
 	}
 }
