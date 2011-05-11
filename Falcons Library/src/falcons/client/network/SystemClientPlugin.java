@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.*;
 
 import falcons.client.model.PluginLogic;
+import falcons.client.model.ServerLogic;
 import falcons.plugin.*;
 import falcons.plugin.utils.PluginCall;
 
@@ -51,7 +52,9 @@ public class SystemClientPlugin implements Serializable {
 	}
 
 	private void receiveClients(Set<Long> clients) {
-		// TODO Auto-generated method stub
+		for(long client : clients) {
+			ServerLogic.addClient(client);
+		}
 	}
 
 	private void updatePlugins() {

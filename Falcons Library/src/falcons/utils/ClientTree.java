@@ -3,13 +3,13 @@ package falcons.utils;
 import java.util.*;
 
 public class ClientTree {
-	private HashMap<Long, HashMap<String, String>> clientMap;
+	private HashMap<ClientInfo, HashMap<String, String>> clientMap;
 	
 	/*
 	 * The empty constructor which initiates an empty ClientTree.
 	 */
 	public ClientTree() {
-		clientMap = new HashMap<Long, HashMap<String, String>>();
+		clientMap = new HashMap<ClientInfo, HashMap<String, String>>();
 	}
 	
 	/*
@@ -18,41 +18,8 @@ public class ClientTree {
 	 * @param id	The id of the client to add.
 	 * @param plugins	The pluginMap containing all the plugins tied to the specified client. 
 	 */
-	public ClientTree(long id, HashMap<String, String> plugins) {
-		clientMap = new HashMap<Long, HashMap<String, String>>();
-		
-		clientMap.put(id, plugins);
-	}
-	
-	/*
-	 * Initiates a new ClientTree containing all the clients in the collection, but without any plugins connected to them.
-	 * 
-	 * @param clients	A collection of all the clients to add.
-	 */
-	public ClientTree(Collection<Long> clients) {
-		clientMap = new HashMap<Long, HashMap<String, String>>(clients.size());
-		Iterator<Long> iterator = clients.iterator();
-		
-		while(iterator.hasNext()) {
-			clientMap.put(iterator.next(), null);
-		}
-	}
-	
-	/*
-	 * Initiates a new ClientTree containing all the clients in the collection and with plugins connected to the client node.
-	 * 
-	 * @param clients	A collection of all the clients to add.
-	 * @param client	The client to connect the plugins to.
-	 * @param plugins	A HashMap<String, String> of all the plugins to connect to client.
-	 */
-	public ClientTree(Set<Long> clients, long client, HashMap<String, String> plugins) {
-		clientMap = new HashMap<Long, HashMap<String, String>>(clients.size());
-
-		Iterator<Long> iterator = clients.iterator();
-		
-		while(iterator.hasNext()) {
-			clientMap.put(iterator.next(), null);
-		}
+	public ClientTree(ClientInfo client, HashMap<String, String> plugins) {
+		clientMap = new HashMap<ClientInfo, HashMap<String, String>>();
 		
 		clientMap.put(client, plugins);
 	}
@@ -63,11 +30,11 @@ public class ClientTree {
 	 * @param clientTree	The ClientTree to be copied.
 	 */
 	public ClientTree(ClientTree clientTree) {
-		clientMap = new HashMap<Long, HashMap<String, String>>(clientTree.size());
-		Iterator<Long> clientIt = clientTree.iterator();
+		clientMap = new HashMap<ClientInfo, HashMap<String, String>>(clientTree.size());
+		Iterator<ClientInfo> clientIt = clientTree.iterator();
 		
 		while(clientIt.hasNext()) {
-			long currentClient = clientIt.next();
+			ClientInfo currentClient = clientIt.next();
 			Iterator<String> keyIt = clientTree.keyIterator(currentClient);
 			Iterator<String> valueIt = clientTree.valueIterator(currentClient);
 			HashMap<String, String> pluginMap = new HashMap<String, String>(clientTree.size(currentClient));
@@ -86,8 +53,8 @@ public class ClientTree {
 	 * @param id	The client's id.
 	 * @param plugins	The client's plugins.
 	 */
-	public void add(long id, HashMap<String, String> plugins) {
-		clientMap.put(id, plugins);
+	public void add(ClientInfo client, HashMap<String, String> plugins) {
+		clientMap.put(client, plugins);
 	}
 	
 	/*
@@ -95,14 +62,24 @@ public class ClientTree {
 	 * 
 	 * @param id	The client's id.
 	 */
-	public void add(long id) {
-		clientMap.put(id, null);
+	public void add(ClientInfo client) {
+		clientMap.put(client, null);
+	}
+	
+	public void add(ClientTree clientTree) {
+		Iterator<ClientInfo> clientIt = clientTree.iterator();
+		
+		while(clientIt.hasNext()) {
+			ClientInfo currentClient = clientIt.next();
+			
+			clientMap.put(currentClient, (HashMap<String, String>) clientTree.getPlugins(currentClient).clone());
+		}
 	}
 	
 	/*
 	 * Returns an Iterator<Long> which iterates over all the clients in the tree.
 	 */
-	public Iterator<Long> iterator() {
+	public Iterator<ClientInfo> iterator() {
 		return clientMap.keySet().iterator();
 	}
 	
@@ -111,8 +88,8 @@ public class ClientTree {
 	 * 
 	 * @param id	The id of the client whose pluginIDs you want to iterate over.
 	 */
-	public Iterator<String> keyIterator(long id) {
-		return clientMap.get(id).keySet().iterator();
+	public Iterator<String> keyIterator(ClientInfo client) {
+		return clientMap.get(client).keySet().iterator();
 	}
 	
 	/*
@@ -120,14 +97,14 @@ public class ClientTree {
 	 * 
 	 * @param id	The id of the client whose versionIDs you want to iterate over.
 	 */
-	public Iterator<String> valueIterator(long id) {
-		return clientMap.get(id).values().iterator();
+	public Iterator<String> valueIterator(ClientInfo client) {
+		return clientMap.get(client).values().iterator();
 	}
 	
 	/*
 	 * Returns the actual HashMap which the ClientTree is based around.
 	 */
-	private HashMap<Long, HashMap<String, String>> getClientMap() {
+	private HashMap<ClientInfo, HashMap<String, String>> getClientMap() {
 		return clientMap;
 	}
 	
@@ -143,8 +120,8 @@ public class ClientTree {
 	 * 
 	 * @param id	The client's id.
 	 */
-	public int size(long id) {
-		return clientMap.get(id).size();
+	public int size(ClientInfo client) {
+		return clientMap.get(client).size();
 	}
 	
 	/*
@@ -152,7 +129,8 @@ public class ClientTree {
 	 * 
 	 * @param id	The client's id.
 	 */
-	public HashMap<String, String> getPlugins(long id) {
-		return (HashMap<String, String>) clientMap.get(id).clone();
+	public HashMap<String, String> getPlugins(ClientInfo client) {
+		
+		return (HashMap<String, String>) clientMap.get(client).clone();
 	}
 }

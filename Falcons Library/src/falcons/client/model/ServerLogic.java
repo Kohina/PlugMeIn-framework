@@ -9,23 +9,23 @@ public class ServerLogic {
 		return serverModel.getPlugins(id);
 	}
 	
-	public void addClient(long id, HashMap<String, String> plugins) {
+	public static void addClient(long id, HashMap<String, String> plugins) {
 		serverModel.addClient(id, plugins);
 	}
 	
-	public void addClient(long id) {
+	public static void addClient(long id) {
 		serverModel.addClient(id);
 	}
 	
-	public int numberOfClients() {
+	public static int numberOfClients() {
 		return serverModel.numberOfClients();
 	}
 	
-	public int numberOfPlugins(long id) {
+	public static int numberOfPlugins(long id) {
 		return serverModel.numberOfPlugins(id);
 	}
 	
-	public void setID(long id) {
+	public static void setID(long id) {
 		serverModel.setID(id);
 	}
 }
