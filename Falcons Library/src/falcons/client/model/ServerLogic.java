@@ -7,12 +7,12 @@ import falcons.utils.ClientInfo;
 public class ServerLogic {
 	private static ServerModel serverModel = ServerModel.getInstance();
 	
-	public static HashMap<String, String> getPlugins(ClientInfo client) {
-		return serverModel.getPlugins(client);
+	public static HashMap<String, String> getPlugins(long id) {
+		return serverModel.getPlugins(id);
 	}
 	
-	public static void addClient(ClientInfo client, HashMap<String, String> plugins) {
-		serverModel.addClient(client, plugins);
+	public static void addClient(long id, String name, HashMap<String, String> plugins) {
+		serverModel.addClient(new ClientInfo(id, name, plugins));
 	}
 	
 	public static void addClient(ClientInfo client) {
@@ -23,15 +23,15 @@ public class ServerLogic {
 		return serverModel.numberOfClients();
 	}
 	
-	public static int numberOfPlugins(ClientInfo client) {
-		return serverModel.numberOfPlugins(client);
+	public static int numberOfPlugins(long id) {
+		return serverModel.numberOfPlugins(id);
 	}
 	
-	public static void setInfo(long id, String name) {
-		serverModel.setInfo(id, name);
+	public static void setInfo(long id, String name, HashMap<String, String> plugins) {
+		serverModel.setInfo(new ClientInfo(id, name, plugins));
 	}
 	
 	public static void setInfo(ClientInfo client) {
-		serverModel.setInfo(client.getID(), client.getName());
+		serverModel.setInfo(new ClientInfo(client));
 	}
 }

@@ -1,14 +1,14 @@
 package falcons.client.model;
 
-import java.util.HashMap;
+import java.util.*;
 
 import falcons.utils.*;
 
 // TODO Finish implementing this class
 class ServerModel {
 	private static ServerModel instance;
-	private ClientTree clientTree;
 	private ClientInfo info;
+	private List<ClientInfo> clients = new ArrayList<ClientInfo>();
 	
 	static ServerModel getInstance(){
 		if(instance == null){
@@ -17,27 +17,43 @@ class ServerModel {
 		return instance;
 	}
 	
-	public HashMap<String, String> getPlugins(ClientInfo client) {
-		return clientTree.getPlugins(client);
-	}
-	
-	public void addClient(ClientInfo client, HashMap<String, String> plugins) {
-		clientTree.add(client, plugins);
+	public HashMap<String, String> getPlugins(long id) {
+		return getClientWithID(id).getPlugins();
 	}
 	
 	public void addClient(ClientInfo client) {
-		clientTree.add(client);
+		clients.add(client);
 	}
 	
 	public int numberOfClients() {
-		return clientTree.size();
+		return clients.size();
 	}
 	
-	public int numberOfPlugins(ClientInfo client) {
-		return clientTree.size(client);
+	public int numberOfPlugins(long id) {
+		return getClientWithID(id).getPlugins().size();
 	}
 	
-	public void setInfo(long id, String name) {
-		info = new ClientInfo(id, new String(name));
+	public void setInfo(ClientInfo client) {
+		info = client;
+	}
+	
+	private ClientInfo getClientWithID(long id) {
+		for(ClientInfo client : clients) 
+			if(client.getID() == id)
+				return client;
+		return null;
+	}
+	
+	public List<ClientInfo> getClients() {
+		List<ClientInfo> clients = new ArrayList<ClientInfo>(this.clients.size());
+		Iterator<ClientInfo> it = this.clients.iterator();
+		
+		while(it.hasNext()) {
+			ClientInfo currentClient = it.next();
+			
+			clients.add(new ClientInfo(currentClient.getID(), currentClient.getName(), currentClient.getPlugins()));
+		}
+		
+		return clients;
 	}
 }
