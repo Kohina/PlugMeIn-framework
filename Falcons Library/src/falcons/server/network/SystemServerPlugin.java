@@ -26,7 +26,7 @@ public class SystemServerPlugin implements Serializable {
 	/**
 	 * @return The only instance of this class.
 	 */
-	public SystemServerPlugin getInstance() {
+	public static SystemServerPlugin getInstance() {
 		return instance;
 	}
 	
@@ -35,7 +35,7 @@ public class SystemServerPlugin implements Serializable {
 		
 		if (data.getVersionID().equals(this.getClass().getAnnotation(Plugin.class).versionID())) {
 			if(data.getMethodID().equals("receiveClientInfo")) {
-				recieveClientInfo((ClientInfo) data.getData());
+				receiveClientInfo((ClientInfo) data.getData());
 				broadcastClients();
 			} else if(data.getMethodID().equals("deleteClient")) {
 				deleteClient((ClientInfo) data.getData());
@@ -50,7 +50,7 @@ public class SystemServerPlugin implements Serializable {
 	}
 	
 	public void sendClientID(long id) {
-		AbstractPluginData<Long> data = new AbstractPluginData<Long>("recieveID", "SystemPlugin", id);
+		AbstractPluginData<Long> data = new AbstractPluginData<Long>("receiveID", "SystemPlugin", id);
 		PluginCall call = new PluginCall("SystemPlugin", data, id);
 		connectionModel.getConnection(id).send(call);
 	}
@@ -79,12 +79,12 @@ public class SystemServerPlugin implements Serializable {
 	private void sendClients(long id) {
 		updateClients();
 		// TODO Move the updateClients() call to where we actually update the List of connections to increase efficiency.
-		AbstractPluginData<List<ClientInfo>> data = new AbstractPluginData<List<ClientInfo>>("recieveClients", "SystemPlugin", clients);
+		AbstractPluginData<List<ClientInfo>> data = new AbstractPluginData<List<ClientInfo>>("receiveClients", "SystemPlugin", clients);
 		PluginCall call = new PluginCall("SystemPlugin", data, id);
 		connectionModel.getConnection(id).send(call);
 	}
 	
-	private void recieveClientInfo(ClientInfo client) {
+	private void receiveClientInfo(ClientInfo client) {
 		connectionModel.addClientInfo(client.getID(), client);
 	}
 	

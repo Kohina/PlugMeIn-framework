@@ -54,7 +54,7 @@ public class SystemClientPlugin implements Serializable {
 	}
 	
 	private void sendClientInfo() {
-		AbstractPluginData<ClientInfo> data = new AbstractPluginData<ClientInfo>("recieveClientInfo", "SystemPlugin", ServerLogic.getClientInfo());
+		AbstractPluginData<ClientInfo> data = new AbstractPluginData<ClientInfo>("receiveClientInfo", "SystemPlugin", ServerLogic.getClientInfo());
 		PluginCall call = new PluginCall("SystemPlugin", data, -1);
 		ClientConnection.send(call);
 	}
