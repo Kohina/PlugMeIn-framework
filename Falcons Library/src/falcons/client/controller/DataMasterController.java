@@ -7,7 +7,7 @@ import falcons.client.model.PluginLogic;
 import falcons.plugin.Pluggable;
 import falcons.utils.ClientTree;
 
-public class MasterDataController {
+public class DataMasterController {
 
 	static HashMap<String, Pluggable> getPlugins(){
 		return PluginLogic.getPluginMap();
