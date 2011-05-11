@@ -1,9 +1,6 @@
 package falcons.client.controller;
 
-import java.util.HashMap;
-
 import falcons.client.model.PluginLogic;
-import falcons.plugin.Pluggable;
 import falcons.plugin.utils.PluginEvent;
 import falcons.plugin.utils.PluginEvent.PluginEventType;
 import falcons.plugin.utils.PluginEventListener;
