@@ -13,6 +13,18 @@ public class ClientTree {
 	}
 	
 	/*
+	 * Creates a new ClientTree containing the specified client and plugins.
+	 * 
+	 * @param id	The id of the client to add.
+	 * @param plugins	The pluginMap containing all the plugins tied to the specified client. 
+	 */
+	public ClientTree(long id, HashMap<String, String> plugins) {
+		clientMap = new HashMap<Long, HashMap<String, String>>();
+		
+		clientMap.put(id, plugins);
+	}
+	
+	/*
 	 * Initiates a new ClientTree containing all the clients in the collection, but without any plugins connected to them.
 	 * 
 	 * @param clients	A collection of all the clients to add.
@@ -83,7 +95,7 @@ public class ClientTree {
 	 * 
 	 * @param id	The client's id.
 	 */
-	public void addClient(long id) {
+	public void add(long id) {
 		clientMap.put(id, null);
 	}
 	
@@ -99,7 +111,7 @@ public class ClientTree {
 	 * 
 	 * @param id	The id of the client whose pluginIDs you want to iterate over.
 	 */
-	private Iterator<String> keyIterator(long id) {
+	public Iterator<String> keyIterator(long id) {
 		return clientMap.get(id).keySet().iterator();
 	}
 	
@@ -108,7 +120,7 @@ public class ClientTree {
 	 * 
 	 * @param id	The id of the client whose versionIDs you want to iterate over.
 	 */
-	private Iterator<String> valueIterator(long id) {
+	public Iterator<String> valueIterator(long id) {
 		return clientMap.get(id).values().iterator();
 	}
 	

@@ -20,4 +20,24 @@ class ServerModel {
 	public HashMap<String, String> getPlugins(long id) {
 		return clientTree.getPlugins(id);
 	}
+	
+	public void addClient(long id, HashMap<String, String> plugins) {
+		clientTree.add(id, plugins);
+	}
+	
+	public void addClient(long id) {
+		clientTree.add(id);
+	}
+	
+	public int numberOfClients() {
+		return clientTree.size();
+	}
+	
+	public int numberOfPlugins(long id) {
+		return clientTree.size(id);
+	}
+	
+	public void setID(long id) {
+		this.id = id;
+	}
 }
