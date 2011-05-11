@@ -5,6 +5,8 @@ import java.io.ObjectOutputStream;
 
 // TODO: Check
 public class PluginEvent {
+	
+	private PluginCall call;
 
 	public static enum PluginEventType{
 		// TODO: Comment plix
@@ -26,6 +28,11 @@ public class PluginEvent {
 		typeOfEvent = e;
 	}
 	
+	public PluginEvent(PluginEventType e, PluginCall call){
+		typeOfEvent = e;
+		this.call = call;
+	}
+	
 	/**
 	 * Returns the type of the event
 	 * 
@@ -33,5 +40,13 @@ public class PluginEvent {
 	 */
 	public PluginEventType getTypeOfEvent(){
 		return typeOfEvent;
+	}
+	
+	public void addPluginCall(PluginCall call) {
+		this.call = call;
+	}
+
+	public PluginCall getPluginCall() {
+		return call;
 	}
 }
