@@ -2,10 +2,10 @@ package falcons.client;
 
 public class Main {
 
-	private static Client client;
+	private static ClientImpl client;
 
 	public static void main(String args[]) {
-		client = new Client();
+		client = new ClientImpl();
 		client.run();
 	}
 
