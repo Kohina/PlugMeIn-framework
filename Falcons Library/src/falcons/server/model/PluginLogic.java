@@ -11,7 +11,6 @@ import falcons.pluginmanager.PluginManager;
 public class PluginLogic {
 	
 	private static PluginLogic instance;
-	private PluginManager pluginLoader = new PluginManager();
 	
 	private PluginLogic(){
 		
@@ -25,8 +24,8 @@ public class PluginLogic {
 		}
 	}
 	
-	public void loadPlugins(){
-		List<Pluggable> pluginList = pluginLoader.loadPlugins();
+	public static void loadPlugins(){
+		List<Pluggable> pluginList = PluginManager.loadPlugins();
 		HashMap<String, Pluggable> pluginMap = new HashMap<String, Pluggable>();
 		for(Pluggable p : pluginList){
 			pluginMap.put(p.getClass().getAnnotation(Plugin.class).pluginID(), p);
