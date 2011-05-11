@@ -70,4 +70,14 @@ public class ClientConnection extends Thread{
 			System.err.print("Could not write to the output stream.");
 		}
 	}
+	
+	public void closeConnection(){
+		try {
+			socket.close();
+			listeningThread = null;
+		} catch (IOException e) {
+			System.out.println("There was a I/O Exception when the connection was closed.");
+			e.printStackTrace();
+		}
+	}
 }
