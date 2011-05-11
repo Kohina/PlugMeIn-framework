@@ -2,6 +2,7 @@ package falcons.server.model;
 
 import java.util.*;
 
+import falcons.client.model.ServerLogic;
 import falcons.server.network.ConnectionThread;
 
 public class ConnectionModel {
@@ -61,5 +62,13 @@ public class ConnectionModel {
 	public List<ConnectionThread> getConnectionList() {
 		// TODO Should be getConnection(), we don't want something to change the list. (Or perhaps return a deep copy of the list?)
 		return connections;
+	}
+
+	public static HashMap<String, String> getClientPlugins(long clientID) {
+		return ServerLogic.getPlugins(clientID);
+	}
+
+	public static Set<ClientInfo> getClients() {
+		return ServerLogic.getClients();
 	}
 }

@@ -38,7 +38,7 @@ public class PluginLogic {
 	 * @return Returns a map containing all the currently loaded plugins with
 	 *         their pluginID as key.
 	 */
-	public HashMap<String, AbstractPlugin> getPluginMap() {
+	public static HashMap<String, AbstractPlugin> getPluginMap() {
 		return PluginModel.getPlugins();
 	}
 }

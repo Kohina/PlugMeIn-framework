@@ -19,7 +19,7 @@ public class DataMasterController {
 			returnObject = ServerPreferencesLogic.getPort();
 			break;
 		case GET_CLIENTPLUGINS:
-			returnObject = ConnectionModel.getPlugins(Long.parseLong(e.getId()));
+			returnObject = ConnectionModel.getClientPlugins(Long.parseLong(e.getId()));
 			break;
 		case GET_CLIENTS:
 			returnObject = ConnectionModel.getClients();
