@@ -31,37 +31,37 @@ class ClientPreferencesModel {
 	/**
 	 * @return the port
 	 */
-	static int getPort() {
+	int getPort() {
 		return port;
 	}
 
 	/**
 	 * @param port the port to set
 	 */
-	static void setPort(int port) {
+	void setPort(int port) {
 		ClientPreferencesModel.port = port;
 	}
 
 	/**
 	 * @return the ip
 	 */
-	static String getIp() {
+	String getIp() {
 		return ip;
 	}
 
 	/**
 	 * @param ip the ip to set
 	 */
-	static void setIp(String ip) {
+	void setIp(String ip) {
 		ClientPreferencesModel.ip = ip;
 	}
 
-	static String getName() {
+	String getName() {
 		String rname = name;
 		return rname;
 	}
 	
-	static void setName(String name) {
+	void setName(String name) {
 		this.name = name;
 	}
 }
