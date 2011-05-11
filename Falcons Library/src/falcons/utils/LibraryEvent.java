@@ -16,16 +16,7 @@ public class LibraryEvent {
 		/**
 		 * Tells the controller that is should read the preferences from the ClientPreferences.xml
 		 */
-		READ_PREFERENCES,
-		/**
-		 * Tells the controller that it should send the currently chosen IP to the View.
-		 */
-		GET_IP,
-		/**
-		 * Tells the controller that it should send the currently chosen port to the View.
-		 */
-		GET_PORT,
-		
+		READ_PREFERENCES,		
 		/*
 		 * 
 		 * PluginEvents
@@ -34,11 +25,7 @@ public class LibraryEvent {
 		/**
 		 * Tells the controller that it should load all plugins inside the "/plugins/" folder.
 		 */
-		LOAD_PLUGINS,
-		/**
-		 * Tells the controller that it should send all the currently loaded plugins to the View.
-		 */
-		GET_PLUGINS
+		LOAD_PLUGINS
 	}
 
 	private LibraryEventType typeOfEvent;

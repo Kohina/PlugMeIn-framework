@@ -31,17 +31,9 @@ public class ClientMasterController {
 		LibraryEventType type = e.getEventType();
 
 		switch (type) {
-		case GET_IP:
-			// TODO What do we do when we need to return something?!
-			break;
-		case GET_PLUGINS:
-			// TODO What do we do when we need to return something?!
-			break;
+		
 		case LOAD_PLUGINS:
 			pluginCont.loadPlugins();
-			break;
-		case GET_PORT:
-			// TODO What do we do when we need to return something?!
 			break;
 		case READ_PREFERENCES:
 			prefCont.readPreferences();
