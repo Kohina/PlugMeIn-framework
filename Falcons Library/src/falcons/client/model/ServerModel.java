@@ -2,13 +2,13 @@ package falcons.client.model;
 
 import java.util.HashMap;
 
-import falcons.utils.ClientTree;
+import falcons.utils.*;
 
 // TODO Finish implementing this class
 class ServerModel {
 	private static ServerModel instance;
 	private ClientTree clientTree;
-	private long id;
+	private ClientInfo info;
 	
 	static ServerModel getInstance(){
 		if(instance == null){
@@ -17,27 +17,27 @@ class ServerModel {
 		return instance;
 	}
 	
-	public HashMap<String, String> getPlugins(long id) {
-		return clientTree.getPlugins(id);
+	public HashMap<String, String> getPlugins(ClientInfo client) {
+		return clientTree.getPlugins(client);
 	}
 	
-	public void addClient(long id, HashMap<String, String> plugins) {
-		clientTree.add(id, plugins);
+	public void addClient(ClientInfo client, HashMap<String, String> plugins) {
+		clientTree.add(client, plugins);
 	}
 	
-	public void addClient(long id) {
-		clientTree.add(id);
+	public void addClient(ClientInfo client) {
+		clientTree.add(client);
 	}
 	
 	public int numberOfClients() {
 		return clientTree.size();
 	}
 	
-	public int numberOfPlugins(long id) {
-		return clientTree.size(id);
+	public int numberOfPlugins(ClientInfo client) {
+		return clientTree.size(client);
 	}
 	
-	public void setID(long id) {
-		this.id = id;
+	public void setInfo(long id, String name) {
+		info = new ClientInfo(id, new String(name));
 	}
 }
