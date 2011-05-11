@@ -8,7 +8,7 @@ import falcons.server.network.ConnectionThread;
 public class ConnectionModel {
 	
 	private static ConnectionModel instance = new ConnectionModel();
-	private List<ConnectionThread> connections = new ArrayList<ConnectionThread>();
+	private static List<ConnectionThread> connections = new ArrayList<ConnectionThread>();
 	
 	private ConnectionModel() {
 		//Do Nasing.
@@ -26,7 +26,7 @@ public class ConnectionModel {
 	 * @param id The ID of the thread wanted.
 	 * @return Always check if the returned value is null, if it's null the thread was not found.
 	 */
-	public ConnectionThread getConnection(long id) {
+	public static ConnectionThread getConnection(Long id) {
 		boolean found = false;
 		for(int i = 0;i<connections.size()-1; i++){
 			if(connections.get(i).getId() == id){

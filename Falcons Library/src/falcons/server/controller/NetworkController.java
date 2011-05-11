@@ -1,6 +1,11 @@
 package falcons.server.controller;
 
-//TODO: This controller should handle all the networktraffic.
+import falcons.plugin.utils.PluginCall;
+import falcons.server.model.ConnectionModel;
+
 public class NetworkController {
+	static void send(PluginCall call){
+		ConnectionModel.getConnection(call.getDestination()).send(call);
+	}
 
 }
