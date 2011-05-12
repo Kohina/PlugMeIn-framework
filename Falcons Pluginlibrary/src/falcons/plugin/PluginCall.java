@@ -1,10 +1,8 @@
-package falcons.plugin.utils;
+package falcons.plugin;
 
 import java.io.Serializable;
 
-import falcons.plugin.AbstractPlugin;
-import falcons.plugin.AbstractPluginData;
-import falcons.plugin.Plugin;
+
 
 
 public class PluginCall implements Serializable {

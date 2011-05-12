@@ -2,6 +2,7 @@ package falcons.plugin;
 
 import java.io.Serializable;
 
+
 public class AbstractPluginData<E> implements Serializable, Pluggable {
 
 	private final String methodID;

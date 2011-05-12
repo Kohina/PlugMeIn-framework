@@ -1,7 +1,8 @@
-package falcons.plugin.utils;
+package falcons.plugin;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+
 
 public class PluginEvent {
 	
