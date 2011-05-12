@@ -76,7 +76,7 @@ public final class ClientConnection extends Thread{
 	 *            The PluginCall which should be sent to the client.
 	 * @throws IOException
 	 */
-	public void send(PluginCall call) {
+	public static void send(PluginCall call) {
 		try {
 			out.writeObject(call);
 		} catch (IOException e) {
