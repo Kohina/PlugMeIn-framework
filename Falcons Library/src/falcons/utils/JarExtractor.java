@@ -73,7 +73,7 @@ class JarExtractor {
 
 				if (!newFileDirectory || newFile.toString().endsWith(".class")) {
 					fileoutputstream = new FileOutputStream(
-							System.getProperty("User.dir") + File.separator
+							System.getProperty("user.dir") + File.separator
 									+ "plugins" + File.separator + entryName);
 
 					while ((n = jarinputstream.read(buf, 0, 1024)) > -1)

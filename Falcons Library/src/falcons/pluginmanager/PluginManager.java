@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import falcons.plugin.AbstractPlugin;
 import falcons.plugin.Pluggable;
 import falcons.plugin.Plugin;
 import falcons.utils.FileScanner;
@@ -23,10 +24,7 @@ public class PluginManager {
 			pluginName = pluginName.replace(pluginPath, "");
 			Class<Pluggable> c = (Class<Pluggable>) pluginLoader
 					.findClass(pluginName);
-			// TODO Fix so that we check if the class has got the plugin
-			// annotation.
-			classList.add(c);
-			if (c.getClass().getAnnotation(Plugin.class) != null) {
+			if (c.getAnnotation(Plugin.class) != null) {
 				classList.add(c);
 			}
 		}
@@ -40,7 +38,9 @@ public class PluginManager {
 		for (Class<?> c : classList) {
 			try {
 				Pluggable cls = (Pluggable) c.newInstance();
-				pluginList.add(cls);
+				if (cls instanceof AbstractPlugin) {
+					pluginList.add(cls);
+				}
 			} catch (InstantiationException e) {
 				System.out
 						.println("PluginLoader could not instantiate the plugin");
