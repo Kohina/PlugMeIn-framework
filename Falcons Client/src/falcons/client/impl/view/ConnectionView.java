@@ -18,6 +18,7 @@ import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.border.TitledBorder;
 
+import falcons.client.impl.ClientImpl;
 import falcons.client.impl.Main;
 import falcons.utils.LibraryEvent;
 import falcons.utils.LibraryEvent.LibraryEventType;
@@ -168,11 +169,11 @@ public class ConnectionView extends javax.swing.JFrame implements
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == connectButton) {
-			if (Main.client.connected() == false) {
-				Main.client.connect();
+			if (ClientImpl.client.connected() == false) {
+				ClientImpl.client.connect();
 				connectButton.setText("Disconnect");
 			}else {
-				Main.client.disconnect();
+				ClientImpl.client.disconnect();
 				connectButton.setText("Connect");
 			}
 		}

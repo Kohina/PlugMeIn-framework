@@ -17,7 +17,7 @@ public class ClientImpl{
 	private ClientView clientView;
 	private ConnectionView connectionView;
 	private ClientSystemTray systemTray;
-	private Client client;
+	public static Client client;
 
 	public static final File DIR = new File(System.getProperty("user.dir"));
 
