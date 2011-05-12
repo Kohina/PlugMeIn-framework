@@ -9,18 +9,13 @@ import falcons.plugin.utils.PluginCall;
 
 public class ServerDataInterpreter {
 
-	private boolean clientInterpreter;
+	private boolean serverInterpreter;
 	private static ServerDataInterpreter instance;
 
 	/**
-	 * The Constructor for the DataInterpreter. Takes a pluginModel as a
-	 * parameter.
-	 * 
-	 * @param model
-	 *            The list of all currently loaded plugins.
+	 * The Constructor for the DataInterpreter. 
 	 */
 	private ServerDataInterpreter() {
-		this.clientInterpreter = clientInterpreter;
 	}
 
 	public static ServerDataInterpreter getInstance() {
@@ -40,7 +35,7 @@ public class ServerDataInterpreter {
 	public void interpret(PluginCall call) {
 		long destination = call.getDestination();
 
-		if (clientInterpreter) {
+		if (serverInterpreter) {
 			String pluginName = call.getPluginID();
 			falcons.server.model.PluginLogic.getInstance().getPluginMap().get(pluginName).receiveCall(call);
 		}
