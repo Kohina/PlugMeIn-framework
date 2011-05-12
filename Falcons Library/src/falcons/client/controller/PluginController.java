@@ -2,14 +2,19 @@ package falcons.client.controller;
 
 import falcons.client.model.PluginLogic;
 import falcons.client.model.ServerLogic;
+import falcons.plugin.AbstractPlugin;
 import falcons.plugin.PluginEvent;
 import falcons.plugin.PluginEventListener;
 import falcons.plugin.PluginEvent.PluginEventType;
 
 class PluginController implements PluginEventListener {
-	
+
 	void loadPlugins(){
 		PluginLogic.loadPlugins();
+		Object[] keys = PluginLogic.getPluginMap().keySet().toArray();
+		for(Object o : keys){
+			((AbstractPlugin) PluginLogic.getPluginMap().get(o)).addEventListener(this);
+		}
 	}
 
 	@Override
@@ -21,7 +26,7 @@ class PluginController implements PluginEventListener {
 			break;
 		default:
 			break;
-		}		
+		}
 	}
 
 	@Override

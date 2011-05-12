@@ -38,9 +38,7 @@ public class PluginManager {
 		for (Class<?> c : classList) {
 			try {
 				Pluggable cls = (Pluggable) c.newInstance();
-				if (cls instanceof AbstractPlugin) {
 					pluginList.add(cls);
-				}
 			} catch (InstantiationException e) {
 				System.out
 						.println("PluginLoader could not instantiate the plugin");
