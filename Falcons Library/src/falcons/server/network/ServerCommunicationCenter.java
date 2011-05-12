@@ -18,7 +18,7 @@ public class ServerCommunicationCenter implements Runnable {
 
 	/**
 	 * Contructor for the CommunicationCenter.
-	 * 
+	 *
 	 * @param interpreter
 	 *            The DataInterpreter that's being used by the client.
 	 * @param ip
@@ -37,7 +37,6 @@ public class ServerCommunicationCenter implements Runnable {
 			System.err
 					.println("Couldn't get I/O for the connection to the client");
 		}
-		run();
 	}
 
 	public void server() throws IOException {

@@ -7,7 +7,6 @@ public class ServerMasterController {
 
 	private ServerPreferencesController prefCont;
 	private PluginController pluginCont;
-	private NetworkController netCont;
 
 	/**
 	 * Constructor, instantiates all the sub-controllers.
@@ -15,14 +14,13 @@ public class ServerMasterController {
 	public ServerMasterController() {
 		prefCont = new ServerPreferencesController();
 		pluginCont = new PluginController();
-		netCont = new NetworkController(); //TODO Remove?
 	}
 
 	/**
 	 * Called by the Server-object when actionPerformed is called from the
 	 * ServerView. Determines which type of action was performed and asks the
 	 * correct sub-controller to handle it.
-	 * 
+	 *
 	 * @param e
 	 *            The ServerEvent associated with the action that the View was
 	 *            asking for.
@@ -31,7 +29,7 @@ public class ServerMasterController {
 		LibraryEventType type = e.getEventType();
 
 		switch (type) {
-		
+
 		case LOAD_PLUGINS:
 			pluginCont.loadPlugins();
 			break;

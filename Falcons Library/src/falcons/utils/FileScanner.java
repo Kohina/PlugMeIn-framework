@@ -9,7 +9,7 @@ public class FileScanner {
 		List<File> files = new ArrayList<File>();
 		JarExtractor extractor = new JarExtractor();
 		File[] entries = path.listFiles();
-		
+
 		if(entries != null){
 			for(File f : entries){
 				if(!f.getAbsolutePath().endsWith(".jar") && !f.getAbsolutePath().endsWith(".class")){
@@ -32,7 +32,7 @@ public class FileScanner {
 						files.add(f);
 					}
 				} else if (f.isDirectory()) {
-					f.delete();
+					System.out.println(f + " was deleted: " + f.delete());
 				} else {
 					System.out
 							.println("There were no files inside the plugins directory");
@@ -41,7 +41,7 @@ public class FileScanner {
 		}
 		return files;
 	}
-	
+
 	public static boolean deleteFile(String sFilePath)
 	{
 	  File oFile = new File(sFilePath);

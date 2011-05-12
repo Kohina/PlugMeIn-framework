@@ -14,9 +14,9 @@ import falcons.pluginmanager.PluginManager;
 class JarExtractor {
 
 	public List<File> getJarEntries(String filename) {
-		
+
 		List<File> listOfClassFiles = new ArrayList<File>();
-		
+
 		try {
 
 			JarFile jarFile = new JarFile(filename);
@@ -84,7 +84,7 @@ class JarExtractor {
 
 					fileoutputstream.close();
 					jarinputstream.closeEntry();
-					
+
 					createdFile = true;
 					listOfClassFiles.add(newFile);
 					System.out.println("classfile was created: " + createdFile);
@@ -93,12 +93,13 @@ class JarExtractor {
 
 				//Make the logging more easy to read.
 				System.out.println("");
-				
+
 				newFile.deleteOnExit();
 				jarentry = jarinputstream.getNextJarEntry();
 			}// while
 			jarinputstream.close();
-		} catch (Exception e) { //TODO Nothing should be thrown here?
+		} catch (IOException e) {
+			System.out.println("There was an IOException");
 			e.printStackTrace();
 		}
 		return listOfClassFiles;

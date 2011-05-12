@@ -34,6 +34,7 @@ public class PluginClassLoader extends ClassLoader {
 			while (a.available() > 0) {
 				classBuffer.write(a.read());
 			}
+			a.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("PluginClassLoader could not find the file.");
 			e.printStackTrace();

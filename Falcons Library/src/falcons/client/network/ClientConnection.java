@@ -12,8 +12,9 @@ public final class ClientConnection extends Thread{
 
 	private Socket socket = null;
 	private ListeningThread listeningThread;
-	private static ObjectOutputStream out;
-	
+	private ObjectOutputStream out;
+	private static ClientConnection instance;
+
 	/**
 	 * Contructor
 	 *
@@ -25,7 +26,7 @@ public final class ClientConnection extends Thread{
 	 *             If an unhandled IOException is thrown then it could not find
 	 *             the I/O Connection for the socket.
 	 */
-	public ClientConnection() throws IOException {
+	private ClientConnection() throws IOException {
 		try {
 			// Create a new socket
 			this.socket = new Socket(ClientPreferencesLogic.getIp(), ClientPreferencesLogic.getPort());
@@ -38,7 +39,19 @@ public final class ClientConnection extends Thread{
 		}
 		start();
 	}
-	
+
+	public static ClientConnection getInstance(){
+		if(instance == null){
+			try {
+				instance = new ClientConnection();
+			} catch (IOException e) {
+				System.out.println("Failed to create ClientConnection.");
+				e.printStackTrace();
+			}
+		}
+		return instance;
+	}
+
 	public void run(){
 
 		try {
@@ -54,23 +67,23 @@ public final class ClientConnection extends Thread{
 		}
 		listeningThread.start();
 	}
-	
+
 	/**
 	 * Sends a PluginCall to the connected client. Takes the PluginCall as a
 	 * parameter.
-	 * 
+	 *
 	 * @param call
 	 *            The PluginCall which should be sent to the client.
 	 * @throws IOException
 	 */
-	public static void send(PluginCall call) {
+	public void send(PluginCall call) {
 		try {
 			out.writeObject(call);
 		} catch (IOException e) {
 			System.err.print("Could not write to the output stream.");
 		}
 	}
-	
+
 	public void closeConnection(){
 		try {
 			socket.close();

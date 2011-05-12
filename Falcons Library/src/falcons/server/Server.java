@@ -14,24 +14,25 @@ public class Server {
 	private DataMasterController dataController;
 	private ServerCommunicationCenter comCenter;
 	private boolean started = false;
-	private Thread serverThread;
-	
+
 	public Server() {
 		controller = new ServerMasterController();
 		dataController = new DataMasterController();
 	}
-	
+
 	public void actionPerformed(LibraryEvent e) {
 		controller.actionPerformed(e);
 	}
-	
+
 	public Object getData(LibraryEvent e) {
 		return dataController.getData(e);
 	}
-	
+
 	public boolean startServer(){
 		try {
-			serverThread = new Thread((comCenter = new ServerCommunicationCenter()));
+			comCenter = new ServerCommunicationCenter();
+			Thread serverThread = new Thread(comCenter);
+			serverThread.start();
 			started = true;
 		} catch (IOException e) {
 			System.out.println("Could not start server.");
@@ -39,7 +40,7 @@ public class Server {
 		}
 		return started;
 	}
-	
+
 	//TODO Need to find a better way to shut the server down.... :(
 	public boolean stopServer(){
 		comCenter = null;

@@ -21,7 +21,7 @@ public class ServerPreferencesLogic {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Method that deserializes the XML file representing the {@link ServerPreferencesModel} instance.
 	 */
@@ -30,16 +30,15 @@ public class ServerPreferencesLogic {
 		ServerPreferencesModel temp;
 		try {
 			temp = serializer.read(ServerPreferencesModel.getInstance(), ServerPreferencesXML);
-
 			ServerPreferencesModel.getInstance().setPort(temp.getPort());
 		} catch (Exception e) {
 			System.out.println("Failed to deserialize the XML file.");
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
-	 * 
+	 *
 	 */
 	public static int getPort() {
 		ServerPreferencesModel.getInstance();
