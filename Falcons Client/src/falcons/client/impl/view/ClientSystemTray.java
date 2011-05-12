@@ -15,8 +15,8 @@ public class ClientSystemTray implements ActionListener {
 	private static MenuItem mainView = new MenuItem("Main");
 	private static MenuItem settingsView = new MenuItem("Settings");
 	private static MenuItem exitButton = new MenuItem("Exit");
-	private static ClientView clientView;
-	private static ConnectionView connectionView;
+	private ClientView clientView;
+	private ConnectionView connectionView;
 
 	public ClientSystemTray(ClientView clientView, ConnectionView connectionView) {
 		this.clientView = clientView;
