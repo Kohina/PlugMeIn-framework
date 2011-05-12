@@ -10,18 +10,12 @@ import falcons.plugin.utils.PluginCall;
 
 public class ClientDataInterpreter {
 
-	private boolean clientInterpreter;
 	private static ClientDataInterpreter instance;
 
 	/**
-	 * The Constructor for the DataInterpreter. Takes a pluginModel as a
-	 * parameter.
-	 * 
-	 * @param model
-	 *            The list of all currently loaded plugins.
+	 * The Constructor for the DataInterpreter. 
 	 */
 	private ClientDataInterpreter() {
-		this.clientInterpreter = clientInterpreter;
 	}
 
 	public static ClientDataInterpreter getInstance() {
