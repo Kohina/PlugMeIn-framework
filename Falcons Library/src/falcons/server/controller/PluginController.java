@@ -3,9 +3,9 @@ package falcons.server.controller;
 import falcons.server.controller.NetworkController;
 import falcons.server.model.PluginLogic;
 import falcons.server.network.model.ConnectionModel;
-import falcons.plugin.utils.PluginEvent;
-import falcons.plugin.utils.PluginEvent.PluginEventType;
-import falcons.plugin.utils.PluginEventListener;
+import falcons.plugin.PluginEvent;
+import falcons.plugin.PluginEventListener;
+import falcons.plugin.PluginEvent.PluginEventType;
 
 public class PluginController implements PluginEventListener {
 	

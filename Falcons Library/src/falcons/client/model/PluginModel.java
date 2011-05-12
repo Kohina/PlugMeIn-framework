@@ -1,6 +1,7 @@
 package falcons.client.model;
 
 import java.util.HashMap;
+
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.Pluggable;
 

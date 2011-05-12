@@ -1,6 +1,7 @@
 package falcons.server.model;
 
 import java.util.HashMap;
+
 import falcons.plugin.AbstractPlugin;
 
 public class PluginModel {

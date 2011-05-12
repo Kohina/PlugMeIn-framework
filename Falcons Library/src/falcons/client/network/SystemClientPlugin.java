@@ -7,7 +7,6 @@ import falcons.client.model.ClientPreferencesLogic;
 import falcons.client.model.PluginLogic;
 import falcons.client.model.ServerLogic;
 import falcons.plugin.*;
-import falcons.plugin.utils.PluginCall;
 import falcons.utils.ClientInfo;
 
 @Plugin(pluginID = "SystemPlugin", versionID = "1.0")

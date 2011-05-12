@@ -9,7 +9,7 @@ import falcons.client.controller.DataMasterController;
 import falcons.client.network.ClientConnection;
 import falcons.client.network.SystemClientPlugin;
 import falcons.plugin.AbstractPluginData;
-import falcons.plugin.utils.PluginCall;
+import falcons.plugin.PluginCall;
 import falcons.utils.LibraryEvent;
 
 // TODO Finish Implementing this class.

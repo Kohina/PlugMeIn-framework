@@ -6,7 +6,7 @@ import javax.management.modelmbean.ModelMBean;
 
 import falcons.client.model.PluginLogic;
 import falcons.plugin.AbstractPlugin;
-import falcons.plugin.utils.PluginCall;
+import falcons.plugin.PluginCall;
 
 public class ClientDataInterpreter {
 

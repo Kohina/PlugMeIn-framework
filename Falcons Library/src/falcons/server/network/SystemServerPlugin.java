@@ -5,7 +5,7 @@ import java.util.*;
 
 import falcons.plugin.AbstractPluginData;
 import falcons.plugin.Plugin;
-import falcons.plugin.utils.PluginCall;
+import falcons.plugin.PluginCall;
 import falcons.server.model.PluginLogic;
 import falcons.server.network.model.ConnectionModel;
 import falcons.utils.ClientInfo;

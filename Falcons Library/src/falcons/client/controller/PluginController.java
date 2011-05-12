@@ -2,9 +2,9 @@ package falcons.client.controller;
 
 import falcons.client.model.PluginLogic;
 import falcons.client.model.ServerLogic;
-import falcons.plugin.utils.PluginEvent;
-import falcons.plugin.utils.PluginEvent.PluginEventType;
-import falcons.plugin.utils.PluginEventListener;
+import falcons.plugin.PluginEvent;
+import falcons.plugin.PluginEventListener;
+import falcons.plugin.PluginEvent.PluginEventType;
 
 class PluginController implements PluginEventListener {
 	
