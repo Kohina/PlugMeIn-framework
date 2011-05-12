@@ -1,6 +1,7 @@
 package falcons.client.controller;
 
 import falcons.client.model.PluginLogic;
+import falcons.client.model.ServerLogic;
 import falcons.plugin.utils.PluginEvent;
 import falcons.plugin.utils.PluginEvent.PluginEventType;
 import falcons.plugin.utils.PluginEventListener;

@@ -9,13 +9,13 @@ class ClientPreferencesModel {
 	
 	// Preference variables representing XML elements
 	@Element
-	private static int port;
+	private int port;
 
 	@Element
-	private static String ip;
+	private String ip;
 	
 	@Element
-	private static String name;
+	private String name;
 
 	public ClientPreferencesModel() {
 		// Do nasing.
@@ -39,7 +39,7 @@ class ClientPreferencesModel {
 	 * @param port the port to set
 	 */
 	void setPort(int port) {
-		ClientPreferencesModel.port = port;
+		this.port = port;
 	}
 
 	/**
@@ -53,7 +53,7 @@ class ClientPreferencesModel {
 	 * @param ip the ip to set
 	 */
 	void setIp(String ip) {
-		ClientPreferencesModel.ip = ip;
+		this.ip = ip;
 	}
 
 	String getName() {

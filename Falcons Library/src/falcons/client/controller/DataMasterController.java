@@ -6,7 +6,6 @@ import falcons.client.model.ClientPreferencesLogic;
 import falcons.client.model.PluginLogic;
 import falcons.client.model.ServerLogic;
 import falcons.plugin.Pluggable;
-import falcons.utils.ClientTree;
 import falcons.utils.LibraryEvent;
 import falcons.utils.LibraryEvent.LibraryEventType;
 

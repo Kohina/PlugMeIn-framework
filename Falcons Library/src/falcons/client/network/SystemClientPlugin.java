@@ -19,12 +19,12 @@ public class SystemClientPlugin implements Serializable {
 	/**
 	 * @return The only instance of this class.
 	 */
-	public SystemClientPlugin getInstance() {
+	public static SystemClientPlugin getInstance() {
 		return instance;
 	}
 	
 	public void receiveCall(PluginCall call) {
-		AbstractPluginData data = call.getPluginData();
+		AbstractPluginData<?> data = call.getPluginData();
 		
 		if (data.getVersionID().equals(this.getClass().getAnnotation(Plugin.class).versionID())) {
 			if(data.getMethodID().equals("receiveID")) {

@@ -5,7 +5,6 @@ import falcons.server.model.ConnectionModel;
 
 public class NetworkController {
 	static void send(PluginCall call){
-		ConnectionModel.getConnection(call.getDestination()).send(call);
+		ConnectionModel.getInstance().getConnection(call.getDestination()).send(call);
 	}
-
 }

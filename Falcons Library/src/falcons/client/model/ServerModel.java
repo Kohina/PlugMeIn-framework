@@ -34,7 +34,7 @@ class ServerModel {
 	}
 	
 	public void setInfo(ClientInfo client) {
-		info = client;
+		clientInfo = client;
 	}
 	
 	private ClientInfo getClientWithID(long id) {
@@ -45,15 +45,6 @@ class ServerModel {
 	}
 	
 	public List<ClientInfo> getClients() {
-		List<ClientInfo> clients = new ArrayList<ClientInfo>(this.clients.size());
-		Iterator<ClientInfo> it = this.clients.iterator();
-		
-		while(it.hasNext()) {
-			ClientInfo currentClient = it.next();
-			
-			clients.add(new ClientInfo(currentClient.getID(), currentClient.getName(), currentClient.getPlugins()));
-		}
-		
 		return clients;
 	}
 	

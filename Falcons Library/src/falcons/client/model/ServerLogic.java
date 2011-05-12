@@ -1,6 +1,9 @@
 package falcons.client.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 import falcons.utils.ClientInfo;
 
@@ -37,5 +40,18 @@ public class ServerLogic {
 	
 	public static ClientInfo getClientInfo() {
 		return serverModel.getClientInfo();
+	}
+	
+	public static List<ClientInfo> getClients() {
+		List<ClientInfo> clients = new ArrayList<ClientInfo>(serverModel.getClients().size());
+		Iterator<ClientInfo> it = serverModel.getClients().iterator();
+		
+		while(it.hasNext()) {
+			ClientInfo currentClient = it.next();
+			
+			clients.add(new ClientInfo(currentClient.getID(), currentClient.getName(), currentClient.getPlugins()));
+		}
+		
+		return clients;
 	}
 }

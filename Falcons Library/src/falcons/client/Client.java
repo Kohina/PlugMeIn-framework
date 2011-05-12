@@ -45,7 +45,7 @@ public class Client {
 	}
 	
 	public boolean disconnect(){
-		SystemClientPlugin.disconnect();
+		SystemClientPlugin.getInstance().disconnect();
 		connection.closeConnection();
 		connected = false;
 		return !connected;
