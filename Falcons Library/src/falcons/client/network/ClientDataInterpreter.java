@@ -35,9 +35,9 @@ public class ClientDataInterpreter {
 	public void interpret(PluginCall call) {
 		long destination = call.getDestination();
 
-		if (clientInterpreter) {
+//		if (clientInterpreter) {
 			String pluginName = call.getPluginID();
 			((AbstractPlugin) PluginLogic.getPluginMap().get(pluginName)).receiveCall(call);
-		}
+//		}
 	}
 }
