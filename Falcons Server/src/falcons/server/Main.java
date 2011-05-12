@@ -17,7 +17,7 @@ public class Main {
 	 */
 	public static void main(String[] args) throws IOException {
 		ServerPreferencesLogic.readPreferences();
-		ServerDataInterpreter.getInstance(false);
+		ServerDataInterpreter.getInstance();
 		Thread comThread = new Thread(new ServerCommunicationCenter(port, ConnectionModel.getInstance()));
 		comThread.start();
 	}
