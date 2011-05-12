@@ -17,7 +17,7 @@ public class SendMessagePlugin extends AbstractPlugin {
 
 	MessageModel messageModel;
 	MessageLogic messageLogic;
-	static SendMessageMainPanel mainPanel;
+	SendMessageMainPanel mainPanel;
 
 	public SendMessagePlugin() {
 		messageModel = new MessageModel();

@@ -1,13 +1,15 @@
 package falcons.plugin.exported.sendMessagePlugin.model;
 
+import java.io.Serializable;
+
 import falcons.plugin.Pluggable;
 
-public class MessageLogic implements Pluggable {
+public class MessageLogic implements Pluggable, Serializable {
 
 	MessageModel model;
-	
+
 	public MessageLogic(){
-		
+
 	}
 
 	public MessageLogic(MessageModel model) {
