@@ -8,7 +8,7 @@ import java.net.UnknownHostException;
 import falcons.client.model.ClientPreferencesLogic;
 import falcons.plugin.utils.PluginCall;
 
-public class ClientConnection extends Thread{
+public final class ClientConnection extends Thread{
 
 	private Socket socket = null;
 	private ListeningThread listeningThread;

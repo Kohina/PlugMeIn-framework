@@ -29,8 +29,10 @@ public class DataMasterController {
 			break;
 		case GET_CLIENTS:
 			returnObject = ServerLogic.getClients();
+			break;
 		case GET_PLUGIN:
 			returnObject = PluginLogic.getPluginMap().get(e.getId());
+			break;
 		default:
 			break;
 		}

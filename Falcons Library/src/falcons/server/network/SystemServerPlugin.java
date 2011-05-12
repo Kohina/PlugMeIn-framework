@@ -11,16 +11,16 @@ import falcons.server.model.PluginLogic;
 import falcons.utils.ClientInfo;
 
 @Plugin(pluginID = "SystemPlugin", versionID = "1.0")
-public class SystemServerPlugin implements Serializable {
+public class SystemServerPlugin {
 	
 	private static SystemServerPlugin instance = new SystemServerPlugin();
-	private PluginLogic pluginLogic = PluginLogic.getInstance();
 	private ConnectionModel connectionModel = ConnectionModel.getInstance();
 	private List<ClientInfo> clients;
 	private HashMap<String, String> serverPlugins;
 	
 	private SystemServerPlugin() {
 		readPlugins();
+		updateClients();
 	}
 	
 	/**
@@ -58,6 +58,7 @@ public class SystemServerPlugin implements Serializable {
 	
 	private void updateClients() {
 		Collection<ClientInfo> clients = connectionModel.getConnectionList().values();
+		this.clients = new ArrayList<ClientInfo>(connectionModel.getConnectionList().size());
 		
 		for(ClientInfo client : clients) {
 			this.clients.add(client);

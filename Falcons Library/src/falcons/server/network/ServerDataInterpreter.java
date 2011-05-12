@@ -37,7 +37,9 @@ public class ServerDataInterpreter {
 
 		if (serverInterpreter) {
 			String pluginName = call.getPluginID();
-			falcons.server.model.PluginLogic.getInstance().getPluginMap().get(pluginName).receiveCall(call);
+			falcons.server.model.PluginLogic.getPluginMap().get(pluginName).receiveCall(call);
 		}
+		
+		// TODO The call should be sent to a client, rite?
 	}
 }

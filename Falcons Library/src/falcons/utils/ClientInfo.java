@@ -10,6 +10,7 @@ public class ClientInfo {
 	public ClientInfo(long id, String name, HashMap<String, String> plugins) {
 		this.id = id;
 		setName(name);
+		this.plugins = new HashMap<String, String>(plugins.size(), 1);
 		setPlugins(plugins);
 	}
 	
@@ -24,7 +25,7 @@ public class ClientInfo {
 	}
 	
 	public void setName(String name) {
-		this.name = new String(name);
+		this.name = name;
 	}
 	
 	public void setPlugins(HashMap<String, String> plugins) {

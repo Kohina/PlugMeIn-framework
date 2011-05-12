@@ -98,7 +98,7 @@ class JarExtractor {
 				jarentry = jarinputstream.getNextJarEntry();
 			}// while
 			jarinputstream.close();
-		} catch (Exception e) {
+		} catch (Exception e) { //TODO Nothing should be thrown here?
 			e.printStackTrace();
 		}
 		return listOfClassFiles;

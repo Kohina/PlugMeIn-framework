@@ -44,7 +44,7 @@ public class ClientPreferencesLogic {
 	 * 
 	 */
 	public static String getIp(){
-		return new String(clientPreferencesModel.getIp());
+		return clientPreferencesModel.getIp();
 	}
 	
 	/**

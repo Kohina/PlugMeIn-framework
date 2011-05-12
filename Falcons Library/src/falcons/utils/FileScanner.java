@@ -24,8 +24,7 @@ public class FileScanner {
 				if (!f.isDirectory()) {
 					if (f.getAbsolutePath().endsWith(".jar")) {
 						List<File> extractedFiles = new ArrayList<File>();
-						extractedFiles = extractor.getJarEntries(f
-								.getAbsolutePath());
+						extractedFiles = extractor.getJarEntries(f.getAbsolutePath());
 						for (File g : extractedFiles) {
 							files.add(g);
 						}

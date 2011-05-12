@@ -34,7 +34,7 @@ public class PluginController implements PluginEventListener {
 			returnObject = ConnectionModel.getClients();
 			break;
 		case GET_PLUGINMAP:
-			returnObject =  PluginLogic.getInstance().getPluginMap();
+			returnObject =  PluginLogic.getPluginMap();
 			break;
 		default:
 			break;

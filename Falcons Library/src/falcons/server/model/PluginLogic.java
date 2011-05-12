@@ -9,19 +9,9 @@ import falcons.plugin.Plugin;
 import falcons.pluginmanager.PluginManager;
 
 public class PluginLogic {
-	
-	private static PluginLogic instance;
-	
+		
 	private PluginLogic(){
 		
-	}
-	
-	public static PluginLogic getInstance(){
-		if(instance == null){
-			return new PluginLogic();
-		}else{
-			return instance;
-		}
 	}
 	
 	public static void loadPlugins(){

@@ -33,8 +33,7 @@ public class ConnectionModel {
 	public ConnectionThread getConnection(long id) {
 		ConnectionThread returnObject = null;
 
-		ConnectionThread[] conns = (ConnectionThread[]) connections.keySet()
-				.toArray();
+		ConnectionThread[] conns = (ConnectionThread[]) connections.keySet().toArray(new ConnectionThread[connections.size()]);
 
 		for (ConnectionThread c : conns) {
 			if (c.getId() == id) {
@@ -64,8 +63,7 @@ public class ConnectionModel {
 	}
 
 	public static HashMap<String, String> getClientPlugins(long id) {
-		ConnectionThread[] conns = (ConnectionThread[]) connections.keySet()
-				.toArray();
+		ConnectionThread[] conns = (ConnectionThread[]) connections.keySet().toArray(new ConnectionThread[connections.size()]);
 		ConnectionThread key = null;
 
 		for (ConnectionThread c : conns) {
@@ -78,8 +76,7 @@ public class ConnectionModel {
 
 	public static List<ClientInfo> getClients() {
 		List<ClientInfo> clients = new ArrayList<ClientInfo>();
-		ConnectionThread[] conns = (ConnectionThread[]) connections.keySet()
-				.toArray();
+		ConnectionThread[] conns = (ConnectionThread[]) connections.keySet().toArray(new ConnectionThread[connections.size()]);
 
 		for (ConnectionThread c : conns) {
 			clients.add(connections.get(c));

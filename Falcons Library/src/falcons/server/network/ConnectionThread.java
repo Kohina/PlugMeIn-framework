@@ -25,7 +25,7 @@ public class ConnectionThread extends Thread{
 			e.printStackTrace();
 		}
 		try {
-			listeningThread = new ListeningThread(socket.getInputStream());
+			listeningThread = new ListeningThread(socket.getInputStream()); //TODO Shouldn't the thread be started?
 		} catch (IOException e) {
 			System.err.println("Couldn't initiate ListeningThread");
 			e.printStackTrace();

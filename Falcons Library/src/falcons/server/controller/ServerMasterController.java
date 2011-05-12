@@ -15,7 +15,7 @@ public class ServerMasterController {
 	public ServerMasterController() {
 		prefCont = new ServerPreferencesController();
 		pluginCont = new PluginController();
-		netCont = new NetworkController();
+		netCont = new NetworkController(); //TODO Remove?
 	}
 
 	/**

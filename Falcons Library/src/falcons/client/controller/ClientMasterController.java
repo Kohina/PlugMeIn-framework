@@ -15,7 +15,7 @@ public class ClientMasterController {
 	public ClientMasterController() {
 		prefCont = new ClientPreferencesController();
 		pluginCont = new PluginController();
-		netCont = new NetworkController();
+		netCont = new NetworkController(); //TODO Remove?
 	}
 
 	/**
