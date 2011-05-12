@@ -12,7 +12,7 @@ public final class ClientConnection extends Thread{
 
 	private Socket socket = null;
 	private ListeningThread listeningThread;
-	private ObjectOutputStream out;
+	private static ObjectOutputStream out;
 	private static ClientConnection instance;
 
 	/**
@@ -76,7 +76,7 @@ public final class ClientConnection extends Thread{
 	 *            The PluginCall which should be sent to the client.
 	 * @throws IOException
 	 */
-	public void send(PluginCall call) {
+	public static void send(PluginCall call) {
 		try {
 			out.writeObject(call);
 		} catch (IOException e) {
