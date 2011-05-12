@@ -8,8 +8,9 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import falcons.client.network.ClientDataInterpreter;
-import falcons.server.model.ConnectionModel;
 import falcons.server.model.ServerPreferencesLogic;
+import falcons.server.network.model.ConnectionModel;
+import falcons.server.network.model.ConnectionThread;
 
 public class ServerCommunicationCenter implements Runnable {
 

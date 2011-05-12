@@ -1,7 +1,7 @@
 package falcons.server.controller;
 
 import falcons.plugin.utils.PluginCall;
-import falcons.server.model.ConnectionModel;
+import falcons.server.network.model.ConnectionModel;
 
 public class NetworkController {
 	static void send(PluginCall call){

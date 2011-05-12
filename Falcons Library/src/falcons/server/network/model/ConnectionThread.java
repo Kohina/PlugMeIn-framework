@@ -1,4 +1,4 @@
-package falcons.server.network;
+package falcons.server.network.model;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -6,7 +6,6 @@ import java.net.Socket;
 
 import falcons.plugin.utils.PluginCall;
 
-// TODO Do the same thing to this as the ConnectionThread in the Client.
 public class ConnectionThread extends Thread{
 
 	private Socket socket = null;

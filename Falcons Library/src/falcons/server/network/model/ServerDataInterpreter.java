@@ -1,4 +1,4 @@
-package falcons.server.network;
+package falcons.server.network.model;
 
 import java.io.IOException;
 

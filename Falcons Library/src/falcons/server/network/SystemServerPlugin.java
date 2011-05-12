@@ -6,8 +6,8 @@ import java.util.*;
 import falcons.plugin.AbstractPluginData;
 import falcons.plugin.Plugin;
 import falcons.plugin.utils.PluginCall;
-import falcons.server.model.ConnectionModel;
 import falcons.server.model.PluginLogic;
+import falcons.server.network.model.ConnectionModel;
 import falcons.utils.ClientInfo;
 
 @Plugin(pluginID = "SystemPlugin", versionID = "1.0")

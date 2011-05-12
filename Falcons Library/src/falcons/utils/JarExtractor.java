@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
-import java.util.zip.*;
 
 import falcons.pluginmanager.PluginManager;
 
@@ -21,7 +20,6 @@ class JarExtractor {
 
 			JarFile jarFile = new JarFile(filename);
 
-			String destinationname = PluginManager.pluginPath;
 			byte[] buf = new byte[1024];
 			JarInputStream jarinputstream = null;
 			JarEntry jarentry;
@@ -65,19 +63,18 @@ class JarExtractor {
 				// Check if the file currently being unzipped is a folder
 				if (!newFile.isFile() && !newFile.toString().endsWith(".class")) {
 					System.out.println(newFile + " is a directory.");
-					boolean created = new File("plugins" + File.separator, newFile
-							.toString()).mkdirs();
-					System.out.println(newFile
-							+ " was created: "
-							+ created);
-					if(created == false){
+					boolean created = new File("plugins" + File.separator,
+							newFile.toString()).mkdirs();
+					System.out.println(newFile + " was created: " + created);
+					if (created == false) {
 						break;
 					}
 				}
 
 				if (!newFileDirectory || newFile.toString().endsWith(".class")) {
-					fileoutputstream = new FileOutputStream(destinationname
-							+ entryName);
+					fileoutputstream = new FileOutputStream(
+							System.getProperty("User.dir") + File.separator
+									+ "plugins" + File.separator + entryName);
 
 					while ((n = jarinputstream.read(buf, 0, 1024)) > -1)
 						fileoutputstream.write(buf, 0, n);
@@ -91,7 +88,7 @@ class JarExtractor {
 
 				}
 
-				//Make the logging more easy to read.
+				// Make the logging more easy to read.
 				System.out.println("");
 
 				newFile.deleteOnExit();

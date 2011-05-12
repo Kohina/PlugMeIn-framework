@@ -1,8 +1,8 @@
 package falcons.server.controller;
 
-import falcons.server.model.ConnectionModel;
 import falcons.server.model.ServerPreferencesLogic;
 import falcons.server.model.PluginLogic;
+import falcons.server.network.model.ConnectionModel;
 import falcons.utils.LibraryEvent;
 import falcons.utils.LibraryEvent.LibraryEventType;
 
