@@ -1,12 +1,12 @@
-package falcons.plugin.exported.tellstickPlugin.javatellstickAPI;
+package pkj.no.tellstick.device;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 import pkj.no.gui.Application;
+import pkj.no.tellstick.JNA;
 
 import com.sun.jna.Pointer;
-
 
 /**
  * This listener will update / add objects automatically to a list of tellstick devices.

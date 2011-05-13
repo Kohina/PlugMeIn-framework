@@ -1,6 +1,6 @@
-package falcons.plugin.exported.tellstickPlugin.javatellstickAPI;
+package pkj.no.tellstick;
 
-import falcons.plugin.exported.tellstickPlugin.javatellstickAPI.SupportedMethodsException;
+import pkj.no.tellstick.device.SupportedMethodsException;
 
 import com.sun.jna.Callback;
 import com.sun.jna.Library;

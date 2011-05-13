@@ -1,4 +1,4 @@
-package falcons.plugin.exported.tellstickPlugin.javatellstickAPI;
+package pkj.no.tellstick.device;
 
 public class SupportedMethodsException extends Exception{
 	

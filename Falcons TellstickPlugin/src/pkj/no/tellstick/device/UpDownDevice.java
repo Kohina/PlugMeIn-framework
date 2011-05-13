@@ -1,5 +1,6 @@
-package falcons.plugin.exported.tellstickPlugin.javatellstickAPI;
+package pkj.no.tellstick.device;
 
+import pkj.no.tellstick.JNA;
 
 /**
  * Up / Down devices can be such devices as Projector screens.

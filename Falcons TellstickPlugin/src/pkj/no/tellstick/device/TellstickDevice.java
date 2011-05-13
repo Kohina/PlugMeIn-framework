@@ -1,9 +1,9 @@
-package falcons.plugin.exported.tellstickPlugin.javatellstickAPI;
+package pkj.no.tellstick.device;
 
 
 import java.util.ArrayList;
 
-
+import pkj.no.tellstick.JNA;
 
 public class TellstickDevice implements Comparable<TellstickDevice>{
 

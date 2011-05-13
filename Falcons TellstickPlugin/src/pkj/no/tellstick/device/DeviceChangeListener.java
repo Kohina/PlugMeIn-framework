@@ -1,4 +1,4 @@
-package falcons.plugin.exported.tellstickPlugin.javatellstickAPI;
+package pkj.no.tellstick.device;
 
 import java.util.ArrayList;
 

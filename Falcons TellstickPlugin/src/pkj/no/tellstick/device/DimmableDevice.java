@@ -1,5 +1,6 @@
-package falcons.plugin.exported.tellstickPlugin.javatellstickAPI;
+package pkj.no.tellstick.device;
 
+import pkj.no.tellstick.JNA;
 
 
 public class DimmableDevice extends Device implements pkj.no.tellstick.device.iface.DimmableDevice{
