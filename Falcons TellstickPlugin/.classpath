@@ -10,5 +10,13 @@
 	<classpathentry kind="lib" path="/Users/Gustav/Eclipse workspace/TellstickDUO/lib/SunriseSunsetCalculator-1.0-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="/Users/Gustav/Eclipse workspace/TellstickDUO/lib/swt-debug.jar"/>
 	<classpathentry kind="lib" path="/Users/Gustav/Eclipse workspace/TellstickDUO/lib/swt.jar"/>
+	<classpathentry kind="lib" path="/Users/Gustav/workspace/TellstickDUO/lib/commons-cli-1.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="/Users/Gustav/workspace/TellstickDUO/lib/commons-cli-1.2-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/Gustav/workspace/TellstickDUO/lib/commons-cli-1.2.jar"/>
+	<classpathentry kind="lib" path="/Users/Gustav/workspace/TellstickDUO/lib/jna.jar"/>
+	<classpathentry kind="lib" path="/Users/Gustav/workspace/TellstickDUO/lib/platform.jar"/>
+	<classpathentry kind="lib" path="/Users/Gustav/workspace/TellstickDUO/lib/SunriseSunsetCalculator-1.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/Users/Gustav/workspace/TellstickDUO/lib/swt-debug.jar"/>
+	<classpathentry kind="lib" path="/Users/Gustav/workspace/TellstickDUO/lib/swt.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
