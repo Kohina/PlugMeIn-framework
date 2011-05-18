@@ -27,8 +27,7 @@ public class TellstickModel extends Observable implements Pluggable, Serializabl
 	
 	public void turnDevicesOn(ArrayList<TellstickDevice> devices) throws Exception {
 		for(TellstickDevice device : devices) {
-			if (device instanceof Device){
-				// Cast to device so we can get the method.
+			if (device instanceof Device || device instanceof DimmableDevice){
 				try{
 					((Device) device).on();
 				}catch(TellstickException e){
@@ -39,7 +38,7 @@ public class TellstickModel extends Observable implements Pluggable, Serializabl
 	}
 	
 	public void turnDeviceOn(TellstickDevice device) throws Exception {
-		if(device instanceof Device) {
+		if(device instanceof Device || device instanceof DimmableDevice) {
 			try{
 				((Device) device).on();
 			}catch(TellstickException e) {
@@ -50,7 +49,7 @@ public class TellstickModel extends Observable implements Pluggable, Serializabl
 	
 	public void turnDevicesOff(ArrayList<TellstickDevice> devices) throws Exception {
 		for(TellstickDevice device : devices) {
-			if(device instanceof Device) {
+			if(device instanceof Device || device instanceof DimmableDevice) {
 					try{
 						((Device) device).off();
 					}catch(TellstickException e){
@@ -61,7 +60,7 @@ public class TellstickModel extends Observable implements Pluggable, Serializabl
 		}
 	
 	public void turnDeviceOff(TellstickDevice device) throws Exception {
-		if(device instanceof Device) {
+		if(device instanceof Device || device instanceof DimmableDevice) {
 			try{
 				((Device) device).off();
 			}catch(TellstickException e) {
@@ -81,6 +80,17 @@ public class TellstickModel extends Observable implements Pluggable, Serializabl
 			}
 		} else {
 			throw new IllegalArgumentException("Level has to be in the range 0-255");
+		}
+	}
+	
+	public void epilepsyOrDie(TellstickDevice device) throws TellstickException, InterruptedException {
+		if (device instanceof Device) {
+			((Device) device).off();
+			for (int i = 0; i < 100; i++) {
+				((Device) device).on();
+				Thread.sleep(1000);
+				((Device) device).off();
+			}
 		}
 	}
 }
