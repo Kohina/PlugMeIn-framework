@@ -1,12 +1,15 @@
 package falcons.plugin.exported;
 
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.Plugin;
 import falcons.plugin.PluginCall;
 
-import pkj.no.*;
+import pkj.no.tellstick.*;
+import pkj.no.tellstick.device.*;
 
 @Plugin(pluginID = "Tellstick", versionID = "0.1")
 public class TellstickPlugin extends AbstractPlugin {
