@@ -7,8 +7,6 @@ import javax.swing.*;
 import javax.swing.table.*;
 import javax.swing.text.TableView.TableRow;
 
-import org.eclipse.swt.widgets.TableItem;
-
 import pkj.no.tellstick.device.TellstickDevice;
 
 import falcons.plugin.Pluggable;
