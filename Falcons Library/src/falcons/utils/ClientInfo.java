@@ -56,7 +56,7 @@ public class ClientInfo {
 	/*
 	 * Changes the plugins loaded on the plugin.
 	 * 
-	 * @plugins plugins	The new pluginMap.
+	 * @param plugins	The new pluginMap.
 	 */
 	public void setPlugins(HashMap<String, String> plugins) {
 		this.plugins.putAll(plugins);
@@ -64,6 +64,8 @@ public class ClientInfo {
 	
 	/*
 	 * Gets the ID of the client.
+	 * 
+	 * @return The ID.
 	 */
 	public long getID() {
 		return id;
@@ -71,6 +73,8 @@ public class ClientInfo {
 	
 	/*
 	 * Gets the name of the client.
+	 * 
+	 * @return The name.
 	 */
 	public String getName() {
 		return name;
@@ -78,6 +82,8 @@ public class ClientInfo {
 	
 	/*
 	 * Gets a HashMap<String, String> representation of the client's loaded plugins.
+	 * 
+	 * @return A deep copy of the pluginMap.
 	 */
 	public HashMap<String, String> getPlugins() {
 		return (HashMap<String, String>) plugins.clone();
@@ -86,7 +92,7 @@ public class ClientInfo {
 	/*
 	 * Checks if the ClientInfo is complete, i.e. contains both a name and a pluginMap.
 	 * 
-	 * @return true if the object is complete, false otherwise.
+	 * @return True if the object is complete, false otherwise.
 	 */
 	public boolean isComplete() {
 		if(name == null)
