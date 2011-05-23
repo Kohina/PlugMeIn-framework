@@ -27,37 +27,16 @@ public class TicTacToePlugin extends AbstractPlugin{
 		model = new TicTacToeModel();
 		logic = new TicTacToeLogic(model);
 		mainPanel = new TicTacToeMainPanel();
+		cont = new TicTacToeController(mainPanel, logic);
 		mainPanel.addActionListener(cont);
 	}
 	
 	@Override
 	public void receiveCall(PluginCall call) {
-		AbstractPluginData data = call.getPluginData();
+		int data = (Integer) call.getPluginData().getData();
 		
-		if (data.getMethodID().equals("start") && data.getVersionID().equals(this.getClass().getAnnotation(Plugin.class).versionID())) {
-			
-		} 
-		else if (!data.getMethodID().equals("start") && !data.getVersionID().equals(this.getClass().getAnnotation(Plugin.class).versionID())) {
-			System.out.println("Both the methodID and the versionID is not the same as the plugin sending the call.");
-		} 
-		else if (!data.getMethodID().equals("start")) {
-			System.out.println("There doesn't exist a method with that methodID.");
-		} 
-		else if (!data.getVersionID().equals(this.getClass().getAnnotation(Plugin.class).versionID())) {
-			System.out.println("The version of the plugin sending the PluginCall is not the same as the one receiving it.");
-		}
-		
-		if (data.getMethodID().equals("turn") && data.getVersionID().equals(this.getClass().getAnnotation(Plugin.class).versionID())) {
-	
-		} 
-		else if (!data.getMethodID().equals("turn") && !data.getVersionID().equals(this.getClass().getAnnotation(Plugin.class).versionID())) {
-			System.out.println("Both the methodID and the versionID is not the same as the plugin sending the call.");
-		} 
-		else if (!data.getMethodID().equals("turn")) {
-			System.out.println("There doesn't exist a method with that methodID.");
-		} 
-		else if (!data.getVersionID().equals(this.getClass().getAnnotation(Plugin.class).versionID())) {
-			System.out.println("The version of the plugin sending the PluginCall is not the same as the one receiving it.");
+		if (call.getPluginData().getMethodID().equals("turn")) {
+			cont.turn(data, false);
 		}
 	}
 

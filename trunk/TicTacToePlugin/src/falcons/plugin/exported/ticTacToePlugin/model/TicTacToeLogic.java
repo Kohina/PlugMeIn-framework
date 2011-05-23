@@ -11,4 +11,14 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 	public TicTacToeLogic(TicTacToeModel model){
 		this.model = model;
 	}
+	
+	public void turn(int i, boolean b){
+		if(b){
+			model.changeO(i);
+		}
+		else{
+			model.changeX(i);
+		}
+		
+	}
 }
