@@ -6,5 +6,5 @@ import java.util.Observable;
 import falcons.plugin.Pluggable;
 
 public class TicTacToeModel extends Observable implements Pluggable, Serializable{
-
+	
 }

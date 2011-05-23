@@ -1,16 +1,17 @@
 package falcons.plugin.exported.ticTacToePlugin.controller;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-
 import falcons.plugin.Pluggable;
+import falcons.plugin.exported.ticTacToePlugin.view.TicTacToeMainPanel;
 
-public class TicTacToeController extends AbstractAction implements Pluggable{
+public class TicTacToeController implements Pluggable{
 
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	private TicTacToeMainPanel view;
+	
+	public TicTacToeController(TicTacToeMainPanel view) {
+		this.view = view;
 	}
-
+	
+	public void played(int i){
+		
+	}
 }
