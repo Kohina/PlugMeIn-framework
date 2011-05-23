@@ -24,7 +24,7 @@ public class TicTacToePlugin extends AbstractPlugin{
 	public TicTacToePlugin() {
 		model = new TicTacToeModel();
 		logic = new TicTacToeLogic(model);
-		mainPanel = TicTacToeMainPanel.getInstance();
+		mainPanel = new TicTacToeMainPanel();
 	}
 	
 	@Override
@@ -60,7 +60,6 @@ public class TicTacToePlugin extends AbstractPlugin{
 
 	@Override
 	public JPanel getMainPanel() {
-		// TODO Auto-generated method stub
-		return null;
+		return mainPanel;
 	}
 }
