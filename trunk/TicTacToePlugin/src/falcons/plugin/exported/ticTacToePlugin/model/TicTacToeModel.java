@@ -9,11 +9,19 @@ public class TicTacToeModel extends Observable implements Pluggable, Serializabl
 	
 	private JButton buttons[] = new JButton[9];
 	
-	public void changeO(int i){
+	public TicTacToeModel(){
 		
 	}
 	
+	public void changeO(int i){
+		buttons[i].setText("O");
+	}
+	
 	public void changeX(int i){
-		
+		buttons[i].setText("X");
+	}
+	
+	public JButton[] getBoard(){
+		return buttons;
 	}
 }
