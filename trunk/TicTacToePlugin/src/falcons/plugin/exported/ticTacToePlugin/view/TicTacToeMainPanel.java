@@ -1,6 +1,7 @@
 package falcons.plugin.exported.ticTacToePlugin.view;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
@@ -30,6 +31,10 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
-		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
 	}
 }
