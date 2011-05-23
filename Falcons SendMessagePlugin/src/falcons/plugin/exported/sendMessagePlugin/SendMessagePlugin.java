@@ -42,8 +42,7 @@ public class SendMessagePlugin extends AbstractPlugin {
 				&& data.getVersionID()
 						.equals(this.getClass().getAnnotation(Plugin.class)
 								.versionID())) {
-			messageLogic.receiveMessage(((SendMessagePluginData) data)
-					.getMessage());
+			messageLogic.receiveMessage(((SendMessagePluginData) data).getMessage());
 		} else if (!data.getMethodID().equals("SendMessage")
 				&& !data.getVersionID()
 						.equals(this.getClass().getAnnotation(Plugin.class)

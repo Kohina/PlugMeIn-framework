@@ -42,6 +42,7 @@ public class SendMessageMainPanel extends JPanel implements Observer, Pluggable{
 
 	private SendMessageMainPanel(MessageModel model){
 		this.model = model;
+		// TODO: Raden under här... vad gör den?
 		model.addObserver(this);
 		initGUI();
 		setVisible(true);
