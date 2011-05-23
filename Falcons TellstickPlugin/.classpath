@@ -10,6 +10,7 @@
 	<classpathentry exported="true" kind="lib" path="/Users/Gustav/Eclipse workspace/TellstickDUO/lib/SunriseSunsetCalculator-1.0-SNAPSHOT.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Users/Gustav/Eclipse workspace/TellstickDUO/lib/swt-debug.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Users/Gustav/Eclipse workspace/TellstickDUO/lib/swt.jar"/>
+	<classpathentry kind="lib" path="/Users/Gustav/Desktop/TellstickDUO.jar"/>
 	<classpathentry exported="true" kind="src" path="/Falcons Pluginlibrary"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
