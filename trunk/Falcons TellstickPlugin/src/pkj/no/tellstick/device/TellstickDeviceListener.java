@@ -3,7 +3,6 @@ package pkj.no.tellstick.device;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import pkj.no.gui.Application;
 import pkj.no.tellstick.JNA;
 
 import com.sun.jna.Pointer;
@@ -88,52 +87,7 @@ public class TellstickDeviceListener extends Thread implements Runnable{
 			}
 		};
 
-		int handle = JNA.CLibrary.INSTANCE.tdRegisterDeviceEvent(fn, null);
-
-		// Now DeviceChangeEvent
-		JNA.CLibrary.TDDeviceChangeEvent fn2 = new JNA.CLibrary.TDDeviceChangeEvent() {
-			@Override
-			public void invoke(int deviceId, int method, int changeType,int callbackId, Pointer context) throws SupportedMethodsException {
-				try{
-					TellstickDevice ts = TellstickDevice.getDevice(deviceId);
-					
-
-					if (method == JNA.CLibrary.TELLSTICK_DEVICE_CHANGED || method == JNA.CLibrary.TELLSTICK_DEVICE_STATE_CHANGED){
-						
-						int idx = Collections.binarySearch(list, ts);
-						if (idx > -1){
-							list.set(idx, ts);
-						}
-					}
-					
-					if (method == JNA.CLibrary.TELLSTICK_DEVICE_ADDED){
-						list.add(ts);
-					}
-					
-					
-					
-					changeListener.onRequest(list);
-				// The device is not supported.
-				}catch(DeviceNotSupportedException e){
-					
-					// We handle remove unit here.
-					if (method == JNA.CLibrary.TELLSTICK_DEVICE_REMOVED){
-						for(int i = 0; i < list.size(); i++){
-							if (list.get(i).getId() == deviceId){
-								list.remove(i);
-								changeListener.onRequest(list);
-								return;
-							}
-						}
-						
-					}
-					
-				}
-			}
-		};
-
-		int handle2 = JNA.CLibrary.INSTANCE.tdRegisterDeviceChangeEvent(
-				fn2, null);
+		JNA.CLibrary.INSTANCE.tdRegisterDeviceEvent(fn, null);
 
 		// Do not exit!
 		while (run) {
