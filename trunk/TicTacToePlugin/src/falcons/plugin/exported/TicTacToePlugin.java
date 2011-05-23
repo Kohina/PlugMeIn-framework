@@ -10,6 +10,7 @@ import falcons.plugin.AbstractPluginData;
 import falcons.plugin.Pluggable;
 import falcons.plugin.Plugin;
 import falcons.plugin.PluginCall;
+import falcons.plugin.exported.ticTacToePlugin.controller.TicTacToeController;
 import falcons.plugin.exported.ticTacToePlugin.model.TicTacToeLogic;
 import falcons.plugin.exported.ticTacToePlugin.model.TicTacToeModel;
 import falcons.plugin.exported.ticTacToePlugin.view.TicTacToeMainPanel;
@@ -20,11 +21,13 @@ public class TicTacToePlugin extends AbstractPlugin{
 	private TicTacToeModel model;
 	private TicTacToeLogic logic;
 	private TicTacToeMainPanel mainPanel;
+	private TicTacToeController cont;
 
 	public TicTacToePlugin() {
 		model = new TicTacToeModel();
 		logic = new TicTacToeLogic(model);
 		mainPanel = new TicTacToeMainPanel();
+		mainPanel.addActionListener(cont);
 	}
 	
 	@Override
