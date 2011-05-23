@@ -20,19 +20,23 @@ public class TellstickPluginDeviceTable extends JTable implements Pluggable {
 		super();
 		
 		try {
-			table = new JTable();
+			Object deviceInfo[][] = {{"lol", "lal"}, {"lil", "lyl"}};
+			String[] columnNames = {"Namn", "On/Off"};
+			
+			table = new JTable(deviceInfo, columnNames);
 			table.setSize(200, 100);
 			
-			TableColumn name = new TableColumn(1);
-			TableColumn onOff = new TableColumn(2);
+//			TableColumn name = new TableColumn(1);
+//			TableColumn onOff = new TableColumn(2);
+//			
+//			table.addColumn(name);
+//			table.addColumn(onOff);
+//			
+//			for(TellstickDevice device : devices) {
+//				addDeviceToArray(deviceInfo, device);
+//			}
 			
-			table.addColumn(name);
-			table.addColumn(onOff);
-			
-			for(TellstickDevice device : devices) {
-				addDeviceToTable(table, device);
-			}
-			
+			super.add(table);
 			table.repaint();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -40,11 +44,11 @@ public class TellstickPluginDeviceTable extends JTable implements Pluggable {
 	}
 	
 	/**
-	 * Method that adds a {@link TellstickDevice} to a JTable.
-	 * @param table The table to add the row to.
+	 * Method that adds a {@link TellstickDevice} to a multi dimensional array.
+	 * @param array The array to add to.
 	 * @param device The {@link TellstickDevice} to add.
 	 */
-	public void addDeviceToTable(JTable table, TellstickDevice device) {
+	public void addDeviceToArray(Object[][] array, TellstickDevice device) {
 		
 	}
 }
