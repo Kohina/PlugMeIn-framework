@@ -1,5 +1,7 @@
 package falcons.plugin.exported.ticTacToePlugin.view;
 
-public class TicTacToeMainPanel {
+import javax.swing.JPanel;
+
+public class TicTacToeMainPanel extends JPanel{
 
 }
