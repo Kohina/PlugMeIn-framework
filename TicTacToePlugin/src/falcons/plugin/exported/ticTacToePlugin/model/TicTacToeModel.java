@@ -10,6 +10,7 @@ import falcons.plugin.exported.ticTacToePlugin.view.TicTacToeMainPanel;
 public class TicTacToeModel extends Observable implements Pluggable, Serializable{
 	
 	private JButton buttons[];
+	private long destination;
 	
 	public TicTacToeModel(){
 	}
@@ -32,6 +33,14 @@ public class TicTacToeModel extends Observable implements Pluggable, Serializabl
 	
 	public JButton[] getBoard(){
 		return buttons;
+	}
+	
+	public long getDestination(){
+		return destination;
+	}
+	
+	public void setDestination(long dest){
+		destination = dest;
 	}
 	
 	public void reset(){
