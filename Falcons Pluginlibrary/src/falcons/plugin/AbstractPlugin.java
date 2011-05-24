@@ -35,4 +35,8 @@ public abstract class AbstractPlugin implements Serializable, Pluggable {
  	public static void send(PluginCall call){
  		listener.actionPerformed(new PluginEvent(PluginEventType.SEND, call));
  	}
+ 	
+ 	public static Object getData(PluginEvent e){
+ 		return listener.getData(e);
+ 	}
 }
