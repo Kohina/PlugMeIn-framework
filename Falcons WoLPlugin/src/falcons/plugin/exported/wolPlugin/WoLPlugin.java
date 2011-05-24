@@ -1,4 +1,4 @@
-package falcons.plugin.wolPlugin;
+package falcons.plugin.exported.wolPlugin;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

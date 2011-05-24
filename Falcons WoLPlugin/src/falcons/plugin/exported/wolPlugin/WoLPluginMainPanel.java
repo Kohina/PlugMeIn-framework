@@ -1,8 +1,8 @@
-package falcons.plugin.wolPlugin;
-import com.cloudgarden.layout.AnchorConstraint;
-import com.cloudgarden.layout.AnchorLayout;
+package falcons.plugin.exported.wolPlugin;
 
 import falcons.plugin.Pluggable;
+import falcons.plugin.exported.com.cloudgarden.layout.AnchorConstraint;
+import falcons.plugin.exported.com.cloudgarden.layout.AnchorLayout;
 
 import java.awt.Dimension;
 import javax.swing.JButton;
