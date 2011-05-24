@@ -1,18 +1,18 @@
-package falcons.plugin.alarmplugin.model;
+package falcons.plugin.exported.alarmplugin.model;
 
 import java.util.TimerTask;
 
 import falcons.plugin.Pluggable;
 import falcons.plugin.PluginCall;
-import falcons.plugin.PluginEvent;
-import falcons.plugin.PluginEvent.PluginEventType;
-import falcons.plugin.alarmplugin.AlarmPlugin;
-import falcons.plugin.PluginEventListener;
+import falcons.plugin.exported.alarmplugin.AlarmPlugin;
 
 public class Alarm extends TimerTask implements Pluggable {
 	
 	private PluginCall call;
 	private boolean repeat = false;
+	
+	public Alarm(){
+	}
 	
 	public Alarm(PluginCall call, boolean repeat){
 		this.call = call;

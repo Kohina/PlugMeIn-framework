@@ -1,4 +1,4 @@
-package falcons.plugin.alarmplugin.controller;
+package falcons.plugin.exported.alarmplugin.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,10 +8,10 @@ import java.util.HashMap;
 
 import falcons.plugin.AbstractPluginData;
 import falcons.plugin.PluginCall;
-import falcons.plugin.alarmplugin.AlarmPlugin;
-import falcons.plugin.alarmplugin.model.Alarm;
-import falcons.plugin.alarmplugin.model.Clock;
-import falcons.plugin.alarmplugin.view.AlarmMainPanel;
+import falcons.plugin.exported.alarmplugin.AlarmPlugin;
+import falcons.plugin.exported.alarmplugin.model.Alarm;
+import falcons.plugin.exported.alarmplugin.model.Clock;
+import falcons.plugin.exported.alarmplugin.view.AlarmMainPanel;
 
 public class AlarmController implements ActionListener{
 

@@ -1,4 +1,4 @@
-package falcons.plugin.alarmplugin;
+package falcons.plugin.exported.alarmplugin;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -9,8 +9,8 @@ import falcons.plugin.AbstractPlugin;
 import falcons.plugin.AbstractPluginData;
 import falcons.plugin.Plugin;
 import falcons.plugin.PluginCall;
-import falcons.plugin.alarmplugin.model.Alarm;
-import falcons.plugin.alarmplugin.model.Clock;
+import falcons.plugin.exported.alarmplugin.model.Alarm;
+import falcons.plugin.exported.alarmplugin.model.Clock;
 
 @Plugin(pluginID = "Alarm", versionID = "1.0")
 public class AlarmPlugin extends AbstractPlugin {

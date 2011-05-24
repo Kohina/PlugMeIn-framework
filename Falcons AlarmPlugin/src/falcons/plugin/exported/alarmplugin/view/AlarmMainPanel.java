@@ -1,4 +1,4 @@
-package falcons.plugin.alarmplugin.view;
+package falcons.plugin.exported.alarmplugin.view;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -23,13 +23,14 @@ import javax.swing.JTextField;
 import javax.swing.ListModel;
 
 import falcons.plugin.AbstractPluginData;
+import falcons.plugin.Pluggable;
 import falcons.plugin.PluginCall;
 import falcons.plugin.PluginEvent;
 import falcons.plugin.PluginEvent.PluginEventType;
-import falcons.plugin.alarmplugin.AlarmPlugin;
-import falcons.plugin.alarmplugin.controller.AlarmController;
-import falcons.plugin.alarmplugin.model.Alarm;
-import falcons.plugin.alarmplugin.model.Clock;
+import falcons.plugin.exported.alarmplugin.AlarmPlugin;
+import falcons.plugin.exported.alarmplugin.controller.AlarmController;
+import falcons.plugin.exported.alarmplugin.model.Alarm;
+import falcons.plugin.exported.alarmplugin.model.Clock;
 
 /**
  * This code was edited or generated using CloudGarden's Jigloo SWT/Swing GUI
@@ -42,7 +43,7 @@ import falcons.plugin.alarmplugin.model.Clock;
  * ANY CORPORATE OR COMMERCIAL PURPOSE.
  */
 public class AlarmMainPanel extends javax.swing.JPanel implements
-		ActionListener {
+		ActionListener, Pluggable {
 	private JList clientList;
 	private JLabel formatLabel;
 	private JButton setAlarmButton;
@@ -51,9 +52,8 @@ public class AlarmMainPanel extends javax.swing.JPanel implements
 	private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd HH:mm");
 	private HashMap<String, Long> clientMap;
 
-	/**
-	 * Auto-generated main method to display this JPanel inside a new JFrame.
-	 */
+	public AlarmMainPanel(){
+	}
 
 	public AlarmMainPanel(Clock clock, AlarmController controller) {
 		super();
