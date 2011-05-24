@@ -19,8 +19,8 @@ public class ClientDataInterpreter {
 	}
 
 	public static ClientDataInterpreter getInstance() {
-			if (instance == null) {
-				instance = new ClientDataInterpreter();
+		if (instance == null) {
+			instance = new ClientDataInterpreter();
 		}
 		return instance;
 	}
@@ -28,16 +28,17 @@ public class ClientDataInterpreter {
 	/**
 	 * Interpret where the PluginCall is supposed to be sent and then send it to
 	 * the corresponding Plugin or client.
-	 *
+	 * 
 	 * @param call
 	 *            The PluginCall that's been received from the server.
 	 */
 	public void interpret(PluginCall call) {
-			String pluginName = call.getPluginID();
-			if (pluginName.equals("SystemPlugin")) {
-				SystemClientPlugin.getInstance().receiveCall(call);
-			} else {
-				((AbstractPlugin) PluginLogic.getPluginMap().get(pluginName)).receiveCall(call);
-			}
+		String pluginName = call.getPluginID();
+		if (pluginName.equals("SystemPlugin")) {
+			SystemClientPlugin.getInstance().receiveCall(call);
+		} else {
+			((AbstractPlugin) PluginLogic.getPluginMap().get(pluginName))
+					.receiveCall(call);
+		}
 	}
 }
