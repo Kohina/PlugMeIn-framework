@@ -1,6 +1,6 @@
 /*
  */
-package com.cloudgarden.layout;
+package falcons.plugin.exported.com.cloudgarden.layout;
 
 /**
  * Used by both AnchorLayout (SWT) and AnchorLayoutManager (Swing)
