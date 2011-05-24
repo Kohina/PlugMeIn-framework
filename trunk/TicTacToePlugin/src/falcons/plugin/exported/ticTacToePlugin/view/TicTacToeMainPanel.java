@@ -20,6 +20,7 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 	private JPanel gamePanel, connectPanel;
 	private JList clientList;
 	private JButton go, update;
+	private CardLayout m;
 	private TicTacToeController controller;
 	private ConnectedClientsLogic logic;
 	
@@ -29,7 +30,8 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 	}
 	
 	private void initGUI(){
-		this.setLayout(new CardLayout());
+		m = new CardLayout();
+		this.setLayout(m);
 		this.setSize(600, 600);
 		
 		connectPanel = new JPanel();
@@ -55,8 +57,8 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		    buttons[i].addActionListener(this);
 		}
 		
-		this.add(connectPanel);
-		this.add(gamePanel);
+		this.add("connect", connectPanel);
+		this.add("game", gamePanel);
 	}
 
 	@Override
@@ -93,6 +95,7 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		}
 		else if(e.getSource() == go){
 			controller.connect(clientList.getSelectedIndex());
+			m.show(this, "game");
 		}
 		else if(e.getSource() == update){
 			controller.updateClients();
