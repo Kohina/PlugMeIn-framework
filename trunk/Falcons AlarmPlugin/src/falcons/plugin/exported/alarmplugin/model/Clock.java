@@ -1,4 +1,4 @@
-package falcons.plugin.alarmplugin.model;
+package falcons.plugin.exported.alarmplugin.model;
 
 import java.util.Date;
 import java.util.HashMap;
