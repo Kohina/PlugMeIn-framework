@@ -24,9 +24,9 @@ public class TicTacToePlugin extends AbstractPlugin{
 	private TicTacToeController cont;
 
 	public TicTacToePlugin() {
-		model = new TicTacToeModel();
-		logic = new TicTacToeLogic(model);
 		mainPanel = new TicTacToeMainPanel();
+		model = new TicTacToeModel(mainPanel.getButtons());
+		logic = new TicTacToeLogic(model);
 		cont = new TicTacToeController(mainPanel, logic);
 		mainPanel.addActionListener(cont);
 		model.addObserver(mainPanel);
