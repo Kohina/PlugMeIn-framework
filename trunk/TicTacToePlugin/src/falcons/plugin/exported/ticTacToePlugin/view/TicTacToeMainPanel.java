@@ -35,11 +35,8 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		connectPanel = new JPanel();
 		connectPanel.setLayout(new GridLayout(2,1));
 		
-		ListModel clientListModel = new DefaultComboBoxModel(logic.getClients().keySet().toArray());
 		clientList = new JList();
-		connectPanel.add(clientList, new GridBagConstraints(0, 0, 1, 4, 0.0,0.0, GridBagConstraints.CENTER,
-				GridBagConstraints.VERTICAL, new Insets(0, 0, 0, 0), 0,0));
-		clientList.setModel(clientListModel);
+		connectPanel.add(clientList);
 		
 		update.setText("Update list");
 		update.addActionListener(this);
@@ -99,6 +96,9 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		}
 		else if(e.getSource() == update){
 			controller.updateClients();
+			
+			ListModel clientListModel = new DefaultComboBoxModel(logic.getClients().keySet().toArray());
+			clientList.setModel(clientListModel);
 		}
 		else{
 			System.out.print("Invalid button");
