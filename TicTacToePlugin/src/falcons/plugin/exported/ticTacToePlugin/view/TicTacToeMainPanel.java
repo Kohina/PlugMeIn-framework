@@ -96,6 +96,7 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		else if(e.getSource() == update){
 			controller.updateClients();
 			
+			//need connection to client to test this
 			ListModel clientListModel = new DefaultComboBoxModel(logic.getClients().keySet().toArray());
 			clientList.setModel(clientListModel);
 		}
