@@ -1,11 +1,16 @@
 package pkj.no.tellstick.device;
 
+import falcons.plugin.Pluggable;
 import pkj.no.tellstick.JNA;
 
 
-public class DimmableDevice extends Device implements pkj.no.tellstick.device.iface.DimmableDevice{
+public class DimmableDevice extends Device implements pkj.no.tellstick.device.iface.DimmableDevice, Pluggable{
 
-
+	public DimmableDevice() throws SupportedMethodsException {
+		super(0);
+		// TODO Auto-generated constructor stub
+	}
+	
 	public DimmableDevice(int deviceId) throws SupportedMethodsException {
 		super(deviceId);
 	}

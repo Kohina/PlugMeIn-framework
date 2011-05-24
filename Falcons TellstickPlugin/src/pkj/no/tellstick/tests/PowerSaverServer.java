@@ -8,6 +8,8 @@ import java.util.Properties;
 
 import org.apache.commons.cli.*;
 
+import falcons.plugin.Pluggable;
+
 import pkj.no.tellstick.JNA;
 import pkj.no.tellstick.device.*;
 import pkj.no.tellstick.schedule.DeviceSchedular;
@@ -23,8 +25,12 @@ import pkj.no.tellstick.schedule.ScheduleCallback;
  * @author peec
  * 
  */
-public class PowerSaverServer {
+public class PowerSaverServer implements Pluggable{
 
+	public PowerSaverServer() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	/**
 	 * @param args
 	 * @throws SupportedMethodsException 

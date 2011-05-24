@@ -6,6 +6,8 @@ import java.util.Properties;
 
 import com.sun.jna.Pointer;
 
+import falcons.plugin.Pluggable;
+
 import pkj.no.tellstick.JNA;
 import pkj.no.tellstick.device.DeviceNotSupportedException;
 import pkj.no.tellstick.device.SupportedMethodsException;
@@ -19,8 +21,12 @@ import pkj.no.tellstick.device.TellstickDevice;
  * @author peec
  * 
  */
-public class Callbacks {
+public class Callbacks implements Pluggable{
 
+	public Callbacks() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	/**
 	 * @param args
 	 */

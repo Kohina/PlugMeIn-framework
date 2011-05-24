@@ -2,6 +2,8 @@ package pkj.no.tellstick.device;
 
 import java.util.ArrayList;
 
+import falcons.plugin.Pluggable;
+
 import pkj.no.tellstick.JNA;
 
 
@@ -31,8 +33,13 @@ import pkj.no.tellstick.JNA;
  * @author peec
  *
  */
-public class GroupDevice extends TellstickDevice{
-
+public class GroupDevice extends TellstickDevice implements Pluggable{
+	
+	public GroupDevice() throws SupportedMethodsException {
+		super(0);
+		// TODO Auto-generated constructor stub
+	}
+	
 	/**
 	 * Contains collection of instances to BellDevice / DimmableDevice / Device.
 	 * Can be only BellDevice and etc.

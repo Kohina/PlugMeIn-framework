@@ -1,8 +1,13 @@
 package pkj.no.tellstick.device;
 
-public class DeviceNotSupportedException extends Exception{
-	
+import falcons.plugin.Pluggable;
 
+public class DeviceNotSupportedException extends Exception implements Pluggable{
+	
+	public DeviceNotSupportedException() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public DeviceNotSupportedException(String message){
 		super(message);
 	}

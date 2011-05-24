@@ -1,10 +1,16 @@
 package pkj.no.tellstick.device;
 
+import falcons.plugin.Pluggable;
 import pkj.no.tellstick.JNA;
 
 
-public class Device extends TellstickDevice implements pkj.no.tellstick.device.iface.Device{
-
+public class Device extends TellstickDevice implements pkj.no.tellstick.device.iface.Device, Pluggable {
+	
+	public Device() throws Exception {
+		super(null, null, null);
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Device(int deviceId) throws SupportedMethodsException {
 		super(deviceId);
 	}

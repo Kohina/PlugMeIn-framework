@@ -2,10 +2,16 @@ package pkj.no.tellstick.schedule;
 
 import java.util.Calendar;
 
+import falcons.plugin.Pluggable;
+
 import pkj.no.tellstick.device.TellstickDevice;
 
-public class Schedule {
+public class Schedule implements Pluggable{
 
+	public Schedule() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	final static public int ALL_DAYS = 1;
 	final static public int MONDAY = 2;
 	final static public int TUESDAY = 4;

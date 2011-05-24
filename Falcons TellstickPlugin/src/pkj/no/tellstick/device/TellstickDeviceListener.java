@@ -7,6 +7,8 @@ import pkj.no.tellstick.JNA;
 
 import com.sun.jna.Pointer;
 
+import falcons.plugin.Pluggable;
+
 /**
  * This listener will update / add objects automatically to a list of tellstick devices.
  * This will use the C# Library to find out if devices has changed anything.
@@ -38,8 +40,12 @@ import com.sun.jna.Pointer;
  * @author peec
  *
  */
-public class TellstickDeviceListener extends Thread implements Runnable{
+public class TellstickDeviceListener extends Thread implements Runnable, Pluggable{
 
+	public TellstickDeviceListener() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	ArrayList<TellstickDevice> list;
 	DeviceChangeListener changeListener;
 	
