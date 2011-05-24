@@ -53,7 +53,7 @@ public class SystemClientPlugin implements Serializable {
 	}
 
 	private void sendClientInfo() {
-		AbstractPluginData<ClientInfo> data = new AbstractPluginData<ClientInfo>("receiveClientInfo", "SystemPlugin", ServerLogic.getClientInfo());
+		AbstractPluginData<ClientInfo> data = new AbstractPluginData<ClientInfo>("receiveClientInfo", "1.0", ServerLogic.getClientInfo());
 		PluginCall call = new PluginCall("SystemPlugin", data, -1);
 		ClientConnection.send(call);
 	}
@@ -65,7 +65,7 @@ public class SystemClientPlugin implements Serializable {
 	}
 
 	public void disconnect() {
-		AbstractPluginData<ClientInfo> data = new AbstractPluginData<ClientInfo>("deleteClient", "SystemPlugin", ServerLogic.getClientInfo());
+		AbstractPluginData<ClientInfo> data = new AbstractPluginData<ClientInfo>("deleteClient", "1.0", ServerLogic.getClientInfo());
 		PluginCall call = new PluginCall("SystemPlugin", data, -1);
 		ClientConnection.send(call);
 	}
