@@ -5,11 +5,13 @@ import java.io.Serializable;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import falcons.plugin.PluginEvent.PluginEventType;
+
 
 @Plugin
 public abstract class AbstractPlugin implements Serializable, Pluggable {
 
-	private PluginEventListener listener = null;
+	private static PluginEventListener listener = null;
 	
 	public AbstractPlugin() {
 	}
@@ -29,4 +31,8 @@ public abstract class AbstractPlugin implements Serializable, Pluggable {
  	public void addEventListener(PluginEventListener p){
 		listener = p;
 	}
+ 	
+ 	public static void send(PluginCall call){
+ 		listener.actionPerformed(new PluginEvent(PluginEventType.SEND, call));
+ 	}
 }
