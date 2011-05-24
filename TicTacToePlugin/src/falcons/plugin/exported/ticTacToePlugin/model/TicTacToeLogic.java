@@ -13,7 +13,7 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 	private boolean win = false;
 	private int fullBoard = 0;
 	private String winner = null;
-	private JButton[] board = model.getBoard();
+	private JButton[] board;
 	
 	public TicTacToeLogic(){
 		
@@ -21,6 +21,7 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 	
 	public TicTacToeLogic(TicTacToeModel model){
 		this.model = model;
+		board = model.getBoard();
 	}
 	
 	//If b == true, you've played. If it's false your opponent have played
