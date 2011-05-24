@@ -3,6 +3,7 @@ package falcons.plugin.exported;
 import java.io.Serializable;
 import java.util.Observable;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import falcons.plugin.AbstractPlugin;
@@ -20,7 +21,7 @@ public class TicTacToePlugin extends AbstractPlugin{
 
 	private TicTacToeModel model;
 	private TicTacToeLogic logic;
-	private TicTacToeMainPanel mainPanel;
+	private static TicTacToeMainPanel mainPanel;
 	private TicTacToeController cont;
 
 	public TicTacToePlugin() {
@@ -44,5 +45,13 @@ public class TicTacToePlugin extends AbstractPlugin{
 	@Override
 	public JPanel getMainPanel() {
 		return mainPanel;
+	}
+	
+	public static void main(String[] arg){
+		JFrame frame = new JFrame();
+		new TicTacToePlugin();
+		frame.add(mainPanel);
+		frame.setSize(400, 400);
+		frame.setVisible(true);
 	}
 }

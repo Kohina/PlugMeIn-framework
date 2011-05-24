@@ -78,6 +78,5 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 	
 	public JButton[] getButtons(){
 		return buttons.clone();
-		
 	}
 }

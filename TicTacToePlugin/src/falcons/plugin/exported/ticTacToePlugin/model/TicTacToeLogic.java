@@ -14,6 +14,7 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 	private int fullBoard = 0;
 	private String winner = null;
 	private JButton[] board;
+	private boolean me = false;
 	
 	public TicTacToeLogic(){
 		
@@ -24,13 +25,15 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 		board = model.getBoard();
 	}
 	
-	//If b == true, you've played. If it's false your opponent have played
+	//If b == true, you've played. If b == false your opponent have played
 	public void turn(int i, boolean b){
-		if(b && model.getBoard()[i] == null){
+		if(b && model.getBoard()[i].getText() == ""){
 			model.changeO(i);
+			win();
 		}
-		else if(model.getBoard()[i] == null){
+		else if(model.getBoard()[i].getText() == ""){
 			model.changeX(i);
+			win();
 		}
 	}
 	
@@ -45,7 +48,7 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 		for(int i=0; i<=7; i++){
 		    if( board[winCombinations[i][0]].getText().equals(board[winCombinations[i][1]].getText()) && 
 		        board[winCombinations[i][1]].getText().equals(board[winCombinations[i][2]].getText()) && 
-		        board[winCombinations[i][0]].getText() != null){
+		        board[winCombinations[i][0]].getText() != ""){
 		        win = true;
 		        winner = board[winCombinations[i][0]].getText();
 		    }
@@ -53,16 +56,19 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 		if(win){
 			JOptionPane.showMessageDialog(null, winner + " har vunnit!");
 		}
+		restart();
 	}
 	
 	public void restart(){
 		for(int i=0; i<9; i++){
-			if(board[i] != null){
+			if(board[i].getText() != ""){
 				fullBoard++;
 			}
 		}
 		if(win || fullBoard == 9){
 			model.reset();
+			win = false;
+			fullBoard = 0;
 		}
 	}
 }
