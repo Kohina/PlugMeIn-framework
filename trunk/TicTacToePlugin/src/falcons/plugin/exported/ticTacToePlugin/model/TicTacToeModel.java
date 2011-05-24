@@ -9,12 +9,15 @@ import falcons.plugin.exported.ticTacToePlugin.view.TicTacToeMainPanel;
 
 public class TicTacToeModel extends Observable implements Pluggable, Serializable{
 	
-	private JButton buttons[] = new JButton[9];
+	private JButton buttons[];
 	
 	public TicTacToeModel(){
-		
 	}
 	
+	public TicTacToeModel(JButton[] buttons) {
+		this.buttons = buttons;
+	}
+
 	public void changeO(int i){
 		buttons[i].setText("O");
 		setChanged();
