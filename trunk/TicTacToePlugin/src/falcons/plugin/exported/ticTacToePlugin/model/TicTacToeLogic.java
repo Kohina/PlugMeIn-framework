@@ -43,6 +43,14 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 		me = b;
 	}
 	
+	public long getDestination(){
+		return model.getDestination();
+	}
+	
+	public void setDestination(long dest){
+		model.setDestination(dest);
+	}
+	
 	public void win(){
 		
 		int[][] winCombinations = new int[][] {
