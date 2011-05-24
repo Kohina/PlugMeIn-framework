@@ -14,6 +14,7 @@ public class ServerImpl {
 		tray = new ServerSystemTray();
 		server.actionPerformed(new LibraryEvent(LibraryEventType.LOAD_PLUGINS));
 		server.actionPerformed(new LibraryEvent(LibraryEventType.READ_PREFERENCES));
+		server.startServer();
 	}
 
 }
