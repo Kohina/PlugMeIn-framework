@@ -49,6 +49,8 @@ class PluginController implements PluginEventListener {
 		case GET_PLUGINMAP:
 			returnObject =  PluginLogic.getPluginMap();
 			break;
+		case GET_CLIENTID:
+			returnObject = ServerLogic.getClientInfo().getID();
 		default:
 			break;
 		}
