@@ -15,6 +15,10 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 	private String winner = null;
 	private JButton[] board = model.getBoard();
 	
+	public TicTacToeLogic(){
+		
+	}
+	
 	public TicTacToeLogic(TicTacToeModel model){
 		this.model = model;
 	}
