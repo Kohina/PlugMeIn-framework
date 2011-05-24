@@ -19,7 +19,7 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 	private JButton buttons[] = new JButton[9];
 	private JPanel gamePanel, connectPanel;
 	private JList clientList;
-	private JButton go;
+	private JButton go, update;
 	private TicTacToeController controller;
 	private ConnectedClientsLogic logic;
 	
@@ -35,14 +35,17 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		connectPanel = new JPanel();
 		connectPanel.setLayout(new GridLayout(2,1));
 		
-		controller.updateClients();
-		
 		ListModel clientListModel = new DefaultComboBoxModel(logic.getClients().keySet().toArray());
 		clientList = new JList();
 		connectPanel.add(clientList, new GridBagConstraints(0, 0, 1, 4, 0.0,0.0, GridBagConstraints.CENTER,
 				GridBagConstraints.VERTICAL, new Insets(0, 0, 0, 0), 0,0));
 		clientList.setModel(clientListModel);
 		
+		update.setText("Update list");
+		update.addActionListener(this);
+		connectPanel.add(update);
+		
+		go.setText("Play");
 		go.addActionListener(this);
 		connectPanel.add(go);
 		
@@ -93,6 +96,9 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		}
 		else if(e.getSource() == go){
 			controller.connect(clientList.getSelectedIndex());
+		}
+		else if(e.getSource() == update){
+			controller.updateClients();
 		}
 		else{
 			System.out.print("Invalid button");
