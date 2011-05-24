@@ -35,7 +35,6 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		this.setSize(600, 600);
 		
 		connectPanel = new JPanel();
-		connectPanel.setLayout(new GridLayout(2,1));
 		
 		clientList = new JList();
 		connectPanel.add(clientList);
@@ -89,9 +88,6 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		}
 		else if(e.getSource() == buttons[8]){
 			controller.turn(8, true);
-		}
-		else if(e.getSource() == buttons[9]){
-			controller.turn(9, true);
 		}
 		else if(e.getSource() == go){
 			controller.connect(clientList.getSelectedIndex());
