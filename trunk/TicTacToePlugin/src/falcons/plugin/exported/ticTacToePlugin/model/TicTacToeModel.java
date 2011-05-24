@@ -3,6 +3,7 @@ package falcons.plugin.exported.ticTacToePlugin.model;
 import java.io.Serializable;
 import java.util.Observable;
 import javax.swing.*;
+
 import falcons.plugin.Pluggable;
 
 public class TicTacToeModel extends Observable implements Pluggable, Serializable{
@@ -22,6 +23,13 @@ public class TicTacToeModel extends Observable implements Pluggable, Serializabl
 	}
 	
 	public JButton[] getBoard(){
+		return buttons;
+	}
+	
+	public JButton[] reset(){
+		for(int i=0; i<9; i++){
+			buttons[i].setText(null);
+		}
 		return buttons;
 	}
 }
