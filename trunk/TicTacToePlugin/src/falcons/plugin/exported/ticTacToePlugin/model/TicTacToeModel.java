@@ -36,7 +36,7 @@ public class TicTacToeModel extends Observable implements Pluggable, Serializabl
 	
 	public void reset(){
 		for(int i=0; i<9; i++){
-			buttons[i].setText(null);
+			buttons[i].setText("");
 		}
 		setChanged();
 		notifyObservers(buttons.clone());
