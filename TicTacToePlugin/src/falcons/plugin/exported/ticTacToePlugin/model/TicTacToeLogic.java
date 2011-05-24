@@ -56,14 +56,7 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 			}
 		}
 		if(win || fullBoard == 9){
-			reset();
+			model.reset();
 		}
-	}
-	
-	public JButton[] reset(){
-		for(int i=0; i<9; i++){
-			board[i].setText(null);
-		}
-		return board;
 	}
 }
