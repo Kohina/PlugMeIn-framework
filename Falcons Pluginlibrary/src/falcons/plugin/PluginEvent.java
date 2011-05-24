@@ -14,7 +14,7 @@ public class PluginEvent {
 		
 		GET_PLUGINMAP,
 		
-		GET_CLIENTS
+		GET_CLIENTS, GET_CLIENTID
 	}
 	
 	private PluginEventType typeOfEvent;
