@@ -3,6 +3,6 @@
 	<name>Client</name>
 	<port>45678</port>
 
-	<ip>127.0.0.1</ip>
+	<ip>192.168.0.2</ip>
 
 </ClientPreferencesModel>
