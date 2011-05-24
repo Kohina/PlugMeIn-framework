@@ -1,11 +1,15 @@
 package falcons.client.controller;
 
+import java.util.HashMap;
+import java.util.List;
+
 import falcons.client.model.PluginLogic;
 import falcons.client.model.ServerLogic;
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.PluginEvent;
 import falcons.plugin.PluginEventListener;
 import falcons.plugin.PluginEvent.PluginEventType;
+import falcons.utils.ClientInfo;
 
 class PluginController implements PluginEventListener {
 
@@ -35,7 +39,12 @@ class PluginController implements PluginEventListener {
 		Object returnObject = null;
 		switch (e) {
 		case GET_CLIENTS:
-			returnObject = ServerLogic.getClients();
+			List<ClientInfo> clients = ServerLogic.getClients();
+			HashMap<String, Long> clientData = new HashMap<String, Long>();
+			for(ClientInfo c : clients){
+				clientData.put(c.getName(), c.getID());
+			}
+			returnObject = clientData;
 			break;
 		case GET_PLUGINMAP:
 			returnObject =  PluginLogic.getPluginMap();
