@@ -12,7 +12,7 @@ import falcons.plugin.exported.sendMessagePlugin.controller.SendMessageControlle
 import falcons.plugin.exported.sendMessagePlugin.model.*;
 import falcons.plugin.exported.sendMessagePlugin.view.SendMessageMainPanel;
 
-@Plugin(pluginID = "Send Message", versionID = "0.1")
+@Plugin(pluginID = "Send sMessage", versionID = "0.1")
 public class SendMessagePlugin extends AbstractPlugin {
 
 	private MessageModel messageModel;
@@ -23,8 +23,9 @@ public class SendMessagePlugin extends AbstractPlugin {
 	public SendMessagePlugin() {
 		messageModel = new MessageModel();
 		messageLogic = new MessageLogic(messageModel);
-		mainPanel = SendMessageMainPanel.getInstance(messageModel, controller);
+		mainPanel = SendMessageMainPanel.getInstance(messageModel);
 		controller = new SendMessageController(mainPanel, messageLogic);
+		mainPanel.setController(controller);
 	}
 
 	@Override
