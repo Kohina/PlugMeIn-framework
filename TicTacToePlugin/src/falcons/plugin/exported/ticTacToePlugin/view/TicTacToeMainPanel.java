@@ -38,11 +38,11 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		clientList = new JList();
 		connectPanel.add(clientList);
 		
-		update.setText("Update list");
+		update = new JButton("Update list");
 		update.addActionListener(this);
 		connectPanel.add(update);
 		
-		go.setText("Play");
+		go = new JButton("Play");
 		go.addActionListener(this);
 		connectPanel.add(go);
 		
