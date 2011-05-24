@@ -1,10 +1,10 @@
-package pkj.no.tellstick.device;
+package falcons.plugin.exported.pkj.no.tellstick.device;
 
 import falcons.plugin.Pluggable;
-import pkj.no.tellstick.JNA;
+import falcons.plugin.exported.pkj.no.tellstick.JNA;
 
 
-public class BellDevice extends TellstickDevice implements pkj.no.tellstick.device.iface.BellDevice, Pluggable{
+public class BellDevice extends TellstickDevice implements falcons.plugin.exported.pkj.no.tellstick.device.iface.BellDevice, Pluggable{
 
 	public BellDevice() throws Exception {
 		super(null, null, null);

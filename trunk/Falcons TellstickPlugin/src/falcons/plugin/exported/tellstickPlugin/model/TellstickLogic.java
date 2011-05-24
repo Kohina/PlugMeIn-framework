@@ -3,9 +3,9 @@ package falcons.plugin.exported.tellstickPlugin.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import pkj.no.tellstick.device.TellstickDevice;
 
 import falcons.plugin.Pluggable;
+import falcons.plugin.exported.pkj.no.tellstick.device.TellstickDevice;
 
 public class TellstickLogic implements Pluggable, Serializable{
 	

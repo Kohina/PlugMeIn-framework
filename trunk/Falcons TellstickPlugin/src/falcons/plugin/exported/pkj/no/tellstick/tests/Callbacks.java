@@ -1,4 +1,4 @@
-package pkj.no.tellstick.tests;
+package falcons.plugin.exported.pkj.no.tellstick.tests;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,11 +7,11 @@ import java.util.Properties;
 import com.sun.jna.Pointer;
 
 import falcons.plugin.Pluggable;
+import falcons.plugin.exported.pkj.no.tellstick.JNA;
+import falcons.plugin.exported.pkj.no.tellstick.device.DeviceNotSupportedException;
+import falcons.plugin.exported.pkj.no.tellstick.device.SupportedMethodsException;
+import falcons.plugin.exported.pkj.no.tellstick.device.TellstickDevice;
 
-import pkj.no.tellstick.JNA;
-import pkj.no.tellstick.device.DeviceNotSupportedException;
-import pkj.no.tellstick.device.SupportedMethodsException;
-import pkj.no.tellstick.device.TellstickDevice;
 
 /**
  * TEST.

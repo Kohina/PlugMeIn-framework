@@ -7,9 +7,9 @@ import javax.swing.*;
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.Plugin;
 import falcons.plugin.PluginCall;
+import falcons.plugin.exported.pkj.no.tellstick.*;
+import falcons.plugin.exported.pkj.no.tellstick.device.*;
 
-import pkj.no.tellstick.*;
-import pkj.no.tellstick.device.*;
 
 @Plugin(pluginID = "Tellstick", versionID = "0.1")
 public class TellstickPlugin extends AbstractPlugin {

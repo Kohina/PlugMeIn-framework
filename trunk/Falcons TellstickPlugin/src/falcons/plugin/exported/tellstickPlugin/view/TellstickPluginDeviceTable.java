@@ -7,9 +7,9 @@ import javax.swing.*;
 import javax.swing.table.*;
 import javax.swing.text.TableView.TableRow;
 
-import pkj.no.tellstick.device.TellstickDevice;
 
 import falcons.plugin.Pluggable;
+import falcons.plugin.exported.pkj.no.tellstick.device.TellstickDevice;
 
 public class TellstickPluginDeviceTable extends JTable implements Pluggable {
 
