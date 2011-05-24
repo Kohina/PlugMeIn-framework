@@ -12,6 +12,7 @@ import falcons.plugin.AbstractPluginData;
 import falcons.plugin.Plugin;
 import falcons.plugin.PluginCall;
 
+@Plugin(pluginID = "Wake on LAN", versionID = "1.0")
 public class WoLPlugin extends AbstractPlugin implements ActionListener {
 	private WoLPluginMainPanel mainPanel = WoLPluginMainPanel.getInstance(this);
 	

@@ -40,6 +40,7 @@ public class WoLPluginMainPanel extends javax.swing.JPanel implements Pluggable 
 		super();
 		initGUI();
 		wakeUpButton.addActionListener(mainPlugin);
+		setVisible(true);
 	}
 	
 	public static WoLPluginMainPanel getInstance(WoLPlugin mainPlugin) {
