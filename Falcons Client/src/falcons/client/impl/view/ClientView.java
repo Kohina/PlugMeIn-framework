@@ -40,10 +40,7 @@ public class ClientView extends javax.swing.JFrame {
 				jTabbedPaneMain.setTabPlacement(JTabbedPane.LEFT);
 				jTabbedPaneMain.setBackground(new Color(190,190,190));
 				
-				getContentPane().add(jTabbedPaneMain, BorderLayout.CENTER);
-				
-				addTab("Wake on lan", getWakeOnLanPanel());
-				
+				getContentPane().add(jTabbedPaneMain, BorderLayout.CENTER);				
 			}
 			pack();
 			setSize(400, 300);
@@ -71,15 +68,5 @@ public class ClientView extends javax.swing.JFrame {
 			temp.setPreferredSize(new Dimension(250,210));
 		}
 		return temp;
-	}
-	
-	/*Panels*/
-	private JPanel getWakeOnLanPanel(){
-		if(wakeOnLanPanel == null){
-			wakeOnLanPanel = new JPanel();
-			wakeOnLanPanel.add(getTemp());
-			//wakeOnLanPanel.setPreferredSize(new java.awt.Dimension(379, 121));
-		}
-		return wakeOnLanPanel;
 	}
 }
