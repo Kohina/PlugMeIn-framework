@@ -5,8 +5,9 @@ import java.util.Observable;
 import javax.swing.*;
 
 import falcons.plugin.Pluggable;
+import falcons.plugin.exported.ticTacToePlugin.view.TicTacToeMainPanel;
 
-public class TicTacToeModel extends Observable implements Pluggable, Serializable{
+public class TicTacToeModel implements Pluggable, Serializable{
 	
 	private JButton buttons[] = new JButton[9];
 	
@@ -16,20 +17,22 @@ public class TicTacToeModel extends Observable implements Pluggable, Serializabl
 	
 	public void changeO(int i){
 		buttons[i].setText("O");
+		TicTacToeMainPanel.update(buttons.clone());
 	}
 	
 	public void changeX(int i){
 		buttons[i].setText("X");
+		TicTacToeMainPanel.update(buttons.clone());
 	}
 	
 	public JButton[] getBoard(){
 		return buttons;
 	}
 	
-	public JButton[] reset(){
+	public void reset(){
 		for(int i=0; i<9; i++){
 			buttons[i].setText(null);
 		}
-		return buttons;
+		TicTacToeMainPanel.update(buttons.clone());
 	}
 }
