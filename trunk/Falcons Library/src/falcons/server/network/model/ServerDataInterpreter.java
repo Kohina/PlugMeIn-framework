@@ -7,6 +7,7 @@ import javax.management.modelmbean.ModelMBean;
 import falcons.client.model.PluginLogic;
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.PluginCall;
+import falcons.server.network.SystemServerPlugin;
 
 public class ServerDataInterpreter {
 	private static ServerDataInterpreter instance;
@@ -18,8 +19,8 @@ public class ServerDataInterpreter {
 	}
 
 	public static ServerDataInterpreter getInstance() {
-			if (instance == null) {
-				instance = new ServerDataInterpreter();
+		if (instance == null) {
+			instance = new ServerDataInterpreter();
 		}
 		return instance;
 	}
@@ -27,12 +28,17 @@ public class ServerDataInterpreter {
 	/**
 	 * Interpret where the PluginCall is supposed to be sent and then send it to
 	 * the corresponding Plugin or client.
-	 *
+	 * 
 	 * @param call
 	 *            The PluginCall that's been received from the server.
 	 */
 	public void interpret(PluginCall call) {
-			String pluginName = call.getPluginID();
-			((AbstractPlugin) falcons.server.model.PluginLogic.getPluginMap().get(pluginName)).receiveCall(call);
+		String pluginName = call.getPluginID();
+		if (pluginName.equals("SystemPlugin")) {
+			SystemServerPlugin.getInstance().receiveCall(call);
+		} else {
+			((AbstractPlugin) falcons.server.model.PluginLogic.getPluginMap()
+					.get(pluginName)).receiveCall(call);
+		}
 	}
 }

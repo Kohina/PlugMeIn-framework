@@ -42,6 +42,7 @@ public class ServerCommunicationCenter implements Runnable {
 
 	public void server() throws IOException {
 		System.out.println("SERVER STARTED");
+		System.out.println(ServerPreferencesLogic.getPort());
 		while (listening) {
 			ConnectionThread thread = new ConnectionThread(socket.accept());
 			System.out

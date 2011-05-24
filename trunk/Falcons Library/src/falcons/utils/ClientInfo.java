@@ -1,11 +1,12 @@
 package falcons.utils;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /*
  * Class that contains information such as id, name and loaded plugins about a certain client.
  */
-public class ClientInfo {
+public class ClientInfo implements Serializable {
 	private long id;
 	private String name;
 	private HashMap<String, String> plugins;
