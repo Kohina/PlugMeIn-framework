@@ -7,6 +7,7 @@ import javax.swing.*;
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.Plugin;
 import falcons.plugin.PluginCall;
+import falcons.plugin.exported.tellstickPlugin.view.TellstickMainPanel;
 
 import pkj.no.tellstick.*;
 import pkj.no.tellstick.device.*;
@@ -14,7 +15,10 @@ import pkj.no.tellstick.device.*;
 @Plugin(pluginID = "Tellstick", versionID = "0.1")
 public class TellstickPlugin extends AbstractPlugin {
 
+		TellstickMainPanel mainPanel;
+		
 	public TellstickPlugin() {
+		
 		System.setProperty("jna.library.path", "");
 
 		// Set supported methods for this app.
@@ -58,9 +62,7 @@ public class TellstickPlugin extends AbstractPlugin {
 
 	@Override
 	public JPanel getMainPanel() {
-		JPanel panel = new JPanel();
-		panel.add(new JLabel("IT WORKS"));
-		return panel;
+		return mainPanel;
 	}
 
 }

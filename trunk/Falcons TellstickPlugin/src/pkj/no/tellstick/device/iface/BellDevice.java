@@ -1,5 +1,6 @@
 package pkj.no.tellstick.device.iface;
 
+import falcons.plugin.Pluggable;
 import pkj.no.tellstick.device.TellstickException;
 
 /**
@@ -8,9 +9,8 @@ import pkj.no.tellstick.device.TellstickException;
  * @author peec
  *
  */
-public interface BellDevice {
+public interface BellDevice extends Pluggable{
 
-	
 	/**
 	 * Bells the bell, meaning a sound will be played from the belling device.
 	 * @throws TellstickException 

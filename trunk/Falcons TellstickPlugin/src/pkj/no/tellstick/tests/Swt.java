@@ -5,8 +5,15 @@ import org.eclipse.swt.layout.*;
 import org.eclipse.swt.custom.*;
 import org.eclipse.swt.graphics.Rectangle;
 
+import falcons.plugin.Pluggable;
 
-public class Swt {
+
+public class Swt implements Pluggable{
+	
+	public Swt() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public static void main (String [] args) 
 	{
 		Display display = new Display ();

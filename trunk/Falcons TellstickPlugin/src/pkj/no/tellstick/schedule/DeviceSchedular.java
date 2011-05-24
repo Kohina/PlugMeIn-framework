@@ -1,14 +1,16 @@
 package pkj.no.tellstick.schedule;
 
 import java.util.ArrayList;
+
+import falcons.plugin.Pluggable;
 /**
  * A shedular application that runs in a separate thread.
  * You can schedule actions for devices, create a new Schedule in a very neat way and add it to this collection.
  * @author peec
  *
  */
-public class DeviceSchedular extends Thread implements Runnable {
-
+public class DeviceSchedular extends Thread implements Runnable, Pluggable {
+	
 	boolean running = true;
 
 	ArrayList<Schedule> schedules;

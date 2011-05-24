@@ -1,5 +1,6 @@
 package pkj.no.tellstick.device.iface;
 
+import falcons.plugin.Pluggable;
 import pkj.no.tellstick.device.TellstickException;
 
 /**
@@ -7,7 +8,7 @@ import pkj.no.tellstick.device.TellstickException;
  * @author peec
  *
  */
-public interface Device{
+public interface Device extends Pluggable{
 
 	
 	

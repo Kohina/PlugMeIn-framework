@@ -5,10 +5,16 @@ import java.util.Calendar;
 import com.luckycatlabs.sunrisesunset.SunriseSunsetCalculator;
 import com.luckycatlabs.sunrisesunset.dto.Location;
 
+import falcons.plugin.Pluggable;
+
 import pkj.no.tellstick.device.TellstickDevice;
 
-public class SolarSchedule extends Schedule{
+public class SolarSchedule extends Schedule implements Pluggable{
 
+	public SolarSchedule() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	private boolean sunrise;
 	
 	public SolarSchedule(int dayFlags, TellstickDevice device, ScheduleCallback callback, boolean sunrise){

@@ -7,6 +7,8 @@ import com.sun.jna.Library;
 import com.sun.jna.Native;
 import com.sun.jna.Pointer;
 import com.sun.jna.win32.StdCallLibrary.StdCallCallback;
+
+import falcons.plugin.Pluggable;
 /**
  * This Class is the heart of TellstickDUO Java version.
  * 
@@ -25,11 +27,13 @@ import com.sun.jna.win32.StdCallLibrary.StdCallCallback;
  * @author peec
  *
  */
-public class JNA {
+public class JNA implements Pluggable {
 
 	public static String library = null;
 
-	
+	public JNA() {
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * Interface that extends the library.
 	 * @author peec

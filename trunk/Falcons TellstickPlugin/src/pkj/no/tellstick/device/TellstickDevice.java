@@ -3,10 +3,16 @@ package pkj.no.tellstick.device;
 
 import java.util.ArrayList;
 
+import falcons.plugin.Pluggable;
+
 import pkj.no.tellstick.JNA;
 
-public class TellstickDevice implements Comparable<TellstickDevice>{
-
+public class TellstickDevice implements Comparable<TellstickDevice>, Pluggable{
+	
+	public TellstickDevice() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	/**
 	 * Holds the device ID.
 	 */

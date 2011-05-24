@@ -1,9 +1,13 @@
 package pkj.no.tellstick.device;
 
+import falcons.plugin.Pluggable;
 import pkj.no.tellstick.JNA;
 
-public class TellstickException extends Exception{
+public class TellstickException extends Exception implements Pluggable{
 
+	public TellstickException() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	/**
 	 * 

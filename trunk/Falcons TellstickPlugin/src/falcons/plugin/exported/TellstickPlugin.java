@@ -15,7 +15,7 @@ import pkj.no.tellstick.device.*;
 public class TellstickPlugin extends AbstractPlugin {
 
 	public TellstickPlugin() {
-		System.setProperty("jna.library.path", "");
+		System.setProperty("jna.library.path", "/Applications/TelldusCenter/");
 
 		// Set supported methods for this app.
 		TellstickDevice.setSupportedMethods(JNA.CLibrary.TELLSTICK_TURNOFF | JNA.CLibrary.TELLSTICK_TURNON);

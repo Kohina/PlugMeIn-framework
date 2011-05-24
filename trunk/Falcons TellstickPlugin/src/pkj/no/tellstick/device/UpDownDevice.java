@@ -1,5 +1,6 @@
 package pkj.no.tellstick.device;
 
+import falcons.plugin.Pluggable;
 import pkj.no.tellstick.JNA;
 
 /**
@@ -8,8 +9,12 @@ import pkj.no.tellstick.JNA;
  * @author peec
  *
  */
-public class UpDownDevice extends TellstickDevice{
+public class UpDownDevice extends TellstickDevice implements Pluggable{
 
+	public UpDownDevice() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public UpDownDevice(int deviceId) throws SupportedMethodsException {
 		super(deviceId);
 	}
