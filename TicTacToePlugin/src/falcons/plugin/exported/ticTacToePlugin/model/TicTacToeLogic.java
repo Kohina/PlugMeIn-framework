@@ -25,16 +25,22 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 		board = model.getBoard();
 	}
 	
-	//If b == true, you've played. If b == false your opponent have played
-	public void turn(int i, boolean b){
-		if(b && model.getBoard()[i].getText() == ""){
+	//If b == true, you've played. If b == false your opponent have played. If me it's your turn
+	public void turn(int i){
+		if(model.getBoard()[i].getText() == "" && me){
 			model.changeO(i);
+			me = false;
 			win();
 		}
 		else if(model.getBoard()[i].getText() == ""){
 			model.changeX(i);
+			me = true;
 			win();
 		}
+	}
+	
+	public void setMe(boolean b){
+		me = b;
 	}
 	
 	public void win(){

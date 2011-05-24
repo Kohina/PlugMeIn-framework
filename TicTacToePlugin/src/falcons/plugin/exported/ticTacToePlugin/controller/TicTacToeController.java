@@ -18,7 +18,7 @@ public class TicTacToeController implements Pluggable{
 		this.logic = logic;
 	}
 	
-	public void turn(int i, boolean b){
-		logic.turn(i, b);
+	public void turn(int i){
+		logic.turn(i);
 	}
 }

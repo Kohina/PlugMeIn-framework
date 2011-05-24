@@ -33,34 +33,34 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == buttons[0]){
-			controller.turn(0, true);
+			controller.turn(0);
 		}
 		else if(e.getSource() == buttons[1]){
-			controller.turn(1, true);
+			controller.turn(1);
 		}
 		else if(e.getSource() == buttons[2]){
-			controller.turn(2, true);
+			controller.turn(2);
 		}
 		else if(e.getSource() == buttons[3]){
-			controller.turn(3, true);
+			controller.turn(3);
 		}
 		else if(e.getSource() == buttons[4]){
-			controller.turn(4, true);
+			controller.turn(4);
 		}
 		else if(e.getSource() == buttons[5]){
-			controller.turn(5, true);
+			controller.turn(5);
 		}
 		else if(e.getSource() == buttons[6]){
-			controller.turn(6, true);
+			controller.turn(6);
 		}
 		else if(e.getSource() == buttons[7]){
-			controller.turn(7, true);
+			controller.turn(7);
 		}
 		else if(e.getSource() == buttons[8]){
-			controller.turn(8, true);
+			controller.turn(8);
 		}
 		else if(e.getSource() == buttons[9]){
-			controller.turn(9, true);
+			controller.turn(9);
 		}
 		else{
 			System.out.print("Invalid button");
