@@ -1,5 +1,6 @@
 package falcons.plugin.exported.ticTacToePlugin.view;
 
+import java.awt.CardLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,11 +9,14 @@ import java.util.Observer;
 import javax.swing.*;
 import falcons.plugin.Pluggable;
 import falcons.plugin.exported.ticTacToePlugin.controller.TicTacToeController;
+import falcons.plugin.exported.ticTacToePlugin.model.ConnectedClientsLogic;
 
 public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, ActionListener{
 
 	private JButton buttons[] = new JButton[9];
+	private JPanel gamePanel, connectPanel;
 	private TicTacToeController controller;
+	private ConnectedClientsLogic logic;
 	
 	public TicTacToeMainPanel(){
 		initGUI();
@@ -20,14 +24,23 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 	}
 	
 	private void initGUI(){
-		this.setLayout(new GridLayout(3,3));
+		this.setLayout(new CardLayout());
 		this.setSize(600, 600);
+		
+		connectPanel = new JPanel();
+		controller.updateClients();
+		logic.getClients();
+		
+		gamePanel = new JPanel();
+		gamePanel.setLayout(new GridLayout(3,3));
 		
 		for(int i=0; i<=8; i++){
 		    buttons[i] = new JButton();
-		    this.add(buttons[i]);
+		    gamePanel.add(buttons[i]);
 		    buttons[i].addActionListener(this);
 		}
+		
+		this.add(gamePanel);
 	}
 
 	@Override
