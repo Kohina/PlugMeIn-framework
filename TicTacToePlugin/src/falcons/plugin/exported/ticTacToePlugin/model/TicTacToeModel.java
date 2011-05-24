@@ -11,16 +11,18 @@ public class TicTacToeModel extends Observable implements Pluggable, Serializabl
 	
 	private JButton buttons[];
 	private long destination;
+	private Icon mario, luigi;
 	
 	public TicTacToeModel(){
 	}
 	
 	public TicTacToeModel(JButton[] buttons) {
 		this.buttons = buttons;
+		mario = new ImageIcon("ticTacToePlugin/mario.jpg");
 	}
 
 	public void changeO(int i){
-		buttons[i].setText("O");
+		buttons[i].setIcon(mario);
 		setChanged();
 		notifyObservers(buttons.clone());
 	}
