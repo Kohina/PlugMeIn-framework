@@ -9,9 +9,9 @@ import javax.swing.*;
 import falcons.plugin.Pluggable;
 import falcons.plugin.exported.ticTacToePlugin.controller.TicTacToeController;
 
-public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, ActionListener{
+public class TicTacToeMainPanel extends JPanel implements Pluggable, ActionListener{
 
-	private JButton buttons[] = new JButton[9];
+	private static JButton buttons[] = new JButton[9];
 	private TicTacToeController controller;
 	
 	public TicTacToeMainPanel(){
@@ -30,9 +30,8 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		}
 	}
 	
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
+	public static void update(JButton[] b) {
+		buttons = b;
 	}
 
 	@Override
