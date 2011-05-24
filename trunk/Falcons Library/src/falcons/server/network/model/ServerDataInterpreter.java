@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.management.modelmbean.ModelMBean;
 
 import falcons.client.model.PluginLogic;
+import falcons.plugin.AbstractPlugin;
 import falcons.plugin.PluginCall;
 
 public class ServerDataInterpreter {
@@ -32,6 +33,6 @@ public class ServerDataInterpreter {
 	 */
 	public void interpret(PluginCall call) {
 			String pluginName = call.getPluginID();
-			falcons.server.model.PluginLogic.getPluginMap().get(pluginName).receiveCall(call);
+			((AbstractPlugin) falcons.server.model.PluginLogic.getPluginMap().get(pluginName)).receiveCall(call);
 	}
 }

@@ -13,7 +13,7 @@ import falcons.utils.ClientInfo;
 @Plugin(pluginID = "SystemPlugin", versionID = "1.0")
 public class SystemServerPlugin {
 	
-	private static SystemServerPlugin instance = new SystemServerPlugin();
+	private static SystemServerPlugin instance = null;
 	private ConnectionModel connectionModel = ConnectionModel.getInstance();
 	private List<ClientInfo> clients;
 	private HashMap<String, String> serverPlugins;
@@ -27,7 +27,12 @@ public class SystemServerPlugin {
 	 * @return The only instance of this class.
 	 */
 	public static SystemServerPlugin getInstance() {
-		return instance;
+		if(instance != null){
+			return instance;
+		}else{
+			instance = new SystemServerPlugin();
+			return instance;
+		}
 	}
 	
 	public void receiveCall(PluginCall call) {

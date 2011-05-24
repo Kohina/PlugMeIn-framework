@@ -20,6 +20,7 @@ public class PluginLogic {
 		for(Pluggable p : pluginList){
 			pluginMap.put(p.getClass().getAnnotation(Plugin.class).pluginID(), p);
 		}
+		PluginModel.setPluginMap(pluginMap);
 		
 	}
 
@@ -28,7 +29,7 @@ public class PluginLogic {
 	 * @return Returns a map containing all the currently loaded plugins with
 	 *         their pluginID as key.
 	 */
-	public static HashMap<String, AbstractPlugin> getPluginMap() {
+	public static HashMap<String, Pluggable> getPluginMap() {
 		return PluginModel.getPlugins();
 	}
 }
