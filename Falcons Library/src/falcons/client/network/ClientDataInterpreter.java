@@ -34,6 +34,10 @@ public class ClientDataInterpreter {
 	 */
 	public void interpret(PluginCall call) {
 			String pluginName = call.getPluginID();
-			((AbstractPlugin) PluginLogic.getPluginMap().get(pluginName)).receiveCall(call);
+			if (pluginName.equals("SystemPlugin")) {
+				SystemClientPlugin.getInstance().receiveCall(call);
+			} else {
+				((AbstractPlugin) PluginLogic.getPluginMap().get(pluginName)).receiveCall(call);
+			}
 	}
 }
