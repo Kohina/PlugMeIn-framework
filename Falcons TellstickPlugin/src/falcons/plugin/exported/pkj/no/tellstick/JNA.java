@@ -1,6 +1,5 @@
-package pkj.no.tellstick;
+package falcons.plugin.exported.pkj.no.tellstick;
 
-import pkj.no.tellstick.device.SupportedMethodsException;
 
 import com.sun.jna.Callback;
 import com.sun.jna.Library;
@@ -9,6 +8,7 @@ import com.sun.jna.Pointer;
 import com.sun.jna.win32.StdCallLibrary.StdCallCallback;
 
 import falcons.plugin.Pluggable;
+import falcons.plugin.exported.pkj.no.tellstick.device.SupportedMethodsException;
 /**
  * This Class is the heart of TellstickDUO Java version.
  * 
@@ -21,7 +21,7 @@ import falcons.plugin.Pluggable;
  * 
  * The idea is to create wrappers around this class, in a OOP way. 
  * 
- * @see pkj.no.tellstick.device
+ * @see falcons.plugin.exported.pkj.no.tellstick.device
  * 
  * 
  * @author peec

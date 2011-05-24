@@ -1,10 +1,10 @@
-package pkj.no.tellstick.device;
+package falcons.plugin.exported.pkj.no.tellstick.device;
 
 import java.util.ArrayList;
 
 import falcons.plugin.Pluggable;
+import falcons.plugin.exported.pkj.no.tellstick.JNA;
 
-import pkj.no.tellstick.JNA;
 
 
 /**

@@ -1,4 +1,4 @@
-package pkj.no.tellstick.device;
+package falcons.plugin.exported.pkj.no.tellstick.device;
 
 import falcons.plugin.Pluggable;
 

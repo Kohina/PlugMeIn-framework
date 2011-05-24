@@ -1,10 +1,10 @@
-package pkj.no.tellstick.device;
+package falcons.plugin.exported.pkj.no.tellstick.device;
 
 import falcons.plugin.Pluggable;
-import pkj.no.tellstick.JNA;
+import falcons.plugin.exported.pkj.no.tellstick.JNA;
 
 
-public class DimmableDevice extends Device implements pkj.no.tellstick.device.iface.DimmableDevice, Pluggable{
+public class DimmableDevice extends Device implements falcons.plugin.exported.pkj.no.tellstick.device.iface.DimmableDevice, Pluggable{
 
 	public DimmableDevice() throws SupportedMethodsException {
 		super(0);

@@ -2,9 +2,9 @@ package falcons.plugin.exported.tellstickPlugin.model;
 
 import java.io.Serializable;
 import java.util.*;
-import pkj.no.tellstick.device.*;
 
 import falcons.plugin.Pluggable;
+import falcons.plugin.exported.pkj.no.tellstick.device.*;
 
 public class TellstickModel extends Observable implements Pluggable, Serializable {
 

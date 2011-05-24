@@ -1,4 +1,4 @@
-package pkj.no.tellstick.tests;
+package falcons.plugin.exported.pkj.no.tellstick.tests;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,12 +9,12 @@ import java.util.Properties;
 import org.apache.commons.cli.*;
 
 import falcons.plugin.Pluggable;
+import falcons.plugin.exported.pkj.no.tellstick.JNA;
+import falcons.plugin.exported.pkj.no.tellstick.device.*;
+import falcons.plugin.exported.pkj.no.tellstick.schedule.DeviceSchedular;
+import falcons.plugin.exported.pkj.no.tellstick.schedule.Schedule;
+import falcons.plugin.exported.pkj.no.tellstick.schedule.ScheduleCallback;
 
-import pkj.no.tellstick.JNA;
-import pkj.no.tellstick.device.*;
-import pkj.no.tellstick.schedule.DeviceSchedular;
-import pkj.no.tellstick.schedule.Schedule;
-import pkj.no.tellstick.schedule.ScheduleCallback;
 
 /**
  * Main application for the tellstick server. What this does is that it tries to

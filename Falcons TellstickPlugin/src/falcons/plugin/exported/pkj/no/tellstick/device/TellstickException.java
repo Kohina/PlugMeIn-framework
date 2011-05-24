@@ -1,7 +1,7 @@
-package pkj.no.tellstick.device;
+package falcons.plugin.exported.pkj.no.tellstick.device;
 
 import falcons.plugin.Pluggable;
-import pkj.no.tellstick.JNA;
+import falcons.plugin.exported.pkj.no.tellstick.JNA;
 
 public class TellstickException extends Exception implements Pluggable{
 
