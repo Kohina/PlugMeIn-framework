@@ -3,6 +3,8 @@ package falcons.plugin.exported.sendMessagePlugin.view;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -28,29 +30,30 @@ import falcons.plugin.exported.sendMessagePlugin.model.MessageModel;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class SendMessageMainPanel extends JPanel implements Observer, Pluggable{
+public class SendMessageMainPanel extends JPanel implements Observer, Pluggable, ActionListener{
 	
 	private static SendMessageMainPanel instance = null;
 	private JButton sendMessageButton;
 	private JTextField messageTextField;
 	private MessageModel model;
 	private JLabel receivedMessageLabel;
+	private SendMessageController controller;
 	
 	public SendMessageMainPanel(){
 		
 	}
 
-	private SendMessageMainPanel(MessageModel model){
+	private SendMessageMainPanel(MessageModel model, SendMessageController controller){
 		this.model = model;
-		// TODO: Raden under här... vad gör den?
+		this.controller = controller;
 		model.addObserver(this);
 		initGUI();
 		setVisible(true);
 	}
 
-	public static SendMessageMainPanel getInstance(MessageModel model){
+	public static SendMessageMainPanel getInstance(MessageModel model, SendMessageController controller){
 		if(instance == null){
-			instance = new SendMessageMainPanel(model);
+			instance = new SendMessageMainPanel(model, controller);
 		}
 		return instance;
 	}
@@ -67,7 +70,7 @@ public class SendMessageMainPanel extends JPanel implements Observer, Pluggable{
 				this.setLayout(thisLayout);
 				this.add(getMessageTextField(), new GridBagConstraints(0, 0, 4, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 				this.add(getSendMessageButton(), new GridBagConstraints(1, 1, 2, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-				sendMessageButton.addActionListener(new SendMessageController(this));
+				sendMessageButton.addActionListener(this);
 				this.add(getReceivedMessageLabel(), new GridBagConstraints(0, 2, 4, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 			}
 		} catch(Exception e) {
@@ -108,5 +111,13 @@ public class SendMessageMainPanel extends JPanel implements Observer, Pluggable{
 		if(o == model){
 			receivedMessageLabel.setText("Received message: " + model.getReceivedMessage());
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == sendMessageButton){
+			controller.sendMessage(messageTextField.getText());
+		}
+		
 	}
 }

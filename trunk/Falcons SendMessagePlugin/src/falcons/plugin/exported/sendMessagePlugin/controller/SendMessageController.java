@@ -1,31 +1,32 @@
 package falcons.plugin.exported.sendMessagePlugin.controller;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-
+import falcons.plugin.AbstractPluginData;
 import falcons.plugin.Pluggable;
+import falcons.plugin.PluginCall;
+import falcons.plugin.exported.sendMessagePlugin.SendMessagePlugin;
+import falcons.plugin.exported.sendMessagePlugin.model.MessageLogic;
 import falcons.plugin.exported.sendMessagePlugin.view.SendMessageMainPanel;
 
-public class SendMessageController extends AbstractAction implements Pluggable {
+public class SendMessageController implements Pluggable {
 	
 	private SendMessageMainPanel view;
+	private MessageLogic logic;
 	
 	public SendMessageController(){
-		
 	}
 
-	public SendMessageController(SendMessageMainPanel view) {
+	public SendMessageController(SendMessageMainPanel view, MessageLogic logic) {
 		this.view = view;
+		this.logic = logic;
 	}
 	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		view.getSendMessageText();
+	public void sendMessage(String data) {
+		AbstractPluginData<String> pluginData = new AbstractPluginData<String>("SendMessage", "1.0", data);
+		PluginCall call = new PluginCall("Send Message", pluginData, -1L);
+		SendMessagePlugin.send(call);
 	}
-
-	@Override
-	public String toString(){
-		return "send";
+	
+	public void receiveMessage(String message){
+		logic.receiveMessage(message);
 	}
 }
