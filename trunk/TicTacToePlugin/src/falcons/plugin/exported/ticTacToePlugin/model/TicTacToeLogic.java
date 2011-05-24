@@ -3,13 +3,17 @@ package falcons.plugin.exported.ticTacToePlugin.model;
 import java.io.Serializable;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import falcons.plugin.Pluggable;
 
 public class TicTacToeLogic implements Pluggable, Serializable{
-
+	
 	private TicTacToeModel model;
-	private boolean win;
+	private boolean win = false;
+	private int fullBoard = 0;
+	private String winner = null;
+	private JButton[] board = model.getBoard();
 	
 	public TicTacToeLogic(TicTacToeModel model){
 		this.model = model;
@@ -25,7 +29,6 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 	}
 	
 	public void win(){
-		JButton[] board = model.getBoard();
 		
 		int[][] winCombinations = new int[][] {
 			    {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, //horizontal wins
@@ -36,9 +39,31 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 		for(int i=0; i<=7; i++){
 		    if( board[winCombinations[i][0]].getText().equals(board[winCombinations[i][1]].getText()) && 
 		        board[winCombinations[i][1]].getText().equals(board[winCombinations[i][2]].getText()) && 
-		        board[winCombinations[i][0]].getText() != ""){
+		        board[winCombinations[i][0]].getText() != null){
 		        win = true;
+		        winner = board[winCombinations[i][0]].getText();
 		    }
 		}
+		if(win){
+			JOptionPane.showMessageDialog(null, winner + " har vunnit!");
+		}
+	}
+	
+	public void restart(){
+		for(int i=0; i<9; i++){
+			if(board[i] != null){
+				fullBoard++;
+			}
+		}
+		if(win || fullBoard == 9){
+			reset();
+		}
+	}
+	
+	public JButton[] reset(){
+		for(int i=0; i<9; i++){
+			board[i].setText(null);
+		}
+		return board;
 	}
 }
