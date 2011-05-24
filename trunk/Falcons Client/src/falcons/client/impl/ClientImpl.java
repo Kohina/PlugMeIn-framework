@@ -28,6 +28,8 @@ public class ClientImpl{
 		client = new Client();
 
 		client.actionPerformed(new LibraryEvent(LibraryEventType.LOAD_PLUGINS));
+		client.actionPerformed(new LibraryEvent(LibraryEventType.READ_PREFERENCES));
+
 		HashMap<String, Pluggable> pluginMap = ((HashMap<String, Pluggable>) client.getData(new LibraryEvent(LibraryEventType.GET_PLUGINS)));
 
 		Object[] nameSet = pluginMap.keySet().toArray();
