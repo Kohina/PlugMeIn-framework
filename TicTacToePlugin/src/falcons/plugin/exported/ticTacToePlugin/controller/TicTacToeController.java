@@ -3,6 +3,8 @@ package falcons.plugin.exported.ticTacToePlugin.controller;
 import falcons.plugin.AbstractPluginData;
 import falcons.plugin.Pluggable;
 import falcons.plugin.PluginCall;
+import falcons.plugin.PluginEvent;
+import falcons.plugin.PluginEvent.PluginEventType;
 import falcons.plugin.exported.TicTacToePlugin;
 import falcons.plugin.exported.ticTacToePlugin.model.ConnectedClientsLogic;
 import falcons.plugin.exported.ticTacToePlugin.model.TicTacToeLogic;
@@ -38,5 +40,12 @@ public class TicTacToeController implements Pluggable{
 	
 	public void updateClients(){
 		clogic.updateClients();
+	}
+
+	public void connect(int selectedIndex) {
+		logic.setDestination((Long) clogic.getClients().get(clogic.getClients().keySet().toArray()[selectedIndex]));
+		
+		AbstractPluginData<Long> pluginData = new AbstractPluginData<Long>("startGame", "0.1", (Long) TicTacToePlugin.getData(new PluginEvent(PluginEventType.GET_CLIENTID)));
+		TicTacToePlugin.send(new PluginCall("TicTacToePlugin", pluginData, logic.getDestination()));
 	}
 }

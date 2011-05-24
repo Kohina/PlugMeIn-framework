@@ -1,12 +1,15 @@
 package falcons.plugin.exported.ticTacToePlugin.view;
 
 import java.awt.CardLayout;
+import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
+
 import falcons.plugin.Pluggable;
 import falcons.plugin.exported.ticTacToePlugin.controller.TicTacToeController;
 import falcons.plugin.exported.ticTacToePlugin.model.ConnectedClientsLogic;
@@ -15,6 +18,8 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 
 	private JButton buttons[] = new JButton[9];
 	private JPanel gamePanel, connectPanel;
+	private JList clientList;
+	private JButton go;
 	private TicTacToeController controller;
 	private ConnectedClientsLogic logic;
 	
@@ -28,8 +33,18 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		this.setSize(600, 600);
 		
 		connectPanel = new JPanel();
+		connectPanel.setLayout(new GridLayout(2,1));
+		
 		controller.updateClients();
-		logic.getClients();
+		
+		ListModel clientListModel = new DefaultComboBoxModel(logic.getClients().keySet().toArray());
+		clientList = new JList();
+		connectPanel.add(clientList, new GridBagConstraints(0, 0, 1, 4, 0.0,0.0, GridBagConstraints.CENTER,
+				GridBagConstraints.VERTICAL, new Insets(0, 0, 0, 0), 0,0));
+		clientList.setModel(clientListModel);
+		
+		go.addActionListener(this);
+		connectPanel.add(go);
 		
 		gamePanel = new JPanel();
 		gamePanel.setLayout(new GridLayout(3,3));
@@ -40,6 +55,7 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		    buttons[i].addActionListener(this);
 		}
 		
+		this.add(connectPanel);
 		this.add(gamePanel);
 	}
 
@@ -74,6 +90,9 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		}
 		else if(e.getSource() == buttons[9]){
 			controller.turn(9, true);
+		}
+		else if(e.getSource() == go){
+			controller.connect(clientList.getSelectedIndex());
 		}
 		else{
 			System.out.print("Invalid button");
