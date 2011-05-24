@@ -9,6 +9,10 @@ public class TicTacToeController implements Pluggable{
 	private TicTacToeMainPanel view;
 	private TicTacToeLogic logic;
 	
+	public TicTacToeController(){
+		
+	}
+	
 	public TicTacToeController(TicTacToeMainPanel view, TicTacToeLogic logic) {
 		this.view = view;
 		this.logic = logic;
