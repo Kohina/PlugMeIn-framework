@@ -21,7 +21,7 @@ public class SendMessageController implements Pluggable {
 	}
 	
 	public void sendMessage(String data) {
-		AbstractPluginData<String> pluginData = new AbstractPluginData<String>("SendMessage", "1.0", data);
+		AbstractPluginData<String> pluginData = new AbstractPluginData<String>("SendMessage", "0.1", data);
 		PluginCall call = new PluginCall("Send Message", pluginData, -1L);
 		SendMessagePlugin.send(call);
 	}

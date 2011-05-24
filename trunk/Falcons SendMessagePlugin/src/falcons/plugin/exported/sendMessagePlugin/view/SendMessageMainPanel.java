@@ -43,17 +43,16 @@ public class SendMessageMainPanel extends JPanel implements Observer, Pluggable,
 		
 	}
 
-	private SendMessageMainPanel(MessageModel model, SendMessageController controller){
+	private SendMessageMainPanel(MessageModel model){
 		this.model = model;
-		this.controller = controller;
 		model.addObserver(this);
 		initGUI();
 		setVisible(true);
 	}
 
-	public static SendMessageMainPanel getInstance(MessageModel model, SendMessageController controller){
+	public static SendMessageMainPanel getInstance(MessageModel model){
 		if(instance == null){
-			instance = new SendMessageMainPanel(model, controller);
+			instance = new SendMessageMainPanel(model);
 		}
 		return instance;
 	}
@@ -101,10 +100,6 @@ public class SendMessageMainPanel extends JPanel implements Observer, Pluggable,
 		}
 		return receivedMessageLabel;
 	}
-
-	public String getSendMessageText(){
-		return messageTextField.getText();
-	}
 	
 	@Override
 	public void update(Observable o, Object arg) {
@@ -119,5 +114,9 @@ public class SendMessageMainPanel extends JPanel implements Observer, Pluggable,
 			controller.sendMessage(messageTextField.getText());
 		}
 		
+	}
+
+	public void setController(SendMessageController controller) {
+		this.controller = controller;
 	}
 }
