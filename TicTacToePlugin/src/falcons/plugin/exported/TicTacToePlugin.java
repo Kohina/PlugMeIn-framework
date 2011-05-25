@@ -50,12 +50,11 @@ public class TicTacToePlugin extends AbstractPlugin{
 		return mainPanel;
 	}
 	
-	/*
 	public static void main(String[] arg){
 		JFrame frame = new JFrame();
 		new TicTacToePlugin();
 		frame.add(mainPanel);
 		frame.setSize(400, 400);
 		frame.setVisible(true);
-	}*/
+	}
 }

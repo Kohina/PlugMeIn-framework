@@ -1,5 +1,8 @@
 package falcons.plugin.exported.ticTacToePlugin.model;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.io.File;
 import java.io.Serializable;
 import java.util.Observable;
 import javax.swing.*;
@@ -11,23 +14,25 @@ public class TicTacToeModel extends Observable implements Pluggable, Serializabl
 	
 	private JButton buttons[];
 	private long destination;
-	private Icon mario, luigi;
 	
 	public TicTacToeModel(){
 	}
 	
 	public TicTacToeModel(JButton[] buttons) {
 		this.buttons = buttons;
-		mario = new ImageIcon("ticTacToePlugin/mario.jpg");
 	}
 
 	public void changeO(int i){
-		buttons[i].setIcon(mario);
+		buttons[i].setForeground(Color.black);
+		buttons[i].setFont(new Font("Verdana", Font.BOLD, 58));
+		buttons[i].setText("O");
 		setChanged();
 		notifyObservers(buttons.clone());
 	}
 	
 	public void changeX(int i){
+		buttons[i].setForeground(Color.red);
+		buttons[i].setFont(new Font("Verdana", Font.BOLD, 58));
 		buttons[i].setText("X");
 		setChanged();
 		notifyObservers(buttons.clone());
