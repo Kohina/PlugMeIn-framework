@@ -11,7 +11,7 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 	
 	private TicTacToeModel model;
 	private boolean win = false;
-	private int fullBoard = 0;
+	private boolean fullBoard = true;
 	private String winner = null;
 	private JButton[] board;
 	private boolean me = false;
@@ -75,14 +75,21 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 	
 	public void restart(){
 		for(int i=0; i<9; i++){
-			if(board[i].getText() != ""){
-				fullBoard++;
+			if(board[i].getText() == ""){
+				fullBoard = false;
+				break;
+			}
+			else{
+				fullBoard = true;
 			}
 		}
-		if(win || fullBoard == 9){
+		if(win || fullBoard){
+			if(fullBoard){
+				JOptionPane.showMessageDialog(null, "Oavgjort!");
+			}
 			model.reset();
 			win = false;
-			fullBoard = 0;
+			fullBoard = true;
 		}
 	}
 }
