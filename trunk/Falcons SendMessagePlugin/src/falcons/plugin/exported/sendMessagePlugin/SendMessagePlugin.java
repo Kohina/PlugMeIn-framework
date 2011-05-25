@@ -12,7 +12,7 @@ import falcons.plugin.exported.sendMessagePlugin.controller.SendMessageControlle
 import falcons.plugin.exported.sendMessagePlugin.model.*;
 import falcons.plugin.exported.sendMessagePlugin.view.SendMessageMainPanel;
 
-@Plugin(pluginID = "Send sMessage", versionID = "0.1")
+@Plugin(pluginID = "Send Message", versionID = "0.1")
 public class SendMessagePlugin extends AbstractPlugin {
 
 	private MessageModel messageModel;
