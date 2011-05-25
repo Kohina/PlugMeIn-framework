@@ -26,8 +26,7 @@ public class Client implements Pluggable {
             ip = InetAddress.getByName(ipStr);
         }
         catch (Exception e) {
-            System.out.println("Invalid address information: + e");
-            System.exit(1);
+            System.out.println("Invalid address information:" + e);
         }
         
     }
