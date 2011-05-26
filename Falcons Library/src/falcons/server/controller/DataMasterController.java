@@ -8,6 +8,11 @@ import falcons.utils.LibraryEvent.LibraryEventType;
 
 public class DataMasterController {
 
+	/**
+	 * The method that tells the logic to return the specified data
+	 * @param e The type of data that the server-implementation wants to recover
+	 * @return	Returns the data that the server-implementation wanted
+	 */
 	public Object getData(LibraryEvent e){
 		LibraryEventType eventType = e.getEventType();
 		Object returnObject = null;

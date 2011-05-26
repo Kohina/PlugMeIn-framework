@@ -18,6 +18,9 @@ public class ServerDataInterpreter {
 	private ServerDataInterpreter() {
 	}
 
+	/**
+	 * @return Returns the instance of the ServerDataInterpreter
+	 */
 	public static ServerDataInterpreter getInstance() {
 		if (instance == null) {
 			instance = new ServerDataInterpreter();

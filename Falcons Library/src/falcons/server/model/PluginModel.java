@@ -11,12 +11,15 @@ public class PluginModel {
 	private static HashMap<String,Pluggable> pluginMap;
 
 	/**
-	 * The Constructor for the PluginModel. Should read the plugin folder and
-	 * load all plugins into the pluginMap.
+	 * Default constructor
 	 */
 	private PluginModel() {
 	}
 	
+	/**
+	 * 
+	 * @return Returns this model-instance
+	 */
 	static PluginModel getInstance(){
 			if(instance == null){
 				instance = new PluginModel();
@@ -24,10 +27,18 @@ public class PluginModel {
 		return instance;
 	}
 	
+	/**
+	 * 
+	 * @return Returns the loaded plugins
+	 */
 	static HashMap<String, Pluggable> getPlugins(){
 		return new HashMap<String, Pluggable>(pluginMap);
 	}
 	
+	/**
+	 * Sets the current map of the loaded plugins with a new one
+	 * @param pluginMap The map to be set as the new pluginMap
+	 */
 	static void setPluginMap(HashMap<String, Pluggable> pluginMap){
 		PluginModel.pluginMap = pluginMap;
 	}
