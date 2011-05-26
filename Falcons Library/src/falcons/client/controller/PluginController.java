@@ -5,6 +5,7 @@ import java.util.List;
 
 import falcons.client.model.PluginLogic;
 import falcons.client.model.ServerLogic;
+import falcons.client.network.ClientConnection;
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.PluginEvent;
 import falcons.plugin.PluginEventListener;
@@ -29,7 +30,7 @@ class PluginController implements PluginEventListener {
 		PluginEventType e = p.getTypeOfEvent();
 		switch (e) {
 		case SEND:
-			NetworkController.send(p.getPluginCall());
+			ClientConnection.send(p.getPluginCall());
 			break;
 		default:
 			break;
