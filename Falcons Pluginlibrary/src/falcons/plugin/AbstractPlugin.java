@@ -7,12 +7,14 @@ import javax.swing.JPanel;
 
 import falcons.plugin.PluginEvent.PluginEventType;
 
-
 @Plugin
 public abstract class AbstractPlugin implements Serializable, Pluggable {
 
 	private static PluginEventListener listener = null;
 	
+	/**
+	 * Default Constructor
+	 */
 	public AbstractPlugin() {
 	}
 	
@@ -26,16 +28,38 @@ public abstract class AbstractPlugin implements Serializable, Pluggable {
 	 */
 	public abstract void receiveCall(PluginCall call);
 	
+	/**
+	 * Has to return a JPanel that the client or server can add to it's Frame. 
+	 * @return
+	 */
 	public abstract JPanel getMainPanel();
 	
+	/**
+	 * This method is called when the plugins are loaded so that we have a link 
+	 * between the server/client and the plugin.
+	 * @param p
+	 * 			The PluginEventListener that will listen to the plugin.
+	 */
  	public void addEventListener(PluginEventListener p){
 		listener = p;
 	}
  	
+ 	/**
+ 	 * This method is called when the plugin wants to send a PluginCall somewhere.
+ 	 * @param call
+ 	 * 				The PluginCall that is to be sent.
+ 	 */
  	public static void send(PluginCall call){
  		listener.actionPerformed(new PluginEvent(PluginEventType.SEND, call));
  	}
  	
+ 	/**
+ 	 * This method is called when a plugin needs to get data from the client or server.
+ 	 * @param e
+ 	 * 			A PluginEvent that tells the server/client what data it needs.
+ 	 * @return
+ 	 * 			Returns the data that the server/client sends back.
+ 	 */
  	public static Object getData(PluginEvent e){
  		return listener.getData(e);
  	}
