@@ -37,6 +37,7 @@ public class ConnectionThread extends Thread{
 	 */
 	public void send(PluginCall call) {
 		try {
+			System.out.println(call.getPluginData().toString());
 			out.writeObject(call);
 		} catch (IOException e) {
 			System.err.print("Could not write to the output stream.");
