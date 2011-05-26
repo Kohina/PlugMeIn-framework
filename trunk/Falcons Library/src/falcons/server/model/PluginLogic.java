@@ -14,6 +14,9 @@ public class PluginLogic {
 		
 	}
 	
+	/**
+	 * Tells the pluginmanager to load all plugins.
+	 */
 	public static void loadPlugins(){
 		List<Pluggable> pluginList = PluginManager.loadPlugins();
 		HashMap<String, Pluggable> pluginMap = new HashMap<String, Pluggable>();

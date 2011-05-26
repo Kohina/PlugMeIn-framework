@@ -14,6 +14,11 @@ public class ListeningThread extends Thread {
 	private ServerDataInterpreter interpreter;
 	private Socket socket;
 	
+	/**
+	 * A Constructor that constructs a ListeningThread connected to a socket
+	 * @param socket
+	 * 				The socket that is supposed to be binded
+	 */
 	public ListeningThread(Socket socket){
 		try {
 			this.socket = socket;
@@ -25,10 +30,18 @@ public class ListeningThread extends Thread {
 		interpreter = interpreter.getInstance();
 	}
 	
+	/**
+	 * Closes the socket inside this thread
+	 * @throws IOException
+	 * 					Throws an exception if the close-action was not successful
+	 */
 	public void close() throws IOException {
 		in.close();
 	}
 	
+	/**
+	 * Starts the thread
+	 */
 	public void run(){
 		try {
 			PluginCall call;
@@ -42,6 +55,14 @@ public class ListeningThread extends Thread {
 		}
 	}
 	
+	/**
+	 * Fetches the call in the inputstream
+	 * @return Returns the call next inside the inputstream if there is one.
+	 * @throws IOException
+	 * 						It was not possible to get the PluginCall
+	 * @throws ClassNotFoundException
+	 * 						It could not find the class of the object inside the inputstream
+	 */
 	public PluginCall getCall() throws IOException, ClassNotFoundException {
 		if (socket.isInputShutdown()) {
 			return null;

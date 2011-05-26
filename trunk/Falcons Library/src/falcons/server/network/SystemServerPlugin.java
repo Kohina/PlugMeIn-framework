@@ -18,6 +18,9 @@ public class SystemServerPlugin {
 	private List<ClientInfo> clients;
 	private HashMap<String, String> serverPlugins;
 
+	/**
+	 * Default Contructor
+	 */
 	private SystemServerPlugin() {
 		clients = new ArrayList<ClientInfo>();
 		readPlugins();

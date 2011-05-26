@@ -40,6 +40,11 @@ public class ServerCommunicationCenter implements Runnable {
 		}
 	}
 
+	/**
+	 * The method that actually starts the server.
+	 * @throws IOException
+	 * 						if there was any problem with the socket.
+	 */
 	public void server() throws IOException {
 		System.out.println("SERVER STARTED");
 		System.out.println(ServerPreferencesLogic.getPort());

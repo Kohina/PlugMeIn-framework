@@ -17,6 +17,9 @@ public class ConnectionThread extends Thread{
 
 	}
 
+	/**
+	 * The method that starts the thread
+	 */
 	public void run(){
 		try {
 			out = new ObjectOutputStream(socket.getOutputStream());

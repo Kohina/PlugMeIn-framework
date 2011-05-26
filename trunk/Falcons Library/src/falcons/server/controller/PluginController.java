@@ -10,6 +10,9 @@ import falcons.plugin.PluginEvent.PluginEventType;
 
 public class PluginController implements PluginEventListener {
 
+	/**
+	 * Tells the PluginLogic to load all plugins.s
+	 */
 	void loadPlugins(){
 		PluginLogic.loadPlugins();
 		Object[] keys = PluginLogic.getPluginMap().keySet().toArray();
@@ -19,6 +22,10 @@ public class PluginController implements PluginEventListener {
 	}
 
 	@Override
+	/**
+	 * The method that handles all the requests from the plugins
+	 * @param The type of event that has occured
+	 */
 	public void actionPerformed(PluginEvent p) {
 		PluginEventType e = p.getTypeOfEvent();
 		switch (e) {

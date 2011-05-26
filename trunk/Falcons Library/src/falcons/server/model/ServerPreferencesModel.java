@@ -15,6 +15,10 @@ class ServerPreferencesModel {
 		// Do nasing.
 	}
 	
+	/**
+	 * 
+	 * @return Returns the instance of the model
+	 */
 	public static ServerPreferencesModel getInstance() {
 		if(instance == null){
 			instance = new ServerPreferencesModel();
