@@ -16,7 +16,7 @@ class ClientPreferencesController {
 		ClientPreferencesLogic.setIp(Ip);
 	}
 	
-	void setPort(String port){
-		ClientPreferencesLogic.setPort(Integer.parseInt(port));
+	void setPort(int port){
+		ClientPreferencesLogic.setPort(port);
 	}
 }
