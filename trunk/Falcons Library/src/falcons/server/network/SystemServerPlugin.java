@@ -109,8 +109,8 @@ public class SystemServerPlugin {
 	}
 
 	private void deleteClient(ClientInfo client) {
-		connectionModel.removeConnection(connectionModel.getConnection(client
-				.getID()));
+		System.out.println("Remove stuff, friend.");
+		connectionModel.removeConnection(connectionModel.getConnection(client.getID()));
 	}
 
 	private void broadcastClients() {

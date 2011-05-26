@@ -3,6 +3,7 @@ package falcons.client.network;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
+import java.net.SocketException;
 
 import falcons.plugin.PluginCall;
 
@@ -27,10 +28,16 @@ public class ListeningThread extends Thread {
 			while ((call = (PluginCall) in.readObject()) != null) {
 				interpreter.interpret(call);
 			}
+		} catch (SocketException e) {
+//			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void close() throws IOException {
+		in.close();
 	}
 }

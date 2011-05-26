@@ -45,8 +45,7 @@ public class ServerCommunicationCenter implements Runnable {
 		System.out.println(ServerPreferencesLogic.getPort());
 		while (listening) {
 			ConnectionThread thread = new ConnectionThread(socket.accept());
-			System.out
-					.println("NEW CONNECTION RECEIVED, CREATING NEW CONNECTIONTHREAD");
+			System.out.println("NEW CONNECTION RECEIVED, CREATING NEW CONNECTIONTHREAD");
 			ConnectionModel.getInstance().addConnection(thread);
 			thread.start();
 			SystemServerPlugin.getInstance().sendClientID(thread.getId());

@@ -3,6 +3,7 @@ package falcons.client.network;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 
 import falcons.client.model.ClientPreferencesLogic;
@@ -30,6 +31,8 @@ public final class ClientConnection extends Thread{
 		try {
 			// Create a new socket
 			this.socket = new Socket(ClientPreferencesLogic.getIp(), ClientPreferencesLogic.getPort());
+
+			start();
 			// Catch UnknownHostException and tell the user about it.
 		} catch (UnknownHostException e) {
 			System.err.println("Don't know about host: " + ClientPreferencesLogic.getIp());
@@ -37,7 +40,6 @@ public final class ClientConnection extends Thread{
 		} catch (IOException e) {
 			System.err.println("Couldn't get I/O for the connection to: " + ClientPreferencesLogic.getPort());
 		}
-		start();
 	}
 
 	public static ClientConnection getInstance(){
@@ -68,6 +70,7 @@ public final class ClientConnection extends Thread{
 		listeningThread.start();
 	}
 
+	
 	/**
 	 * Sends a PluginCall to the connected client. Takes the PluginCall as a
 	 * parameter.
@@ -86,8 +89,16 @@ public final class ClientConnection extends Thread{
 
 	public void closeConnection(){
 		try {
+			SystemClientPlugin.getInstance().disconnect();
+			out.close();
+			listeningThread.close();
+			out.flush();
 			socket.close();
 			listeningThread = null;
+		} catch (SocketException e) {
+			System.out.println("There was a socket exception when closing the connection.");
+			e.printStackTrace();
+				
 		} catch (IOException e) {
 			System.out.println("There was a I/O Exception when the connection was closed.");
 			e.printStackTrace();

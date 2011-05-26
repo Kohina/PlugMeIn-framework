@@ -23,13 +23,8 @@ public class ConnectionThread extends Thread{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		try {
-			listeningThread = new ListeningThread(socket.getInputStream());
-			listeningThread.start();
-		} catch (IOException e) {
-			System.err.println("Couldn't initiate ListeningThread");
-			e.printStackTrace();
-		}
+		listeningThread = new ListeningThread(socket);
+		listeningThread.start();
 	}
 
 	/**
