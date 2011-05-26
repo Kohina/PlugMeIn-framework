@@ -43,13 +43,10 @@ public class ServerLogic {
 	}
 	
 	public static List<ClientInfo> getClients() {
-		List<ClientInfo> clients = new ArrayList<ClientInfo>(serverModel.getClients().size());
-		Iterator<ClientInfo> it = serverModel.getClients().iterator();
+		List<ClientInfo> clients = new ArrayList<ClientInfo>();
 		
-		while(it.hasNext()) {
-			ClientInfo currentClient = it.next();
-			
-			clients.add(new ClientInfo(currentClient.getID(), currentClient.getName(), currentClient.getPlugins()));
+		for(ClientInfo c : clients) {
+			clients.add(new ClientInfo(c.getID(), c.getName(), c.getPlugins()));
 		}
 		
 		return clients;
