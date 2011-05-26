@@ -22,7 +22,9 @@ It's important that you check out every folder in the trunk as an own project. T
 
 = How to start the server =
 
-To start the server you run the Falcons Server project
+To start the server you run the Falcons Server project.
+It has some concurrency issues that occurs sometimes so it's more likely that the server starts if you run it in debuggmode.
+Why this happens we don't know. 
 
 = How to start the client =
 
