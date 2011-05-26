@@ -171,7 +171,7 @@ public class ConnectionView extends javax.swing.JFrame implements
 		if (e.getSource() == connectButton) {
 			if (ClientImpl.client.connected() == false) {
 				ClientImpl.client.actionPerformed(new LibraryEvent(LibraryEventType.SET_IP, IPTextField.getText()));
-				ClientImpl.client.actionPerformed(new LibraryEvent(LibraryEventType.SET_PORT, portTextField.getText()));
+				ClientImpl.client.actionPerformed(new LibraryEvent(LibraryEventType.SET_PORT, Integer.parseInt(portTextField.getText())));
 				ClientImpl.client.actionPerformed(new LibraryEvent(LibraryEventType.SAVE_PREFERENCES));
 				ClientImpl.client.connect();
 				connectButton.setText("Disconnect");
