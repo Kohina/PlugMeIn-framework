@@ -46,40 +46,45 @@ public class ServerLogic {
 	}
 	
 	/**
-	 * Returns the number of plugins installed on the server.
-	 * @param id 
-	 * @return The number of plugins.
+	 * Returns the number of plugins installed on a certain client.
+	 * @param id The id of the client.
+	 * @return The number of plugins loaded on the client.
 	 */
 	public static int numberOfPlugins(long id) {
 		return serverModel.numberOfPlugins(id);
 	}
 	
 	/**
-	 * Updates the serverModels info.
-	 * @param id 
-	 * @param name
-	 * @param plugins
+	 * Updates the ServerModels info about the client itself.
+	 * @param id The id of this client.
+	 * @param name The name of this client.
+	 * @param plugins The plugins loaded on this client.
 	 */
 	public static void setInfo(long id, String name, HashMap<String, String> plugins) {
 		serverModel.setInfo(new ClientInfo(id, name, plugins));
 	}
 	
-	
+	/**
+	 * Updates the ServerModels info about the client itself.
+	 * @param client A ClientInfo object describing this client.
+	 */
 	public static void setInfo(ClientInfo client) {
-		serverModel.setInfo(new ClientInfo(client));
+		serverModel.setInfo(client.clone());
 	}
 	
+	/**
+	 * Gets the info about the current client.
+	 * @return The info about this client.
+	 */
 	public static ClientInfo getClientInfo() {
 		return serverModel.getClientInfo();
 	}
 	
+	/**
+	 * A list containing all the clients connected to the server.
+	 * @return A list describing all the clients.
+	 */
 	public static List<ClientInfo> getClients() {
-		List<ClientInfo> clients = serverModel.getClients();
-		
-		for(ClientInfo c : clients) {
-			clients.add(new ClientInfo(c.getID(), c.getName(), c.getPlugins()));
-		}
-		
-		return clients;
+		return serverModel.getClients();
 	}
 }
