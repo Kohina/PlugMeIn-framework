@@ -94,7 +94,6 @@ public class SystemServerPlugin {
 
 	private void sendClients(long id) {
 		if (id != -1) {
-			updateClients();
 			// TODO Move the updateClients() call to where we actually update
 			// the List of connections to increase efficiency.
 			AbstractPluginData<List<ClientInfo>> data = new AbstractPluginData<List<ClientInfo>>(
@@ -106,14 +105,17 @@ public class SystemServerPlugin {
 
 	private void receiveClientInfo(ClientInfo client) {
 		connectionModel.addClientInfo(client.getID(), client);
+		updateClients();
 	}
 
 	private void deleteClient(ClientInfo client) {
 		System.out.println("Remove stuff, friend.");
 		connectionModel.removeConnection(connectionModel.getConnection(client.getID()));
+		updateClients();
 	}
 
 	private void broadcastClients() {
+		updateClients();
 		for (ClientInfo client : clients)
 			sendClients(client.getID());
 	}
