@@ -20,6 +20,7 @@ import javax.swing.border.TitledBorder;
 
 import falcons.client.impl.ClientImpl;
 import falcons.client.impl.Main;
+import falcons.client.model.ClientPreferencesLogic;
 import falcons.utils.LibraryEvent;
 import falcons.utils.LibraryEvent.LibraryEventType;
 
@@ -170,8 +171,9 @@ public class ConnectionView extends javax.swing.JFrame implements
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == connectButton) {
 			if (ClientImpl.client.connected() == false) {
-				ClientImpl.client.actionPerformed(new LibraryEvent(LibraryEventType.SET_IP, IPTextField.getText()));
-				ClientImpl.client.actionPerformed(new LibraryEvent(LibraryEventType.SET_PORT, Integer.parseInt(portTextField.getText())));
+				ClientPreferencesLogic.setIp(IPTextField.getText());
+				ClientPreferencesLogic.setPort(Integer.parseInt(portTextField.getText()));
+//				ClientImpl.client.actionPerformed(new LibraryEvent(LibraryEventType.SET_PORT, Integer.parseInt(portTextField.getText())));
 				ClientImpl.client.actionPerformed(new LibraryEvent(LibraryEventType.SAVE_PREFERENCES));
 				ClientImpl.client.connect();
 				connectButton.setText("Disconnect");
