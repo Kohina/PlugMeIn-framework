@@ -63,6 +63,10 @@ public class AbstractPluginData<E> implements Serializable, Pluggable {
 		return versionID;
 	}
 	
+	/**
+	 * 
+	 * @return Returns the Data that is included inside this object.
+	 */
 	public E getData() {
 		return data;
 	}
