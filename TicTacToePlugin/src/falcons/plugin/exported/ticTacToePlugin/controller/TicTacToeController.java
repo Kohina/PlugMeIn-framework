@@ -26,6 +26,12 @@ public class TicTacToeController implements Pluggable{
 		clogic = new ConnectedClientsLogic();
 	}
 	
+	/**
+	 * A button has been clicked, if b (the opponent has played) a plugincall is sent
+	 * 
+	 * @param i - an int that represents the position of button clicked
+	 * @param b - boolean true if player plays, false if opponent plays
+	 */
 	public void turn(int i, boolean b){
 		if(b){
 			logic.turn(i);
@@ -41,7 +47,12 @@ public class TicTacToeController implements Pluggable{
 	public void updateClients(){
 		clogic.updateClients();
 	}
-
+	
+	/**
+	 * Connect to opponent, and sets destination to opponents ID
+	 * 
+	 * @param selectedIndex - an int representing wich client from a list that has been selected as opponent
+	 */
 	public void connect(int selectedIndex) {
 		logic.setDestination((Long) clogic.getClients().get(clogic.getClients().keySet().toArray()[selectedIndex]));
 		

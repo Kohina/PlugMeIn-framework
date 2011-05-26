@@ -23,7 +23,12 @@ public class TicTacToePlugin extends AbstractPlugin{
 	private TicTacToeLogic logic;
 	private static TicTacToeMainPanel mainPanel;
 	private TicTacToeController cont;
-
+	
+	/**
+	 * 
+	 * Constructor for TicTacToePlugin, instances view, controller, logic and model
+	 * 
+	 */
 	public TicTacToePlugin() {
 		mainPanel = new TicTacToeMainPanel();
 		model = new TicTacToeModel(mainPanel.getButtons());
