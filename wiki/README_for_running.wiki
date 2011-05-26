@@ -18,11 +18,11 @@ There other projects in the SVN is plugins that we haven't had the time to finis
 
 = How to start the server =
 
-To start the server you run the Falcons Server project.
+To start the server you run the Falcons Server project. Make sure that a NEWLY exported version of SendMessagePlugin is present in the plugins-folder.
 
 = How to start the client =
 
-To start the client you simply run the Falcons Client project.
+To start the client you simply run the Falcons Client project. Make sure that a NEWLY exported version of SendMessagePlugin is present in the plugins-folder.
 
 = How to connect the client to the server =
 
