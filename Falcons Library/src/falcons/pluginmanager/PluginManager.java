@@ -13,6 +13,11 @@ public class PluginManager {
 	public static final String pluginPath = System.getProperty("user.dir")
 			+ File.separator + "plugins" + File.separator;
 
+	/**
+	 * Returns the classes in the plugin-folder
+	 * @return
+	 * 			A list of classes
+	 */
 	@SuppressWarnings("unchecked")
 	private static List<Class<?>> getPluginClasses() {
 		List<File> files = FileScanner.getFiles(new File(pluginPath));
@@ -31,6 +36,12 @@ public class PluginManager {
 		return classList;
 	}
 
+	/**
+	 * Returns the plugins from the pluginclasses
+	 * @param classList the list of classes
+	 * @return
+	 * 			Returns the plugins to be loaded
+	 */
 	private static List<Pluggable> getPluginsFromPluginClasses(
 			List<Class<?>> classList) {
 		List<Pluggable> pluginList = new ArrayList<Pluggable>();
@@ -52,6 +63,11 @@ public class PluginManager {
 		return pluginList;
 	}
 
+	/**
+	 * Loads the plugins
+	 * @return
+	 * 			Returns all the plugins inside the plugins-folder
+	 */
 	public static List<Pluggable> loadPlugins() {
 		List<Class<?>> pluginClasses = getPluginClasses();
 		List<Pluggable> plugins = getPluginsFromPluginClasses(pluginClasses);

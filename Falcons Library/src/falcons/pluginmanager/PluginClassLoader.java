@@ -10,6 +10,9 @@ import java.io.InputStream;
 public class PluginClassLoader extends ClassLoader {
 	private static final String exportedPackage = "falcons.plugin.exported";
 
+	/**
+	 * Finds the class to be loaded
+	 */
 	@Override
 	public Class<?> findClass(String name) {
 		String fileName = name.replace(File.separator, ".");
@@ -25,6 +28,12 @@ public class PluginClassLoader extends ClassLoader {
 		}
 	}
 
+	/**
+	 * Loads the byte-data from the .class-file
+	 * @param name The name of the file excluding ".class"
+	 * @return
+	 * 			Returns an byte-array with the byte code from the .class-file
+	 */
 	private byte[] loadClassData(String name) {
 		File f = new File(PluginManager.pluginPath + name + ".class");
 		ByteArrayOutputStream classBuffer = new ByteArrayOutputStream();
