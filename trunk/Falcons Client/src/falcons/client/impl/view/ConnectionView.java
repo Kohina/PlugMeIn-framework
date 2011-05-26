@@ -51,9 +51,9 @@ public class ConnectionView extends javax.swing.JFrame implements
 	/* Panels */
 	private JPanel getHolder() {
 		if (holder == null) {
-			holder = new JPanel(new GridLayout(2, 1));
+			holder = new JPanel(new GridLayout(1, 1));
 			holder.add(getConnectionPanel());
-			holder.add(getPluginPanel());
+//			holder.add(getPluginPanel());
 		}
 		return holder;
 	}
