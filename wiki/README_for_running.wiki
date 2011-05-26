@@ -33,7 +33,7 @@ To start the client you simple run the Falcons Client project
 
 = How to connect the client to the server =
 
-To connect the client to the server you enters the settings window in the client application and enters IP and Port (this should be localhost).
+To connect the client to the server you open the settings window in the client application and enters IP and Port (this should be localhost).
 
 = How to load a plugin =
 
