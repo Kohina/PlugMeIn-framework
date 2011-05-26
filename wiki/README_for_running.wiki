@@ -23,7 +23,8 @@ It's important that you check out every folder in the trunk as an own project. T
 = How to start the server =
 
 To start the server you run the Falcons Server project.
-It has some concurrency issues that occurs sometimes so it's more likely that the server starts if you run it in debuggmode.
+
+It has some concurrency issues that occurs sometimes so it's more likely that the server starts if you run it in debug-mode.
 Why this happens we don't know. 
 
 = How to start the client =
@@ -34,9 +35,21 @@ To start the client you simple run the Falcons Client project
 
 To connect the client to the server you enters the settings window in the client application and enters IP and Port (this should be localhost).
 
+= How to load a plugin =
+
+To be able to run a plugin in the client you have to export the plugin-project as a .jar to the /plugins folder in the client.
+
+The project can't contain: .classpath and .project, because this confuses our classloader. 
+
 = How to implement a plugin =
 
+We recommend that a plugin is implemented using a MVC structure.
 
+The plugin needs to provide a JPanel to the system so it can be run, how this JPanel is made is all up to the programmer.
+
+You should have a pluginPlugin.java file that extends AbstractPlugin, it also has to have an Plugin annotation to provide versionID and PluginID (this can be the name of the plugin)
+
+ALL plugin-classes have to implement pluggable to be able to use the framework. Other than that it's all up to the programmer.
 
 = How to reconnect the client to the server =
 
