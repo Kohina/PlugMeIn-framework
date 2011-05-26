@@ -10,7 +10,12 @@ import falcons.utils.LibraryEvent;
 import falcons.utils.LibraryEvent.LibraryEventType;
 
 public class DataMasterController {
-	
+
+	/**
+	 * Gets the appropriate object corresponding to a LibraryEvent.
+	 * @param e
+	 * @return
+	 */
 	public Object getData(LibraryEvent e){
 		LibraryEventType eventType = e.getEventType();
 		Object returnObject = null;
