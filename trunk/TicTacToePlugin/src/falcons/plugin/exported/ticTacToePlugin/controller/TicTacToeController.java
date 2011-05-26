@@ -54,7 +54,7 @@ public class TicTacToeController implements Pluggable{
 	 * @param selectedIndex - an int representing wich client from a list that has been selected as opponent
 	 */
 	public void connect(int selectedIndex) {
-		logic.setDestination((Long) clogic.getClients().get(clogic.getClients().keySet().toArray()[selectedIndex]));
+		logic.setDestination((Long) clogic.getClients().get(clogic.getClients().keySet().toArray()[0]));
 		
 		AbstractPluginData<Long> pluginData = new AbstractPluginData<Long>("startGame", "0.1", (Long) TicTacToePlugin.getData(new PluginEvent(PluginEventType.GET_CLIENTID)));
 		TicTacToePlugin.send(new PluginCall("TicTacToePlugin", pluginData, logic.getDestination()));
