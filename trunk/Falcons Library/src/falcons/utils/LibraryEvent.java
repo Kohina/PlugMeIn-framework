@@ -81,11 +81,27 @@ public class LibraryEvent {
 		typeOfEvent = e;
 	}
 	
+	/**
+	 * Creates a new ClientEvent that is to be sent to the client/server
+	 * @param e
+	 * 			This is a ClientEventType. Each Type has a specified meaning
+	 * 			and this will tell the controller what to do
+	 * @param id
+	 * 			The ID of a specified Plugin
+	 */
 	public LibraryEvent(LibraryEventType e, String id) {
 		ID = id;
 		typeOfEvent = e;
 	}
 	
+	/**
+	 * Creates a new ClientEvent that is to be sent to the client/server
+	 * @param e
+	 * 			This is a ClientEventTyp that specifies what the implementation
+	 * 			wants to do
+	 * @param data
+	 * 			This is the data that the ClientEventType needs to send to the implementation
+	 */
 	public LibraryEvent(LibraryEventType e, Object data ) {
 		typeOfEvent = e;
 		this.data = data;
@@ -100,10 +116,18 @@ public class LibraryEvent {
 		return typeOfEvent;
 	}
 
+	/**
+	 * 
+	 * @return Returns the data associated with the Event
+	 */
 	public Object getData() {
 		return data;
 	}
 	
+	/**
+	 * 
+	 * @return Returns the ID Associated wih the Event
+	 */
 	public String getId() {
 		return ID;
 	}

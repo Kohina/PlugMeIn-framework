@@ -12,6 +12,11 @@ import falcons.pluginmanager.PluginManager;
 
 class JarExtractor {
 
+	/**
+	 * Returns all the .class-files inside a jar.
+	 * @param filename The relative path to the .jar-file
+	 * @return Returns a List with all the .class-file
+	 */
 	public List<File> getJarEntries(String filename) {
 
 		List<File> listOfClassFiles = new ArrayList<File>();

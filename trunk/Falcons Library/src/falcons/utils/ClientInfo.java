@@ -3,7 +3,7 @@ package falcons.utils;
 import java.io.Serializable;
 import java.util.HashMap;
 
-/*
+/**
  * Class that contains information such as id, name and loaded plugins about a certain client.
  */
 public class ClientInfo implements Serializable {
@@ -11,7 +11,7 @@ public class ClientInfo implements Serializable {
 	private String name;
 	private HashMap<String, String> plugins;
 	
-	/*
+	/**
 	 * Creates a new ClientInfo with the specified properties.
 	 * 
 	 * @param id	The id of the client.
@@ -25,7 +25,7 @@ public class ClientInfo implements Serializable {
 		setPlugins(plugins);
 	}
 	
-	/*
+	/**
 	 * Creates a new ClientInfo with only an id.
 	 * 
 	 * @param id	The id of the client.
@@ -34,7 +34,7 @@ public class ClientInfo implements Serializable {
 		this.id = id;
 	}
 	
-	/*
+	/**
 	 * Creates a new ClientInfo-object from an existing one.
 	 * 
 	 * @param clientInfo	The ClientInfo to make a copy of.
@@ -45,7 +45,7 @@ public class ClientInfo implements Serializable {
 		setPlugins(clientInfo.getPlugins());
 	}
 	
-	/*
+	/**
 	 * Changes the name of the object.
 	 * 
 	 * @param name	The new name.
@@ -54,7 +54,7 @@ public class ClientInfo implements Serializable {
 		this.name = name;
 	}
 	
-	/*
+	/**
 	 * Changes the plugins loaded on the plugin.
 	 * 
 	 * @param plugins	The new pluginMap.
@@ -63,7 +63,7 @@ public class ClientInfo implements Serializable {
 		this.plugins.putAll(plugins);
 	}
 	
-	/*
+	/**
 	 * Gets the ID of the client.
 	 * 
 	 * @return The ID.
@@ -72,7 +72,7 @@ public class ClientInfo implements Serializable {
 		return id;
 	}
 	
-	/*
+	/**
 	 * Gets the name of the client.
 	 * 
 	 * @return The name.
@@ -81,7 +81,7 @@ public class ClientInfo implements Serializable {
 		return name;
 	}
 	
-	/*
+	/**
 	 * Gets a HashMap<String, String> representation of the client's loaded plugins.
 	 * 
 	 * @return A deep copy of the pluginMap.
@@ -90,7 +90,7 @@ public class ClientInfo implements Serializable {
 		return (HashMap<String, String>) plugins.clone();
 	}
 	
-	/*
+	/**
 	 * Checks if the ClientInfo is complete, i.e. contains both a name and a pluginMap.
 	 * 
 	 * @return True if the object is complete, false otherwise.
