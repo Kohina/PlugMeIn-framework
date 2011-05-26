@@ -31,10 +31,10 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 	
 	private void initGUI(){
 		m = new CardLayout();
-		this.setLayout(new GridLayout(3,3));
+		this.setLayout(m);
 		this.setSize(600, 600);
 		
-		/*connectPanel = new JPanel();
+		connectPanel = new JPanel();
 		
 		clientList = new JList();
 		connectPanel.add(clientList);
@@ -48,16 +48,16 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		connectPanel.add(go);
 		
 		gamePanel = new JPanel();
-		gamePanel.setLayout(new GridLayout(3,3));*/
+		gamePanel.setLayout(new GridLayout(3,3));
 		
 		for(int i=0; i<=8; i++){
 		    buttons[i] = new JButton();
-		    this.add(buttons[i]);
+		    gamePanel.add(buttons[i]);
 		    buttons[i].addActionListener(this);
 		}
 		
-		/*this.add("connect", connectPanel);
-		this.add("game", gamePanel);*/
+		this.add("connect", connectPanel);
+		this.add("game", gamePanel);
 	}
 
 	@Override
