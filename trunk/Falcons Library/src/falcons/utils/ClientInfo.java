@@ -102,4 +102,13 @@ public class ClientInfo implements Serializable {
 			return false;
 		return true;
 	}
+	
+	/**
+	 * Makes a deep copy of the object.
+	 * 
+	 * @return A copy of the object.
+	 */
+	public ClientInfo clone() {
+		return new ClientInfo(this);
+	}
 }
