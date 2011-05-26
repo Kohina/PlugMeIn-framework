@@ -11,4 +11,12 @@ class ClientPreferencesController {
 	void readPreferences(){
 		ClientPreferencesLogic.readPreferences();
 	}
+	
+	void setIp(String Ip){
+		ClientPreferencesLogic.setIp(Ip);
+	}
+	
+	void setPort(String port){
+		ClientPreferencesLogic.setPort(Integer.parseInt(port));
+	}
 }

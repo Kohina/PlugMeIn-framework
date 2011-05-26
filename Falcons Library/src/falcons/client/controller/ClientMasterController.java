@@ -37,6 +37,11 @@ public class ClientMasterController {
 		case SAVE_PREFERENCES:
 			prefCont.savePreferences();
 			break;
+		case SET_IP:
+			prefCont.setIp((String) e.getData());
+			break;
+		case SET_PORT:
+			prefCont.setPort((String) e.getData());
 		default:
 			break;
 		}

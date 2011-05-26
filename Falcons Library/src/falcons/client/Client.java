@@ -42,9 +42,9 @@ public class Client {
 	public boolean disconnect(){
 		SystemClientPlugin.getInstance().disconnect();
 		try{
-		connection.closeConnection();
+			connection.closeConnection();
 		}catch(Exception e){
-			//do nasing...
+			System.out.println("We had an exception while closing the connection.");
 		}
 		connected = false;
 		return !connected;

@@ -25,6 +25,14 @@ public class LibraryEvent {
 		 * Tells the controller that it should return the Port.
 		 */
 		GET_PORT,
+		/**
+		 * Tells the controller that it should set the IP.
+		 */
+		SET_IP,
+		/**
+		 * Tells the controller that it should set the port.
+		 */
+		SET_PORT,
 		/*
 		 * 
 		 * PluginEvents
@@ -52,7 +60,7 @@ public class LibraryEvent {
 		 */
 		GET_CLIENTPLUGINS,
 		/**
-		 * Tells the controller that it shoudl return the plugin with the supplied ID.
+		 * Tells the controller that it should return the plugin with the supplied ID.
 		 */
 		GET_PLUGIN
 	}
@@ -60,6 +68,7 @@ public class LibraryEvent {
 	private String ID;
 
 	private LibraryEventType typeOfEvent;
+	private Object data;
 
 	/**
 	 * Creates a new ClientEvent that to be sent to the Client's controller.
@@ -72,9 +81,14 @@ public class LibraryEvent {
 		typeOfEvent = e;
 	}
 	
-	public LibraryEvent(LibraryEventType e, String ID){
+	public LibraryEvent(LibraryEventType e, String id) {
+		ID = id;
 		typeOfEvent = e;
-		this.ID = ID;
+	}
+	
+	public LibraryEvent(LibraryEventType e, Object data ) {
+		typeOfEvent = e;
+		this.data = data;
 	}
 
 	/**
@@ -85,9 +99,12 @@ public class LibraryEvent {
 	public LibraryEventType getEventType() {
 		return typeOfEvent;
 	}
+
+	public Object getData() {
+		return data;
+	}
 	
-	public String getId(){
+	public String getId() {
 		return ID;
 	}
-
 }
