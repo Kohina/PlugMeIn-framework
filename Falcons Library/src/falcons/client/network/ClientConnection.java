@@ -42,6 +42,10 @@ public final class ClientConnection extends Thread{
 		}
 	}
 
+	/**
+	 * Returns the {@link ClientConnection} instance.
+	 * @return The instance.
+	 */
 	public static ClientConnection getInstance(){
 		if(instance == null){
 			try {
@@ -54,8 +58,10 @@ public final class ClientConnection extends Thread{
 		return instance;
 	}
 
+	/**
+	 * Starts the connection to the server and initiates the socket.
+	 */
 	public void run(){
-
 		try {
 			out = new ObjectOutputStream(socket.getOutputStream());
 		} catch (IOException e) {
@@ -87,6 +93,9 @@ public final class ClientConnection extends Thread{
 		}
 	}
 
+	/**
+	 * Closes the connection to the server and disconnects the {@link ListeningThread}s.
+	 */
 	public void closeConnection(){
 		try {
 			SystemClientPlugin.getInstance().disconnect();
