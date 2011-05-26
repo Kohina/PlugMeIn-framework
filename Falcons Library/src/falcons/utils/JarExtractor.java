@@ -31,6 +31,7 @@ class JarExtractor {
 			jarinputstream = new JarInputStream(new FileInputStream(filename));
 
 			jarentry = jarinputstream.getNextJarEntry();
+			System.out.println("Jar: "+ jarentry);
 
 			// Make the print easier to read.
 			System.out
@@ -51,16 +52,13 @@ class JarExtractor {
 				boolean createdFile = false;
 
 				// Logging-stuff
-				System.out.println("=============== " + newFile
-						+ " ===============");
+				System.out.println("=============== " + newFile + " ===============");
 				System.out.println("path: " + newFile.getAbsolutePath());
 
 				// Check for parents and print the results
 				if (newFile.getParent() != null) {
 					System.out.println(newFile + " has a parent.");
-					System.out.println("new file directory was created: "
-							+ new File("plugins" + File.separator
-									+ newFile.getParent()).mkdirs());
+					System.out.println("new file directory was created: " + new File("plugins" + File.separator	+ newFile.getParent()).mkdirs());
 				} else if (newFile.getParent() == null) {
 					System.out.println(newFile + " doesn't have a parent.");
 				}
@@ -68,8 +66,7 @@ class JarExtractor {
 				// Check if the file currently being unzipped is a folder
 				if (!newFile.isFile() && !newFile.toString().endsWith(".class")) {
 					System.out.println(newFile + " is a directory.");
-					boolean created = new File("plugins" + File.separator,
-							newFile.toString()).mkdirs();
+					boolean created = new File("plugins" + File.separator, newFile.toString()).mkdirs();
 					System.out.println(newFile + " was created: " + created);
 					if (created == false) {
 						break;

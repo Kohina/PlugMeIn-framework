@@ -41,37 +41,47 @@ public class ClientPreferencesLogic {
 	}
 	
 	/**
-	 * 
+	 * Returns the IP in the {@link ClientPreferencesModel} object.
+	 * @return The IP in the object.
 	 */
 	public static String getIp(){
 		return clientPreferencesModel.getIp();
 	}
 	
 	/**
-	 * 
+	 * Returns the port in the {@link ClientPreferencesModel} object.
+	 * @return The port of the object.
 	 */
 	public static int getPort() {
 		return clientPreferencesModel.getPort();
 	}
 	
 	/**
-	 * 
+	 * Sets the IP in the {@link ClientPreferencesModel} object.
 	 */
 	public static void setIp(String ip){
 		ClientPreferencesModel.getInstance().setIp(ip);
 	}
 	
 	/**
-	 * 
+	 * Sets the port in the {@link ClientPreferencesModel} object.
 	 */
 	public static void setPort(int port) {
 		ClientPreferencesModel.getInstance().setPort(port);
 	}
 	
+	/**
+	 * Returns the name from the {@link ClientPreferencesModel} object.
+	 * @return The name of the object.
+	 */
 	public static String getName(){
 		return clientPreferencesModel.getName();
 	}
 	
+	/**
+	 * Sets the name of in {@link ClientPreferencesModel} object.
+	 * @param name The name to update with.
+	 */
 	public static void setName(String name){
 		clientPreferencesModel.setName(name);
 	}

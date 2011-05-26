@@ -9,11 +9,22 @@ import falcons.utils.ClientInfo;
 
 public class ServerLogic {
 	private static ServerModel serverModel = ServerModel.getInstance();
-	
+
+	/**
+	 * Returns the plugins available on the connected server.
+	 * @param id The ID of the particular plugin.
+	 * @return A particular plugin from a plugin hasmap.
+	 */
 	public static HashMap<String, String> getPlugins(long id) {
 		return serverModel.getPlugins(id);
 	}
 	
+	/**
+	 * Adds a plugin to a 
+	 * @param id
+	 * @param name
+	 * @param plugins
+	 */
 	public static void addClient(long id, String name, HashMap<String, String> plugins) {
 		serverModel.addClient(new ClientInfo(id, name, plugins));
 	}
