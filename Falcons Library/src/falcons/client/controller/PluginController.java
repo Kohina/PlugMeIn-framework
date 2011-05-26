@@ -13,6 +13,9 @@ import falcons.utils.ClientInfo;
 
 class PluginController implements PluginEventListener {
 
+	/**
+	 * Loads all of the available plugins from the loaded list of plugin.
+	 */
 	void loadPlugins(){
 		PluginLogic.loadPlugins();
 		Object[] keys = PluginLogic.getPluginMap().keySet().toArray();
