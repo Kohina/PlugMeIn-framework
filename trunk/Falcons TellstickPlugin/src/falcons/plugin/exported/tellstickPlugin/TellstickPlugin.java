@@ -15,11 +15,16 @@ import falcons.plugin.exported.tellstickPlugin.view.TellstickMainPanel;
 @Plugin(pluginID = "Tellstick", versionID = "0.1")
 public class TellstickPlugin extends AbstractPlugin {
 
-		TellstickMainPanel mainPanel;
+	TellstickMainPanel mainPanel;
+
+	public static void main(String[] args) {
+		TellstickPlugin tellstick = new TellstickPlugin();
 		
+	}
+	
 	public TellstickPlugin() {
 		
-		System.setProperty("jna.library.path", "");
+		System.setProperty("jna.library.path", "/Applications/TellDus/");
 
 		// Set supported methods for this app.
 		TellstickDevice.setSupportedMethods(JNA.CLibrary.TELLSTICK_TURNOFF | JNA.CLibrary.TELLSTICK_TURNON);
@@ -66,3 +71,4 @@ public class TellstickPlugin extends AbstractPlugin {
 	}
 
 }
+	
