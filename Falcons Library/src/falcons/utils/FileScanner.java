@@ -5,6 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileScanner {
+	
+	/**
+	 * This method gets all the Files in the folder given. If they are inside a jar-file
+	 * they are exctracted
+	 * @param path The path to the folder
+	 * @return Returns the .class-files that was inside the folder.
+	 */
 	public static List<File> getFiles(File path) {
 		List<File> files = new ArrayList<File>();
 		JarExtractor extractor = new JarExtractor();
@@ -42,6 +49,11 @@ public class FileScanner {
 		return files;
 	}
 
+	/**
+	 * Delets the file given
+	 * @param sFilePath The relative path to the file to be deleted
+	 * @return Returns true if deletion was successful
+	 */
 	public static boolean deleteFile(String sFilePath)
 	{
 	  File oFile = new File(sFilePath);
