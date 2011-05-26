@@ -153,7 +153,7 @@ public class ConnectionView extends javax.swing.JFrame implements
 	/* TextFileds */
 	private JTextField getIPTextField() {
 		if (IPTextField == null) {
-			IPTextField = new JTextField();
+			IPTextField = new JTextField("127.0.0.1");
 			IPTextField.setPreferredSize(new java.awt.Dimension(200, 23));
 		}
 		return IPTextField;
@@ -161,7 +161,7 @@ public class ConnectionView extends javax.swing.JFrame implements
 
 	private JTextField getPortTextField() {
 		if (portTextField == null) {
-			portTextField = new JTextField();
+			portTextField = new JTextField("45678");
 			portTextField.setPreferredSize(new java.awt.Dimension(50, 23));
 		}
 		return portTextField;
@@ -171,9 +171,12 @@ public class ConnectionView extends javax.swing.JFrame implements
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == connectButton) {
 			if (ClientImpl.client.connected() == false) {
+//				WARNING: This is the right way to do it, for some reason it doesnt work and is a TODO 
+//				ClientImpl.client.actionPerformed(new LibraryEvent(LibraryEventType.SET_PORT, Integer.parseInt(portTextField.getText())));
+//				ClientImpl.client.actionPerformed(new LibraryEvent(LibraryEventType.SET_IP, IPTextField.getText()));
+//				Instead, we do it like this:
 				ClientPreferencesLogic.setIp(IPTextField.getText());
 				ClientPreferencesLogic.setPort(Integer.parseInt(portTextField.getText()));
-//				ClientImpl.client.actionPerformed(new LibraryEvent(LibraryEventType.SET_PORT, Integer.parseInt(portTextField.getText())));
 				ClientImpl.client.actionPerformed(new LibraryEvent(LibraryEventType.SAVE_PREFERENCES));
 				ClientImpl.client.connect();
 				connectButton.setText("Disconnect");
