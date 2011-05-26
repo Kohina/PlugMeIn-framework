@@ -3,13 +3,21 @@
 It's important that you check out every folder in the trunk as an own project. That means that you should have these projects if you've done it right:
 
 - Falcons AlarmPlugin
+
 - Falcons Client
+
 - Falcons DummyPlugin
+
 - Falcons Library
+
 - Falcons Pluginibrary
+
 - Falcons SendMessagePlugin
+
 - Falcons Server
+
 - Falcons TellstickPlugin
+
 - Falcons TicTacToePlugin
 
 = How to start the server =
