@@ -12,6 +12,9 @@ import falcons.client.model.PluginModel;
 
 public class PluginLogic {
 
+	/**
+	 * Transfers all of the plugins from the pluginList to a hash map called pluginMap.
+	 */
 	public static void loadPlugins() {
 		List<Pluggable> pluginList;
 		pluginList = PluginManager.loadPlugins();

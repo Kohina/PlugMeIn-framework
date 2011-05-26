@@ -18,15 +18,13 @@ public class FileScanner {
 		File[] entries = path.listFiles();
 
 		if(entries != null){
+			// Clean up the folder and delete all files that isn't .jar or .class
 			for(File f : entries){
 				if(!f.getAbsolutePath().endsWith(".jar") && !f.getAbsolutePath().endsWith(".class")){
 					deleteFile(f.getAbsolutePath());
-					System.out.println("Deleted Stuff");
 				}
 			}
-		}
-
-		if (entries != null) {
+			
 			for (File f : entries) {
 				if (!f.isDirectory()) {
 					if (f.getAbsolutePath().endsWith(".jar")) {
@@ -41,8 +39,7 @@ public class FileScanner {
 				} else if (f.isDirectory()) {
 					System.out.println(f + " was deleted: " + f.delete());
 				} else {
-					System.out
-							.println("There were no files inside the plugins directory");
+					System.out.println("There were no files inside the plugins directory");
 				}
 			}
 		}

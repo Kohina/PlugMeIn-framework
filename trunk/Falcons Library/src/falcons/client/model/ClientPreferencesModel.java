@@ -21,6 +21,10 @@ class ClientPreferencesModel {
 		// Do nasing.
 	}
 	
+	/**
+	 * Returns the instance of the {@link ClientPreferencesModel}.
+	 * @return The instance.
+	 */
 	static ClientPreferencesModel getInstance() {
 		if(instance == null){
 			instance = new ClientPreferencesModel();
@@ -56,11 +60,19 @@ class ClientPreferencesModel {
 		this.ip = ip;
 	}
 
+	/**
+	 * Returns the name of the object.
+	 * @return A string object containing the name.
+	 */
 	String getName() {
 		String rname = name;
 		return rname;
 	}
 	
+	/**
+	 * Sets the name of the object.
+	 * @param name The name to update with.
+	 */
 	void setName(String name) {
 		this.name = name;
 	}
