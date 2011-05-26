@@ -1,8 +1,6 @@
 = How to set up the projects =
 
-It's important that you check out every folder in the trunk as an own project. That means that you should have these projects if you've done it right:
-
-- Falcons AlarmPlugin
+It's important that you check out some folder in the trunk as an own project. That means that you should have these projects if you've done it right:
 
 - Falcons Client
 
@@ -16,9 +14,7 @@ It's important that you check out every folder in the trunk as an own project. T
 
 - Falcons Server
 
-- Falcons TellstickPlugin
-
-- Falcons TicTacToePlugin
+There other projects in the SVN is plugins that we haven't had the time to finish because of massive debugging.
 
 = How to start the server =
 
