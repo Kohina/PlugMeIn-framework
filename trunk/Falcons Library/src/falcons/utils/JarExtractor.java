@@ -71,7 +71,7 @@ class JarExtractor {
 					}
 				}
 
-				if (!newFileDirectory) {
+				if (!newFileDirectory || newFile.toString().endsWith(".class")) {
 					fileoutputstream = new FileOutputStream(
 							System.getProperty("user.dir") + File.separator
 									+ "plugins" + File.separator + entryName);
