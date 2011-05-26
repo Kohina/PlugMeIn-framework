@@ -41,7 +41,7 @@ public class ClientMasterController {
 			prefCont.setIp((String) e.getData());
 			break;
 		case SET_PORT:
-			prefCont.setPort((Integer) e.getData());
+			prefCont.setPort((String) e.getData());
 		default:
 			break;
 		}
