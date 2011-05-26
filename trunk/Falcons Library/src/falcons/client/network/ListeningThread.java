@@ -12,6 +12,10 @@ public class ListeningThread extends Thread {
 	private ObjectInputStream in;
 	private ClientDataInterpreter interpreter;
 	
+	/**
+	 * Constructor, opens up a new {@link ListeningThread}.
+	 * @param in
+	 */
 	public ListeningThread(InputStream in){
 		try {
 			this.in = new ObjectInputStream(in);
@@ -22,6 +26,9 @@ public class ListeningThread extends Thread {
 		interpreter = interpreter.getInstance();
 	}
 	
+	/**
+	 * Interprets and runs a PluginCall.
+	 */
 	public void run(){
 		try {
 			PluginCall call;
