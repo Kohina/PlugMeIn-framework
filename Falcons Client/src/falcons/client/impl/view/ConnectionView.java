@@ -178,7 +178,11 @@ public class ConnectionView extends javax.swing.JFrame implements
 				ClientPreferencesLogic.setIp(IPTextField.getText());
 				ClientPreferencesLogic.setPort(Integer.parseInt(portTextField.getText()));
 				ClientImpl.client.actionPerformed(new LibraryEvent(LibraryEventType.SAVE_PREFERENCES));
-				ClientImpl.client.connect();
+				try {
+					ClientImpl.client.connect();
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "Connection failed, restart clien application. ;)");
+				}
 				connectButton.setText("Disconnect");
 			} else {
 				ClientImpl.client.disconnect();
