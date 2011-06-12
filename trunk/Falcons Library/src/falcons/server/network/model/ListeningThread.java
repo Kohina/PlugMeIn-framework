@@ -13,6 +13,7 @@ public class ListeningThread extends Thread {
 	private ObjectInputStream in;
 	private ServerDataInterpreter interpreter;
 	private Socket socket;
+	private boolean running = true;
 	
 	/**
 	 * A Constructor that constructs a ListeningThread connected to a socket
@@ -35,8 +36,14 @@ public class ListeningThread extends Thread {
 	 * @throws IOException
 	 * 					Throws an exception if the close-action was not successful
 	 */
-	public void close() throws IOException {
-		in.close();
+	public void close(){
+		try {
+			running = false;
+			in.close();
+		} catch (IOException e) {
+			System.err.println("Unable to close inputstream in ListeningThread");
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -64,7 +71,7 @@ public class ListeningThread extends Thread {
 	 * 						It could not find the class of the object inside the inputstream
 	 */
 	public PluginCall getCall() throws IOException, ClassNotFoundException {
-		if (socket.isInputShutdown()) {
+		if (!running) {
 			return null;
 		} else {
 			return (PluginCall) in.readObject();

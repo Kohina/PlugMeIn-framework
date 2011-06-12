@@ -40,8 +40,7 @@ public class ServerDataInterpreter {
 		if (pluginName.equals("SystemPlugin")) {
 			SystemServerPlugin.getInstance().receiveCall(call);
 		} else {
-			((AbstractPlugin) falcons.server.model.PluginLogic.getPluginMap()
-					.get(pluginName)).receiveCall(call);
+			((AbstractPlugin) falcons.server.model.PluginLogic.getPluginMap().get(pluginName)).receiveCall(call);
 		}
 	}
 }

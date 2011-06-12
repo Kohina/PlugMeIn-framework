@@ -74,6 +74,7 @@ public class ConnectionModel {
 	 * @param thread
 	 */
 	public void removeConnection(ConnectionThread thread) {
+		thread.cancel();
 		connections.remove(thread);
 	}
 
