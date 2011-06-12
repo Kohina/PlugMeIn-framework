@@ -54,6 +54,8 @@ public class ServerCommunicationCenter implements Runnable {
 			ConnectionModel.getInstance().addConnection(thread);
 			thread.start();
 			SystemServerPlugin.getInstance().sendClientID(thread.getId());
+			
+			
 		}
 	}
 

@@ -8,26 +8,42 @@ import falcons.plugin.PluginCall;
 
 public class ConnectionThread extends Thread{
 
-	private Socket socket = null;
+	private Socket socket;
 	private ListeningThread listeningThread;
 	private ObjectOutputStream out;
 
 	public ConnectionThread(Socket socket){
 		this.socket = socket;
-
+		try {
+			out = new ObjectOutputStream(socket.getOutputStream());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * The method that starts the thread
 	 */
 	public void run(){
-		try {
-			out = new ObjectOutputStream(socket.getOutputStream());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		listeningThread = new ListeningThread(socket);
 		listeningThread.start();
+	}
+	
+	public void cancel(){
+		listeningThread.close();
+		try {
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			System.err.println("Unable to flush/close output stream in ConnectionThread");
+			e.printStackTrace();
+		}
+		try {
+			socket.close();
+		} catch (IOException e) {
+			System.err.println("Unable to close Socket in ConnectionThread");
+			e.printStackTrace();
+		}
 	}
 
 	/**

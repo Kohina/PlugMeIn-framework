@@ -70,8 +70,7 @@ public class SystemServerPlugin {
 	}
 
 	private void updateClients() {
-		Collection<ClientInfo> clientList = connectionModel.getConnectionList()
-				.values();
+		Collection<ClientInfo> clientList = connectionModel.getConnectionList().values();
 
 		for (ClientInfo client : clientList) {
 			if (client != null) {
@@ -112,8 +111,8 @@ public class SystemServerPlugin {
 	}
 
 	private void deleteClient(ClientInfo client) {
-		System.out.println("Remove stuff, friend.");
 		connectionModel.removeConnection(connectionModel.getConnection(client.getID()));
+		System.out.println("Connection closed.");
 		updateClients();
 	}
 
