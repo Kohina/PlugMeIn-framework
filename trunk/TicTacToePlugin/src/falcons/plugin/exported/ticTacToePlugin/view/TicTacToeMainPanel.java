@@ -37,6 +37,7 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		connectPanel = new JPanel();
 		
 		clientList = new JList();
+		clientList.setSize(600,200);
 		connectPanel.add(clientList);
 		
 		update = new JButton("Update list");
@@ -63,31 +64,31 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == buttons[0]){
-			controller.turn(0, true);
+			controller.changeO(0);
 		}
 		else if(e.getSource() == buttons[1]){
-			controller.turn(1, true);
+			controller.changeO(1);
 		}
 		else if(e.getSource() == buttons[2]){
-			controller.turn(2, true);
+			controller.changeO(2);
 		}
 		else if(e.getSource() == buttons[3]){
-			controller.turn(3, true);
+			controller.changeO(3);
 		}
 		else if(e.getSource() == buttons[4]){
-			controller.turn(4, true);
+			controller.changeO(4);
 		}
 		else if(e.getSource() == buttons[5]){
-			controller.turn(5, true);
+			controller.changeO(5);
 		}
 		else if(e.getSource() == buttons[6]){
-			controller.turn(6, true);
+			controller.changeO(6);
 		}
 		else if(e.getSource() == buttons[7]){
-			controller.turn(7, true);
+			controller.changeO(7);
 		}
 		else if(e.getSource() == buttons[8]){
-			controller.turn(8, true);
+			controller.changeO(8);
 		}
 		else if(e.getSource() == go){
 			controller.connect(clientList.getSelectedIndex());
@@ -96,17 +97,20 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		else if(e.getSource() == update){
 			controller.updateClients();
 			
-			//need connection to client to test this
-			if (!logic.getClients().isEmpty()) {
-				ListModel clientListModel = new DefaultComboBoxModel(logic.getClients().keySet().toArray());
+			if (!controller.getClients().isEmpty()) {
+				ListModel clientListModel = new DefaultComboBoxModel(controller.getClients().keySet().toArray());
 				clientList.setModel(clientListModel);
 			} else {
-				System.out.println("I refuse to believe i you.");
+				System.out.println("There are no other clients to play against");
 			}
 		}
 		else{
 			System.out.print("Invalid button");
 		}
+	}
+	
+	public void newGame(){
+		m.show(this, "game");
 	}
 	
 	public void addActionListener(TicTacToeController cont){
