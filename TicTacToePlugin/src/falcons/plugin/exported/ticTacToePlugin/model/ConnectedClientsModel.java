@@ -20,7 +20,6 @@ public class ConnectedClientsModel implements Pluggable, Serializable{
 	
 	public void updateClients(){
 		clientMap = (HashMap<String, Long>) TicTacToePlugin.getData(new PluginEvent(PluginEventType.GET_CLIENTS));
-		JOptionPane.showMessageDialog(null, clientMap.toString());
 	}
 	
 	public HashMap getClients(){

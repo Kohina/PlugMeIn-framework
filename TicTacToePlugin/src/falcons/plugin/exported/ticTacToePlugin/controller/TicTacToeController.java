@@ -1,5 +1,7 @@
 package falcons.plugin.exported.ticTacToePlugin.controller;
 
+import java.util.HashMap;
+
 import falcons.plugin.AbstractPluginData;
 import falcons.plugin.Pluggable;
 import falcons.plugin.PluginCall;
@@ -26,26 +28,22 @@ public class TicTacToeController implements Pluggable{
 		clogic = new ConnectedClientsLogic();
 	}
 	
-	/**
-	 * A button has been clicked, if b (the opponent has played) a plugincall is sent
-	 * 
-	 * @param i - an int that represents the position of button clicked
-	 * @param b - boolean true if player plays, false if opponent plays
-	 */
-	public void turn(int i, boolean b){
-		if(b){
-			logic.turn(i);
-		}
-		else{
-			logic.turn(i);
-			
-			AbstractPluginData<Integer> pluginData = new AbstractPluginData<Integer>("turn", "0.1", i);
-			TicTacToePlugin.send(new PluginCall("TicTacToePlugin", pluginData, logic.getDestination()));
-		}
+	public void changeO(int i) {
+		logic.changeO(i);
+		AbstractPluginData<Integer> pluginData = new AbstractPluginData<Integer>("turn", "0.1", i);
+		TicTacToePlugin.send(new PluginCall("TicTacToePlugin", pluginData, logic.getDestination()));
+	}
+	
+	public void changeX(int i){
+		logic.changeX(i);
 	}
 	
 	public void updateClients(){
 		clogic.updateClients();
+	}
+	
+	public HashMap getClients(){
+		return clogic.getClients();
 	}
 	
 	/**
@@ -54,7 +52,7 @@ public class TicTacToeController implements Pluggable{
 	 * @param selectedIndex - an int representing wich client from a list that has been selected as opponent
 	 */
 	public void connect(int selectedIndex) {
-		logic.setDestination((Long) clogic.getClients().get(clogic.getClients().keySet().toArray()[0]));
+		logic.setDestination((Long) clogic.getClients().get(clogic.getClients().keySet().toArray()[selectedIndex]));
 		
 		AbstractPluginData<Long> pluginData = new AbstractPluginData<Long>("startGame", "0.1", (Long) TicTacToePlugin.getData(new PluginEvent(PluginEventType.GET_CLIENTID)));
 		TicTacToePlugin.send(new PluginCall("TicTacToePlugin", pluginData, logic.getDestination()));

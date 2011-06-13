@@ -40,12 +40,13 @@ public class TicTacToePlugin extends AbstractPlugin{
 	
 	@Override
 	public void receiveCall(PluginCall call) {
-		int data = (Integer) call.getPluginData().getData();
+		int data = ((Number) call.getPluginData().getData()).intValue();
 		
 		if (call.getPluginData().getMethodID().equals("turn")){
-			cont.turn(data, false);
+			cont.changeX(data);
 		}
 		else if(call.getPluginData().getMethodID().equals("startGame")){
+			mainPanel.newGame();
 			logic.setMe(true);
 		}
 	}
@@ -53,13 +54,5 @@ public class TicTacToePlugin extends AbstractPlugin{
 	@Override
 	public JPanel getMainPanel() {
 		return mainPanel;
-	}
-	
-	public static void main(String[] arg){
-		JFrame frame = new JFrame();
-		new TicTacToePlugin();
-		frame.add(mainPanel);
-		frame.setSize(400, 400);
-		frame.setVisible(true);
 	}
 }
