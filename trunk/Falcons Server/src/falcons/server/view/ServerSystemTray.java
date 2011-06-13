@@ -10,16 +10,16 @@ import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import falcons.server.view.ServerView;
+//import falcons.server.view.ServerView;
 
 public class ServerSystemTray implements ActionListener {
 
 	private static MenuItem mainView = new MenuItem("Main");
 	private static MenuItem exitButton = new MenuItem("Exit");
-	private ServerView serverView;
+	//private ServerView serverView;
 
-	public ServerSystemTray(ServerView serverView) {
-		this.serverView = serverView;
+	public ServerSystemTray() {
+		//this.serverView = serverView;
 		if (SystemTray.isSupported()) {
 			SystemTray tray = SystemTray.getSystemTray();
 			Image image = Toolkit.getDefaultToolkit().getImage(
@@ -44,8 +44,8 @@ public class ServerSystemTray implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == mainView) {
-			serverView.setLocationRelativeTo(null);
-			serverView.setVisible(true);
+			//serverView.setLocationRelativeTo(null);
+			//serverView.setVisible(true);
 		}
 		if(e.getSource() == exitButton){
 			System.exit(0);
