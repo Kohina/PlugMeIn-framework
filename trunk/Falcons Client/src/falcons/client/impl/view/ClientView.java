@@ -19,10 +19,6 @@ import javax.swing.border.TitledBorder;
 */
 public class ClientView extends javax.swing.JFrame {
 	private JTabbedPane jTabbedPaneMain;
-	private JPanel panel, holder, connectionPanel, pluginPanel, wakeOnLanPanel;
-	private JTextField sendMessageTextField, IPTextField, temp, portTextField;
-	private JLabel portLabel, IPLabel, autoCon;
-	private JButton sendMessageButton, connectButton;
 
 	public ClientView() {
 		super();
@@ -58,15 +54,5 @@ public class ClientView extends javax.swing.JFrame {
 	 */
 	public void addTab(String s, JPanel p){
 		jTabbedPaneMain.addTab(s, p);
-	}
-	
-	/*TextFields*/
-	private JTextField getTemp() {
-		if(temp == null) {
-			temp = new JTextField();
-			temp.setText("temp");
-			temp.setPreferredSize(new Dimension(250,210));
-		}
-		return temp;
 	}
 }

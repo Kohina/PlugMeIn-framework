@@ -1,5 +1,5 @@
-<ClientPreferencesModel>
-	<name>client</name>
-	<ip>127.0.0.1</ip>
-	<port>45678</port>
-</ClientPreferencesModel>
+<clientPreferencesModel>
+   <port>45678</port>
+   <ip>127.0.0.1</ip>
+   <name>Marika</name>
+</clientPreferencesModel>
