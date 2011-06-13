@@ -45,6 +45,7 @@ public class ConnectionModel {
 			if (c.getId() == id) {
 				returnObject = c;
 			}
+			System.out.println(c.getId());
 		}
 		return returnObject;
 	}

@@ -116,7 +116,8 @@ public class SystemServerPlugin {
 		System.out.println("Connection closed.");
 		updateClients();
 	}
-
+	
+	//Sends the clientList to all connected clients
 	private void broadcastClients() {
 		updateClients();
 		for (ClientInfo client : clients)
