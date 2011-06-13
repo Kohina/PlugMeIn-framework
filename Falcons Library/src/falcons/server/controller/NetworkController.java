@@ -11,6 +11,9 @@ public class NetworkController {
 	 * 				The Call to be sent
 	 */
 	static void send(PluginCall call){
+		if(ConnectionModel.getInstance().getConnection(call.getDestination()) == null){
+			System.out.println("all your base belong to _us");
+		}
 		ConnectionModel.getInstance().getConnection(call.getDestination()).send(call);
 	}
 }
