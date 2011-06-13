@@ -38,8 +38,7 @@ import falcons.utils.LibraryEvent.LibraryEventType;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class ConnectionView extends javax.swing.JFrame implements
-		ActionListener {
+public class ConnectionView extends javax.swing.JFrame implements ActionListener {
 	private JPanel holder, connectionPanel, pluginPanel;
 	private JLabel IPLabel, portLabel, autoConLabel;
 	private JTextField IPTextField, portTextField;
