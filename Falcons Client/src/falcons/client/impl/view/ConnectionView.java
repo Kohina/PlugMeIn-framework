@@ -25,11 +25,26 @@ import falcons.client.model.ClientPreferencesLogic;
 import falcons.utils.LibraryEvent;
 import falcons.utils.LibraryEvent.LibraryEventType;
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class ConnectionView extends javax.swing.JFrame implements
 		ActionListener {
 	private JPanel holder, connectionPanel, pluginPanel;
 	private JLabel IPLabel, portLabel, autoConLabel;
 	private JTextField IPTextField, portTextField;
+	private JTextField nameTextField;
+	private JLabel nameLabel;
 	private JButton connectButton;
 	private JCheckBox autoConnect = new JCheckBox();
 
@@ -80,30 +95,38 @@ public class ConnectionView extends javax.swing.JFrame implements
 
 			c.gridx = 0;
 			c.gridy = 0;
-			connectionPanel.add(getIPLabel(), c);
+			connectionPanel.add(getNameLabel(), c);
 			c.gridx = 1;
 			c.gridy = 0;
+			c.gridwidth = 2;
+			connectionPanel.add(getNameTextField(), c);
+			c.gridx = 0;
+			c.gridy = 1;
+			c.gridwidth = 1;
+			connectionPanel.add(getIPLabel(), c);
+			c.gridx = 1;
+			c.gridy = 1;
 			c.gridwidth = 3;
 			connectionPanel.add(getIPTextField(), c);
 			c.gridx = 0;
-			c.gridy = 1;
+			c.gridy = 2;
 			c.gridwidth = 1;
 			c.insets = new Insets(0, 20, 0, 0);
 			connectionPanel.add(getPortLabel(), c);
 			c.gridx = 1;
-			c.gridy = 1;
+			c.gridy = 2;
 			c.insets = new Insets(0, 0, 0, 0);
 			connectionPanel.add(getPortTextField(), c);
 			c.gridx = 2;
-			c.gridy = 1;
+			c.gridy = 2;
 			c.insets = new Insets(0, 25, 0, 0);
 			connectionPanel.add(getAutoConLabel(), c);
 			c.gridx = 3;
-			c.gridy = 1;
+			c.gridy = 2;
 			c.insets = new Insets(0, 5, 0, 0);
 			connectionPanel.add(autoConnect, c);
 			c.gridx = 2;
-			c.gridy = 2;
+			c.gridy = 3;
 			c.gridwidth = 2;
 			c.insets = new Insets(0, 65, 0, 0);
 			connectionPanel.add(getConnectButton(), c);
@@ -150,6 +173,14 @@ public class ConnectionView extends javax.swing.JFrame implements
 		}
 		return portLabel;
 	}
+	
+	private JLabel getNameLabel() {
+		if(nameLabel == null) {
+			nameLabel = new JLabel();
+			nameLabel.setText("Name:");
+		}
+		return nameLabel;
+	}
 
 	/* TextFileds */
 	private JTextField getIPTextField() {
@@ -167,6 +198,14 @@ public class ConnectionView extends javax.swing.JFrame implements
 		}
 		return portTextField;
 	}
+	
+	private JTextField getNameTextField() {
+		if(nameTextField == null) {
+			nameTextField = new JTextField("Enter your name");
+			nameTextField.setPreferredSize(new java.awt.Dimension(180, 23));
+		}
+		return nameTextField;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -178,6 +217,7 @@ public class ConnectionView extends javax.swing.JFrame implements
 //				Instead, we do it like this:
 				ClientPreferencesLogic.setIp(IPTextField.getText());
 				ClientPreferencesLogic.setPort(Integer.parseInt(portTextField.getText()));
+				ClientPreferencesLogic.setName(nameTextField.getText());
 				ClientImpl.client.actionPerformed(new LibraryEvent(LibraryEventType.SAVE_PREFERENCES));
 				try {
 					ClientImpl.client.connect();
