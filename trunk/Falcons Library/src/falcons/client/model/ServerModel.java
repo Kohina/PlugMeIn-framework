@@ -8,6 +8,7 @@ import falcons.utils.*;
 class ServerModel {
 	private static ServerModel instance;
 	private ClientInfo clientInfo;
+	// TODO: It should only be one List or HashMap of connected clients, there is one in server/network/model/ConnectionModel.java
 	private List<ClientInfo> clients = new ArrayList<ClientInfo>();
 	
 	static ServerModel getInstance(){
