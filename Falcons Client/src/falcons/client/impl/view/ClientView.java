@@ -27,6 +27,7 @@ public class ClientView extends javax.swing.JFrame {
 	
 	private void initGUI() {
 		try {
+			//TODO: implement custom close operation wich is desided by the plugin running
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			{	
 				this.setIconImage(new ImageIcon("http://i.imgur.com/Q19tq.png").getImage());
