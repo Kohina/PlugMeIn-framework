@@ -3,6 +3,7 @@ package falcons.server.network;
 import java.io.Serializable;
 import java.util.*;
 
+import falcons.client.model.ServerLogic;
 import falcons.plugin.AbstractPluginData;
 import falcons.plugin.Plugin;
 import falcons.plugin.PluginCall;
@@ -50,6 +51,11 @@ public class SystemServerPlugin {
 			} else if (data.getMethodID().equals("deleteClient")) {
 				deleteClient((ClientInfo) data.getData());
 				broadcastClients();
+			} else if (data.getMethodID().equals("getClients")){
+				System.out.println("Here SystemServerPlugin");
+				ArrayList dataArray = (ArrayList) data.getData();
+				Long id = Long.parseLong((String)dataArray.get(1));
+				getClients((String)dataArray.get(0), id);
 			} else {
 				System.out.println("The methodID does not exist.");
 			}
@@ -60,6 +66,20 @@ public class SystemServerPlugin {
 		} else {
 			System.out.println("The method ID doesn't exist.");
 		}
+	}
+
+	private void getClients(String plugin, Long id) {
+		
+		List<ClientInfo> clients = connectionModel.getClients();
+		HashMap<String, Long> hm = new HashMap<String, Long>();
+		for(ClientInfo c : clients){
+			hm.put(c.getName(), c.getID());
+		}
+		
+		AbstractPluginData<HashMap<String, Long>> data = new AbstractPluginData<HashMap<String, Long>>("getClients", "0.1", hm);
+		PluginCall call = new PluginCall(plugin, data, id);
+		connectionModel.getConnection(id).send(call);
+		System.out.println("Here SystemServerPlugin");
 	}
 
 	public void sendClientID(long id) {

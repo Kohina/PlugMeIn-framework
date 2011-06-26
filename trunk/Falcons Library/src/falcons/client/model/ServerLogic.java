@@ -75,11 +75,6 @@ public class ServerLogic {
 	
 	public static List<ClientInfo> getClients() {
 		List<ClientInfo> clients = serverModel.getClients();
-		
-		//for(ClientInfo c : clients) {
-			//clients.add(new ClientInfo(c.getID(), c.getName(), c.getPlugins()));
-		//}
-		
 		return clients;
 	}
 }
