@@ -1,6 +1,7 @@
 package falcons.plugin.exported;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Observable;
 
 import javax.swing.JFrame;
@@ -12,6 +13,7 @@ import falcons.plugin.Pluggable;
 import falcons.plugin.Plugin;
 import falcons.plugin.PluginCall;
 import falcons.plugin.exported.ticTacToePlugin.controller.TicTacToeController;
+import falcons.plugin.exported.ticTacToePlugin.model.ConnectedClientsModel;
 import falcons.plugin.exported.ticTacToePlugin.model.TicTacToeLogic;
 import falcons.plugin.exported.ticTacToePlugin.model.TicTacToeModel;
 import falcons.plugin.exported.ticTacToePlugin.view.TicTacToeMainPanel;
@@ -20,6 +22,7 @@ import falcons.plugin.exported.ticTacToePlugin.view.TicTacToeMainPanel;
 public class TicTacToePlugin extends AbstractPlugin{
 
 	private TicTacToeModel model;
+	private ConnectedClientsModel cModel;
 	private TicTacToeLogic logic;
 	private static TicTacToeMainPanel mainPanel;
 	private TicTacToeController cont;
@@ -48,6 +51,10 @@ public class TicTacToePlugin extends AbstractPlugin{
 		else if(call.getPluginData().getMethodID().equals("startGame")){
 			mainPanel.newGame();
 			logic.setMe(true);
+		}
+		else if(call.getPluginData().getMethodID().equals("getClients")){
+			cModel.setClients((HashMap<String, Long>)call.getPluginData().getData());
+			System.out.println("Here TicTacToe");
 		}
 	}
 
