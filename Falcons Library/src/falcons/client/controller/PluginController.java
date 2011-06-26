@@ -30,6 +30,7 @@ class PluginController implements PluginEventListener {
 		PluginEventType e = p.getTypeOfEvent();
 		switch (e) {
 		case SEND:
+			System.out.println("Here ClientPluginController");
 			ClientConnection.send(p.getPluginCall());
 			break;
 		default:
