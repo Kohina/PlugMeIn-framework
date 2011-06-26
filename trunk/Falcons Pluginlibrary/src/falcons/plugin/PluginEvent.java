@@ -41,6 +41,7 @@ public class PluginEvent {
 	 * @param e - This is a PluginEventType (enum) that will tell the controller the task to be done
 	 */
 	public PluginEvent(PluginEventType e){
+		System.out.println("Here PluginEvent");
 		typeOfEvent = e;
 	}
 	
