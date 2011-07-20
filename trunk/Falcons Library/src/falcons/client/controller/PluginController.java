@@ -44,6 +44,7 @@ class PluginController implements PluginEventListener {
 		Object returnObject = null;
 		switch (e) {
 		case GET_CLIENTS:
+			//TODO: This should be done returning the serverlist of clients!
 			List<ClientInfo> clients = ServerLogic.getClients();
 			HashMap<String, Long> clientData = new HashMap<String, Long>();
 			for(ClientInfo c : clients){
@@ -55,6 +56,7 @@ class PluginController implements PluginEventListener {
 			returnObject =  PluginLogic.getPluginMap();
 			break;
 		case GET_CLIENTID:
+			//TODO: This should be done by the server?
 			returnObject = ServerLogic.getClientInfo().getID();
 		default:
 			break;

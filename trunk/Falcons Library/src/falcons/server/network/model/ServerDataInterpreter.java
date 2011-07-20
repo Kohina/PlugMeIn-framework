@@ -36,6 +36,7 @@ public class ServerDataInterpreter {
 	 *            The PluginCall that's been received from the server.
 	 */
 	public void interpret(PluginCall call) {
+		//TODO: Find a way to know if the call is to be executed on the server or just forwarded
 		String pluginName = call.getPluginID();
 		if (pluginName.equals("SystemPlugin")) {
 			SystemServerPlugin.getInstance().receiveCall(call);
