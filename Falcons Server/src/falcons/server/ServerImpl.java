@@ -11,6 +11,7 @@ import falcons.utils.LibraryEvent.LibraryEventType;
 
 public class ServerImpl {
 	
+	//TODO: The ServerView
 	//private ServerView serverView;
 	private static ServerSystemTray tray;
 	private static Server server;
