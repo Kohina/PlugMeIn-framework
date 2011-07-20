@@ -21,7 +21,8 @@ public class SystemClientPlugin implements Serializable {
 	public static SystemClientPlugin getInstance() {
 		return instance;
 	}
-
+	
+	//TODO: Maybe clean-up?
 	public void receiveCall(PluginCall call) {
 		AbstractPluginData<?> data = call.getPluginData();
 
@@ -41,6 +42,7 @@ public class SystemClientPlugin implements Serializable {
 		}
 	}
 
+	//TODO: why?
 	private void receiveID(Long id) {
 		HashMap<String, String> plugins = new HashMap<String, String>(PluginLogic.getPluginMap().size(), 1);
 		Collection<String> pluginNames = PluginLogic.getPluginMap().keySet();

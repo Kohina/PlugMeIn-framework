@@ -8,6 +8,7 @@ import falcons.utils.ClientInfo;
 public class ConnectionModel {
 
 	private static ConnectionModel instance = new ConnectionModel();
+	//TODO: Hide a good way to save connections. Maybe IP or name as key? Thread could be value
 	private static HashMap<ConnectionThread, ClientInfo> connections = new HashMap<ConnectionThread, ClientInfo>();
 
 	/**
@@ -93,6 +94,7 @@ public class ConnectionModel {
 	 * 			A hashmap with all the plugins that the specified client has loaded
 	 */
 	public static HashMap<String, String> getClientPlugins(long id) {
+		//TODO: strange here
 		ConnectionThread[] conns = (ConnectionThread[]) connections.keySet().toArray(new ConnectionThread[connections.size()]);
 		ConnectionThread key = null;
 
@@ -111,6 +113,7 @@ public class ConnectionModel {
 	 */
 	public static List<ClientInfo> getClients() {
 		List<ClientInfo> clients = new ArrayList<ClientInfo>();
+		//TODO: strange here
 		ConnectionThread[] conns = (ConnectionThread[]) connections.keySet().toArray(new ConnectionThread[connections.size()]);
 
 		for (ConnectionThread c : conns) {

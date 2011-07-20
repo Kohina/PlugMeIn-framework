@@ -51,11 +51,11 @@ public class SystemServerPlugin {
 			} else if (data.getMethodID().equals("deleteClient")) {
 				deleteClient((ClientInfo) data.getData());
 				broadcastClients();
-			} else if (data.getMethodID().equals("getClients")){
+			/*} else if (data.getMethodID().equals("getClients")){
 				System.out.println("Here SystemServerPlugin");
 				ArrayList dataArray = (ArrayList) data.getData();
 				Long id = Long.parseLong((String)dataArray.get(1));
-				getClients((String)dataArray.get(0), id);
+				getClients((String)dataArray.get(0), id);*/
 			} else {
 				System.out.println("The methodID does not exist.");
 			}
@@ -68,7 +68,7 @@ public class SystemServerPlugin {
 		}
 	}
 
-	private void getClients(String plugin, Long id) {
+	/*private void getClients(String plugin, Long id) {
 		
 		List<ClientInfo> clients = connectionModel.getClients();
 		HashMap<String, Long> hm = new HashMap<String, Long>();
@@ -80,7 +80,7 @@ public class SystemServerPlugin {
 		PluginCall call = new PluginCall(plugin, data, id);
 		connectionModel.getConnection(id).send(call);
 		System.out.println("Here SystemServerPlugin");
-	}
+	}*/
 
 	public void sendClientID(long id) {
 		AbstractPluginData<Long> data = new AbstractPluginData<Long>(
