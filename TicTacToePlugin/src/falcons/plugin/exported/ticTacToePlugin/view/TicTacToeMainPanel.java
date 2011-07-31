@@ -8,21 +8,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Set;
+
 import javax.swing.*;
 
 import falcons.plugin.Pluggable;
 import falcons.plugin.exported.ticTacToePlugin.controller.TicTacToeController;
-import falcons.plugin.exported.ticTacToePlugin.model.ConnectedClientsLogic;
 
 public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, ActionListener{
 
-	private JButton buttons[] = new JButton[9];
+	private JButton[] buttons;
 	private JPanel gamePanel, connectPanel;
 	private JList clientList;
 	private JButton go, update;
+	private int[] key;
 	private CardLayout m;
 	private TicTacToeController controller;
-	private ConnectedClientsLogic logic;
 	
 	public TicTacToeMainPanel(){
 		initGUI();
@@ -51,6 +52,8 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		gamePanel = new JPanel();
 		gamePanel.setLayout(new GridLayout(3,3));
 		
+		buttons = new JButton[9];
+		              
 		for(int i=0; i<=8; i++){
 		    buttons[i] = new JButton();
 		    gamePanel.add(buttons[i]);
@@ -91,18 +94,11 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 			controller.changeO(8);
 		}
 		else if(e.getSource() == go){
-			controller.connect(clientList.getSelectedIndex());
+			controller.connect(key[clientList.getSelectedIndex()]);
 			m.show(this, "game");
 		}
 		else if(e.getSource() == update){
 			controller.updateClients();
-			
-			if (!controller.getClients().isEmpty()) {
-				ListModel clientListModel = new DefaultComboBoxModel(controller.getClients().keySet().toArray());
-				clientList.setModel(clientListModel);
-			} else {
-				System.out.println("There are no other clients to play against");
-			}
 		}
 		else{
 			System.out.print("Invalid button");
@@ -113,12 +109,33 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		m.show(this, "game");
 	}
 	
+	private void updateList(){
+		if (!controller.getClients().isEmpty()) {
+			Set<Integer> keys = controller.getClients().keySet();
+			key = new int[keys.size()];
+			String[] name = new String[keys.size()];
+			int i = 0;
+			for(Integer k: keys){
+				key[i] = k;
+				name[i] = controller.getClients().get(k);
+				i++;
+			}
+			ListModel clientListModel = new DefaultComboBoxModel(name);
+			clientList.setModel(clientListModel);
+		} else {
+			System.out.println("There are no other clients to play against");
+		}
+	}
+	
 	public void addActionListener(TicTacToeController cont){
 		controller = cont;
 	}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
+		if(arg1 == null){
+			updateList();
+		}
 		buttons = (JButton[]) arg1;
 	}
 	

@@ -1,6 +1,7 @@
 package falcons.plugin.exported.ticTacToePlugin.controller;
 
 import java.util.HashMap;
+import java.util.Observer;
 
 import falcons.plugin.AbstractPluginData;
 import falcons.plugin.Pluggable;
@@ -22,16 +23,16 @@ public class TicTacToeController implements Pluggable{
 		
 	}
 	
-	public TicTacToeController(TicTacToeMainPanel view, TicTacToeLogic logic) {
+	public TicTacToeController(TicTacToeMainPanel view, TicTacToeLogic logic, ConnectedClientsLogic clogic) {
 		this.view = view;
 		this.logic = logic;
-		clogic = new ConnectedClientsLogic();
+		this.clogic = clogic;
 	}
 	
 	public void changeO(int i) {
 		logic.changeO(i);
 		AbstractPluginData<Integer> pluginData = new AbstractPluginData<Integer>("turn", "0.1", i);
-		TicTacToePlugin.send(new PluginCall("TicTacToePlugin", pluginData, logic.getDestination()));
+		TicTacToePlugin.send(new PluginCall("TicTacToePlugin", pluginData, logic.getDestination(), 0));
 	}
 	
 	public void changeX(int i){
@@ -42,19 +43,23 @@ public class TicTacToeController implements Pluggable{
 		clogic.updateClients();
 	}
 	
-	public HashMap getClients(){
+	public HashMap<Integer, String> getClients(){
 		return clogic.getClients();
+	}
+	
+	public void setClients(HashMap<Integer, String> hashMap){
+		clogic.setClients(hashMap);
 	}
 	
 	/**
 	 * Connect to opponent, and sets destination to opponents ID
 	 * 
-	 * @param selectedIndex - an int representing wich client from a list that has been selected as opponent
+	 * @param dest - an int representing the client that has been selected as opponent
 	 */
-	public void connect(int selectedIndex) {
-		logic.setDestination((Long) clogic.getClients().get(clogic.getClients().keySet().toArray()[selectedIndex]));
+	public void connect(int dest) {
+		logic.setDestination(dest);
 		
-		AbstractPluginData<Long> pluginData = new AbstractPluginData<Long>("startGame", "0.1", (Long) TicTacToePlugin.getData(new PluginEvent(PluginEventType.GET_CLIENTID)));
-		TicTacToePlugin.send(new PluginCall("TicTacToePlugin", pluginData, logic.getDestination()));
+		AbstractPluginData<Integer> pluginData = new AbstractPluginData<Integer>("startGame", "0.1", null);
+		TicTacToePlugin.send(new PluginCall("TicTacToePlugin", pluginData, logic.getDestination(), -2));
 	}
 }
