@@ -29,14 +29,12 @@ public class TicTacToeController implements Pluggable{
 		this.clogic = clogic;
 	}
 	
-	public void changeO(int i) {
-		logic.changeO(i);
-		AbstractPluginData<Integer> pluginData = new AbstractPluginData<Integer>("turn", "0.1", i);
-		TicTacToePlugin.send(new PluginCall("TicTacToePlugin", pluginData, logic.getDestination(), 0));
+	public void change(int i) {
+		logic.change(i);
 	}
 	
-	public void changeX(int i){
-		logic.changeX(i);
+	public boolean getMe(){
+		return logic.getMe();
 	}
 	
 	public void updateClients(){

@@ -53,12 +53,15 @@ public class TicTacToePlugin extends AbstractPlugin{
 		
 		
 		if (call.getPluginData().getMethodID().equals("turn")){
+			System.out.println("turn recieved");
 			int data = ((Number) call.getPluginData().getData()).intValue();
-			cont.changeX(data);
+			cont.change(data);
+			logic.setMe(true);
 		}
 		else if(call.getPluginData().getMethodID().equals("startGame")){
 			mainPanel.newGame();
 			logic.setMe(true);
+			logic.setIsX(false);
 		}
 		else if(call.getPluginData().getMethodID().equals("receiveClients")){
 			List<PluginClientInfo> clients = (List<PluginClientInfo>) call.getPluginData().getData();

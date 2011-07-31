@@ -66,42 +66,44 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == buttons[0]){
-			controller.changeO(0);
-		}
-		else if(e.getSource() == buttons[1]){
-			controller.changeO(1);
-		}
-		else if(e.getSource() == buttons[2]){
-			controller.changeO(2);
-		}
-		else if(e.getSource() == buttons[3]){
-			controller.changeO(3);
-		}
-		else if(e.getSource() == buttons[4]){
-			controller.changeO(4);
-		}
-		else if(e.getSource() == buttons[5]){
-			controller.changeO(5);
-		}
-		else if(e.getSource() == buttons[6]){
-			controller.changeO(6);
-		}
-		else if(e.getSource() == buttons[7]){
-			controller.changeO(7);
-		}
-		else if(e.getSource() == buttons[8]){
-			controller.changeO(8);
-		}
-		else if(e.getSource() == go){
+		if(e.getSource() == go){
 			controller.connect(key[clientList.getSelectedIndex()]);
 			m.show(this, "game");
 		}
 		else if(e.getSource() == update){
 			controller.updateClients();
 		}
-		else{
-			System.out.print("Invalid button");
+		if(controller.getMe()){
+			if(e.getSource() == buttons[0]){
+				controller.change(0);
+			}
+			else if(e.getSource() == buttons[1]){
+				controller.change(1);
+			}
+			else if(e.getSource() == buttons[2]){
+				controller.change(2);
+			}
+			else if(e.getSource() == buttons[3]){
+				controller.change(3);
+			}
+			else if(e.getSource() == buttons[4]){
+				controller.change(4);
+			}
+			else if(e.getSource() == buttons[5]){
+				controller.change(5);
+			}
+			else if(e.getSource() == buttons[6]){
+				controller.change(6);
+			}
+			else if(e.getSource() == buttons[7]){
+				controller.change(7);
+			}
+			else if(e.getSource() == buttons[8]){
+				controller.change(8);
+			}
+			else{
+				System.out.print("Invalid button");
+			}
 		}
 	}
 	
@@ -136,7 +138,9 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		if(arg1 == null){
 			updateList();
 		}
-		buttons = (JButton[]) arg1;
+		else if(arg1 != null){
+			buttons = (JButton[]) arg1;
+		}
 	}
 	
 	public JButton[] getButtons(){
