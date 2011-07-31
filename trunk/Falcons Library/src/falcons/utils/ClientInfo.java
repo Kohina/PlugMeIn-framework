@@ -7,7 +7,7 @@ import java.util.HashMap;
  * Class that contains information such as id, name and loaded plugins about a certain client.
  */
 public class ClientInfo implements Serializable {
-	private long id;
+	private int id;
 	private String name;
 	private HashMap<String, String> plugins;
 	
@@ -18,7 +18,7 @@ public class ClientInfo implements Serializable {
 	 * @param name	The name of the client.
 	 * @param plugins	A HashMap<String, String> containing all the loaded plugins on the client.
 	 */
-	public ClientInfo(long id, String name, HashMap<String, String> plugins) {
+	public ClientInfo(int id, String name, HashMap<String, String> plugins) {
 		this.id = id;
 		setName(name);
 		this.plugins = new HashMap<String, String>(plugins.size(), 1);
@@ -30,7 +30,7 @@ public class ClientInfo implements Serializable {
 	 * 
 	 * @param id	The id of the client.
 	 */
-	public ClientInfo(long id) {
+	public ClientInfo(int id) {
 		this.id = id;
 	}
 	
@@ -68,7 +68,7 @@ public class ClientInfo implements Serializable {
 	 * 
 	 * @return The ID.
 	 */
-	public long getID() {
+	public int getID() {
 		return id;
 	}
 	

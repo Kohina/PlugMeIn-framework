@@ -16,6 +16,9 @@ class ClientPreferencesModel {
 	
 	@Element
 	private String name;
+	
+	@Element
+	private int ID;
 
 	public ClientPreferencesModel() {
 		// Do nasing.
@@ -75,5 +78,13 @@ class ClientPreferencesModel {
 	 */
 	void setName(String name) {
 		this.name = name;
+	}
+
+	public void setID(int id) {
+		ID = id;
+	}
+
+	public int getID() {
+		return ID;
 	}
 }

@@ -53,7 +53,6 @@ public class ServerCommunicationCenter implements Runnable {
 			System.out.println("NEW CONNECTION RECEIVED, CREATING NEW CONNECTIONTHREAD");
 			ConnectionModel.getInstance().addConnection(thread);
 			thread.start();
-			SystemServerPlugin.getInstance().sendClientID(thread.getId());
 		}
 	}
 

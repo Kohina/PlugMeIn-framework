@@ -3,13 +3,15 @@ package falcons.client.network;
 import java.io.Serializable;
 import java.util.*;
 
+import falcons.client.controller.ClientMasterController;
 import falcons.client.model.ClientPreferencesLogic;
 import falcons.client.model.PluginLogic;
-import falcons.client.model.ServerLogic;
 import falcons.plugin.*;
 import falcons.utils.ClientInfo;
+import falcons.utils.LibraryEvent;
+import falcons.utils.LibraryEvent.LibraryEventType;
 
-@Plugin(pluginID = "SystemPlugin", versionID = "1.0")
+@Plugin(pluginID = "SystemClientPlugin", versionID = "1.0")
 public class SystemClientPlugin implements Serializable {
 
 	private static SystemClientPlugin instance = new SystemClientPlugin();
@@ -28,10 +30,7 @@ public class SystemClientPlugin implements Serializable {
 
 		if (data.getVersionID().equals(this.getClass().getAnnotation(Plugin.class).versionID())) {
 			if(data.getMethodID().equals("receiveID")) {
-				receiveID((Long) data.getData());
-				sendClientInfo();
-			} else if(data.getMethodID().equals("receiveClients")) {
-				receiveClients((List<ClientInfo>) call.getPluginData().getData());
+				receiveID((Integer) data.getData());
 			} else {
 				System.out.println("The methodID does not exist.");
 			}
@@ -42,8 +41,7 @@ public class SystemClientPlugin implements Serializable {
 		}
 	}
 
-	//TODO: why?
-	private void receiveID(Long id) {
+	private void receiveID(int id) {
 		HashMap<String, String> plugins = new HashMap<String, String>(PluginLogic.getPluginMap().size(), 1);
 		Collection<String> pluginNames = PluginLogic.getPluginMap().keySet();
 
@@ -51,24 +49,16 @@ public class SystemClientPlugin implements Serializable {
 			String pluginVersion = PluginLogic.getPluginMap().get(pluginName).getClass().getAnnotation(Plugin.class).versionID();
 			plugins.put(pluginName, pluginVersion);
 		}
-		ServerLogic.setInfo(id, ClientPreferencesLogic.getName(), plugins);
-	}
-
-	private void sendClientInfo() {
-		AbstractPluginData<ClientInfo> data = new AbstractPluginData<ClientInfo>("receiveClientInfo", "1.0", ServerLogic.getClientInfo());
-		PluginCall call = new PluginCall("SystemPlugin", data, -1);
-		ClientConnection.send(call);
-	}
-
-	private void receiveClients(List<ClientInfo> clients) {
-		for(ClientInfo client : clients) {
-			ServerLogic.addClient(client);
-		}
+		new ClientMasterController().actionPerformed(new LibraryEvent(LibraryEventType.SET_ID, id));
+		ClientInfo info = new ClientInfo(id, ClientPreferencesLogic.getName(), plugins);
+		AbstractPluginData<ClientInfo> data = new AbstractPluginData<ClientInfo>("receiveClientInfo", "1.0", info);
+		ClientConnection.send(new PluginCall("SystemServerPlugin", data, -1, id));
 	}
 
 	public void disconnect() {
-		AbstractPluginData<ClientInfo> data = new AbstractPluginData<ClientInfo>("deleteClient", "1.0", ServerLogic.getClientInfo());
-		PluginCall call = new PluginCall("SystemPlugin", data, -1);
-		ClientConnection.send(call);
+		//TODO: Ever client have to be able to send a identification ID so the server knows which client to remove
+		//AbstractPluginData<ClientInfo> data = new AbstractPluginData<ClientInfo>("deleteClient", "1.0", ServerLogic.getClientInfo());
+		//PluginCall call = new PluginCall("SystemPlugin", data, -1);
+		//ClientConnection.send(call);
 	}
 }

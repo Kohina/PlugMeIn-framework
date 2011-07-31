@@ -3,13 +3,14 @@ package falcons.client.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import falcons.client.model.ClientPreferencesLogic;
 import falcons.client.model.PluginLogic;
-import falcons.client.model.ServerLogic;
 import falcons.client.network.ClientConnection;
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.PluginEvent;
 import falcons.plugin.PluginEventListener;
 import falcons.plugin.PluginEvent.PluginEventType;
+import falcons.server.network.model.ConnectionModel;
 import falcons.utils.ClientInfo;
 
 class PluginController implements PluginEventListener {
@@ -30,7 +31,7 @@ class PluginController implements PluginEventListener {
 		PluginEventType e = p.getTypeOfEvent();
 		switch (e) {
 		case SEND:
-			System.out.println("Here ClientPluginController");
+			p.getPluginCall().setSender(ClientPreferencesLogic.getID());
 			ClientConnection.send(p.getPluginCall());
 			break;
 		default:
@@ -45,19 +46,13 @@ class PluginController implements PluginEventListener {
 		switch (e) {
 		case GET_CLIENTS:
 			//TODO: This should be done returning the serverlist of clients!
-			List<ClientInfo> clients = ServerLogic.getClients();
-			HashMap<String, Long> clientData = new HashMap<String, Long>();
-			for(ClientInfo c : clients){
-				clientData.put(c.getName(), c.getID());
-			}
-			returnObject = clientData;
+			returnObject = ConnectionModel.getClients();
 			break;
 		case GET_PLUGINMAP:
 			returnObject =  PluginLogic.getPluginMap();
 			break;
 		case GET_CLIENTID:
-			//TODO: This should be done by the server?
-			returnObject = ServerLogic.getClientInfo().getID();
+			//TODO: This should be done by the server
 		default:
 			break;
 		}
