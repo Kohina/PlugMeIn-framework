@@ -2,10 +2,14 @@ package falcons.plugin.exported.ticTacToePlugin.model;
 
 import java.io.Serializable;
 
+import javax.print.attribute.standard.Destination;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import falcons.plugin.AbstractPluginData;
 import falcons.plugin.Pluggable;
+import falcons.plugin.PluginCall;
+import falcons.plugin.exported.TicTacToePlugin;
 
 public class TicTacToeLogic implements Pluggable, Serializable{
 	
@@ -15,6 +19,7 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 	private String winner = null;
 	private JButton[] board;
 	private boolean me = false;
+	private boolean isX = true;
 	
 	public TicTacToeLogic(){
 		
@@ -25,24 +30,39 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 		board = model.getBoard();
 	}
 		
-	public void changeO(int i) {
-		if(model.getBoard()[i].getText() == "" && me){
+	public void change(int i) {
+		if(me){
+			if(model.getBoard()[i].getText() == "" && isX){
+				model.changeX(i);
+				me = false;
+			}
+			else if(model.getBoard()[i].getText() == "" && !isX){
+				model.changeO(i);
+				me = false;
+			}
+			AbstractPluginData<Integer> pluginData = new AbstractPluginData<Integer>("turn", "0.1", i);
+			TicTacToePlugin.send(new PluginCall("TicTacToePlugin", pluginData, getDestination(), 0));
+			System.out.println("turn sent");
+		}
+		else if(model.getBoard()[i].getText() == "" && !me && isX){
 			model.changeO(i);
-			me = false;
-			win();
 		}
-	}
-	
-	public void changeX(int i) {
-		if(model.getBoard()[i].getText() == ""){
+		else if(model.getBoard()[i].getText() == "" && !me && !isX){
 			model.changeX(i);
-			me = true;
-			win();
 		}
+		win();
 	}
 	
 	public void setMe(boolean b){
 		me = b;
+	}
+	
+	public boolean getMe(){
+		return me;
+	}
+	
+	public void setIsX(boolean b){
+		isX = b;
 	}
 	
 	public int getDestination(){
