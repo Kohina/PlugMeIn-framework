@@ -7,9 +7,10 @@ import java.io.Serializable;
 
 public class PluginCall implements Serializable {
 
-	private String PluginID;
+	private String pluginID;
 	private AbstractPluginData pluginData;
-	private long destination;
+	private int destination;
+	private int sender;
 
 	/**
 	 * 
@@ -21,16 +22,16 @@ public class PluginCall implements Serializable {
 	 * @param destination
 	 *            The int that is an ID from the servers list of clients.
 	 */
-	public PluginCall(AbstractPlugin plugin, AbstractPluginData pluginData,
-			long destination) {
-		this.PluginID = plugin.getClass().getAnnotation(Plugin.class).pluginID();
+	public PluginCall(AbstractPlugin plugin, AbstractPluginData pluginData, int destination, int sender) {
+		this.pluginID = plugin.getClass().getAnnotation(Plugin.class).pluginID();
 		this.pluginData = pluginData;
 		this.destination = destination;
+		this.sender = sender;
 	}
 	
 	/**
 	 * 
-	 * @param PluginID
+	 * @param pluginID
 	 *            The ID of the plugin sending the call.
 	 * @param pluginData
 	 *            The AbstractPluginData-object that contains all the relevant
@@ -38,21 +39,19 @@ public class PluginCall implements Serializable {
 	 * @param destination
 	 *            The int that is an ID from the servers list of clients.
 	 */
-	public PluginCall(String pluginID, AbstractPluginData pluginData,
-			long destination) {
-		this.PluginID = pluginID;
+	public PluginCall(String pluginID, AbstractPluginData pluginData, int destination, int sender) {
+		this.pluginID = pluginID;
 		this.pluginData = pluginData;
 		this.destination = destination;
+		this.sender = sender;
 	}
-	
-	
 
 	/**
 	 * 
 	 * @return Returns the PluginID
 	 */
 	public String getPluginID() {
-		return PluginID;
+		return pluginID;
 	}
 
 	/**
@@ -67,7 +66,15 @@ public class PluginCall implements Serializable {
 	 * 
 	 * @return Returns the destination of the PluginCall as an int.
 	 */
-	public long getDestination() {
+	public int getDestination() {
 		return destination;
+	}
+	
+	public int getSender() {
+		return sender;
+	}
+
+	public void setSender(int sender) {
+		this.sender = sender;
 	}
 }
