@@ -7,6 +7,7 @@ import javax.management.modelmbean.ModelMBean;
 import falcons.client.model.PluginLogic;
 import falcons.plugin.AbstractPlugin;
 import falcons.plugin.PluginCall;
+import falcons.plugin.PluginEvent.PluginEventType;
 import falcons.server.network.SystemServerPlugin;
 
 public class ServerDataInterpreter {
@@ -36,13 +37,19 @@ public class ServerDataInterpreter {
 	 *            The PluginCall that's been received from the server.
 	 */
 	public void interpret(PluginCall call) {
-		//TODO: Find a way to know if the call is to be executed on the server or just forwarded
-		String pluginName = call.getPluginID();
-		if (pluginName.equals("SystemPlugin")) {
-			SystemServerPlugin.getInstance().receiveCall(call);
-		} else {
-			((AbstractPlugin) falcons.server.model.PluginLogic.getPluginMap()
-					.get(pluginName)).receiveCall(call);
+		// TODO: Find a way to know if the call is to be executed on the server
+		// or just forwarded
+		if (call.getDestination() != -1) {
+			ConnectionModel.getInstance().getConnection(call.getDestination()).send(call);
+		} 
+		else {
+			String pluginName = call.getPluginID();
+			if (pluginName.equals("SystemServerPlugin")) {
+				SystemServerPlugin.getInstance().receiveCall(call);
+			} else {
+				((AbstractPlugin) falcons.server.model.PluginLogic
+						.getPluginMap().get(pluginName)).receiveCall(call);
+			}
 		}
 	}
 }

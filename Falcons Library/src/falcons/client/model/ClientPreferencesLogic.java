@@ -85,4 +85,12 @@ public class ClientPreferencesLogic {
 	public static void setName(String name){
 		clientPreferencesModel.setName(name);
 	}
+	
+	public static void setID(int id){
+		clientPreferencesModel.setID(id);
+	}
+	
+	public static int getID(){
+		return clientPreferencesModel.getID();
+	}
 }

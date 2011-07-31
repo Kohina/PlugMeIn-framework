@@ -2,15 +2,21 @@ package falcons.server.network.model;
 
 import java.util.*;
 
-import falcons.client.model.ServerLogic;
+import falcons.plugin.AbstractPluginData;
+import falcons.plugin.PluginCall;
 import falcons.utils.ClientInfo;
 
 public class ConnectionModel {
 
+	private int nextID = 0;
 	private static ConnectionModel instance = new ConnectionModel();
-	//TODO: Hide a good way to save connections. Maybe IP or name as key? Thread could be value
-	private static HashMap<ConnectionThread, ClientInfo> connections = new HashMap<ConnectionThread, ClientInfo>();
+	//TODO: Find a good way to save connections. Maybe IP or name as key? Thread could be value
+	//TODO: Make sure clientside can access this list as well!! And make sure the server knows what plugins the clients has
+	//private static HashMap<ConnectionThread, ClientInfo> connections = new HashMap<ConnectionThread, ClientInfo>();
+	private static HashMap<Integer, ConnectionThread> connections = new HashMap<Integer ,ConnectionThread>();
+	private static HashMap<Integer, ClientInfo> clients = new HashMap<Integer ,ClientInfo>();
 
+	
 	/**
 	 * Default Constructor
 	 */
@@ -37,17 +43,8 @@ public class ConnectionModel {
 	 * @return Always check if the returned value is null, if it's null the
 	 *         thread was not found.
 	 */
-	public ConnectionThread getConnection(long id) {
-		ConnectionThread returnObject = null;
-
-		ConnectionThread[] conns = (ConnectionThread[]) connections.keySet().toArray(new ConnectionThread[connections.size()]);
-
-		for (ConnectionThread c : conns) {
-			if (c.getId() == id) {
-				returnObject = c;
-			}
-		}
-		return returnObject;
+	public ConnectionThread getConnection(int id) {
+		return connections.get(id);
 	}
 
 	/**
@@ -56,7 +53,10 @@ public class ConnectionModel {
 	 * 					The thread to be added
 	 */
 	public void addConnection(ConnectionThread thread) {
-		connections.put(thread, null);
+		connections.put(nextID, thread);
+		AbstractPluginData<Integer> pluginData = new AbstractPluginData<Integer>("receiveID", "1.0", nextID);
+		thread.send(new PluginCall("SystemClientPlugin", pluginData, nextID, -1));
+		nextID++;
 	}
 	
 	/**
@@ -66,8 +66,8 @@ public class ConnectionModel {
 	 * @param client
 	 * 			The ClientInfo to be added to the collection
 	 */
-	public void addClientInfo(long id, ClientInfo client) {
-		connections.put(getConnection(id), client);
+	public void addClientInfo(int id, ClientInfo client) {
+		clients.put(id, client);
 	}
 
 	/**
@@ -82,8 +82,8 @@ public class ConnectionModel {
 	/**
 	 * @return Returns a list with all the currently active ConnectionThreads.
 	 */
-	public HashMap<ConnectionThread, ClientInfo> getConnectionList() {
-		return (HashMap<ConnectionThread, ClientInfo>) connections.clone();
+	public HashMap<Integer ,ConnectionThread> getConnectionList() {
+		return (HashMap<Integer, ConnectionThread>) connections.clone();
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class ConnectionModel {
 				key = c;
 			}
 		}
-		return connections.get(key).getPlugins();
+		return clients.get(key).getPlugins();
 	}
 
 	/**
@@ -112,13 +112,12 @@ public class ConnectionModel {
 	 * 			A List of all the connected clients
 	 */
 	public static List<ClientInfo> getClients() {
-		List<ClientInfo> clients = new ArrayList<ClientInfo>();
-		//TODO: strange here
-		ConnectionThread[] conns = (ConnectionThread[]) connections.keySet().toArray(new ConnectionThread[connections.size()]);
+		List<ClientInfo> returnClients = new ArrayList<ClientInfo>();
+		Collection<ClientInfo> client = clients.values();
 
-		for (ConnectionThread c : conns) {
-			clients.add(connections.get(c));
+		for (ClientInfo c : client) {
+			returnClients.add(c);
 		}
-		return clients;
+		return returnClients;
 	}
 }

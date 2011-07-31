@@ -33,6 +33,8 @@ public class LibraryEvent {
 		 * Tells the controller that it should set the port.
 		 */
 		SET_PORT,
+		
+		SET_ID,
 		/*
 		 * 
 		 * PluginEvents

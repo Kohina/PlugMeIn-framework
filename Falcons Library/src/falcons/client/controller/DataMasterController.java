@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 import falcons.client.model.ClientPreferencesLogic;
 import falcons.client.model.PluginLogic;
-import falcons.client.model.ServerLogic;
 import falcons.plugin.Pluggable;
 import falcons.utils.LibraryEvent;
 import falcons.utils.LibraryEvent.LibraryEventType;
@@ -30,10 +29,10 @@ public class DataMasterController {
 			returnObject = ClientPreferencesLogic.getPort();
 			break;
 		case GET_CLIENTPLUGINS:
-			returnObject = ServerLogic.getPlugins(Long.parseLong(e.getId()));
+			//TODO: To be manage by server?
 			break;
 		case GET_CLIENTS:
-			returnObject = ServerLogic.getClients();
+			//TODO: To be manage by server!
 			break;
 		case GET_PLUGIN:
 			returnObject = PluginLogic.getPluginMap().get(e.getId());

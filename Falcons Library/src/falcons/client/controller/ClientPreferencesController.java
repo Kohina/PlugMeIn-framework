@@ -35,4 +35,9 @@ class ClientPreferencesController {
 	void setPort(String port){
 		ClientPreferencesLogic.setPort(Integer.parseInt(port));
 	}
+
+	public void setID(int id) {
+		ClientPreferencesLogic.setID(id);
+		
+	}
 }
