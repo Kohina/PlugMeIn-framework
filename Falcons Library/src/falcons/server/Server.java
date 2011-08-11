@@ -14,6 +14,8 @@ public class Server {
 	private DataMasterController dataController;
 	private ServerCommunicationCenter comCenter;
 	private boolean started = false;
+	
+	private Thread serverThread;
 
 	/**
 	 * Default Contructor
@@ -49,7 +51,7 @@ public class Server {
 	public boolean startServer(){
 		try {
 			comCenter = new ServerCommunicationCenter();
-			Thread serverThread = new Thread(comCenter);
+			serverThread = new Thread(comCenter);
 			serverThread.start();
 			started = true;
 		} catch (IOException e) {
