@@ -13,13 +13,15 @@ public class ServerImpl {
 	
 	//TODO: The ServerView
 	//private ServerView serverView;
-	private static ServerSystemTray tray;
+//	private static ServerSystemTray tray;
 	private static Server server;
+	
+	private static boolean running;
 	
 	public void run(){
 		//serverView = new ServerView();
 		server = new Server();
-		tray = new ServerSystemTray();
+//		tray = new ServerSystemTray();
 		server.actionPerformed(new LibraryEvent(LibraryEventType.LOAD_PLUGINS));
 		server.actionPerformed(new LibraryEvent(LibraryEventType.READ_PREFERENCES));
 		
@@ -34,6 +36,15 @@ public class ServerImpl {
 		}
 		
 		server.startServer();
+		running = true;
+	}
+	
+	public void stop(){
+		server.stopServer();
+		running = false;
 	}
 
+	public boolean isRunning() {
+		return running;
+	}
 }

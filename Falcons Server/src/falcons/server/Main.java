@@ -8,11 +8,10 @@ import falcons.server.view.ServerSystemTray;
 
 public class Main {
 
-	private static ServerImpl server;
+	private static ServerSystemTray tray;
 	
 	public static void main(String[] args) throws IOException {
-		server = new ServerImpl();
-		server.run();
+		tray = new ServerSystemTray();
+		
 	}
-
 }
