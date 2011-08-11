@@ -10,24 +10,31 @@ import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import falcons.server.ServerImpl;
+
 //import falcons.server.view.ServerView;
 
 public class ServerSystemTray implements ActionListener {
 
 	private static MenuItem mainView = new MenuItem("Main");
+	private static MenuItem startButton = new MenuItem("Start server");
 	private static MenuItem exitButton = new MenuItem("Exit");
+	
+	private static ServerImpl server;
 	//private ServerView serverView;
 
 	public ServerSystemTray() {
 		//this.serverView = serverView;
 		if (SystemTray.isSupported()) {
 			SystemTray tray = SystemTray.getSystemTray();
-			Image image = Toolkit.getDefaultToolkit().getImage(
-					"Falcons-Icon.gif");
-
+			Image image = Toolkit.getDefaultToolkit().getImage("Falcons-Icon.gif");
+			
+			server = new ServerImpl();
 			PopupMenu popup = new PopupMenu();
 			popup.add(mainView);
 			mainView.addActionListener(this);
+			popup.add(startButton);
+			startButton.addActionListener(this);
 			popup.add(exitButton);
 			exitButton.addActionListener(this);
 			TrayIcon trayIcon = new TrayIcon(image, "Falcons Server", popup);
@@ -46,8 +53,15 @@ public class ServerSystemTray implements ActionListener {
 		if (e.getSource() == mainView) {
 			//serverView.setLocationRelativeTo(null);
 			//serverView.setVisible(true);
-		}
-		if(e.getSource() == exitButton){
+		} else if (e.getSource() == startButton) {
+			if(server.isRunning()) {
+				server.stop();
+				startButton.setLabel("Start server");
+			} else {
+				server.run();
+				startButton.setLabel("Stop server");
+			}
+		} else if(e.getSource() == exitButton){
 			System.exit(0);
 		}
 	}
