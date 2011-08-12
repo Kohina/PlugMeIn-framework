@@ -49,13 +49,26 @@ public class ServerCommunicationCenter implements Runnable {
 		System.out.println("SERVER STARTED");
 		System.out.println(ServerPreferencesLogic.getPort());
 		while (listening) {
-			ConnectionThread thread = new ConnectionThread(socket.accept());
-			System.out.println("NEW CONNECTION RECEIVED, CREATING NEW CONNECTIONTHREAD");
-			ConnectionModel.getInstance().addConnection(thread);
-			thread.start();
+			if(!this.socket.isClosed()) {
+				ConnectionThread thread = new ConnectionThread(socket.accept());
+				System.out.println("NEW CONNECTION RECEIVED, CREATING NEW CONNECTIONTHREAD");
+				ConnectionModel.getInstance().addConnection(thread);
+				thread.start();
+			}
 		}
 	}
-
+	
+	public void shutdown() {
+		try {
+			
+			this.socket.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.socket = null;
+	}
+	
 	@Override
 	public void run() {
 		try {

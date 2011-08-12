@@ -69,6 +69,8 @@ public class Server {
 	 * 			True if the server was stopped.
 	 */
 	public boolean stopServer(){
+		serverThread.stop();
+		comCenter.shutdown();
 		comCenter = null;
 		started = false;
 		return !started;
