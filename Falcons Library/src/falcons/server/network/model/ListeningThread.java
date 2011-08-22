@@ -56,7 +56,7 @@ public class ListeningThread extends Thread {
 			while ((call = getCall()) != null) {
 				interpreter.interpret(call);
 			}
-		} catch (IOException e) {
+		}catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -71,7 +71,7 @@ public class ListeningThread extends Thread {
 	 * @throws ClassNotFoundException
 	 * 						It could not find the class of the object inside the inputstream
 	 */
-	public PluginCall getCall() throws IOException, ClassNotFoundException {
+	public PluginCall getCall() throws IOException, ClassNotFoundException, EOFException {
 		if (!running) {
 			return null;
 		} else {
