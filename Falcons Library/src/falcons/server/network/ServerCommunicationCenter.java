@@ -11,11 +11,13 @@ import falcons.client.network.ClientDataInterpreter;
 import falcons.server.model.ServerPreferencesLogic;
 import falcons.server.network.model.ConnectionModel;
 import falcons.server.network.model.ConnectionThread;
+import falcons.server.network.model.ServerThread;
 
 public class ServerCommunicationCenter implements Runnable {
 
 	private ServerSocket socket = null;
 	private boolean listening = true;
+	private ServerThread serverThread;
 
 	/**
 	 * Contructor for the CommunicationCenter.
@@ -48,22 +50,15 @@ public class ServerCommunicationCenter implements Runnable {
 	public void server() throws IOException {
 		System.out.println("SERVER STARTED");
 		System.out.println(ServerPreferencesLogic.getPort());
-		while (listening) {
-			if(!this.socket.isClosed()) {
-				ConnectionThread thread = new ConnectionThread(socket.accept());
-				System.out.println("NEW CONNECTION RECEIVED, CREATING NEW CONNECTIONTHREAD");
-				ConnectionModel.getInstance().addConnection(thread);
-				thread.start();
-			}
+		serverThread = new ServerThread(socket);
+		serverThread.run(listening);
 		}
-	}
 	
 	public void shutdown() {
 		try {
-			
-			this.socket.close();
+			listening = false;
+			socket.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.socket = null;
