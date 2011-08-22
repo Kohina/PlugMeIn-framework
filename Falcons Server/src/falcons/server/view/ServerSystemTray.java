@@ -12,8 +12,6 @@ import java.awt.event.ActionListener;
 
 import falcons.server.ServerImpl;
 
-//import falcons.server.view.ServerView;
-
 public class ServerSystemTray implements ActionListener {
 
 	private static MenuItem mainView = new MenuItem("Main");
@@ -21,18 +19,14 @@ public class ServerSystemTray implements ActionListener {
 	private static MenuItem exitButton = new MenuItem("Exit");
 	
 	private static ServerImpl server;
-	//private ServerView serverView;
 
 	public ServerSystemTray() {
-		//this.serverView = serverView;
 		if (SystemTray.isSupported()) {
 			SystemTray tray = SystemTray.getSystemTray();
 			Image image = Toolkit.getDefaultToolkit().getImage("Falcons-Icon.gif");
 			
 			server = new ServerImpl();
 			PopupMenu popup = new PopupMenu();
-			popup.add(mainView);
-			mainView.addActionListener(this);
 			popup.add(startButton);
 			startButton.addActionListener(this);
 			popup.add(exitButton);
@@ -50,10 +44,7 @@ public class ServerSystemTray implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == mainView) {
-			//serverView.setLocationRelativeTo(null);
-			//serverView.setVisible(true);
-		} else if (e.getSource() == startButton) {
+		if (e.getSource() == startButton) {
 			if(server.isRunning()) {
 				server.stop();
 				startButton.setLabel("Start server");
