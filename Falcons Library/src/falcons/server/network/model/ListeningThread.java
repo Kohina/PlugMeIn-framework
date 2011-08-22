@@ -50,7 +50,6 @@ public class ListeningThread extends Thread {
 	 * Starts the thread
 	 */
 	public void run(){
-		System.out.println("Here SystemListeningThread");
 		try {
 			PluginCall call;
 			while ((call = getCall()) != null) {
