@@ -40,7 +40,7 @@ public class ServerImpl {
 	}
 	
 	public void stop(){
-		server.stopServer();
+		System.out.println("Server was stopped: " + server.stopServer());
 		running = false;
 	}
 
