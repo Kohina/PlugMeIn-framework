@@ -39,6 +39,7 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		this.setSize(600, 600);
 		
 		connectPanel = new JPanel();
+		connectPanel.setLayout(new FlowLayout());
 		
 		clientList = new JList();
 		clientList.setSize(600,200);
@@ -53,12 +54,13 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		connectPanel.add(go);
 		
 		gameContentPanel = new JPanel();
-		gameContentPanel.setLayout(new FlowLayout());
+		gameContentPanel.setLayout(new GridLayout(2,1));
 		gamePanel = new JPanel();
 		gamePanel.setLayout(new GridLayout(3,3));
 		gamePanel.setSize(600, 600);
 		optionsPanel = new JPanel();
-		optionsPanel.setLayout(new FlowLayout());
+		optionsPanel.setLayout(new GridLayout(1,2));
+		
 		endGame = new JButton("End game");
 		endGame.setSize(200, 50);
 		endGame.addActionListener(this);
@@ -70,7 +72,6 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		gameContentPanel.add(optionsPanel);
 		
 		buttons = new JButton[9];
-		              
 		for(int i=0; i<=8; i++){
 		    buttons[i] = new JButton();
 		    gamePanel.add(buttons[i]);
