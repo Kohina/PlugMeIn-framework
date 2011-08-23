@@ -1,5 +1,6 @@
 package falcons.plugin.exported.ticTacToePlugin.view;
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -54,7 +55,7 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		connectPanel.add(go);
 		
 		gameContentPanel = new JPanel();
-		gameContentPanel.setLayout(new GridLayout(2,1));
+		gameContentPanel.setLayout(new BorderLayout());
 		gamePanel = new JPanel();
 		gamePanel.setLayout(new GridLayout(3,3));
 		gamePanel.setSize(600, 600);
@@ -68,8 +69,8 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		turn.setSize(300, 50);
 		optionsPanel.add(turn);
 		optionsPanel.add(endGame);
-		gameContentPanel.add(gamePanel);
-		gameContentPanel.add(optionsPanel);
+		gameContentPanel.add(gamePanel, BorderLayout.CENTER);
+		gameContentPanel.add(optionsPanel, BorderLayout.SOUTH);
 		
 		buttons = new JButton[9];
 		for(int i=0; i<=8; i++){
