@@ -1,7 +1,9 @@
 package falcons.plugin.exported.ticTacToePlugin.view;
 
 import java.awt.CardLayout;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -18,9 +20,10 @@ import falcons.plugin.exported.ticTacToePlugin.controller.TicTacToeController;
 public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, ActionListener{
 
 	private JButton[] buttons;
-	private JPanel gamePanel, connectPanel;
+	private JPanel gamePanel, connectPanel, gameContentPanel, optionsPanel;
 	private JList clientList;
-	private JButton go, update;
+	private JLabel turn;
+	private JButton go, update, endGame;
 	private int[] key;
 	private CardLayout m;
 	private TicTacToeController controller;
@@ -49,8 +52,22 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		go.addActionListener(this);
 		connectPanel.add(go);
 		
+		gameContentPanel = new JPanel();
+		gameContentPanel.setLayout(new FlowLayout());
 		gamePanel = new JPanel();
 		gamePanel.setLayout(new GridLayout(3,3));
+		gamePanel.setSize(600, 600);
+		optionsPanel = new JPanel();
+		optionsPanel.setLayout(new FlowLayout());
+		endGame = new JButton("End game");
+		endGame.setSize(200, 50);
+		endGame.addActionListener(this);
+		turn = new JLabel();
+		turn.setSize(300, 50);
+		optionsPanel.add(turn);
+		optionsPanel.add(endGame);
+		gameContentPanel.add(gamePanel);
+		gameContentPanel.add(optionsPanel);
 		
 		buttons = new JButton[9];
 		              
@@ -61,17 +78,22 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		}
 		
 		this.add("connect", connectPanel);
-		this.add("game", gamePanel);
+		this.add("game", gameContentPanel);
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == go){
 			controller.connect(key[clientList.getSelectedIndex()]);
+			setTurnText(false);
 			m.show(this, "game");
 		}
 		else if(e.getSource() == update){
 			controller.updateClients();
+		}
+		else if(e.getSource() == endGame){
+			controller.reset(true);
+			m.show(this, "connect");
 		}
 		if(controller.getMe()){
 			if(e.getSource() == buttons[0]){
@@ -103,12 +125,28 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 			}
 			else{
 				System.out.print("Invalid button");
+				return;
 			}
+			setTurnText(false);
 		}
 	}
 	
 	public void newGame(){
+		setTurnText(true);
 		m.show(this, "game");
+	}
+	
+	public void connectView(){
+		m.show(this, "connect");
+	}
+	
+	public void setTurnText(boolean b){
+		if(b){
+			turn.setText("It's your turn");
+		}
+		else{
+			turn.setText("It's not your turn");
+		}
 	}
 	
 	private void updateList(){
