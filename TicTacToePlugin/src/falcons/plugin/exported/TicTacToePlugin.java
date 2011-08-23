@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Observable;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import falcons.plugin.AbstractPlugin;
@@ -51,17 +53,28 @@ public class TicTacToePlugin extends AbstractPlugin{
 	@Override
 	public void receiveCall(PluginCall call) {
 		
-		
-		if (call.getPluginData().getMethodID().equals("turn")){
+		if (call.getPluginData().getMethodID().equals("end")){
+			JOptionPane.showMessageDialog(null, "Your opponent has left the game, your game will be closed");
+			mainPanel.connectView();
+			cont.reset(false);
+		}
+		else if (call.getPluginData().getMethodID().equals("turn")){
 			System.out.println("turn recieved");
 			int data = ((Number) call.getPluginData().getData()).intValue();
 			cont.change(data);
 			logic.setMe(true);
+			mainPanel.setTurnText(true);
 		}
-		else if(call.getPluginData().getMethodID().equals("startGame")){
-			mainPanel.newGame();
-			logic.setMe(true);
-			logic.setIsX(false);
+		else if(call.getPluginData().getMethodID().equals("invite")){
+			if(JOptionPane.showOptionDialog(null, "Do you want to play TicTacToe?", "Game invite", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null) == JOptionPane.YES_OPTION){
+				mainPanel.newGame();
+				logic.setMe(true);
+				logic.setIsX(false);
+			}
+			else{
+				AbstractPluginData<Integer> pluginData = new AbstractPluginData<Integer>("end", "0.1", null);
+				TicTacToePlugin.send(new PluginCall("TicTacToePlugin", pluginData, logic.getDestination(), -2));
+			}
 		}
 		else if(call.getPluginData().getMethodID().equals("receiveClients")){
 			List<PluginClientInfo> clients = (List<PluginClientInfo>) call.getPluginData().getData();

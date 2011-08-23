@@ -57,7 +57,15 @@ public class TicTacToeController implements Pluggable{
 	public void connect(int dest) {
 		logic.setDestination(dest);
 		
-		AbstractPluginData<Integer> pluginData = new AbstractPluginData<Integer>("startGame", "0.1", null);
+		AbstractPluginData<Integer> pluginData = new AbstractPluginData<Integer>("invite", "0.1", null);
 		TicTacToePlugin.send(new PluginCall("TicTacToePlugin", pluginData, logic.getDestination(), -2));
+	}
+
+	public void reset(boolean b) {
+		logic.reset();
+		if(b){
+			AbstractPluginData<Integer> pluginData = new AbstractPluginData<Integer>("end", "0.1", null);
+			TicTacToePlugin.send(new PluginCall("TicTacToePlugin", pluginData, logic.getDestination(), -2));
+		}
 	}
 }

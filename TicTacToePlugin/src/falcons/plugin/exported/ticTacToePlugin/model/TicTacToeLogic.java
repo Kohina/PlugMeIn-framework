@@ -117,4 +117,10 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 			fullBoard = true;
 		}
 	}
+	
+	public void reset(){
+		setMe(false);
+		setIsX(true);
+		model.reset();
+	}
 }
