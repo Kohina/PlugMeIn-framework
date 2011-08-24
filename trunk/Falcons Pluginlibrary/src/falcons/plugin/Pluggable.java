@@ -8,5 +8,4 @@ package falcons.plugin;
  *	otherwise they won't be loaded by the PluginLoader.
  */
 public interface Pluggable {
-
 }
