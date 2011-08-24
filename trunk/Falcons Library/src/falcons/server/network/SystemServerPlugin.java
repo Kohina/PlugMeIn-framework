@@ -105,7 +105,7 @@ public class SystemServerPlugin {
 	}
 
 	private void deleteClient(ClientInfo client) {
-		connectionModel.removeConnection(connectionModel.getConnection(client.getID()));
+		connectionModel.removeConnection(client.getID(), connectionModel.getConnection(client.getID()));
 		System.out.println("Connection closed.");
 	}
 }

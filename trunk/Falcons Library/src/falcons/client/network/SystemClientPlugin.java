@@ -56,10 +56,6 @@ public class SystemClientPlugin implements Serializable {
 	}
 
 	public void disconnect() {
-		//TODO: Ever client have to be able to send a identification ID so the server knows which client to remove
-		//AbstractPluginData<ClientInfo> data = new AbstractPluginData<ClientInfo>("deleteClient", "1.0", ServerLogic.getClientInfo());
-		//PluginCall call = new PluginCall("SystemPlugin", data, -1);
-		//ClientConnection.send(call);
 		AbstractPluginData<Integer> data = new AbstractPluginData<Integer>("deleteClient", "1.0");
 		PluginCall call = new PluginCall("SystemServerPlugin", data, -1, -2);
 	}
