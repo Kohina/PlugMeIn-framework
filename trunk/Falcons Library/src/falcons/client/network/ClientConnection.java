@@ -86,7 +86,6 @@ public final class ClientConnection extends Thread{
 	 * @throws IOException
 	 */
 	public static void send(PluginCall call) {
-		System.out.println("Here ClientConnection");
 		try {
 			out.writeObject(call);
 		} catch (IOException e) {

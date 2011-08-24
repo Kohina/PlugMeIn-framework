@@ -12,7 +12,7 @@ public class NetworkController {
 	 */
 	static void send(PluginCall call){
 		if(ConnectionModel.getInstance().getConnection(call.getDestination()) == null){
-			System.out.println("all your base belong to _us");
+			System.out.println("Invalid destination");
 		}
 		ConnectionModel.getInstance().getConnection(call.getDestination()).send(call);
 	}

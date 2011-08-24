@@ -50,6 +50,9 @@ public class SystemServerPlugin {
 			else if(data.getMethodID().equals("getClients")){
 				getClients(call.getSender(), (String) data.getData());
 			}
+			else if(data.getMethodID().equals("getMe")){
+				getMe(call.getSender(), (String) data.getData());
+			}
 			else {
 				System.out.println("The methodID does not exist.");
 			}
@@ -67,12 +70,22 @@ public class SystemServerPlugin {
 		List<ClientInfo> clients = connectionModel.getClients();
 		
 		for(ClientInfo c: clients){
-			if (c.getPlugins().containsKey(plugin)) {
+			if (c.getPlugins().containsKey(plugin) && c.getID() != sender) {
 				returnClients.add(new PluginClientInfo(c.getID(), c.getName()));
 			}
 		}
 		AbstractPluginData<List<PluginClientInfo>> data = new AbstractPluginData<List<PluginClientInfo>>("receiveClients", "1.0", returnClients);
 		ConnectionModel.getInstance().getConnection(sender).send(new PluginCall(plugin, data, sender, -1));
+	}
+	
+	private void getMe(int sender, String plugin){
+		List<ClientInfo> clients = connectionModel.getClients();
+		for(ClientInfo c: clients){
+			if (c.getID() == sender) {
+				AbstractPluginData<PluginClientInfo> data = new AbstractPluginData<PluginClientInfo>("receiveMe", "1.0", new PluginClientInfo(c.getID(), c.getName()));
+				ConnectionModel.getInstance().getConnection(sender).send(new PluginCall(plugin, data, sender, -1));
+			}
+		}
 	}
 
 	private void readPlugins() {
