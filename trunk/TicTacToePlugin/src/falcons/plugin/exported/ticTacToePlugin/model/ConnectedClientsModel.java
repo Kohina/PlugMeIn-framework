@@ -24,7 +24,6 @@ public class ConnectedClientsModel extends Observable implements Pluggable, Seri
 	}
 	
 	public void updateClients(){
-		//TODO: this is implemented wrong, have to fix how to get clients first!
 		AbstractPluginData<String> pluginData = new AbstractPluginData<String>("getClients", "1.0", "TicTacToePlugin");
 		TicTacToePlugin.send(new PluginCall("SystemServerPlugin", pluginData, -1, -2));
 		System.out.println("Here connectedclinetsmodel");
