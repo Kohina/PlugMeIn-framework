@@ -28,12 +28,6 @@ public class DataMasterController {
 		case GET_PORT:
 			returnObject = ClientPreferencesLogic.getPort();
 			break;
-		case GET_CLIENTPLUGINS:
-			//TODO: To be manage by server?
-			break;
-		case GET_CLIENTS:
-			//TODO: To be manage by server!
-			break;
 		case GET_PLUGIN:
 			returnObject = PluginLogic.getPluginMap().get(e.getId());
 			break;

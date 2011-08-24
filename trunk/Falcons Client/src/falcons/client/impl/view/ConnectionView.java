@@ -210,10 +210,6 @@ public class ConnectionView extends javax.swing.JFrame implements ActionListener
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == connectButton) {
 			if (ClientImpl.client.connected() == false) {
-//				WARNING: This is the right way to do it, for some reason it doesnt work and is a TODO 
-//				ClientImpl.client.actionPerformed(new LibraryEvent(LibraryEventType.SET_PORT, Integer.parseInt(portTextField.getText())));
-//				ClientImpl.client.actionPerformed(new LibraryEvent(LibraryEventType.SET_IP, IPTextField.getText()));
-//				Instead, we do it like this:
 				ClientPreferencesLogic.setIp(IPTextField.getText());
 				ClientPreferencesLogic.setPort(Integer.parseInt(portTextField.getText()));
 				ClientPreferencesLogic.setName(nameTextField.getText());

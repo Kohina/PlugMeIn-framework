@@ -37,9 +37,6 @@ public class ServerPreferencesLogic {
 		}
 	}
 
-	/**
-	 *
-	 */
 	public static int getPort() {
 		ServerPreferencesModel.getInstance();
 		int tempPort = ServerPreferencesModel.getPort();

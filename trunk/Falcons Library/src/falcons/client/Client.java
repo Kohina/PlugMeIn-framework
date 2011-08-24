@@ -12,7 +12,6 @@ import falcons.plugin.AbstractPluginData;
 import falcons.plugin.PluginCall;
 import falcons.utils.LibraryEvent;
 
-// TODO Finish Implementing this class.
 public class Client {
 
 	private ClientMasterController controller;
