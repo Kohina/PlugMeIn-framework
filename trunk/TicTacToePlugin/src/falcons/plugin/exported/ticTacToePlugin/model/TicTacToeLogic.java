@@ -21,15 +21,30 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 	private boolean me = false;
 	private boolean isX = true;
 	
+	/**
+	 * DO NOT USE
+	 */
 	public TicTacToeLogic(){
 		
 	}
 	
+	/**
+	 * Creates a new logic object.
+	 * 
+	 * @param model
+	 * 			The model to be used.
+	 */
 	public TicTacToeLogic(TicTacToeModel model){
 		this.model = model;
 		board = model.getBoard();
 	}
 		
+	/**
+	 * Changes the state of the game.
+	 * 
+	 * @param i
+	 * 			The number of the field that was changed.
+	 */
 	public void change(int i) {
 		if(me){
 			if(model.getBoard()[i].getText() == "" && isX){
@@ -53,14 +68,31 @@ public class TicTacToeLogic implements Pluggable, Serializable{
 		win();
 	}
 	
+	/**
+	 * Sets if it is your turn or not.
+	 * 
+	 * @param b
+	 * 			The boolean value that represents if it's your turn or not.
+	 */
 	public void setMe(boolean b){
 		me = b;
 	}
 	
+	/**
+	 * Gets if it is your turn or not.
+	 * 
+	 * @return
+	 * 			True if it is your turn, false otherwise.
+	 */
 	public boolean getMe(){
 		return me;
 	}
 	
+	/**
+	 * Sets if this player is X or O.
+	 * @param b
+	 * 			True if the player is X, false if the player is O.
+	 */
 	public void setIsX(boolean b){
 		isX = b;
 	}
