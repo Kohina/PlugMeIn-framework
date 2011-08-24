@@ -13,7 +13,7 @@ public abstract class AbstractPlugin implements Serializable, Pluggable {
 	private static PluginEventListener listener = null;
 	
 	/**
-	 * Default Constructor
+	 * Default Constructor. Should not be used.
 	 */
 	public AbstractPlugin() {
 	}
@@ -30,7 +30,7 @@ public abstract class AbstractPlugin implements Serializable, Pluggable {
 	
 	/**
 	 * Has to return a JPanel that the client or server can add to it's Frame. 
-	 * @return
+	 * @return The main JPanel that of the plugin.
 	 */
 	public abstract JPanel getMainPanel();
 	

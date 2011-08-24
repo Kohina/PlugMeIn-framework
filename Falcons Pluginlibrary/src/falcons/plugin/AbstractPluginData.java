@@ -9,7 +9,9 @@ public class AbstractPluginData<E> implements Serializable, Pluggable {
 	private final String versionID;
 	private final E data;
 	
-	
+	/**
+	 * The default constructor for AbstractPluginData, sets everything to null. Should generally not be used.
+	 */
 	protected AbstractPluginData() {
 		methodID = null;
 		versionID = null;
@@ -17,7 +19,7 @@ public class AbstractPluginData<E> implements Serializable, Pluggable {
 	}
 
 	/**
-	 * The constructor for an AbstructPluginData
+	 * The constructor for an AbstructPluginData without the actual data.
 	 * 
 	 * @param methodID
 	 *            The ID of the method inside the Plugin that's going to be
@@ -32,7 +34,7 @@ public class AbstractPluginData<E> implements Serializable, Pluggable {
 	}
 	
 	/**
-	 * The constructor for an AbstructPluginData
+	 * The constructor for an AbstructPluginData.
 	 * 
 	 * @param methodID
 	 *            The ID of the method inside the Plugin that's going to be
@@ -47,7 +49,6 @@ public class AbstractPluginData<E> implements Serializable, Pluggable {
 	}
 
 	/**
-	 * 
 	 * @return Returns the ID of the method to be used.
 	 */
 	public String getMethodID() {
