@@ -55,6 +55,8 @@ public class ListeningThread extends Thread {
 			while ((call = getCall()) != null) {
 				interpreter.interpret(call);
 			}
+		}catch (EOFException e) {
+			System.out.println("Client disconnected.");
 		}catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
