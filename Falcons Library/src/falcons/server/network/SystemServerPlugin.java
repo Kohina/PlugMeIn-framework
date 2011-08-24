@@ -37,6 +37,10 @@ public class SystemServerPlugin {
 		}
 	}
 
+	/**
+	 * Methoad that handles received calls and delegates it to the correct method.
+	 * @param call The received call in question.
+	 */
 	public void receiveCall(PluginCall call) {
 		AbstractPluginData<?> data = call.getPluginData();
 
@@ -65,6 +69,11 @@ public class SystemServerPlugin {
 		}
 	}
 
+	/**
+	 * Method that returns the client list to the client that asked for it. Does not use a return value, instead it uses a call to returns client.
+	 * @param sender The client that asked for the list of clients.
+	 * @param plugin Which plugin on the client side that asked for the client list.
+	 */
 	private void getClients(int sender, String plugin) {
 		List<PluginClientInfo> returnClients = new ArrayList<PluginClientInfo>();
 		List<ClientInfo> clients = connectionModel.getClients();
@@ -74,6 +83,7 @@ public class SystemServerPlugin {
 				returnClients.add(new PluginClientInfo(c.getID(), c.getName()));
 			}
 		}
+		
 		AbstractPluginData<List<PluginClientInfo>> data = new AbstractPluginData<List<PluginClientInfo>>("receiveClients", "1.0", returnClients);
 		ConnectionModel.getInstance().getConnection(sender).send(new PluginCall(plugin, data, sender, -1));
 	}

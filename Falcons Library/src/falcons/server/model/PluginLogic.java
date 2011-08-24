@@ -1,4 +1,4 @@
-package falcons.server.model;
+apackage falcons.server.model;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,10 +9,6 @@ import falcons.plugin.Plugin;
 import falcons.pluginmanager.PluginManager;
 
 public class PluginLogic {
-		
-	private PluginLogic(){
-		
-	}
 	
 	/**
 	 * Tells the pluginmanager to load all plugins.

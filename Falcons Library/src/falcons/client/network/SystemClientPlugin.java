@@ -24,7 +24,6 @@ public class SystemClientPlugin implements Serializable {
 		return instance;
 	}
 	
-	//TODO: Maybe clean-up?
 	public void receiveCall(PluginCall call) {
 		AbstractPluginData<?> data = call.getPluginData();
 

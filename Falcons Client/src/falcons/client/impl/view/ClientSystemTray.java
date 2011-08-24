@@ -43,7 +43,6 @@ public class ClientSystemTray implements ActionListener {
 		}
 	}
 
-	// TODO Should use controllers.
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == mainView) {
@@ -55,6 +54,5 @@ public class ClientSystemTray implements ActionListener {
 		} else if (e.getSource() == exitButton) {
 			System.exit(0);
 		}
-
 	}
 }

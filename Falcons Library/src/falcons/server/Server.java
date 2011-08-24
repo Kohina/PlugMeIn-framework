@@ -61,8 +61,6 @@ public class Server {
 		return started;
 	}
 
-	//TODO Need to find a better way to shut the server down.... :(
-	
 	/**
 	 * Stops the server
 	 * @return
