@@ -21,7 +21,7 @@ import falcons.plugin.exported.ticTacToePlugin.controller.TicTacToeController;
 public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, ActionListener{
 
 	private JButton[] buttons;
-	private JPanel gamePanel, connectPanel, gameContentPanel, optionsPanel;
+	private JPanel gamePanel, connectPanel, connectButtonsPanel, gameContentPanel, optionsPanel;
 	private JList clientList;
 	private JLabel turn;
 	private JButton go, update, endGame;
@@ -40,19 +40,21 @@ public class TicTacToeMainPanel extends JPanel implements Observer, Pluggable, A
 		this.setSize(600, 600);
 		
 		connectPanel = new JPanel();
-		connectPanel.setLayout(new FlowLayout());
+		connectPanel.setLayout(new BorderLayout());
+		connectButtonsPanel = new JPanel();
+		connectButtonsPanel.setLayout(new FlowLayout());
 		
 		clientList = new JList();
 		clientList.setSize(600,200);
-		connectPanel.add(clientList);
+		connectPanel.add(clientList, BorderLayout.CENTER);
 		
 		update = new JButton("Update list");
 		update.addActionListener(this);
-		connectPanel.add(update);
-		
 		go = new JButton("Play");
 		go.addActionListener(this);
-		connectPanel.add(go);
+		connectButtonsPanel.add(update);
+		connectButtonsPanel.add(go);
+		connectPanel.add(connectButtonsPanel, BorderLayout.SOUTH);
 		
 		gameContentPanel = new JPanel();
 		gameContentPanel.setLayout(new BorderLayout());
