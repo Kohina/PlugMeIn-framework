@@ -10,9 +10,6 @@ public class ConnectionModel {
 
 	private int nextID = 0;
 	private static ConnectionModel instance = new ConnectionModel();
-	//TODO: Find a good way to save connections. Maybe IP or name as key? Thread could be value
-	//TODO: Make sure clientside can access this list as well!! And make sure the server knows what plugins the clients has
-	//private static HashMap<ConnectionThread, ClientInfo> connections = new HashMap<ConnectionThread, ClientInfo>();
 	private static HashMap<Integer, ConnectionThread> connections = new HashMap<Integer ,ConnectionThread>();
 	private static HashMap<Integer, ClientInfo> clients = new HashMap<Integer ,ClientInfo>();
 
@@ -74,9 +71,10 @@ public class ConnectionModel {
 	 * Removes a Client from the Client collection
 	 * @param thread
 	 */
-	public void removeConnection(ConnectionThread thread) {
+	public void removeConnection(int ID, ConnectionThread thread) {
 		thread.cancel();
-		connections.remove(thread);
+		connections.remove(ID);
+		clients.remove(ID);
 	}
 
 	/**
